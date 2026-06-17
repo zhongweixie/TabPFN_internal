@@ -827,34 +827,79 @@ class TabPFNV2p5(Architecture):
             )
 
         kv_out: dict[int, KVCacheEntry] = {}
-        for layer_idx, block in enumerate(self.blocks):
-            if return_kv_cache and not using_cache:
-                x_BRCD, kv_entry = block(
-                    x_BRCD,
-                    block_single_eval_pos,
-                    save_peak_memory_factor,
-                    return_kv=True,
-                )
-                kv_out[layer_idx] = kv_entry
-            elif using_cache:
-                x_BRCD, _ = block(
-                    x_BRCD,
-                    block_single_eval_pos,
-                    save_peak_memory_factor,
-                    cached_kv=kv_cache.kv[layer_idx],
-                )
-            elif force_recompute_layer:
-                x_BRCD = torch.utils.checkpoint.checkpoint(
-                    block,
-                    x_BRCD,
-                    block_single_eval_pos,
-                    save_peak_memory_factor,
-                    use_reentrant=False,
-                )[0]
-            else:
-                x_BRCD, _ = block(
-                    x_BRCD, block_single_eval_pos, save_peak_memory_factor
-                )
+
+        # --- Experimental "thinking mode" (Phase 0 diagnostic probe) ---------------
+        # Reuses the (weight-shared) block stack for multiple passes to spend extra
+        # compute on latent refinement, inspired by COCONUT (latent feedback) and Ouro
+        # (full-stack recurrence). Controlled at runtime via attributes so the default
+        # behaviour (n_steps == 1) is byte-for-byte identical to before. Only engages on
+        # the plain inference path; cache / kv-build / checkpoint paths are untouched.
+        n_thinking_steps = int(getattr(self, "_thinking_steps", 1) or 1)
+        thinking_mode = getattr(self, "_thinking_mode", "coconut")
+        thinking_active = (
+            n_thinking_steps > 1
+            and not using_cache
+            and not return_kv_cache
+            and not force_recompute_layer
+        )
+
+        if thinking_active:
+            num_thinking = self.add_thinking_rows.num_thinking_rows
+            # The non-thinking rows (train + test) play the role of COCONUT's fixed
+            # "question" context: re-presented fresh each pass in coconut mode.
+            data_init_BRiCD = x_BRCD[:, num_thinking:].detach().clone()
+            drift_log: list[tuple[int, float, float]] = []
+            for step in range(n_thinking_steps):
+                x_prev = x_BRCD.detach().clone()
+                for block in self.blocks:
+                    x_BRCD, _ = block(
+                        x_BRCD, block_single_eval_pos, save_peak_memory_factor
+                    )
+                with torch.no_grad():
+                    think_drift = (
+                        (x_BRCD[:, :num_thinking] - x_prev[:, :num_thinking])
+                        .norm()
+                        .item()
+                    )
+                    full_drift = (x_BRCD - x_prev).norm().item()
+                    drift_log.append((step, think_drift, full_drift))
+                if thinking_mode == "coconut" and step < n_thinking_steps - 1:
+                    # Carry refined thinking rows forward; reset data context to its
+                    # initial embedding (latent-only recurrence).
+                    x_BRCD = torch.cat(
+                        [x_BRCD[:, :num_thinking], data_init_BRiCD], dim=1
+                    )
+                # "ouro" mode: keep the full hidden state as-is (full-stack recurrence).
+            self._thinking_drift = drift_log
+        else:
+            for layer_idx, block in enumerate(self.blocks):
+                if return_kv_cache and not using_cache:
+                    x_BRCD, kv_entry = block(
+                        x_BRCD,
+                        block_single_eval_pos,
+                        save_peak_memory_factor,
+                        return_kv=True,
+                    )
+                    kv_out[layer_idx] = kv_entry
+                elif using_cache:
+                    x_BRCD, _ = block(
+                        x_BRCD,
+                        block_single_eval_pos,
+                        save_peak_memory_factor,
+                        cached_kv=kv_cache.kv[layer_idx],
+                    )
+                elif force_recompute_layer:
+                    x_BRCD = torch.utils.checkpoint.checkpoint(
+                        block,
+                        x_BRCD,
+                        block_single_eval_pos,
+                        save_peak_memory_factor,
+                        use_reentrant=False,
+                    )[0]
+                else:
+                    x_BRCD, _ = block(
+                        x_BRCD, block_single_eval_pos, save_peak_memory_factor
+                    )
 
         # In the cache path every row is a test row; otherwise the test rows start
         # after the thinking and training rows, and the training rows (excluding the
