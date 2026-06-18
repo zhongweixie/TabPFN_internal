@@ -68,7 +68,6 @@ LR = 1e-5
 GATE_LR = 1e-3            # the few gate scalars can use a faster LR
 QUERY_SPLIT = 0.3
 TARGET_CHUNKS = 6
-ENTROPY_BETA = 0.05       # entropy reg on the exit distribution (Ouro uses 0.05-0.1)
 
 
 def chunk_size_for(n_train: int) -> int:
@@ -91,37 +90,48 @@ def set_thinking(clf: TabPFNClassifier, steps: int) -> None:
     clf.model_._thinking_mode = "ouro"
 
 
-def ensure_gate(clf: TabPFNClassifier) -> torch.nn.Parameter:
-    """Lazily attach the learnable per-step gate (T_MAX-1 extra steps)."""
+def ensure_gate(clf: TabPFNClassifier, seed: int = 0) -> torch.nn.Parameter:
+    """Lazily attach the learnable per-step gate (T_MAX-1 extra steps).
+
+    Init from SMALL RANDOM (not 0): at exactly 0 the extra steps are identity, so
+    x_stack-x_in ~ 0 and the gate gets ~zero gradient (a trap — verified ~5e-10).
+    A small nonzero init breaks the symmetry so the gate can actually learn, while
+    staying close enough to identity to protect the pretrained weights at the start.
+    """
     m = clf.model_
     g = getattr(m, "_ouro_step_gate", None)
     if g is None:
         emb = m.add_thinking_rows.row_token_values_TE
-        g = torch.nn.Parameter(torch.zeros(T_MAX - 1, device=emb.device, dtype=emb.dtype))
+        gen = torch.Generator(device="cpu").manual_seed(seed)
+        init = (torch.randn(T_MAX - 1, generator=gen) * 0.05).to(
+            device=emb.device, dtype=emb.dtype
+        )
+        g = torch.nn.Parameter(init)
         m._ouro_step_gate = g
     return g
 
 
 def ouro_loss(step_logits: list[torch.Tensor], targets_BQ: torch.Tensor):
-    """Per-step weighted cross-entropy + entropy reg over a UNIFORM-prior exit
-    distribution. step_logits[k] is decode output at step k, shape (Q, B, 1, L)-ish
-    from _decode -> (M, B, L). We reduce each to a per-step CE, then weight by a
-    softmax over negative losses (cheap learned-free exit proxy) regularised toward
-    uniform via entropy.
+    """Per-step output supervision: UNIFORM-weighted mean of per-step cross-entropy.
+
+    Every recurrence step decodes the test rows and is supervised equally, which is
+    the faithful realisation of Ouro's "make every step a useful predictor". Returns
+    (loss, per_step_ce) where per_step_ce is detached for logging only.
+
+    NOTE (bug fix): the previous version weighted steps by softmax(-ce.detach()) and
+    subtracted an entropy term, but (a) the softmax DOWN-weighted the high-loss steps
+    we most want to fix, and (b) with w detached the entropy term had ZERO gradient
+    (a no-op). Uniform mean avoids both issues and gives clean gradients to all steps.
     """
     per_step_ce = []
     for lg in step_logits:
-        # _decode returns test_output_MB1 shape (M, B, L); reshape to (B*?, L, M)
+        # _decode returns shape (M, B, L) [M test rows, B batch, L classes].
         M, B, L = lg.shape
         logits_BLM = lg.permute(1, 2, 0).reshape(B, L, M)
-        ce = F.cross_entropy(logits_BLM, targets_BQ[:B])
-        per_step_ce.append(ce)
+        per_step_ce.append(F.cross_entropy(logits_BLM, targets_BQ[:B]))
     ce_stack = torch.stack(per_step_ce)  # (T,)
-    # exit distribution: prefer lower-loss steps, but regularise toward uniform
-    w = torch.softmax(-ce_stack.detach(), dim=0)
-    weighted = (w * ce_stack).sum()
-    entropy = -(w * (w + 1e-9).log()).sum()
-    return weighted - ENTROPY_BETA * entropy, ce_stack.detach()
+    loss = ce_stack.mean()
+    return loss, ce_stack.detach()
 
 
 def evaluate(clf: TabPFNClassifier, X_te, y_te, labels, tag: str) -> dict:
@@ -157,7 +167,7 @@ def finetune_one(name: str, X, y, seed: int) -> dict:
     model = est.model_
     model.train()
     set_thinking(est, T_MAX)
-    gate = ensure_gate(est)
+    gate = ensure_gate(est, seed)
     model._thinking_collect_step_logits = True
     perf = PerformanceOptions(
         save_peak_memory_factor=None,
@@ -290,9 +300,9 @@ def aggregate_and_log(name: str, runs: list[dict]) -> None:
 
 def main() -> None:
     log.info(
-        "Ouro looped fine-tune | T_max=%d | gated residual | per-step CE + "
-        "entropy(beta=%.2f) | seeds=%s",
-        T_MAX, ENTROPY_BETA, SEEDS,
+        "Ouro looped fine-tune | T_max=%d | gated residual (rand init) | "
+        "uniform per-step CE | seeds=%s",
+        T_MAX, SEEDS,
     )
     for name, X, y in load_datasets():
         log.info("=" * 72)
