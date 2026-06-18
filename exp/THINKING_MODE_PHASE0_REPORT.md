@@ -9,13 +9,19 @@
 ## 目标
 
 把 COCONUT(潜空间反馈)与 Ouro(权重共享循环)的"计算换精度"思路接到 TabPFN v2.5。
-v2.5 自带的 `AddThinkingRows`(64 个可学习 row token)恰好等价于 COCONUT 的 latent
-thought 槽位,train+test 数据行等价于固定的"question 上下文"。在 forward 的块循环外
+v2.5 自带的 `AddThinkingRows`(64 个可学习 row token)被**借用**为类 COCONUT 的 latent
+槽位,train+test 数据行充当固定的"question 上下文"。在 forward 的块循环外
 套一层运行时可控的循环(默认 `n_steps=1` 行为零改动),探针只为回答三件事:
 
 1. 循环能否安全运行、`n_steps=1` 是否字节级一致?
 2. 隐态漂移 `‖h^t − h^{t-1}‖` 随步数收敛(趋向不动点)还是发散/坍缩?
 3. 准确率/NLL 是否随步数出现任何单调信号?
+
+> **机制澄清(经审查修正)**:这里的 64 个 thinking rows 与 COCONUT 的连续思维
+> **并非等价**。COCONUT 的连续思维是*自回归、序列性*的(位置 t 的输出隐态喂给
+> 序列下一个位置 t+1);此处是*同时存在*的 64 个槽位,被同一组权重**全栈重复 N 遍**。
+> 因此本质上更接近"**只让 latent 行携带状态的 Ouro 式权重共享递归**",受 COCONUT
+> *启发*但非复刻。两个 mode 的区别是"状态在哪些行上跨遍传递",而非"自回归 vs 并行"。
 
 两种递归模式:
 - **coconut**: 每遍仅把 thinking rows 输出隐态喂回,数据行复位到初始 embedding(latent-only)。

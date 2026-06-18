@@ -31,7 +31,12 @@ from functools import partial
 
 import numpy as np
 import torch
-from sklearn.datasets import load_breast_cancer, load_digits, load_wine
+from sklearn.datasets import (
+    fetch_openml,
+    load_breast_cancer,
+    load_digits,
+    load_wine,
+)
 from sklearn.metrics import accuracy_score, log_loss
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
@@ -59,30 +64,39 @@ MODEL_PATH = (
     "/home/zxiebk/workspace/model/tabpfn_2_5/"
     "tabpfn-v2.5-classifier-v2.5_default.ckpt"
 )
-SEED = 0
+SEEDS = [0, 1, 2]                  # multi-seed for statistical validity
 EVAL_STEPS = [1, 2, 4, 8]          # inference depths to probe before/after FT
 TARGET_STEPS = 4                   # max curriculum depth
 EPOCHS = 12
 EPOCHS_PER_STAGE = 4               # stage 0:steps=1, 1:steps=2, 2:steps=4
 LR = 1e-5
 QUERY_SPLIT = 0.3                  # fraction of each chunk used as query
-MAX_CHUNK = None                   # None = whole training set is one meta-dataset
-                                   # (must be < n_train rows to produce >1 chunk)
+# We want MULTIPLE chunks/epoch (several gradient steps), so we size each chunk as
+# a fraction of the training set rather than a fixed count. get_preprocessed_dataset_
+# chunks returns 0 chunks if max_data_size >= n_train, so this must stay < n_train.
+TARGET_CHUNKS = 6                  # aim for ~this many batches per epoch
+
+
+def chunk_size_for(n_train: int) -> int:
+    """Pick max_data_size so we get ~TARGET_CHUNKS chunks (>=2), always < n_train."""
+    size = max(40, n_train // TARGET_CHUNKS)
+    return min(size, n_train - 1)
 
 
 def curriculum_steps(epoch: int) -> int:
-    """COCONUT curriculum: deepen the latent loop as training progresses."""
+    """Curriculum: deepen the latent loop as training progresses
+    (COCONUT-inspired staged deepening; depth axis, not latent-count axis)."""
     schedule = [1, 2, TARGET_STEPS]
     stage = min(epoch // EPOCHS_PER_STAGE, len(schedule) - 1)
     return schedule[stage]
 
 
-def build_estimator() -> TabPFNClassifier:
+def build_estimator(seed: int) -> TabPFNClassifier:
     return TabPFNClassifier(
         n_estimators=1,
         device=DEVICE,
         model_path=MODEL_PATH,
-        random_state=SEED,
+        random_state=seed,
         fit_mode="fit_preprocessors",
     )
 
@@ -97,8 +111,10 @@ def get_drift(clf: TabPFNClassifier):
     return getattr(clf.model_, "_thinking_drift", None)
 
 
-def evaluate(clf: TabPFNClassifier, X_te, y_te, labels, tag: str) -> None:
-    """Probe query acc/NLL + drift across inference depths (no grad)."""
+def evaluate(clf: TabPFNClassifier, X_te, y_te, labels, tag: str) -> dict:
+    """Probe query acc/NLL across inference depths (no grad). Returns
+    {steps: (acc, nll)} and logs a line per depth."""
+    out = {}
     for steps in EVAL_STEPS:
         set_thinking(clf, steps)
         proba = clf.predict_proba(X_te)
@@ -112,25 +128,27 @@ def evaluate(clf: TabPFNClassifier, X_te, y_te, labels, tag: str) -> None:
         if drift:
             dstr = " drift=[" + ", ".join(f"{d[1]:.1f}" for d in drift) + "]"
         log.info("  [%s] steps=%d  acc=%.4f  nll=%.4f%s", tag, steps, acc, ll, dstr)
+        out[steps] = (acc, ll)
     set_thinking(clf, 1)
+    return out
 
 
-def finetune_one(name: str, X, y) -> None:
-    log.info("=" * 72)
+def finetune_one(name: str, X, y, seed: int) -> dict:
+    """Run one (dataset, seed): returns {'pre': {steps:(acc,nll)},
+    'post': {steps:(acc,nll)}}."""
     labels = np.unique(y)
-    log.info("DATASET %s  shape=%s  classes=%d", name, X.shape, len(labels))
     X_tr, X_te, y_tr, y_te = train_test_split(
-        X, y, test_size=0.3, random_state=SEED, stratify=y
+        X, y, test_size=0.3, random_state=seed, stratify=y
     )
 
-    # --- Baseline: a fresh estimator, evaluated before any fine-tuning ----------
-    base = build_estimator()
+    # --- Baseline: fresh estimator, evaluated before any fine-tuning ------------
+    base = build_estimator(seed)
     base.fit(X_tr, y_tr)
-    log.info("--- BEFORE fine-tune ---")
-    evaluate(base, X_te, y_te, labels, "pre")
+    log.info("--- [%s seed=%d] BEFORE fine-tune ---", name, seed)
+    pre = evaluate(base, X_te, y_te, labels, "pre")
 
     # --- Fine-tuning estimator (re-uses TabPFN's batched data pipeline) ---------
-    est = build_estimator()
+    est = build_estimator(seed)
     est.fit(X_tr, y_tr)  # initializes models_ / model_
     model = est.model_
     model.train()
@@ -142,11 +160,12 @@ def finetune_one(name: str, X, y) -> None:
         enable_torch_compile=False,
     )
     optim = torch.optim.AdamW(model.parameters(), lr=LR, weight_decay=0.01)
+    max_chunk = chunk_size_for(len(X_tr))
 
     for epoch in range(EPOCHS):
         steps = curriculum_steps(epoch)
         set_thinking(est, steps)
-        epoch_seed = SEED + epoch
+        epoch_seed = 100 * seed + epoch
         splitter = partial(
             train_test_split, test_size=QUERY_SPLIT, random_state=epoch_seed
         )
@@ -155,16 +174,20 @@ def finetune_one(name: str, X, y) -> None:
             X_raw=X_tr,
             y_raw=y_tr,
             split_fn=splitter,
-            max_data_size=MAX_CHUNK,
+            max_data_size=max_chunk,
             model_type="classifier",
             equal_split_size=False,
             data_shuffle_seed=epoch_seed,
             preprocessing_random_state=epoch_seed,
         )
+        if len(ds) == 0:
+            log.warning("  epoch %2d: 0 chunks (n_train=%d, max_chunk=%d), skip",
+                        epoch, len(X_tr), max_chunk)
+            continue
         loader = DataLoader(
             ds, batch_size=1, collate_fn=meta_dataset_collator, shuffle=True
         )
-        ep_loss, nb = 0.0, 0
+        ep_loss, nb, skipped = 0.0, 0, 0
         for batch in loader:
             # skip batches whose query labels aren't covered by context
             ctx_u = torch.unique(
@@ -172,6 +195,7 @@ def finetune_one(name: str, X, y) -> None:
             )
             qry_u = torch.unique(batch.y_query.reshape(-1))
             if not bool(torch.isin(qry_u, ctx_u, assume_unique=True).all()):
+                skipped += 1
                 continue
             optim.zero_grad()
             est.fit_from_preprocessed(
@@ -186,10 +210,7 @@ def finetune_one(name: str, X, y) -> None:
             Q, B, E, L = logits_QBEL.shape
             logits_BLQ = logits_QBEL.permute(1, 2, 3, 0).reshape(B * E, L, Q)
             targets_BQ = (
-                batch.y_query.reshape(1, -1)
-                .repeat(B * E, 1)
-                .to(DEVICE)
-                .long()
+                batch.y_query.reshape(1, -1).repeat(B * E, 1).to(DEVICE).long()
             )
             loss = _compute_classification_loss(
                 logits_BLQ=logits_BLQ, targets_BQ=targets_BQ
@@ -200,39 +221,96 @@ def finetune_one(name: str, X, y) -> None:
             ep_loss += float(loss.detach().item())
             nb += 1
         log.info(
-            "epoch %2d  steps=%d  batches=%d  loss=%.4f",
+            "  epoch %2d  steps=%d  batches=%d  skipped=%d  loss=%.4f",
             epoch,
             steps,
             nb,
+            skipped,
             ep_loss / max(nb, 1),
         )
 
-    # --- After fine-tune: evaluate same estimator across inference depths -------
-    # est.fit() re-initializes the model from the checkpoint, so snapshot the
-    # trained weights and restore them onto the rebuilt predict executor.
+    # --- After fine-tune: snapshot trained weights, rebuild predict executor, ----
+    # restore (est.fit reloads the checkpoint weights, so we must restore). -------
     model.eval()
     trained_state = {k: v.detach().clone() for k, v in model.state_dict().items()}
-    est.fit(X_tr, y_tr)  # rebuilds standard predict executor (reloads ckpt weights)
-    est.model_.load_state_dict(trained_state)  # restore fine-tuned weights
-    log.info("--- AFTER fine-tune ---")
-    evaluate(est, X_te, y_te, labels, "post")
+    est.fit(X_tr, y_tr)
+    est.model_.load_state_dict(trained_state)
+    log.info("--- [%s seed=%d] AFTER fine-tune ---", name, seed)
+    post = evaluate(est, X_te, y_te, labels, "post")
+    return {"pre": pre, "post": post}
 
 
-def main() -> None:
-    log.info(
-        "COCONUT looped fine-tune | model=%s | curriculum=%s steps over %d epochs",
-        MODEL_PATH,
-        [curriculum_steps(e) for e in range(EPOCHS)],
-        EPOCHS,
-    )
-    for name, loader in [
+def load_datasets() -> list[tuple[str, np.ndarray, np.ndarray]]:
+    """sklearn toy sets (easy, small) + OpenML (larger / harder)."""
+    out = []
+    for nm, ld in [
         ("wine", load_wine),
         ("breast_cancer", load_breast_cancer),
         ("digits", load_digits),
     ]:
-        d = loader()
+        d = ld()
+        out.append((nm, d.data, d.target))
+    # OpenML: larger / harder real tabular datasets
+    for nm in ["phoneme", "qsar-biodeg"]:
+        try:
+            d = fetch_openml(nm, version=1, as_frame=False, parser="liac-arff")
+            X = d.data.astype("float32")
+            classes = np.unique(d.target)
+            y = (d.target == classes[1]).astype(int) if len(classes) == 2 else d.target
+            out.append((nm, X, y))
+        except Exception as e:  # noqa: BLE001
+            log.warning("skip OpenML %s: %s", nm, str(e)[:80])
+    return out
+
+
+def aggregate_and_log(name: str, runs: list[dict]) -> None:
+    """Aggregate per-seed results into mean±std per (phase, steps)."""
+    log.info("##### SUMMARY %s (n_seeds=%d) #####", name, len(runs))
+    base_acc = np.mean([r["pre"][1][0] for r in runs])  # pre, steps=1
+    for phase in ("pre", "post"):
+        for steps in EVAL_STEPS:
+            accs = np.array([r[phase][steps][0] for r in runs])
+            nlls = np.array([r[phase][steps][1] for r in runs])
+            log.info(
+                "  %-4s steps=%d  acc=%.4f±%.4f  nll=%.4f±%.4f",
+                phase,
+                steps,
+                accs.mean(),
+                accs.std(),
+                nlls.mean(),
+                nlls.std(),
+            )
+    # post-vs-pre delta at each depth (paired across seeds)
+    for steps in EVAL_STEPS:
+        d = np.array(
+            [r["post"][steps][0] - r["pre"][steps][0] for r in runs]
+        )
+        log.info(
+            "  Δacc(post-pre) steps=%d: %+.4f±%.4f  (base pre@1=%.4f)",
+            steps,
+            d.mean(),
+            d.std(),
+            base_acc,
+        )
+
+
+def main() -> None:
+    log.info(
+        "COCONUT-inspired looped fine-tune | curriculum=%s over %d epochs | "
+        "seeds=%s | ~%d chunks/epoch",
+        [curriculum_steps(e) for e in range(EPOCHS)],
+        EPOCHS,
+        SEEDS,
+        TARGET_CHUNKS,
+    )
+    for name, X, y in load_datasets():
+        log.info("=" * 72)
+        log.info("DATASET %s  shape=%s  classes=%d", name, X.shape, len(np.unique(y)))
+        runs = []
         t0 = time.time()
-        finetune_one(name, d.data, d.target)
+        for seed in SEEDS:
+            runs.append(finetune_one(name, X, y, seed))
+        aggregate_and_log(name, runs)
         log.info("%s done in %.1fs", name, time.time() - t0)
     log.info("ALL DONE")
 
