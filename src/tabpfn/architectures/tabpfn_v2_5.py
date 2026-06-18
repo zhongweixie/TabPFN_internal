@@ -849,12 +849,31 @@ class TabPFNV2p5(Architecture):
             # "question" context: re-presented fresh each pass in coconut mode.
             data_init_BRiCD = x_BRCD[:, num_thinking:].detach().clone()
             drift_log: list[tuple[int, float, float]] = []
+            # Branch B (Ouro): optional learnable per-step residual gate. Created
+            # lazily (so it never interferes with checkpoint loading) and only used
+            # in ouro mode. Init ~0 => the recurrence starts as a near-identity map,
+            # protecting the pretrained weights from the collapse seen in Phase 0.
+            ouro_gate = getattr(self, "_ouro_step_gate", None)
+            collect_logits = getattr(self, "_thinking_collect_step_logits", False)
+            step_logits: list[torch.Tensor] = []
             for step in range(n_thinking_steps):
                 x_prev = x_BRCD.detach().clone()
+                x_in = x_BRCD
+                x_stack = x_in
                 for block in self.blocks:
-                    x_BRCD, _ = block(
-                        x_BRCD, block_single_eval_pos, save_peak_memory_factor
+                    x_stack, _ = block(
+                        x_stack, block_single_eval_pos, save_peak_memory_factor
                     )
+                if thinking_mode == "ouro" and ouro_gate is not None and step > 0:
+                    # Gated residual refinement for EXTRA passes only. Step 0 is the
+                    # full (ungated) forward = the standard pretrained computation, so
+                    # with gate init ~0, T>1 reproduces T=1 exactly at init and the
+                    # model learns whether extra passes help. tanh keeps g in (-1, 1).
+                    g = torch.tanh(ouro_gate[min(step - 1, ouro_gate.shape[0] - 1)])
+                    x_BRCD = x_in + g * (x_stack - x_in)
+                else:
+                    # Step 0 (always) and ungated/coconut: take the full stack output.
+                    x_BRCD = x_stack
                 with torch.no_grad():
                     think_drift = (
                         (x_BRCD[:, :num_thinking] - x_prev[:, :num_thinking])
@@ -863,14 +882,27 @@ class TabPFNV2p5(Architecture):
                     )
                     full_drift = (x_BRCD - x_prev).norm().item()
                     drift_log.append((step, think_drift, full_drift))
+                if collect_logits and not using_cache:
+                    # Per-step supervision (Ouro): decode the test rows at THIS step.
+                    step_logits.append(
+                        self._decode(
+                            x_BRCD,
+                            test_start=block_single_eval_pos,
+                            train_start=num_thinking,
+                            train_end=block_single_eval_pos,
+                            only_return_standard_out=True,
+                        )
+                    )
                 if thinking_mode == "coconut" and step < n_thinking_steps - 1:
                     # Carry refined thinking rows forward; reset data context to its
                     # initial embedding (latent-only recurrence).
                     x_BRCD = torch.cat(
                         [x_BRCD[:, :num_thinking], data_init_BRiCD], dim=1
                     )
-                # "ouro" mode: keep the full hidden state as-is (full-stack recurrence).
+                # "ouro" mode: keep the full (gated) hidden state as-is.
             self._thinking_drift = drift_log
+            if collect_logits:
+                self._thinking_step_logits = step_logits
         else:
             for layer_idx, block in enumerate(self.blocks):
                 if return_kv_cache and not using_cache:
