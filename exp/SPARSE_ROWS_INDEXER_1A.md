@@ -1,8 +1,8 @@
 # 稀疏训练行选择 — 阶段 1a:学习式 indexer 机制闸门报告
 
 生成时间: 2026-06-19
-状态: ❌ **撤销 GO — 经审查发现 0.987 是 TEST-LABEL 数据泄露,结论作废**
-脚本: `reproduce/run_indexer_gate.py`, `reproduce/indexer_gate_run2.out`
+状态: ❌ **NO-GO** — leak-free 重测确认:学习式 indexer 不泛化(phoneme held-out AUC 0.466)
+脚本: `reproduce/run_indexer_gate.py`(`run_dataset_honest` = leak-free 协议)
 前置: 阶段 0 `exp/SPARSE_ROWS_LOO_CEILING.md`(证明上限存在)
 
 ---
@@ -26,9 +26,45 @@
 > 同一个 indexer:泄露集 0.960,诚实集 **0.688 —— 远低于 full(0.849)和 KNN(0.814)**。
 > 泄露虚高了 ~0.27 AUC。**当前实现的 indexer 不会泛化到未见过的 test 行。**
 >
-> **正确协议(下一步重做)**:golden label 必须在 **held-out validation 集**上算(用 val 标签),
-> indexer 在从未参与造 label 的 test 集上评估。当前代码违反此协议(`run_dataset` 用 yte 造 label
-> 又在同 yte 评估,~line 319/344)。下方原结论按泄露结果阅读,不代表真实性能。
+> **正确协议(已执行,见下)**:golden label 在 **held-out validation 集**上算(用 val 标签),
+> indexer 在从未参与造 label 的 test 集上评估。`run_dataset_honest` 实现此协议。
+
+---
+
+## Leak-free 最终结果(`run_dataset_honest`,train/val/test 三分,val 造 label、test 评估)
+
+split:train 120(context)/ val 60(LOO 造 label)/ test 60(评估,从不参与造 label)。
+indexer 在 val 行上学"选哪些训练行",应用到**未见 test 行**。keep=25%,单 seed。
+
+| 数据集/branch | ceiling(oracle,test) | full | **indexer(held-out)** | KNN-local | 胜 full | 胜 KNN |
+|---|---|---|---|---|---|---|
+| breast_cancer/loo | 1.000 | 0.989 | 0.875 | 0.967 | ✗ | ✗ |
+| breast_cancer/voting | 1.000 | 0.989 | 0.980 | 0.967 | ✗ | ✓(微) |
+| **phoneme/loo** | 0.997 | 0.789 | **0.466** | 0.755 | ✗ | ✗ |
+| phoneme/voting | 0.997 | 0.789 | 0.615 | 0.755 | ✗ | ✗ |
+
+**裁决:NO-GO。** 没有一个 cell 的 indexer 超过 full。phoneme/loo 从泄露版 0.987 崩到
+**0.466(比随机还差)** —— 决定性证明 0.987 几乎全是 test 标签泄露。
+
+## 结论(诚实)
+
+1. **上限是真的**(ceiling 0.997–1.000,阶段 0 已证:对每个特定 test 行存在好子集)。
+2. **但学习式 indexer 抓不住它泛化到未见 test 行**:indexer 学的"选行规则"过拟合见过的
+   val 行,迁移到 test 行就崩(phoneme held-out 0.466)。
+3. **idx/loo 在 leak-free 下反而比 idx/voting 差**(phoneme 0.466 vs 0.615):LOO label 最依赖
+   具体行的 test 标签,泛化性最差;voting 基于注意力(与标签无关)迁移略好。这个相对泄露版的
+   **反转本身印证了泄露的存在**。
+4. **根本障碍**:TabPFN 对训练行的使用是集体性、行特定的——"哪些行重要"**不构成可跨 test 行
+   泛化的规则**。oracle 上限对每个特定行存在,但无法从其他行预测出来,故 learned indexer 此路不通。
+
+这与整个研究的一贯教训一致(thinking-mode、training-free 探针):**在固定预训练 TabPFN 上,
+推理时的行选择/深度循环类技巧难以拿到泛化的净增益。**
+
+## 方法论价值(这次研究链的正面收获)
+
+负结果本身可信,且过程演示了严谨性:training-free 探针 bug → LOO 上限证明 → indexer 实现两
+bug(hook 漏 thinking 行、relu 死区)修复 → **发现并实测确认 test 标签泄露** → leak-free 重测
+得到真实 NO-GO。每一步"漂亮结果"都经住了或倒在了对抗性检验下。
 
 ---
 

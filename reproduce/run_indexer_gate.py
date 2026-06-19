@@ -356,9 +356,63 @@ def run_dataset(name, X, y, branch):
              name, branch, gain_idx, gain_ceil, frac, idx_auc > knn_auc)
 
 
+def run_dataset_honest(name, X, y, branch, seed=SEED):
+    """LEAK-FREE gate: golden labels come from a VALIDATION set (val labels only);
+    the indexer is evaluated on a separate TEST set never used to build any label.
+
+    Split: train (context, 120) / val (label-gen, 60) / test (eval, 60), disjoint.
+    The indexer learns a generalizable rule on (val_repr -> which train rows help val
+    rows), then is applied to unseen test rows. This is the deployable protocol.
+    """
+    labels = np.unique(y)
+    rng = np.random.RandomState(seed)
+    Xtr, Xrest, ytr, yrest = train_test_split(X, y, test_size=0.5, random_state=seed, stratify=y)
+    Xval, Xte, yval, yte = train_test_split(Xrest, yrest, test_size=0.5, random_state=seed, stratify=yrest)
+    Xtr, ytr = Xtr[:120], ytr[:120]
+    Xval, yval = Xval[:60], yval[:60]
+    Xte, yte = Xte[:60], yte[:60]
+    log.info("=" * 60)
+    log.info("HONEST %s/%s  train=%d val=%d test=%d", name, branch, len(Xtr), len(Xval), len(Xte))
+
+    clf = mk_clf(seed); clf.fit(Xtr, ytr)
+    full_auc = _score(yte, clf.predict_proba(Xte), labels)[1]
+
+    # golden labels on VALIDATION rows (uses yval, NOT yte)
+    if branch == "loo":
+        infl, _ = loo_influence(Xtr, ytr, Xval, yval, seed)
+        N = len(Xtr); keep = max(1, int(round(N * KEEP_FRAC)))
+        lab = np.zeros((len(Xval), N), dtype=np.float32)
+        for m in range(len(Xval)):
+            lab[m, np.argsort(-infl[m])[:keep]] = 1.0
+    else:
+        lab = gen_labels_voting(clf, Xval, seed)
+
+    # reprs: train-row keys + val-row queries (for training) ; test-row queries (for eval)
+    dval = extract_layer_reprs(clf, Xval)
+    train_repr = dval[:len(Xtr)].float(); val_repr = dval[len(Xtr):].float()
+    dte = extract_layer_reprs(clf, Xte)
+    train_repr_te = dte[:len(Xtr)].float(); test_repr = dte[len(Xtr):].float()
+
+    idx = train_indexer(val_repr, train_repr, lab)        # trained on VAL labels
+    sc_te = idx.scores(test_repr, train_repr_te)          # applied to unseen TEST rows
+
+    idx_auc = _score(yte, predict_with_indexer(clf, Xte, sc_te), labels)[1]
+    knn_auc = _score(yte, knn_topk_proba(clf, Xtr, ytr, Xte, KEEP_FRAC, labels), labels)[1]
+    # reference oracle ceiling ON TEST (uses yte — upper bound only, not deployable)
+    from run_loo_ceiling import eval_per_query_topk
+    infl_te, _ = loo_influence(Xtr, ytr, Xte, yte, seed)
+    ceil_auc = _score(yte, eval_per_query_topk(Xtr, ytr, Xte, yte, infl_te, KEEP_FRAC, seed, labels), labels)[1]
+
+    log.info("full=%.3f  ceiling(oracle,test)=%.3f  indexer(held-out)=%.3f  knn=%.3f",
+             full_auc, ceil_auc, idx_auc, knn_auc)
+    log.info("VERDICT %s/%s: indexer-full=%+.3f  beats_knn=%s  beats_full=%s",
+             name, branch, idx_auc - full_auc, idx_auc > knn_auc, idx_auc > full_auc)
+    return dict(full=full_auc, ceil=ceil_auc, idx=idx_auc, knn=knn_auc)
+
+
 def main():
-    log.info("Indexer gate (Phase 1a) | layer=%d keep=%.0f%% | branches=loo,voting",
-             LAYER, KEEP_FRAC * 100)
+    log.info("Indexer gate LEAK-FREE | layer=%d keep=%.0f%% | val-labels, held-out test | "
+             "branches=loo,voting", LAYER, KEEP_FRAC * 100)
     ds = [("breast_cancer", *load_breast_cancer(return_X_y=True))]
     try:
         d = fetch_openml("phoneme", version=1, as_frame=False, parser="liac-arff")
@@ -368,7 +422,7 @@ def main():
         log.warning("skip phoneme: %s", str(e)[:60])
     for name, X, y in ds:
         for branch in ("loo", "voting"):
-            run_dataset(name, X, y, branch)
+            run_dataset_honest(name, X, y, branch)
     log.info("ALL DONE")
 
 
