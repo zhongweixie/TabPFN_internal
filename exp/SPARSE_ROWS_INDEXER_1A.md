@@ -1,9 +1,34 @@
 # 稀疏训练行选择 — 阶段 1a:学习式 indexer 机制闸门报告
 
 生成时间: 2026-06-19
-状态: ✅ 机制验证通过 — **GO**(LOO-label indexer 在难数据集达 oracle 上限 94%)
+状态: ❌ **撤销 GO — 经审查发现 0.987 是 TEST-LABEL 数据泄露,结论作废**
 脚本: `reproduce/run_indexer_gate.py`, `reproduce/indexer_gate_run2.out`
 前置: 阶段 0 `exp/SPARSE_ROWS_LOO_CEILING.md`(证明上限存在)
+
+---
+
+> ## ⚠️ 重大更正(2026-06-19,审查后)
+>
+> 本报告原结论"GO,indexer 达上限 94%(AUC 0.987)"**是数据泄露造成的假象,已撤销。**
+>
+> **泄露链**:idx/loo 的 golden label 由 `loo_influence(...,yte)` 算出 —— 用了 **test 标签**
+> (每个 test 行真标签下的 LOO 影响)。indexer 训练目标 = 这些含 test 答案的 label,然后在
+> **同一批 test 行**上评估(transductive)。indexer 实质是"记住了这批 test 行该选哪些行",
+> 不是学到泛化选行规则。
+>
+> **决定性实测**(phoneme,golden label 用 test 集 A 造、在不相交 held-out 集 B 评估):
+>
+> | 评估集 | full | indexer |
+> |---|---|---|
+> | A(造 label 用的集,泄露) | 0.873 | **0.960** |
+> | **B(held-out,诚实)** | 0.849 | **0.688** |
+>
+> 同一个 indexer:泄露集 0.960,诚实集 **0.688 —— 远低于 full(0.849)和 KNN(0.814)**。
+> 泄露虚高了 ~0.27 AUC。**当前实现的 indexer 不会泛化到未见过的 test 行。**
+>
+> **正确协议(下一步重做)**:golden label 必须在 **held-out validation 集**上算(用 val 标签),
+> indexer 在从未参与造 label 的 test 集上评估。当前代码违反此协议(`run_dataset` 用 yte 造 label
+> 又在同 yte 评估,~line 319/344)。下方原结论按泄露结果阅读,不代表真实性能。
 
 ---
 
