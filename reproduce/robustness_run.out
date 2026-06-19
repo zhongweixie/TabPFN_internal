@@ -1,0 +1,77 @@
+2026-06-19 20:02:29,893 INFO ################################################################################
+2026-06-19 20:02:29,894 INFO (A) ADAPTIVE DEPTH under label noise + K_MAX=64 + cross-fit split sweep
+2026-06-19 20:02:30,281 INFO ================================================================================
+2026-06-19 20:02:30,281 INFO >>> train label-flip = 0%
+2026-06-19 20:02:42,552 INFO   breast_cancer B= 2 | xfit50 Δacc=+0.000 Δll=+0.001 | xfit75 Δacc=-0.004 Δll=+0.014
+2026-06-19 20:02:42,553 INFO   breast_cancer B= 4 | xfit50 Δacc=-0.004 Δll=+0.001 | xfit75 Δacc=-0.002 Δll=+0.014
+2026-06-19 20:02:42,553 INFO   breast_cancer B= 8 | xfit50 Δacc=-0.004 Δll=+0.001 | xfit75 Δacc=-0.002 Δll=+0.015
+2026-06-19 20:02:42,553 INFO   breast_cancer B=16 | xfit50 Δacc=-0.004 Δll=+0.001 | xfit75 Δacc=-0.002 Δll=+0.013
+2026-06-19 20:02:42,553 INFO   (breast_cancer, 12.3s)
+2026-06-19 20:02:53,411 INFO   phoneme       B= 2 | xfit50 Δacc=-0.002 Δll=+0.001 | xfit75 Δacc=-0.001 Δll=+0.005
+2026-06-19 20:02:53,412 INFO   phoneme       B= 4 | xfit50 Δacc=+0.004 Δll=+0.002 | xfit75 Δacc=+0.002 Δll=+0.006
+2026-06-19 20:02:53,412 INFO   phoneme       B= 8 | xfit50 Δacc=+0.002 Δll=+0.005 | xfit75 Δacc=-0.003 Δll=+0.006
+2026-06-19 20:02:53,412 INFO   phoneme       B=16 | xfit50 Δacc=+0.001 Δll=+0.004 | xfit75 Δacc=+0.000 Δll=+0.006
+2026-06-19 20:02:53,412 INFO   (phoneme, 10.9s)
+2026-06-19 20:03:05,872 INFO   electricity   B= 2 | xfit50 Δacc=+0.008 Δll=-0.007 | xfit75 Δacc=-0.003 Δll=+0.007
+2026-06-19 20:03:05,873 INFO   electricity   B= 4 | xfit50 Δacc=-0.001 Δll=+0.000 | xfit75 Δacc=+0.002 Δll=+0.006
+2026-06-19 20:03:05,873 INFO   electricity   B= 8 | xfit50 Δacc=-0.001 Δll=+0.002 | xfit75 Δacc=+0.001 Δll=+0.007
+2026-06-19 20:03:05,873 INFO   electricity   B=16 | xfit50 Δacc=+0.001 Δll=-0.001 | xfit75 Δacc=+0.001 Δll=+0.008
+2026-06-19 20:03:05,873 INFO   (electricity, 12.5s)
+2026-06-19 20:03:19,089 INFO   qsar-biodeg   B= 2 | xfit50 Δacc=-0.002 Δll=+0.001 | xfit75 Δacc=-0.004 Δll=+0.003
+2026-06-19 20:03:19,089 INFO   qsar-biodeg   B= 4 | xfit50 Δacc=-0.004 Δll=+0.001 | xfit75 Δacc=-0.001 Δll=+0.003
+2026-06-19 20:03:19,089 INFO   qsar-biodeg   B= 8 | xfit50 Δacc=-0.002 Δll=+0.001 | xfit75 Δacc=+0.002 Δll=+0.003
+2026-06-19 20:03:19,090 INFO   qsar-biodeg   B=16 | xfit50 Δacc=-0.003 Δll=+0.001 | xfit75 Δacc=-0.003 Δll=+0.003
+2026-06-19 20:03:19,090 INFO   (qsar-biodeg, 13.2s)
+2026-06-19 20:03:19,090 INFO ================================================================================
+2026-06-19 20:03:19,090 INFO >>> train label-flip = 10%
+2026-06-19 20:03:30,388 INFO   breast_cancer B= 2 | xfit50 Δacc=-0.002 Δll=+0.001 | xfit75 Δacc=-0.002 Δll=+0.005
+2026-06-19 20:03:30,389 INFO   breast_cancer B= 4 | xfit50 Δacc=-0.002 Δll=+0.001 | xfit75 Δacc=-0.002 Δll=+0.006
+2026-06-19 20:03:30,389 INFO   breast_cancer B= 8 | xfit50 Δacc=-0.004 Δll=+0.001 | xfit75 Δacc=-0.004 Δll=+0.007
+2026-06-19 20:03:30,389 INFO   breast_cancer B=16 | xfit50 Δacc=-0.002 Δll=+0.000 | xfit75 Δacc=-0.002 Δll=+0.007
+2026-06-19 20:03:30,389 INFO   (breast_cancer, 11.3s)
+2026-06-19 20:03:40,504 INFO   phoneme       B= 2 | xfit50 Δacc=-0.001 Δll=+0.003 | xfit75 Δacc=+0.002 Δll=+0.003
+2026-06-19 20:03:40,505 INFO   phoneme       B= 4 | xfit50 Δacc=+0.002 Δll=+0.002 | xfit75 Δacc=+0.001 Δll=+0.002
+2026-06-19 20:03:40,505 INFO   phoneme       B= 8 | xfit50 Δacc=-0.001 Δll=+0.002 | xfit75 Δacc=-0.004 Δll=+0.001
+2026-06-19 20:03:40,505 INFO   phoneme       B=16 | xfit50 Δacc=+0.001 Δll=+0.003 | xfit75 Δacc=-0.006 Δll=+0.003
+2026-06-19 20:03:40,505 INFO   (phoneme, 10.1s)
+2026-06-19 20:03:51,804 INFO   electricity   B= 2 | xfit50 Δacc=+0.001 Δll=-0.004 | xfit75 Δacc=+0.001 Δll=+0.004
+2026-06-19 20:03:51,805 INFO   electricity   B= 4 | xfit50 Δacc=-0.004 Δll=-0.001 | xfit75 Δacc=+0.002 Δll=+0.003
+2026-06-19 20:03:51,805 INFO   electricity   B= 8 | xfit50 Δacc=-0.007 Δll=+0.001 | xfit75 Δacc=+0.002 Δll=+0.003
+2026-06-19 20:03:51,805 INFO   electricity   B=16 | xfit50 Δacc=-0.007 Δll=-0.000 | xfit75 Δacc=-0.000 Δll=+0.002
+2026-06-19 20:03:51,805 INFO   (electricity, 11.3s)
+2026-06-19 20:04:05,703 INFO   qsar-biodeg   B= 2 | xfit50 Δacc=-0.003 Δll=+0.002 | xfit75 Δacc=-0.002 Δll=-0.003
+2026-06-19 20:04:05,704 INFO   qsar-biodeg   B= 4 | xfit50 Δacc=-0.008 Δll=+0.003 | xfit75 Δacc=-0.006 Δll=-0.001
+2026-06-19 20:04:05,704 INFO   qsar-biodeg   B= 8 | xfit50 Δacc=-0.006 Δll=+0.003 | xfit75 Δacc=+0.003 Δll=-0.002
+2026-06-19 20:04:05,704 INFO   qsar-biodeg   B=16 | xfit50 Δacc=-0.010 Δll=+0.004 | xfit75 Δacc=+0.002 Δll=-0.002
+2026-06-19 20:04:05,704 INFO   (qsar-biodeg, 13.9s)
+2026-06-19 20:04:05,704 INFO ================================================================================
+2026-06-19 20:04:05,704 INFO >>> train label-flip = 25%
+2026-06-19 20:04:17,193 INFO   breast_cancer B= 2 | xfit50 Δacc=+0.000 Δll=+0.000 | xfit75 Δacc=-0.004 Δll=-0.001
+2026-06-19 20:04:17,193 INFO   breast_cancer B= 4 | xfit50 Δacc=+0.002 Δll=-0.001 | xfit75 Δacc=-0.006 Δll=-0.001
+2026-06-19 20:04:17,193 INFO   breast_cancer B= 8 | xfit50 Δacc=+0.000 Δll=-0.000 | xfit75 Δacc=-0.002 Δll=-0.001
+2026-06-19 20:04:17,193 INFO   breast_cancer B=16 | xfit50 Δacc=+0.000 Δll=+0.000 | xfit75 Δacc=+0.000 Δll=-0.001
+2026-06-19 20:04:17,193 INFO   (breast_cancer, 11.5s)
+2026-06-19 20:04:28,377 INFO   phoneme       B= 2 | xfit50 Δacc=+0.001 Δll=+0.000 | xfit75 Δacc=+0.000 Δll=+0.001
+2026-06-19 20:04:28,377 INFO   phoneme       B= 4 | xfit50 Δacc=-0.010 Δll=+0.000 | xfit75 Δacc=-0.001 Δll=+0.001
+2026-06-19 20:04:28,377 INFO   phoneme       B= 8 | xfit50 Δacc=-0.006 Δll=-0.000 | xfit75 Δacc=-0.001 Δll=+0.000
+2026-06-19 20:04:28,378 INFO   phoneme       B=16 | xfit50 Δacc=-0.011 Δll=+0.000 | xfit75 Δacc=+0.002 Δll=-0.000
+2026-06-19 20:04:28,378 INFO   (phoneme, 11.2s)
+2026-06-19 20:04:39,535 INFO   electricity   B= 2 | xfit50 Δacc=-0.001 Δll=-0.002 | xfit75 Δacc=+0.001 Δll=-0.000
+2026-06-19 20:04:39,535 INFO   electricity   B= 4 | xfit50 Δacc=-0.001 Δll=-0.002 | xfit75 Δacc=-0.002 Δll=-0.001
+2026-06-19 20:04:39,535 INFO   electricity   B= 8 | xfit50 Δacc=+0.004 Δll=-0.002 | xfit75 Δacc=+0.000 Δll=-0.001
+2026-06-19 20:04:39,536 INFO   electricity   B=16 | xfit50 Δacc=+0.003 Δll=-0.002 | xfit75 Δacc=-0.003 Δll=+0.000
+2026-06-19 20:04:39,536 INFO   (electricity, 11.2s)
+2026-06-19 20:04:52,030 INFO   qsar-biodeg   B= 2 | xfit50 Δacc=-0.010 Δll=+0.005 | xfit75 Δacc=+0.003 Δll=-0.003
+2026-06-19 20:04:52,030 INFO   qsar-biodeg   B= 4 | xfit50 Δacc=-0.011 Δll=+0.007 | xfit75 Δacc=+0.001 Δll=-0.001
+2026-06-19 20:04:52,030 INFO   qsar-biodeg   B= 8 | xfit50 Δacc=-0.010 Δll=+0.006 | xfit75 Δacc=-0.003 Δll=-0.001
+2026-06-19 20:04:52,030 INFO   qsar-biodeg   B=16 | xfit50 Δacc=-0.009 Δll=+0.005 | xfit75 Δacc=-0.007 Δll=-0.001
+2026-06-19 20:04:52,030 INFO   (qsar-biodeg, 12.5s)
+2026-06-19 20:04:52,030 INFO READ(A): if snoop-free Δacc stays ~0/negative even at 25%% noise & 75/25 split => adaptive-depth NO-GO is robust, not a clean/small-K artifact.
+2026-06-19 20:04:52,031 INFO ################################################################################
+2026-06-19 20:04:52,031 INFO (B) VECTOR (per-class) temperature head vs per-class GLOBAL vector
+2026-06-19 20:05:07,850 INFO   breast_cancer NLL g=0.0779 v=0.0780 (Δ=+0.0001) | ECE g=0.0306 v=0.0299 (Δ=-0.0007) | per-row T std=0.106 (15.4s)
+2026-06-19 20:05:21,586 INFO   phoneme       NLL g=0.3313 v=0.3325 (Δ=+0.0012) | ECE g=0.0396 v=0.0440 (Δ=+0.0044) | per-row T std=0.017 (13.7s)
+2026-06-19 20:05:35,067 INFO   electricity   NLL g=0.4419 v=0.4446 (Δ=+0.0027) | ECE g=0.0487 v=0.0485 (Δ=-0.0002) | per-row T std=0.018 (13.5s)
+2026-06-19 20:05:50,061 INFO   qsar-biodeg   NLL g=0.3232 v=0.3315 (Δ=+0.0083) | ECE g=0.0462 v=0.0528 (Δ=+0.0066) | per-row T std=0.013 (15.0s)
+2026-06-19 20:05:50,062 INFO READ(B): Δ<0 on NLL&ECE => vector per-row calibration helps (GO). ~0 with T std~0 => even per-class per-row temp collapses to the global vector (NO-GO holds beyond scalar).
+2026-06-19 20:05:50,062 INFO ALL DONE

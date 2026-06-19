@@ -1,0 +1,30 @@
+2026-06-19 19:44:51,986 INFO CALIBRATION-HEAD gate | N_tr=1000 N_val=300 N_te=300 K_MAX=32 seeds=[0, 1]
+2026-06-19 19:45:02,585 INFO ==============================================================================
+2026-06-19 19:45:02,585 INFO DATASET breast_cancer  (n_seeds=2, K_MAX=32)
+2026-06-19 19:45:02,585 INFO   NLL  uncal=0.0990  global-T=0.0857  cond-T=0.0861  | cond−global=+0.0003
+2026-06-19 19:45:02,586 INFO   ECE  uncal=0.0341  global-T=0.0302  cond-T=0.0304  | cond−global=+0.0002
+2026-06-19 19:45:02,586 INFO   T_global=1.02  T_cond mean=1.02 std=0.00 (spread of per-row T)
+2026-06-19 19:45:02,586 INFO   READ: cond−global < 0 on BOTH NLL & ECE on held-out test => per-row calibration headroom (GO). ~0 => a single scalar already captures it (NO-GO).
+2026-06-19 19:45:02,586 INFO   (10.2s)
+2026-06-19 19:45:10,172 INFO ==============================================================================
+2026-06-19 19:45:10,172 INFO DATASET phoneme  (n_seeds=2, K_MAX=32)
+2026-06-19 19:45:10,173 INFO   NLL  uncal=0.3386  global-T=0.3394  cond-T=0.3406  | cond−global=+0.0012
+2026-06-19 19:45:10,173 INFO   ECE  uncal=0.0569  global-T=0.0546  cond-T=0.0565  | cond−global=+0.0019
+2026-06-19 19:45:10,173 INFO   T_global=0.92  T_cond mean=0.91 std=0.00 (spread of per-row T)
+2026-06-19 19:45:10,173 INFO   READ: cond−global < 0 on BOTH NLL & ECE on held-out test => per-row calibration headroom (GO). ~0 => a single scalar already captures it (NO-GO).
+2026-06-19 19:45:10,173 INFO   (7.6s)
+2026-06-19 19:45:17,007 INFO ==============================================================================
+2026-06-19 19:45:17,007 INFO DATASET electricity  (n_seeds=2, K_MAX=32)
+2026-06-19 19:45:17,007 INFO   NLL  uncal=0.4072  global-T=0.4054  cond-T=0.4057  | cond−global=+0.0003
+2026-06-19 19:45:17,008 INFO   ECE  uncal=0.0639  global-T=0.0591  cond-T=0.0581  | cond−global=-0.0011
+2026-06-19 19:45:17,008 INFO   T_global=0.92  T_cond mean=0.95 std=0.00 (spread of per-row T)
+2026-06-19 19:45:17,008 INFO   READ: cond−global < 0 on BOTH NLL & ECE on held-out test => per-row calibration headroom (GO). ~0 => a single scalar already captures it (NO-GO).
+2026-06-19 19:45:17,008 INFO   (6.8s)
+2026-06-19 19:45:25,009 INFO ==============================================================================
+2026-06-19 19:45:25,010 INFO DATASET qsar-biodeg  (n_seeds=2, K_MAX=32)
+2026-06-19 19:45:25,010 INFO   NLL  uncal=0.2721  global-T=0.2797  cond-T=0.2784  | cond−global=-0.0013
+2026-06-19 19:45:25,010 INFO   ECE  uncal=0.0359  global-T=0.0481  cond-T=0.0421  | cond−global=-0.0060
+2026-06-19 19:45:25,010 INFO   T_global=1.10  T_cond mean=1.09 std=0.00 (spread of per-row T)
+2026-06-19 19:45:25,010 INFO   READ: cond−global < 0 on BOTH NLL & ECE on held-out test => per-row calibration headroom (GO). ~0 => a single scalar already captures it (NO-GO).
+2026-06-19 19:45:25,010 INFO   (8.0s)
+2026-06-19 19:45:25,010 INFO ALL DONE

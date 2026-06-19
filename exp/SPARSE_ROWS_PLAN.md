@@ -68,6 +68,35 @@ r≈64);训练行冻结 key 表示同层 → key 投影(192→r);score = sigmoid
 
 脚本:`reproduce/run_indexer_train.py`(参数化 label 来源)。
 
+### 阶段 1 锁定的设计决策(经 3 路 subagent 规划 + 用户确认)
+
+**泛化形态:per-dataset 先做(1a),通过后再 cross-dataset(1b)。**
+- 1a:每数据集训一个 indexer,逼近该数据集的 LOO 上限。最小可行、信号最干净。
+- 1b:在若干数据集训一个 indexer、held-out 数据集上测(TabPFN 式零样本迁移),仅当 1a 成功才做。
+
+**首轮范围:最小闸门(1-2 数据集),验证全链路机制**,而非一次性大实验。
+全链路 = precompute 表示+label → 训 indexer → 推理 hook → 对比 LOO 上限/KNN。
+要确认:indexer 能逼近上限 **且 > KNN**。通过再扩规模。
+
+**indexer 输入(锁定)**:mid-late 层(24 层中先用单层,如第 12 层)的 **pre-projection
+`x_BcRE`**,跨列(C)mean 聚合成 per-row 表示。test 行 query 表示 + 训练行 key 表示同层取。
+(不用 KNN 相似度当 label —— 那会让 indexer 退化成 KNN、自证伪;label 只来自 LOO 或投票。)
+
+**golden label 统一格式**:`labels[M,N] ∈ {0,1}`,两 branch 只换生成函数:
+- `gen_labels_loo`:复用 `run_loo_ceiling.py:loo_influence`,top-k% 影响行=1。
+- `gen_labels_voting`:复用 `run_sparse_rows_probe_v2.py:_test_attn_weights_BcMN`,每层 top-p
+  (0.6)二值化 → 跨 24 层投票 ≥θ(3)=1。
+
+**label 前验证(训练前必做)**:用 golden 行预测,LOO label 应≈/超 full(构造保证),
+voting label 是否也行=开放问题(正是两 branch 对比点)。
+
+**decoupled 验证**:训练只加载 precompute 的表示 + label(~几十 MB),backbone 不在环。
+**推理 hook**:复用 thinking-mode 的 `_CFG` monkey-patch 旁路 + v2 探针的 gather-then-SDPA
+(不实体化 (M,H,N) 权重,避免 OOM),默认关闭,正常推理零影响。
+
+**成败判据(1a 首轮)**:GO = indexer 在 keep 预算下 **> KNN-local 且达到 LOO 上限的 ≥70%**;
+NO-GO = indexer ≈ KNN 或远低于上限。
+
 ---
 
 ## 阶段 2:评估(对齐 TabPFN-3 论文)
