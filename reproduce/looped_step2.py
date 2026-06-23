@@ -82,15 +82,30 @@ REINJECT_ALPHA = float(_os.environ.get("REINJECT_ALPHA", "0.1"))
 _ORIG_LAYERSTACK_FWD = None  # captured once, the TRUE original forward
 
 
-def install_looped_forward():
-    """Monkeypatch LayerStack.forward: run the stack LOOP_K times with input
-    re-injection. LOOP_K=1 reduces to the exact original (the re-inject term only
-    fires between iterations, of which there are none).
+def set_loop_on_model(model, loop_k, reinject_alpha=None):
+    """Bind loop config onto every LayerStack inside a model. The patched forward reads
+    these PER-INSTANCE attributes — so a model's loop count travels WITH the model and
+    can never be cross-contaminated by another model's config (the bug that hit us twice
+    when loop_k lived in a module global). Call once per model after building it."""
+    from taco.model.tabpfn_arch.model.transformer import LayerStack
+    a = REINJECT_ALPHA if reinject_alpha is None else reinject_alpha
+    n = 0
+    for m in model.modules():
+        if isinstance(m, LayerStack):
+            m._loop_k = int(loop_k)
+            m._reinject_alpha = float(a)
+            n += 1
+    return n
 
-    IDEMPOTENT: captures the true original exactly once (guards against re-patching
-    a patched function, which would nest the loop). Reads LOOP_K/REINJECT_ALPHA from
-    module globals at call-time, so changing them between model loads takes effect
-    without re-patching."""
+
+def install_looped_forward():
+    """Monkeypatch LayerStack.forward: run the stack `self._loop_k` times with input
+    re-injection. Per-instance config (set via set_loop_on_model) is authoritative; a
+    LayerStack with no _loop_k attribute falls back to the module-global LOOP_K (used by
+    the per-process training launcher, which has no contamination risk).
+
+    IDEMPOTENT: captures the true original exactly once (guards against re-patching a
+    patched function, which would nest the loop)."""
     global _ORIG_LAYERSTACK_FWD
     from taco.model.tabpfn_arch.model.transformer import LayerStack
     if _ORIG_LAYERSTACK_FWD is None:
@@ -98,12 +113,14 @@ def install_looped_forward():
     orig = _ORIG_LAYERSTACK_FWD
 
     def looped(self, x, *, half_layers=False, **kwargs):
+        k = getattr(self, "_loop_k", LOOP_K)          # per-instance first, global fallback
+        alpha = getattr(self, "_reinject_alpha", REINJECT_ALPHA)
         h0 = x
         out = x
-        for i in range(LOOP_K):
+        for i in range(k):
             out = orig(self, out, half_layers=half_layers, **kwargs)
-            if i < LOOP_K - 1:
-                out = out + REINJECT_ALPHA * h0   # Ouro/COCONUT-style re-injection
+            if i < k - 1:
+                out = out + alpha * h0   # Ouro/COCONUT-style re-injection
         return out
 
     LayerStack.forward = looped

@@ -82,20 +82,12 @@ def load_dataset(name, openml_name):
 def build_model(ckpt_path, nlayers, loop_k):
     """Load a TACO predictor-only model from checkpoint.
 
-    IMPORTANT: always install the loop patch and set L.LOOP_K explicitly, even for
-    loop_k=1. A prior bug left L.LOOP_K stale at 2 (set by a c2 load) so a subsequent
-    c3 (loop_k=1) silently ran with 2 iterations — corrupting the c3 benchmark. Setting
-    it every call (and LOOP_K=1 == byte-identical baseline, verified by forward-selftest)
-    makes config loading order-independent."""
+    Loop config is bound PER-INSTANCE to the model's LayerStacks at the end of this
+    function (see set_loop_on_model), NOT via a module global. This is contamination-
+    proof: a model's loop count travels with the model, so loading several configs in
+    one process (the bug that twice corrupted c2/c3 evals) is now safe."""
     from taco.model.taco_model import TACO
     from taco.model.tabpfn_arch.model.loading import ModelConfig
-
-    os.environ["LOOP_K"] = str(loop_k)
-    os.environ["REINJECT_ALPHA"] = "0.1"
-    import looped_step2 as L
-    L.LOOP_K = loop_k
-    L.REINJECT_ALPHA = 0.1
-    L.install_looped_forward()   # idempotent; LOOP_K=1 is the exact original forward
 
     cfg = ModelConfig(
         emsize=192, nhead=6, nlayers=nlayers, nhid_factor=4,
@@ -124,6 +116,11 @@ def build_model(ckpt_path, nlayers, loop_k):
     state = ckpt["state_dict"]
     model.load_state_dict(state, strict=True)
     model.eval()
+    # Bind loop config to THIS model's LayerStacks (per-instance, contamination-proof).
+    import looped_step2 as L
+    L.install_looped_forward()              # idempotent
+    n = L.set_loop_on_model(model, loop_k)  # loop_k travels with the model
+    assert n > 0, "no LayerStack found to tag with loop_k"
     return model
 
 
