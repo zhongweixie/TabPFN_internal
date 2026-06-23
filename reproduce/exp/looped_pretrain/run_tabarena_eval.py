@@ -26,8 +26,11 @@ import sys, os, json, time
 import numpy as np
 import torch
 
+import os
+HERE = os.path.dirname(os.path.abspath(__file__))          # exp/looped_pretrain/
+REPRO = os.path.abspath(os.path.join(HERE, "..", ".."))    # reproduce/
 sys.path.insert(0, "/home/zxiebk/workspace/train/PFN/TACO/src")
-sys.path.insert(0, "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce")
+sys.path.insert(0, HERE)                                   # sibling scripts (run_benchmark_eval)
 
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.preprocessing import LabelEncoder
@@ -36,7 +39,9 @@ import openml
 from run_benchmark_eval import build_model, predict_proba
 
 DEVICE = "cuda"
-REPO = "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce"
+REPO = REPRO                       # ckpt_c1/c2/c3 + tabarena_results.json live here
+TASKS_JSON = os.path.join(HERE, "tabarena_tasks.json")   # moved alongside scripts
+CKPT = os.path.join(REPRO, "ckpt")  # new self-describing checkpoints
 CTX_CAP = 1000     # train-context budget (model trained on <=600; 1000 is a mild stretch)
 TEST_CAP = 500     # test rows scored per dataset (cap for speed)
 FEAT_CAP = 40      # feature budget (model trained on <=40 features)
@@ -119,7 +124,7 @@ def gbdt_proba(kind, Xtr, ytr, Xte, n_classes):
 
 
 def main():
-    tasks = json.load(open(f"{REPO}/tabarena_tasks.json"))
+    tasks = json.load(open(TASKS_JSON))
     clf = [r for r in tasks if r["cls"] >= 2 and r["cls"] <= 10]
     clf = sorted(clf, key=lambda r: r["rows"])
     print(f"TabArena classification datasets (<=10 cls): {len(clf)}", flush=True)

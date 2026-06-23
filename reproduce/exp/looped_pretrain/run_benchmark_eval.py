@@ -18,10 +18,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
 sys.path.insert(0, "/home/zxiebk/workspace/train/PFN/TACO/src")
-sys.path.insert(0, "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce")
+_HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, _HERE)
 
 DEVICE = "cuda"
-REPO = Path("/data/zxiebk/workspace/train/PFN/TabPFN/reproduce")
+REPO = Path(os.path.abspath(os.path.join(_HERE, "..", "..")))  # reproduce/
 SEED = 42
 SEEDS = [42, 123, 7]  # 3 splits per dataset for robustness
 MAX_TRAIN = 1000   # cap train size for fair comparison (models trained on ≤600 rows)

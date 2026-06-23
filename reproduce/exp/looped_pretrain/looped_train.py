@@ -18,7 +18,7 @@ import os
 import sys
 
 sys.path.insert(0, "/home/zxiebk/workspace/train/PFN/TACO/src")
-sys.path.insert(0, "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import looped_step2 as L  # noqa: E402
 

@@ -1,0 +1,410 @@
+[
+ {
+  "task": 363612,
+  "data": 46904,
+  "name": "airfoil_self_noise",
+  "rows": 1503,
+  "feat": 6,
+  "cls": 0
+ },
+ {
+  "task": 363613,
+  "data": 46905,
+  "name": "Amazon_employee_access",
+  "rows": 32769,
+  "feat": 10,
+  "cls": 2
+ },
+ {
+  "task": 363614,
+  "data": 46906,
+  "name": "anneal",
+  "rows": 898,
+  "feat": 39,
+  "cls": 5
+ },
+ {
+  "task": 363615,
+  "data": 46907,
+  "name": "Another-Dataset-on-used-Fiat-500",
+  "rows": 1538,
+  "feat": 8,
+  "cls": 0
+ },
+ {
+  "task": 363616,
+  "data": 46908,
+  "name": "APSFailure",
+  "rows": 76000,
+  "feat": 171,
+  "cls": 2
+ },
+ {
+  "task": 363618,
+  "data": 46910,
+  "name": "bank-marketing",
+  "rows": 45211,
+  "feat": 14,
+  "cls": 2
+ },
+ {
+  "task": 363619,
+  "data": 46911,
+  "name": "Bank_Customer_Churn",
+  "rows": 10000,
+  "feat": 11,
+  "cls": 2
+ },
+ {
+  "task": 363620,
+  "data": 46912,
+  "name": "Bioresponse",
+  "rows": 3751,
+  "feat": 1777,
+  "cls": 2
+ },
+ {
+  "task": 363621,
+  "data": 46913,
+  "name": "blood-transfusion-service-center",
+  "rows": 748,
+  "feat": 5,
+  "cls": 2
+ },
+ {
+  "task": 363623,
+  "data": 46915,
+  "name": "churn",
+  "rows": 5000,
+  "feat": 20,
+  "cls": 2
+ },
+ {
+  "task": 363624,
+  "data": 46916,
+  "name": "coil2000_insurance_policies",
+  "rows": 9822,
+  "feat": 86,
+  "cls": 2
+ },
+ {
+  "task": 363625,
+  "data": 46917,
+  "name": "concrete_compressive_strength",
+  "rows": 1030,
+  "feat": 9,
+  "cls": 0
+ },
+ {
+  "task": 363626,
+  "data": 46918,
+  "name": "credit-g",
+  "rows": 1000,
+  "feat": 21,
+  "cls": 2
+ },
+ {
+  "task": 363627,
+  "data": 46919,
+  "name": "credit_card_clients_default",
+  "rows": 30000,
+  "feat": 24,
+  "cls": 2
+ },
+ {
+  "task": 363628,
+  "data": 46920,
+  "name": "customer_satisfaction_in_airline",
+  "rows": 129880,
+  "feat": 22,
+  "cls": 2
+ },
+ {
+  "task": 363629,
+  "data": 46921,
+  "name": "diabetes",
+  "rows": 768,
+  "feat": 9,
+  "cls": 2
+ },
+ {
+  "task": 363630,
+  "data": 46922,
+  "name": "Diabetes130US",
+  "rows": 71518,
+  "feat": 48,
+  "cls": 2
+ },
+ {
+  "task": 363631,
+  "data": 46923,
+  "name": "diamonds",
+  "rows": 53940,
+  "feat": 10,
+  "cls": 0
+ },
+ {
+  "task": 363632,
+  "data": 46924,
+  "name": "E-CommereShippingData",
+  "rows": 10999,
+  "feat": 11,
+  "cls": 2
+ },
+ {
+  "task": 363671,
+  "data": 46927,
+  "name": "Fitness_Club",
+  "rows": 1500,
+  "feat": 7,
+  "cls": 2
+ },
+ {
+  "task": 363672,
+  "data": 46928,
+  "name": "Food_Delivery_Time",
+  "rows": 45451,
+  "feat": 10,
+  "cls": 0
+ },
+ {
+  "task": 363673,
+  "data": 46929,
+  "name": "GiveMeSomeCredit",
+  "rows": 150000,
+  "feat": 11,
+  "cls": 2
+ },
+ {
+  "task": 363674,
+  "data": 46930,
+  "name": "hazelnut-spread-contaminant-detection",
+  "rows": 2400,
+  "feat": 31,
+  "cls": 2
+ },
+ {
+  "task": 363675,
+  "data": 46931,
+  "name": "healthcare_insurance_expenses",
+  "rows": 1338,
+  "feat": 7,
+  "cls": 0
+ },
+ {
+  "task": 363676,
+  "data": 46932,
+  "name": "heloc",
+  "rows": 10459,
+  "feat": 24,
+  "cls": 2
+ },
+ {
+  "task": 363677,
+  "data": 46933,
+  "name": "hiva_agnostic",
+  "rows": 3845,
+  "feat": 1618,
+  "cls": 3
+ },
+ {
+  "task": 363678,
+  "data": 46934,
+  "name": "houses",
+  "rows": 20640,
+  "feat": 9,
+  "cls": 0
+ },
+ {
+  "task": 363679,
+  "data": 46935,
+  "name": "HR_Analytics_Job_Change_of_Data_Scientists",
+  "rows": 19158,
+  "feat": 13,
+  "cls": 2
+ },
+ {
+  "task": 363681,
+  "data": 46937,
+  "name": "in_vehicle_coupon_recommendation",
+  "rows": 12684,
+  "feat": 25,
+  "cls": 2
+ },
+ {
+  "task": 363682,
+  "data": 46938,
+  "name": "Is-this-a-good-customer",
+  "rows": 1723,
+  "feat": 14,
+  "cls": 2
+ },
+ {
+  "task": 363683,
+  "data": 46939,
+  "name": "kddcup09_appetency",
+  "rows": 50000,
+  "feat": 213,
+  "cls": 2
+ },
+ {
+  "task": 363684,
+  "data": 46940,
+  "name": "Marketing_Campaign",
+  "rows": 2240,
+  "feat": 26,
+  "cls": 2
+ },
+ {
+  "task": 363685,
+  "data": 46941,
+  "name": "maternal_health_risk",
+  "rows": 1014,
+  "feat": 7,
+  "cls": 3
+ },
+ {
+  "task": 363686,
+  "data": 46942,
+  "name": "miami_housing",
+  "rows": 13776,
+  "feat": 16,
+  "cls": 0
+ },
+ {
+  "task": 363689,
+  "data": 46969,
+  "name": "NATICUSdroid",
+  "rows": 7491,
+  "feat": 87,
+  "cls": 2
+ },
+ {
+  "task": 363691,
+  "data": 46947,
+  "name": "online_shoppers_intention",
+  "rows": 12330,
+  "feat": 18,
+  "cls": 2
+ },
+ {
+  "task": 363693,
+  "data": 46949,
+  "name": "physiochemical_protein",
+  "rows": 45730,
+  "feat": 10,
+  "cls": 0
+ },
+ {
+  "task": 363694,
+  "data": 46950,
+  "name": "polish_companies_bankruptcy",
+  "rows": 5910,
+  "feat": 65,
+  "cls": 2
+ },
+ {
+  "task": 363696,
+  "data": 46952,
+  "name": "qsar-biodeg",
+  "rows": 1054,
+  "feat": 42,
+  "cls": 2
+ },
+ {
+  "task": 363697,
+  "data": 46953,
+  "name": "QSAR-TID-11",
+  "rows": 5742,
+  "feat": 1025,
+  "cls": 0
+ },
+ {
+  "task": 363698,
+  "data": 46954,
+  "name": "QSAR_fish_toxicity",
+  "rows": 907,
+  "feat": 7,
+  "cls": 0
+ },
+ {
+  "task": 363699,
+  "data": 46955,
+  "name": "SDSS17",
+  "rows": 78053,
+  "feat": 12,
+  "cls": 3
+ },
+ {
+  "task": 363700,
+  "data": 46956,
+  "name": "seismic-bumps",
+  "rows": 2584,
+  "feat": 16,
+  "cls": 2
+ },
+ {
+  "task": 363702,
+  "data": 46958,
+  "name": "splice",
+  "rows": 3190,
+  "feat": 61,
+  "cls": 3
+ },
+ {
+  "task": 363704,
+  "data": 46960,
+  "name": "students_dropout_and_academic_success",
+  "rows": 4424,
+  "feat": 37,
+  "cls": 3
+ },
+ {
+  "task": 363705,
+  "data": 46961,
+  "name": "superconductivity",
+  "rows": 21263,
+  "feat": 82,
+  "cls": 0
+ },
+ {
+  "task": 363706,
+  "data": 46962,
+  "name": "taiwanese_bankruptcy_prediction",
+  "rows": 6819,
+  "feat": 95,
+  "cls": 2
+ },
+ {
+  "task": 363707,
+  "data": 46963,
+  "name": "website_phishing",
+  "rows": 1353,
+  "feat": 10,
+  "cls": 3
+ },
+ {
+  "task": 363708,
+  "data": 46964,
+  "name": "wine_quality",
+  "rows": 6497,
+  "feat": 13,
+  "cls": 0
+ },
+ {
+  "task": 363711,
+  "data": 46980,
+  "name": "MIC",
+  "rows": 1699,
+  "feat": 112,
+  "cls": 8
+ },
+ {
+  "task": 363712,
+  "data": 46979,
+  "name": "jm1",
+  "rows": 10885,
+  "feat": 22,
+  "cls": 2
+ }
+]
