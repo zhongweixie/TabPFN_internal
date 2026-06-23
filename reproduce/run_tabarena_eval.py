@@ -60,15 +60,16 @@ def load_task(task_id):
         else:
             Xn[:, j] = s.astype("category").cat.codes.to_numpy(dtype=np.float32)
     y = LabelEncoder().fit_transform(y.astype(str)).astype(np.int64)
-    # impute NaN with column mean
-    col_mean = np.nanmean(np.where(np.isfinite(Xn), Xn, np.nan), axis=0)
-    col_mean = np.where(np.isfinite(col_mean), col_mean, 0.0)
-    inds = np.where(~np.isfinite(Xn))
-    Xn[inds] = np.take(col_mean, inds[1])
-    # official split (fold 0, repeat 0)
+    # official split FIRST (fold 0, repeat 0), then impute using TRAIN stats only
+    # (computing column means over train+test would leak test info into the imputation).
     tr_idx, te_idx = t.get_train_test_split_indices(fold=0, repeat=0)
     Xtr, ytr, Xte, yte = Xn[tr_idx], y[tr_idx], Xn[te_idx], y[te_idx]
-    # feature cap: keep top-FEAT_CAP by variance
+    col_mean = np.nanmean(np.where(np.isfinite(Xtr), Xtr, np.nan), axis=0)
+    col_mean = np.where(np.isfinite(col_mean), col_mean, 0.0)
+    for arr in (Xtr, Xte):
+        bad = np.where(~np.isfinite(arr))
+        arr[bad] = np.take(col_mean, bad[1])
+    # feature cap: keep top-FEAT_CAP by TRAIN variance (test must not influence selection)
     if Xtr.shape[1] > FEAT_CAP:
         var = Xtr.var(0)
         keep = np.argsort(-var)[:FEAT_CAP]

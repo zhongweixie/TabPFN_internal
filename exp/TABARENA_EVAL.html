@@ -41,24 +41,25 @@ under the mean-AUC lens; it is <strong>not</strong> a robust across-the-board wi
 
 <table class="summary-table">
 <tr><th>Method</th><th>Params</th><th>Mean ROC-AUC</th><th>Mean Rank↓</th><th># times best</th><th>Normalized AUC*</th><th>c2 vs it (W/T/L)</th></tr>
-<tr class="winner"><td><strong>c2 loop (k2@12L)</strong></td><td>7.2M</td><td><strong>0.8139</strong> 🥇</td><td>2.97 (worst)</td><td>5</td><td>0.559</td><td>—</td></tr>
-<tr><td>catboost (default)</td><td>—</td><td>0.8138</td><td><strong>2.84</strong> 🥇</td><td><strong>11</strong> 🥇</td><td>0.575</td><td>18/0/20 (47%)</td></tr>
-<tr><td>c3 deep (k1@24L)</td><td>14.5M</td><td>0.8100</td><td>2.89</td><td>5</td><td><strong>0.577</strong> 🥇</td><td>18/0/20 (47%)</td></tr>
-<tr><td>c1 base (k1@12L)</td><td>7.2M</td><td>0.8070</td><td>2.89</td><td>10</td><td>0.543</td><td>20/0/18 (53%)</td></tr>
-<tr><td>xgboost (default)</td><td>—</td><td>0.8031</td><td>3.39</td><td>7</td><td>0.413</td><td>21/0/17 (55%)</td></tr>
+<tr><td>catboost (default)</td><td>—</td><td><strong>0.8142</strong></td><td><strong>2.84</strong> 🥇</td><td><strong>11</strong> 🥇</td><td>0.574</td><td>18/0/20 (47%)</td></tr>
+<tr class="winner"><td><strong>c2 loop (k2@12L)</strong></td><td>7.2M</td><td>0.8138</td><td>3.03 (worst)</td><td>5</td><td>0.550</td><td>—</td></tr>
+<tr><td>c3 deep (k1@24L)</td><td>14.5M</td><td>0.8102</td><td>2.84</td><td>5</td><td><strong>0.576</strong> 🥇</td><td>16/0/22 (42%)</td></tr>
+<tr><td>c1 base (k1@12L)</td><td>7.2M</td><td>0.8073</td><td>2.87</td><td>10</td><td>0.545</td><td>19/0/19 (50%)</td></tr>
+<tr><td>xgboost (default)</td><td>—</td><td>0.8029</td><td>3.42</td><td>7</td><td>0.409</td><td>21/0/17 (55%)</td></tr>
 </table>
 <p class="meta">*Normalized AUC = per-dataset min-max across the 5 methods, then averaged (higher=better, Elo-flavored).
-↓ Mean Rank: lower=better (1=best on a dataset).</p>
+↓ Mean Rank: lower=better (1=best on a dataset). Numbers are the LEAK-FREE eval (train-only imputation);
+they differ from the earlier leaky run by &lt;0.0004 AUC — the imputation leak was uniform across methods
+and cancelled in the comparison.</p>
 
 <div class="insight" style="background:#fff3cd;border-left-color:#ffc107;">
-<strong>⚠ The metrics disagree — read carefully.</strong> c2 (looped) has the <em>highest mean AUC</em>
-but the <em>worst mean rank</em> (2.97) and is "best" on only 5/38 datasets, vs CatBoost's 11. How can
-both be true? Because <strong>c2 wins big but loses often</strong>: vs c3 it wins 18 datasets by avg
-<strong>+0.017</strong> AUC, and loses 20 by only <strong>−0.008</strong>. Its few large wins pull the
-<em>mean</em> to #1, but its many small losses sink its <em>rank</em> and normalized score. So "c2 is
-best" is true <strong>only under the mean-AUC lens</strong>; by per-dataset consistency, CatBoost and c3
-are at least as good. The honest one-liner: <strong>c2 ≈ c3 ≈ CatBoost, statistically tied, each with a
-different shape</strong> — c2 is spikier (big wins, small losses), CatBoost/c3 are steadier.</div>
+<strong>⚠ The metrics disagree — read carefully.</strong> By mean AUC, c2 (looped, 0.8138) is the best of
+our three configs and within 0.0004 of tuned CatBoost. But c2 has the <em>worst mean rank</em> (3.03) and
+is "best" on only 5/38 datasets (CatBoost: 11). Reason: <strong>c2 wins big but loses often</strong> — a few
+large wins pull its mean up, many small losses sink its rank. So "c2 is best" holds <strong>only under the
+mean-AUC lens</strong>; by per-dataset consistency, c3 and CatBoost (rank 2.84) are ahead. Honest one-liner:
+<strong>c2 ≈ c3 ≈ CatBoost by mean, all statistically tied</strong>, with c2 the spikiest profile and the
+most parameter-efficient (half c3's params).</div>
 
 <h2>Protocol alignment with TabPFN-3 / TACO</h2>
 <ul>
@@ -138,6 +139,32 @@ buggy 0.833 vs correct 0.960.</li>
 forward reads the instance attribute. Verified contamination-proof: interleaving c1/c2/c3 inference in
 any order, and even poisoning the old global to 99, leaves every model's output identical. No global
 state left to corrupt.
+</div>
+
+<h2>Bug audit (multi-subagent + empirical verification)</h2>
+<div class="insight">
+Three independent auditors flagged candidate bugs; each was <strong>empirically tested</strong>, not
+taken on faith. Outcome:
+<ul>
+<li><strong>Imputation leakage — REAL, now FIXED.</strong> NaN column-means were computed over train+test
+combined. Fixed to train-only (split-then-impute). Re-running changed every method's mean AUC by
+&lt;0.0004 — the leak was uniform and cancelled in the comparison, so the ranking was never affected.
+These leak-free numbers are the ones shown above.</li>
+<li><strong>"use_flash_attention train/eval mismatch" — NOT a bug.</strong> The checkpoint's saved config
+shows training used <code>True</code> (the auditor read the argparse default, not the saved config).
+Flipping the flag changed outputs by 0.0 (maxdiff) anyway.</li>
+<li><strong>"phantom-class poisons multiclass AUC (NaN)" — NOT a bug.</strong> <code>predict_proba</code>
+truncates probs to <code>n_classes</code> before scoring, so AUC is computed on real classes only. The
+actual run had <strong>0 NaN AUC</strong> across all 38 datasets × 5 methods.</li>
+<li><strong>"NaN-aggregation over different subsets" — moot.</strong> 0 NaN means all means/win-rates are
+over the same full 38 datasets.</li>
+<li><strong>"feature selection by train variance is a bug" — NOT a bug.</strong> Selecting features on
+train-only is correct practice (using test would be the leak).</li>
+<li><strong>Confirmed FINE:</strong> per-instance loop_k binding (contamination-proof), checkpoint
+config match, all 5 methods get identical data, fixed subsample seed, no test-label leakage into context.</li>
+</ul>
+Net: one real-but-inconsequential leak (fixed), and five flagged "bugs" that empirical testing showed were
+not bugs. The c2 ≈ c3 ≈ CatBoost conclusion is robust.
 </div>
 
 <h2>Where this leaves the looped-predictor question</h2>

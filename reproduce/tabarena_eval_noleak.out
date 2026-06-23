@@ -1,0 +1,61 @@
+TabArena classification datasets (<=10 cls): 38
+  blood-transfusion-service-center   (n=498,f=4,c=2) | c1 auc=0.643 | c2 auc=0.725 | c3 auc=0.744 | cat=0.638 xgb=0.642
+  diabetes                           (n=512,f=8,c=2) | c1 auc=0.845 | c2 auc=0.839 | c3 auc=0.846 | cat=0.836 xgb=0.805
+  anneal                             (n=598,f=38,c=5) | c1 auc=0.987 | c2 auc=0.985 | c3 auc=0.994 | cat=0.997 xgb=0.999
+  credit-g                           (n=666,f=20,c=2) | c1 auc=0.752 | c2 auc=0.766 | c3 auc=0.769 | cat=0.764 xgb=0.774
+  maternal_health_risk               (n=676,f=6,c=3) | c1 auc=0.883 | c2 auc=0.857 | c3 auc=0.868 | cat=0.943 xgb=0.956
+  qsar-biodeg                        (n=702,f=40,c=2) | c1 auc=0.933 | c2 auc=0.931 | c3 auc=0.929 | cat=0.931 xgb=0.922
+  website_phishing                   (n=902,f=9,c=3) | c1 auc=0.968 | c2 auc=0.942 | c3 auc=0.946 | cat=0.978 xgb=0.978
+  Fitness_Club                       (n=1000,f=6,c=2) | c1 auc=0.797 | c2 auc=0.805 | c3 auc=0.807 | cat=0.780 xgb=0.777
+  MIC                                (n=1000,f=40,c=8) | c1 auc=0.831 | c2 auc=0.817 | c3 auc=0.817 | cat=0.813 xgb=0.826
+  Is-this-a-good-customer            (n=1000,f=13,c=2) | c1 auc=0.693 | c2 auc=0.723 | c3 auc=0.704 | cat=0.691 xgb=0.646
+  Marketing_Campaign                 (n=1000,f=25,c=2) | c1 auc=0.933 | c2 auc=0.922 | c3 auc=0.924 | cat=0.915 xgb=0.921
+  hazelnut-spread-contaminant-detect (n=1000,f=30,c=2) | c1 auc=0.946 | c2 auc=0.954 | c3 auc=0.952 | cat=0.956 xgb=0.963
+  seismic-bumps                      (n=1000,f=15,c=2) | c1 auc=0.772 | c2 auc=0.793 | c3 auc=0.787 | cat=0.713 xgb=0.707
+  splice                             (n=1000,f=40,c=3) | c1 auc=0.947 | c2 auc=0.960 | c3 auc=0.951 | cat=0.972 xgb=0.970
+  Bioresponse                        (n=1000,f=40,c=2) | c1 auc=0.797 | c2 auc=0.802 | c3 auc=0.794 | cat=0.785 xgb=0.768
+  hiva_agnostic                      (n=1000,f=40,c=3) | c1 auc=0.529 | c2 auc=0.505 | c3 auc=0.516 | cat=0.489 xgb=0.499
+  students_dropout_and_academic_succ (n=1000,f=36,c=3) | c1 auc=0.846 | c2 auc=0.845 | c3 auc=0.841 | cat=0.835 xgb=0.833
+  churn                              (n=1000,f=19,c=2) | c1 auc=0.934 | c2 auc=0.925 | c3 auc=0.935 | cat=0.938 xgb=0.935
+  polish_companies_bankruptcy        (n=1000,f=40,c=2) | c1 auc=0.888 | c2 auc=0.882 | c3 auc=0.885 | cat=0.931 xgb=0.915
+  taiwanese_bankruptcy_prediction    (n=1000,f=40,c=2) | c1 auc=0.935 | c2 auc=0.939 | c3 auc=0.936 | cat=0.921 xgb=0.936
+  NATICUSdroid                       (n=1000,f=40,c=2) | c1 auc=0.985 | c2 auc=0.979 | c3 auc=0.982 | cat=0.984 xgb=0.978
+  coil2000_insurance_policies        (n=1000,f=40,c=2) | c1 auc=0.740 | c2 auc=0.721 | c3 auc=0.748 | cat=0.762 xgb=0.731
+  Bank_Customer_Churn                (n=1000,f=10,c=2) | c1 auc=0.835 | c2 auc=0.822 | c3 auc=0.832 | cat=0.834 xgb=0.827
+  heloc                              (n=1000,f=23,c=2) | c1 auc=0.767 | c2 auc=0.779 | c3 auc=0.782 | cat=0.737 xgb=0.733
+  jm1                                (n=1000,f=21,c=2) | c1 auc=0.705 | c2 auc=0.705 | c3 auc=0.697 | cat=0.666 xgb=0.686
+  E-CommereShippingData              (n=1000,f=10,c=2) | c1 auc=0.724 | c2 auc=0.725 | c3 auc=0.724 | cat=0.720 xgb=0.727
+  online_shoppers_intention          (n=1000,f=17,c=2) | c1 auc=0.894 | c2 auc=0.891 | c3 auc=0.888 | cat=0.907 xgb=0.911
+  in_vehicle_coupon_recommendation   (n=1000,f=24,c=2) | c1 auc=0.687 | c2 auc=0.722 | c3 auc=0.740 | cat=0.750 xgb=0.726
+  HR_Analytics_Job_Change_of_Data_Sc (n=1000,f=12,c=2) | c1 auc=0.783 | c2 auc=0.785 | c3 auc=0.794 | cat=0.762 xgb=0.744
+  credit_card_clients_default        (n=1000,f=23,c=2) | c1 auc=0.718 | c2 auc=0.730 | c3 auc=0.725 | cat=0.706 xgb=0.705
+  Amazon_employee_access             (n=1000,f=9,c=2) | c1 auc=0.581 | c2 auc=0.603 | c3 auc=0.519 | cat=0.638 xgb=0.548
+  bank-marketing                     (n=1000,f=13,c=2) | c1 auc=0.739 | c2 auc=0.735 | c3 auc=0.738 | cat=0.715 xgb=0.713
+  kddcup09_appetency                 (n=1000,f=40,c=2) | c1 auc=0.431 | c2 auc=0.523 | c3 auc=0.498 | cat=0.576 xgb=0.516
+  Diabetes130US                      (n=1000,f=40,c=2) | c1 auc=0.570 | c2 auc=0.554 | c3 auc=0.440 | cat=0.557 xgb=0.502
+  APSFailure                         (n=1000,f=40,c=2) | c1 auc=0.916 | c2 auc=0.964 | c3 auc=0.966 | cat=0.972 xgb=0.914
+  SDSS17                             (n=1000,f=11,c=3) | c1 auc=0.987 | c2 auc=0.988 | c3 auc=0.989 | cat=0.995 xgb=0.991
+  customer_satisfaction_in_airline   (n=1000,f=21,c=2) | c1 auc=0.966 | c2 auc=0.965 | c3 auc=0.964 | cat=0.973 xgb=0.965
+  GiveMeSomeCredit                   (n=1000,f=10,c=2) | c1 auc=0.789 | c2 auc=0.815 | c3 auc=0.816 | cat=0.859 xgb=0.822
+
+======================================================================
+SUMMARY — mean ROC-AUC over 38 TabArena clf datasets
+======================================================================
+  c1_base     AUC=0.8073  ACC=0.8533  (n=38)
+  c2_loop     AUC=0.8138  ACC=0.8568  (n=38)
+  c3_deep     AUC=0.8102  ACC=0.8572  (n=38)
+  catboost    AUC=0.8142  ACC=0.8602  (n=38)
+  xgboost     AUC=0.8029  ACC=0.8582  (n=38)
+
+Normalized AUC (per-dataset min-max across methods, higher=better):
+  c1_base     norm=0.5449
+  c2_loop     norm=0.5498
+  c3_deep     norm=0.5762
+  catboost    norm=0.5740
+  xgboost     norm=0.4089
+
+WIN/TIE/LOSS (ROC-AUC, c2_loop vs each):
+  c2 vs c1_base   : W=19 T=0 L=19 | win+tie=50%
+  c2 vs c3_deep   : W=16 T=0 L=22 | win+tie=42%
+  c2 vs catboost  : W=18 T=0 L=20 | win+tie=47%
+  c2 vs xgboost   : W=22 T=0 L=16 | win+tie=58%
