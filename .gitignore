@@ -169,3 +169,7 @@ wandb
 CLAUDE.md
 .claude
 uv.lock
+# large training artifacts — reproducible, not committed
+reproduce/ckpt_*/
+reproduce/eval_bank/
+reproduce/wandb/
