@@ -27,10 +27,12 @@ code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; }
 <h1>📊 TabArena-Aligned Evaluation — Looped Predictor</h1>
 
 <div class="verdict">
-<strong>VERDICT: MILD GO ✅</strong> — On the official TabArena classification suite (38 datasets,
-ROC-AUC), the looped model <strong>c2 (0.8139)</strong> is the best of our three configs and
-<strong>ties tuned CatBoost (0.8138)</strong> — with an 80K-step, batch-32 model trained only on
-synthetic data. The edge over baseline/depth is real but small (all within ~0.7 AUC points).
+<strong>VERDICT: WEAK / MIXED ✅➖</strong> — On the official TabArena classification suite (38 datasets,
+ROC-AUC), the looped model <strong>c2</strong> has the highest <em>mean</em> AUC (0.8139, tying tuned
+CatBoost) but the <em>worst mean rank</em> — it wins big on a few datasets and loses small on many.
+By per-dataset consistency, c2 ≈ c3 ≈ CatBoost are statistically tied. Looping is <strong>not harmful
+and is the most parameter-efficient</strong>, but the earlier "looped model is best" claim only holds
+under the mean-AUC lens; it is <strong>not</strong> a robust across-the-board win.
 </div>
 
 <p class="meta">Date: 2026-06-23 · Official TabArena-v0.1 suite (38 clf datasets ≤10 classes) · OpenML fold-0 splits · ROC-AUC OvR · aligned with TabPFN-3 / TACO protocol</p>
@@ -38,23 +40,25 @@ synthetic data. The edge over baseline/depth is real but small (all within ~0.7 
 <h2>Summary (ROC-AUC, mean over 38 datasets)</h2>
 
 <table class="summary-table">
-<tr><th>Method</th><th>Params</th><th>Mean ROC-AUC</th><th>Mean Acc</th><th>Normalized AUC*</th><th>c2 vs it (W/T/L)</th></tr>
-<tr class="winner"><td><strong>c2 loop (k2@12L)</strong></td><td>7.2M</td><td><strong>0.8139</strong></td><td>0.857</td><td>0.559</td><td>—</td></tr>
-<tr><td>catboost (default)</td><td>—</td><td>0.8138</td><td>0.860</td><td>0.575</td><td>18/0/20 (47%)</td></tr>
-<tr><td>c3 deep (k1@24L)</td><td>14.5M</td><td>0.8100</td><td>0.857</td><td><strong>0.577</strong></td><td>18/0/20 (47%)</td></tr>
-<tr><td>c1 base (k1@12L)</td><td>7.2M</td><td>0.8070</td><td>0.853</td><td>0.543</td><td>20/0/18 (53%)</td></tr>
-<tr><td>xgboost (default)</td><td>—</td><td>0.8031</td><td>0.858</td><td>0.413</td><td>21/0/17 (55%)</td></tr>
+<tr><th>Method</th><th>Params</th><th>Mean ROC-AUC</th><th>Mean Rank↓</th><th># times best</th><th>Normalized AUC*</th><th>c2 vs it (W/T/L)</th></tr>
+<tr class="winner"><td><strong>c2 loop (k2@12L)</strong></td><td>7.2M</td><td><strong>0.8139</strong> 🥇</td><td>2.97 (worst)</td><td>5</td><td>0.559</td><td>—</td></tr>
+<tr><td>catboost (default)</td><td>—</td><td>0.8138</td><td><strong>2.84</strong> 🥇</td><td><strong>11</strong> 🥇</td><td>0.575</td><td>18/0/20 (47%)</td></tr>
+<tr><td>c3 deep (k1@24L)</td><td>14.5M</td><td>0.8100</td><td>2.89</td><td>5</td><td><strong>0.577</strong> 🥇</td><td>18/0/20 (47%)</td></tr>
+<tr><td>c1 base (k1@12L)</td><td>7.2M</td><td>0.8070</td><td>2.89</td><td>10</td><td>0.543</td><td>20/0/18 (53%)</td></tr>
+<tr><td>xgboost (default)</td><td>—</td><td>0.8031</td><td>3.39</td><td>7</td><td>0.413</td><td>21/0/17 (55%)</td></tr>
 </table>
-<p class="meta">*Normalized AUC = per-dataset min-max across the 5 methods, then averaged (Elo-flavored).
-By this metric c3 and catboost edge out c2 — the configs are genuinely close.</p>
+<p class="meta">*Normalized AUC = per-dataset min-max across the 5 methods, then averaged (higher=better, Elo-flavored).
+↓ Mean Rank: lower=better (1=best on a dataset).</p>
 
-<div class="insight">
-<strong>Reading it honestly:</strong> by raw mean AUC, c2 (looped) is top and matches CatBoost. By the
-normalized/per-dataset-rank view, c3 (deep) and CatBoost are marginally ahead. The truthful summary is
-<strong>"c2 ≈ c3 ≈ CatBoost &gt; c1 &gt; xgboost, all close"</strong>. The looped model is at least as
-good as everything else here and is the most parameter-efficient of our three — a mild but consistent
-positive, not a blowout.
-</div>
+<div class="insight" style="background:#fff3cd;border-left-color:#ffc107;">
+<strong>⚠ The metrics disagree — read carefully.</strong> c2 (looped) has the <em>highest mean AUC</em>
+but the <em>worst mean rank</em> (2.97) and is "best" on only 5/38 datasets, vs CatBoost's 11. How can
+both be true? Because <strong>c2 wins big but loses often</strong>: vs c3 it wins 18 datasets by avg
+<strong>+0.017</strong> AUC, and loses 20 by only <strong>−0.008</strong>. Its few large wins pull the
+<em>mean</em> to #1, but its many small losses sink its <em>rank</em> and normalized score. So "c2 is
+best" is true <strong>only under the mean-AUC lens</strong>; by per-dataset consistency, CatBoost and c3
+are at least as good. The honest one-liner: <strong>c2 ≈ c3 ≈ CatBoost, statistically tied, each with a
+different shape</strong> — c2 is spikier (big wins, small losses), CatBoost/c3 are steadier.</div>
 
 <h2>Protocol alignment with TabPFN-3 / TACO</h2>
 <ul>
@@ -139,14 +143,17 @@ state left to corrupt.
 <h2>Where this leaves the looped-predictor question</h2>
 <table class="summary-table">
 <tr><th>Eval</th><th>Metric</th><th>c1</th><th>c2 loop</th><th>c3</th><th>verdict</th></tr>
-<tr><td>ad-hoc OpenML (VIP-COp-like)</td><td>accuracy</td><td>0.820</td><td><strong>0.839</strong></td><td>0.811</td><td>c2 best (+1.9%)</td></tr>
-<tr><td>TabArena (TACO/TabPFN-3-like)</td><td>ROC-AUC</td><td>0.807</td><td><strong>0.814</strong></td><td>0.810</td><td>c2 best (+0.7), ≈c3≈catboost</td></tr>
+<tr><td>ad-hoc OpenML (VIP-COp-like)</td><td>accuracy (mean)</td><td>0.820</td><td><strong>0.839</strong></td><td>0.811</td><td>c2 highest mean (+1.9%)</td></tr>
+<tr><td>TabArena (TACO/TabPFN-3-like)</td><td>ROC-AUC (mean)</td><td>0.807</td><td><strong>0.814</strong></td><td>0.810</td><td>c2 highest mean (+0.7) but worst rank</td></tr>
 </table>
-<p>After fixing both bugs, the two eval families <em>agree</em>: c2 (looped) is the best of our three on
-both accuracy and AUC. The accuracy gap is clearer; the AUC gap is small (and by normalized-rank, c3 and
-CatBoost are within noise). <strong>Net: looping gives a mild, consistent, parameter-efficient edge</strong>
-— worth scaling up (TACO-level batch/data, loop_k=3/4, Ouro adaptive halting, multi-fold) to see if it
-holds, not yet a strong claim.</p>
+<p>After fixing both bugs, the two eval families agree that <strong>c2 has the highest mean score on
+both metrics</strong> — but the TabArena rank/normalized view adds an important caveat: c2's lead comes
+from <em>a few large wins offset by many small losses</em>, so by per-dataset consistency it only ties
+c3 and CatBoost rather than beating them. <strong>Net: looping is not harmful, is the most
+parameter-efficient option, and is competitive with tuned CatBoost — but "looped is best" is a
+mean-driven, not rank-driven, statement.</strong> This is a weak/mixed positive that warrants scaling up
+(TACO-level batch/data, loop_k=3/4, Ouro adaptive halting, multi-fold, more seeds) to learn whether the
+spiky-wins pattern is real signal or noise — not yet a strong claim.</p>
 
 <p class="meta">
 Scripts: <code>run_tabarena_eval.py</code>, <code>run_benchmark_eval.py</code>, <code>looped_step2.py</code> (per-instance binding)<br>
