@@ -115,6 +115,24 @@ def main():
     cfg.use_compressor = False          # no-compressor path: loop lives in predictor
     trainer = TrainerCompFinetuner(cfg)
     assert L.LOOP_K >= 1
+    # Belt-and-suspenders: bind loop_k onto the model instance (not just the global),
+    # so the per-instance path the eval uses is exercised identically in training.
+    model = getattr(trainer, "raw_model", None) or getattr(trainer, "model", None)
+    if model is not None:
+        n = L.set_loop_on_model(model, L.LOOP_K, L.REINJECT_ALPHA)
+        print(f"[looped_train] bound loop_k={L.LOOP_K} to {n} LayerStack(s)", flush=True)
+    # Snapshot the run config next to the checkpoints for reproducibility.
+    try:
+        ckdir = getattr(cfg, "checkpoint_dir", None)
+        if ckdir:
+            os.makedirs(ckdir, exist_ok=True)
+            import json
+            snap = {k: v for k, v in vars(cfg).items() if isinstance(v, (int, float, str, bool, type(None)))}
+            snap["LOOP_K"] = L.LOOP_K
+            snap["REINJECT_ALPHA"] = L.REINJECT_ALPHA
+            json.dump(snap, open(os.path.join(ckdir, "config.json"), "w"), indent=1)
+    except Exception as e:  # noqa: BLE001
+        print(f"[looped_train] config snapshot skipped: {e}", flush=True)
     trainer.train()
     print(f"[looped_train] DONE LOOP_K={L.LOOP_K} nlayers={cfg.nlayers}", flush=True)
 
