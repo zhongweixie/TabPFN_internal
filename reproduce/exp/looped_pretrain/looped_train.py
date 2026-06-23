@@ -24,6 +24,9 @@ import looped_step2 as L  # noqa: E402
 
 LOG_DIAG_EVERY = int(os.environ.get("LOG_DIAG_EVERY", "100"))
 
+# mutable box for passing the true pre-clip grad norm out of clip_grad_norm_ (see below)
+_GRAD_NORM_BOX = {"val": None}
+
 
 def patch_trainer_for_diagnostics(TrainerCls):
     """Monkey-patch the trainer to add wandb logging for grad-norm, eval, and loop diags."""
@@ -33,17 +36,34 @@ def patch_trainer_for_diagnostics(TrainerCls):
     _orig_run_batch = TrainerCls.run_batch
     _orig_evaluate = TrainerCls.evaluate
 
+    # Capture the TRUE pre-clip grad norm. TACO's run_batch zeroes grads (set_to_none=True)
+    # before returning, so reading p.grad afterward always sees None -> norm 0. Instead we
+    # wrap nn.utils.clip_grad_norm_ (which run_batch calls when gradient_clipping > 0 and
+    # whose return value — the total norm before clipping — it discards) and stash the value.
+    if not getattr(nn.utils.clip_grad_norm_, "_diag_wrapped", False):
+        _real_clip = nn.utils.clip_grad_norm_
+
+        def _clip_capture(parameters, max_norm, *a, **kw):
+            total = _real_clip(parameters, max_norm, *a, **kw)
+            try:
+                _GRAD_NORM_BOX["val"] = float(total)
+            except Exception:  # noqa: BLE001
+                _GRAD_NORM_BOX["val"] = None
+            return total
+
+        _clip_capture._diag_wrapped = True
+        nn.utils.clip_grad_norm_ = _clip_capture
+
     def run_batch_with_diag(self, batch, train=True):
+        _GRAD_NORM_BOX["val"] = None  # reset; populated during _orig_run_batch's clip step
         results = _orig_run_batch(self, batch, train=train)
         if train and hasattr(self, "wandb_run") and self.wandb_run is not None:
             import wandb
-            # grad norm (after clip — gives effective magnitude)
-            total_norm = 0.0
-            for p in self.model.parameters():
-                if p.grad is not None:
-                    total_norm += p.grad.data.float().norm(2).item() ** 2
-            total_norm = total_norm ** 0.5
-            extra = {"grad_norm": total_norm}
+            # true pre-clip grad norm captured from clip_grad_norm_; None if clipping is off
+            total_norm = _GRAD_NORM_BOX["val"]
+            extra = {}
+            if total_norm is not None:
+                extra["grad_norm"] = total_norm
             # timing (from tqdm postfix if available, otherwise skip)
             if hasattr(self, "_last_prior_time"):
                 extra["prior_time"] = self._last_prior_time
