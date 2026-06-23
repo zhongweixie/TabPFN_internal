@@ -39,17 +39,17 @@ at matched parameter count.
 <h2>Summary</h2>
 
 <table class="summary-table">
-<tr><th>Config</th><th>Architecture</th><th>Params</th><th>FLOPs (relative)</th><th>Mean Acc</th><th>Mean AUC</th><th>Win-rate vs c1</th></tr>
+<tr><th>Config</th><th>Architecture</th><th>Params</th><th>FLOPs (relative)</th><th>Mean Acc</th><th>Mean AUC</th><th>vs c1 (W/T/L)</th></tr>
 <tr><td>c1 baseline</td><td>loop_k=1, 12 layers</td><td>7.2M</td><td>1×</td><td>0.820</td><td>0.876</td><td>—</td></tr>
-<tr class="winner"><td><strong>c2 looped</strong></td><td>loop_k=2, 12 layers (re-injection)</td><td><strong>7.2M</strong></td><td>2×</td><td><strong>0.839</strong></td><td><strong>0.884</strong></td><td><strong>56% (14/25)</strong></td></tr>
-<tr class="loser"><td>c3 deep</td><td>loop_k=1, 24 layers</td><td>14.5M</td><td>2× (matched)</td><td>0.495</td><td>0.704</td><td>0% (0/25)</td></tr>
+<tr class="winner"><td><strong>c2 looped</strong></td><td>loop_k=2, 12 layers (re-injection)</td><td><strong>7.2M</strong></td><td>2×</td><td><strong>0.839</strong></td><td><strong>0.884</strong></td><td><strong>14/2/9 → win+tie 64%</strong></td></tr>
+<tr class="loser"><td>c3 deep</td><td>loop_k=1, 24 layers</td><td>14.5M</td><td>2× (matched)</td><td>0.495</td><td>0.704</td><td>0/0/25</td></tr>
 </table>
 
-<p><strong>Win-rates (per-dataset accuracy):</strong></p>
+<p><strong>Win / Tie / Loss (per-dataset accuracy, exact ties counted):</strong></p>
 <ul>
-<li>c2 > c1: <strong>14/25 (56%)</strong></li>
-<li>c2 > c3: <strong>25/25 (100%)</strong></li>
-<li>c1 > c3: 25/25 (100%)</li>
+<li>c2 vs c1: <strong>14 win / 2 tie / 9 loss</strong> → win-rate 56%, <strong>win+tie 64% (16/25)</strong> <span class="meta">(ties: steel-plates, pc1 — both saturated)</span></li>
+<li>c2 vs c3: <strong>25 win / 0 tie / 0 loss</strong> → <strong>win+tie 100% (25/25)</strong></li>
+<li>c1 vs c3: 25 win / 0 tie / 0 loss → 100% (25/25)</li>
 </ul>
 
 <h2>Key Insight</h2>

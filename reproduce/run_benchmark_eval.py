@@ -216,21 +216,24 @@ def main():
         aucs = [r["auc"] for r in all_results[tag] if not np.isnan(r["auc"])]
         print(f"{tag:>25s}  {np.mean(accs):.4f}  {np.mean(aucs):.4f}")
 
-    # Win-rate: per-dataset, c2 vs c1 and c2 vs c3
+    # Win-rate: per-dataset, c2 vs c1 and c2 vs c3 (win / tie / loss)
     tags = list(all_results.keys())
     if len(tags) == 3:
         r1, r2, r3 = all_results[tags[0]], all_results[tags[1]], all_results[tags[2]]
-        # align by name
         names = [r["name"] for r in r1]
-        c2_beat_c1 = sum(1 for i in range(len(names))
-                         if r2[i]["acc"] > r1[i]["acc"])
-        c2_beat_c3 = sum(1 for i in range(len(names))
-                         if r2[i]["acc"] > r3[i]["acc"])
         n = len(names)
-        print(f"\nWIN-RATE (accuracy):")
-        print(f"  c2 > c1: {c2_beat_c1}/{n} ({100*c2_beat_c1/n:.0f}%)")
-        print(f"  c2 > c3: {c2_beat_c3}/{n} ({100*c2_beat_c3/n:.0f}%)")
-        print(f"  c1 > c3: {sum(1 for i in range(n) if r1[i]['acc']>r3[i]['acc'])}/{n}")
+        TOL = 1e-9
+
+        def wtl(a, b):  # a vs b: (win, tie, loss)
+            w = sum(1 for i in range(n) if a[i]["acc"] > b[i]["acc"] + TOL)
+            t = sum(1 for i in range(n) if abs(a[i]["acc"] - b[i]["acc"]) <= TOL)
+            return w, t, n - w - t
+
+        print(f"\nWIN / TIE / LOSS (accuracy, exact ties counted):")
+        for label, a, b in [("c2 vs c1", r2, r1), ("c2 vs c3", r2, r3), ("c1 vs c3", r1, r3)]:
+            w, t, l = wtl(a, b)
+            print(f"  {label}: W={w} T={t} L={l} | win={100*w/n:.0f}% | "
+                  f"win+tie={100*(w+t)/n:.0f}% ({w+t}/{n})")
 
 
 if __name__ == "__main__":
