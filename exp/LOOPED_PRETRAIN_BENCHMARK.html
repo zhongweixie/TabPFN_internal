@@ -29,104 +29,170 @@ code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; }
 <h1>🔄 Looped Predictor Pretraining — Benchmark Evaluation</h1>
 
 <div class="verdict">
-<strong>VERDICT: GO ✅</strong> — Looped/recurrent predictor shows clear advantage on real-data benchmark.
-Weight-sharing recurrence provides better OOD generalization than both the baseline and a deeper model,
-at matched parameter count.
+<strong>VERDICT: GO (mild) ✅</strong> — At matched parameters, the looped predictor (c2) is the
+best of the three on real-data benchmarks, beating the baseline (c1) and edging out a deeper
+model (c3). The advantage is real but <em>modest</em> — all three sit within ~3 acc points.
 </div>
 
-<p class="meta">Date: 2026-06-23 · 25 OpenML datasets × 3 seeds × 3 model configs · 80K pretraining steps each</p>
+<p class="meta">Date: 2026-06-23 (corrected) · 25 OpenML/sklearn datasets × 3 seeds × 3 configs · 80K pretraining steps each</p>
 
-<h2>Summary</h2>
+<div class="insight" style="background:#f8d7da;border-left-color:#dc3545;">
+<strong>⚠ Correction notice.</strong> An earlier version of this report claimed c3 (deep)
+<em>collapsed</em> to 0.495 acc and told an "overfitting / depth-collapse" story. That was a
+<strong>bug in the eval harness</strong>, not a real result: a stale global <code>LOOP_K=2</code>
+(set when loading c2) was never reset, so c3 silently ran with 2 loop iterations. After the fix,
+<strong>c3 scores 0.811</strong> — no collapse. The training checkpoints were always correct (each
+config trained in its own process); only the sequential 3-config eval was affected. See the
+post-mortem at the bottom.
+</div>
+
+<h2>Summary (corrected)</h2>
 
 <table class="summary-table">
-<tr><th>Config</th><th>Architecture</th><th>Params</th><th>FLOPs (relative)</th><th>Mean Acc</th><th>Mean AUC</th><th>vs c1 (W/T/L)</th></tr>
-<tr><td>c1 baseline</td><td>loop_k=1, 12 layers</td><td>7.2M</td><td>1×</td><td>0.820</td><td>0.876</td><td>—</td></tr>
-<tr class="winner"><td><strong>c2 looped</strong></td><td>loop_k=2, 12 layers (re-injection)</td><td><strong>7.2M</strong></td><td>2×</td><td><strong>0.839</strong></td><td><strong>0.884</strong></td><td><strong>14/2/9 → win+tie 64%</strong></td></tr>
-<tr class="loser"><td>c3 deep</td><td>loop_k=1, 24 layers</td><td>14.5M</td><td>2× (matched)</td><td>0.495</td><td>0.704</td><td>0/0/25</td></tr>
+<tr><th>Config</th><th>Architecture</th><th>Params</th><th>FLOPs (rel.)</th><th>Mean Acc</th><th>Mean AUC</th><th>vs c1 (W/T/L)</th></tr>
+<tr><td>c1 baseline</td><td>loop_k=1, 12 layers</td><td>7.2M</td><td>1×</td><td>0.8197</td><td>0.876</td><td>—</td></tr>
+<tr class="winner"><td><strong>c2 looped</strong></td><td>loop_k=2, 12 layers (re-injection)</td><td><strong>7.2M</strong></td><td>2×</td><td><strong>0.8391</strong></td><td><strong>0.884</strong></td><td><strong>14/2/9 → win+tie 64%</strong></td></tr>
+<tr><td>c3 deep</td><td>loop_k=1, 24 layers</td><td>14.5M</td><td>2× (matched)</td><td>0.8108</td><td>0.877</td><td>10/3/12</td></tr>
 </table>
 
 <p><strong>Win / Tie / Loss (per-dataset accuracy, exact ties counted):</strong></p>
 <ul>
-<li>c2 vs c1: <strong>14 win / 2 tie / 9 loss</strong> → win-rate 56%, <strong>win+tie 64% (16/25)</strong> <span class="meta">(ties: steel-plates, pc1 — both saturated)</span></li>
-<li>c2 vs c3: <strong>25 win / 0 tie / 0 loss</strong> → <strong>win+tie 100% (25/25)</strong></li>
-<li>c1 vs c3: 25 win / 0 tie / 0 loss → 100% (25/25)</li>
+<li>c2 vs c1: <strong>14 win / 2 tie / 9 loss</strong> → win 56%, <strong>win+tie 64% (16/25)</strong></li>
+<li>c2 vs c3: <strong>16 win / 2 tie / 7 loss</strong> → win 64%, <strong>win+tie 72% (18/25)</strong></li>
+<li>c1 vs c3: 12 win / 3 tie / 10 loss → win 48%, win+tie 60% (15/25)</li>
 </ul>
+
+<p>Ordering: <strong>c2 (0.839) &gt; c1 (0.820) &gt; c3 (0.811)</strong>, all within ~3 points.
+The looped model is the best, and notably matches/beats the 2×-param deep model at half the
+parameters — but this is a mild edge, not a blowout.</p>
 
 <h2>Key Insight</h2>
 
 <div class="insight">
-<strong>The looped predictor's advantage is in OOD generalization, not in-distribution performance.</strong><br><br>
-On the synthetic SCM eval (same distribution as training), c3 (deep) slightly outperformed c2 (looped).
-But on real benchmark datasets (distribution shift from synthetic training data), the ranking
-<em>completely reverses</em>: c2 dominates, c3 collapses. Weight-sharing recurrence acts as a
-<strong>regularizer</strong> that prevents overfitting to the synthetic prior's distribution,
-enabling better transfer to real-world tabular data.
+<strong>Weight-sharing recurrence gives a small but consistent edge at matched parameters.</strong><br><br>
+On real benchmark data, c2 (looped, 7.2M params) tops the table — it beats the 12-layer baseline
+(+1.9 acc) and even slightly beats the 24-layer model (+2.8 acc) that has <em>twice</em> the
+parameters and the same FLOPs. So the extra compute is at least as useful when spent on looping a
+small model as on a deeper one, and the looped model is more parameter-efficient. But all three are
+close (0.81–0.84), so this is suggestive, not decisive — it warrants scaling up, not a strong claim.
+<br><br>
+<em>Note on mechanism:</em> tabular ICL is still single-pass (read train rows → emit logits); the
+loop is not "multi-step reasoning". The most likely story is parameter-efficient extra compute via
+weight sharing. We do <strong>not</strong> have clean evidence for the earlier "OOD-regularization /
+synthetic-overfitting" claim — that narrative was an artifact of the eval bug and has been retracted.
 </div>
 
-<h2>Per-Dataset Results</h2>
+<h2>Per-Dataset Results (corrected)</h2>
 
 <table class="detail-table">
-<tr><th>Dataset</th><th>c1 base (acc±std)</th><th>c2 loop (acc±std)</th><th>c3 deep (acc±std)</th><th>Best</th></tr>
-<tr><td>breast_cancer</td><td>0.984±0.006</td><td>0.982±0.008</td><td>0.819±0.024</td><td>c1</td></tr>
-<tr><td>iris</td><td>0.948±0.010</td><td>0.970±0.010</td><td>0.274±0.042</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>wine</td><td>0.963±0.015</td><td>0.994±0.009</td><td>0.667±0.015</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>phoneme</td><td>0.842±0.023</td><td>0.839±0.023</td><td>0.744±0.016</td><td>c1</td></tr>
-<tr><td>electricity</td><td>0.776±0.016</td><td>0.764±0.006</td><td>0.621±0.046</td><td>c1</td></tr>
-<tr><td>qsar-biodeg</td><td>0.880±0.012</td><td>0.887±0.012</td><td>0.853±0.010</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>blood-transfusion</td><td>0.760±0.038</td><td>0.775±0.013</td><td>0.507±0.058</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>credit-g</td><td>0.730±0.011</td><td>0.762±0.006</td><td>0.690±0.012</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>diabetes</td><td>0.763±0.011</td><td>0.756±0.013</td><td>0.610±0.056</td><td>c1</td></tr>
-<tr><td>banknote</td><td>1.000±0.000</td><td>0.999±0.002</td><td>0.907±0.011</td><td>c1</td></tr>
-<tr><td>ilpd</td><td>0.710±0.010</td><td>0.712±0.015</td><td>0.638±0.021</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>steel-plates</td><td>1.000±0.000</td><td>1.000±0.000</td><td>0.927±0.033</td><td>tie</td></tr>
-<tr><td>ozone-1h</td><td>0.946±0.008</td><td>0.948±0.006</td><td>0.839±0.015</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>kc1</td><td>0.864±0.014</td><td>0.858±0.013</td><td>0.521±0.130</td><td>c1</td></tr>
-<tr><td>pc1</td><td>0.928±0.004</td><td>0.928±0.004</td><td>0.892±0.011</td><td>tie</td></tr>
-<tr><td>vehicle</td><td>0.752±0.020</td><td>0.786±0.021</td><td>0.402±0.033</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>segment</td><td>0.932±0.017</td><td>0.947±0.011</td><td>0.308±0.008</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>satimage</td><td>0.884±0.012</td><td>0.891±0.010</td><td>0.293±0.028</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>vowel</td><td>0.798±0.016</td><td>0.699±0.012</td><td>0.111±0.021</td><td>c1</td></tr>
-<tr><td>JapaneseVowels</td><td>0.904±0.017</td><td>0.888±0.009</td><td>0.074±0.031</td><td>c1</td></tr>
-<tr><td>har</td><td>0.476±0.027</td><td>0.817±0.010</td><td>0.340±0.061</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>letter</td><td>0.138±0.040</td><td>0.166±0.015</td><td>0.039±0.007</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>pendigits</td><td>0.953±0.008</td><td>0.913±0.007</td><td>0.113±0.019</td><td>c1</td></tr>
-<tr><td>optdigits</td><td>0.753±0.029</td><td>0.883±0.007</td><td>0.179±0.042</td><td style="background:#d4edda">c2</td></tr>
-<tr><td>mfeat-factors</td><td>0.807±0.018</td><td>0.813±0.038</td><td>0.018±0.006</td><td style="background:#d4edda">c2</td></tr>
+<tr><th>Dataset</th><th>c1 base</th><th>c2 loop</th><th>c3 deep</th><th>Best</th></tr>
+<tr><td>breast_cancer</td><td>0.984±0.006</td><td>0.982±0.008</td><td>0.984±0.010</td><td>tie</td></tr>
+<tr><td>iris</td><td>0.948±0.010</td><td>0.970±0.010</td><td>0.963±0.021</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>wine</td><td>0.963±0.015</td><td>0.994±0.009</td><td>0.981±0.000</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>phoneme</td><td>0.842±0.023</td><td>0.839±0.023</td><td>0.836±0.022</td><td>c1</td></tr>
+<tr><td>electricity</td><td>0.776±0.016</td><td>0.764±0.006</td><td>0.768±0.011</td><td>c1</td></tr>
+<tr><td>qsar-biodeg</td><td>0.880±0.012</td><td>0.887±0.012</td><td>0.886±0.013</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>blood-transfusion</td><td>0.760±0.038</td><td>0.775±0.013</td><td>0.781±0.008</td><td>c3</td></tr>
+<tr><td>credit-g</td><td>0.730±0.011</td><td>0.762±0.006</td><td>0.771±0.009</td><td>c3</td></tr>
+<tr><td>diabetes</td><td>0.763±0.011</td><td>0.756±0.013</td><td>0.753±0.007</td><td>c1</td></tr>
+<tr><td>banknote</td><td>1.000±0.000</td><td>0.999±0.002</td><td>0.997±0.005</td><td>c1</td></tr>
+<tr><td>ilpd</td><td>0.710±0.010</td><td>0.712±0.015</td><td>0.709±0.019</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>steel-plates</td><td>1.000±0.000</td><td>1.000±0.000</td><td>1.000±0.000</td><td>tie</td></tr>
+<tr><td>ozone-1h</td><td>0.946±0.008</td><td>0.948±0.006</td><td>0.938±0.009</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>kc1</td><td>0.864±0.014</td><td>0.858±0.013</td><td>0.867±0.022</td><td>c3</td></tr>
+<tr><td>pc1</td><td>0.928±0.004</td><td>0.928±0.004</td><td>0.927±0.003</td><td>tie</td></tr>
+<tr><td>vehicle</td><td>0.752±0.020</td><td>0.786±0.021</td><td>0.786±0.025</td><td>tie</td></tr>
+<tr><td>segment</td><td>0.932±0.017</td><td>0.947±0.011</td><td>0.942±0.008</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>satimage</td><td>0.884±0.012</td><td>0.891±0.010</td><td>0.884±0.013</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>vowel</td><td>0.798±0.016</td><td>0.699±0.012</td><td>0.779±0.026</td><td>c1</td></tr>
+<tr><td>JapaneseVowels</td><td>0.904±0.017</td><td>0.888±0.009</td><td>0.878±0.010</td><td>c1</td></tr>
+<tr><td>har</td><td>0.476±0.027</td><td>0.817±0.010</td><td>0.379±0.026</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>letter*</td><td>0.138±0.040</td><td>0.166±0.015</td><td>0.188±0.022</td><td>c3</td></tr>
+<tr><td>pendigits</td><td>0.953±0.008</td><td>0.913±0.007</td><td>0.882±0.006</td><td>c1</td></tr>
+<tr><td>optdigits</td><td>0.753±0.029</td><td>0.883±0.007</td><td>0.872±0.011</td><td style="background:#d4edda">c2</td></tr>
+<tr><td>mfeat-factors</td><td>0.807±0.018</td><td>0.813±0.038</td><td>0.520±0.010</td><td style="background:#d4edda">c2</td></tr>
 </table>
+<p class="meta">*letter has 26 classes but the model only outputs <code>max_classes=10</code> logits,
+so classes 10–25 are unpredictable by construction — all three configs score low; not a model
+failure, a benchmark/config mismatch. (mfeat/c3 = 0.520 is c3's one genuinely weak point.)</p>
 
 <h2>Experimental Setup</h2>
 
+<p><strong>Training settings (all three configs identical except architecture):</strong></p>
+<table class="detail-table">
+<tr><th>Setting</th><th>Value</th></tr>
+<tr><td>steps</td><td>80,000</td></tr>
+<tr><td>optimizer</td><td>AdamW</td></tr>
+<tr><td>learning rate</td><td>1e-4, cosine schedule, warmup 20%</td></tr>
+<tr><td>weight decay</td><td>0.01</td></tr>
+<tr><td>gradient clipping</td><td>max-norm 1.0</td></tr>
+<tr><td>dropout</td><td>0.0 <span class="meta">(no dropout regularization)</span></td></tr>
+<tr><td>batch size</td><td>32 (micro-batch 16)</td></tr>
+<tr><td>data</td><td>TabICL SCM synthetic prior (mix_scm), seq_len 128–600, features 5–40, ≤10 classes</td></tr>
+<tr><td>model</td><td>emsize 192, nhead 6, no compressor; c1/c2: 12 layers (7.2M), c3: 24 layers (14.5M)</td></tr>
+<tr><td>init / seed</td><td>from scratch (random), seed 42 — same across configs → identical data stream</td></tr>
+<tr><td>loop mechanism</td><td><code>h ← LayerStack(h); h ← h + 0.1·h₀</code> run K times (K=1 ≡ baseline, verified byte-identical)</td></tr>
+<tr><td>per-config process</td><td>each config trained in its own process (env <code>LOOP_K</code>) — training never affected by the eval bug below</td></tr>
+</table>
 <ul>
-<li><strong>Training:</strong> TACO recipe (TabICL SCM synthetic prior), 80K steps, batch 32, AdamW lr=1e-4 cosine, from random init</li>
-<li><strong>Loop mechanism:</strong> Monkeypatched <code>LayerStack.forward</code> to run the 12-layer encoder K times with input re-injection: <code>h ← LayerStack(h); h ← h + 0.1·h₀</code></li>
-<li><strong>Eval:</strong> 25 OpenML/sklearn classification datasets, 3 random train/test splits (seeds 42/123/7), N_train≤1000, N_test≤300, stratified. Metric: accuracy (primary), ROC-AUC (binary/multiclass OVR)</li>
-<li><strong>Fair comparison:</strong> Same training seed → identical synthetic data stream. Same eval protocol. Only architecture differs.</li>
+<li><strong>Eval:</strong> 25 OpenML/sklearn classification datasets, 3 splits (seeds 42/123/7), N_train≤1000, N_test≤300, stratified. Metric: accuracy (primary), ROC-AUC (binary / multiclass OVR)</li>
 </ul>
 
-<h2>Why Synthetic Eval Was Misleading</h2>
+<h2>Synthetic vs Real Eval (corrected)</h2>
 
 <table class="summary-table">
 <tr><th>Eval Type</th><th>c1 base</th><th>c2 loop</th><th>c3 deep</th><th>Winner</th></tr>
-<tr><td>Synthetic SCM (same distribution as training)</td><td>0.622</td><td>0.624</td><td><strong>0.627</strong></td><td>c3</td></tr>
-<tr><td><strong>Real benchmark (OOD)</strong></td><td>0.820</td><td><strong>0.839</strong></td><td>0.495</td><td><strong>c2</strong></td></tr>
+<tr><td>Synthetic SCM (held-out, same distribution as training)</td><td>0.622</td><td>0.624</td><td><strong>0.627</strong></td><td>c3 (marginal)</td></tr>
+<tr><td><strong>Real benchmark (25 datasets)</strong></td><td>0.820</td><td><strong>0.839</strong></td><td>0.811</td><td><strong>c2</strong></td></tr>
 </table>
 
-<p>The synthetic eval <em>correctly</em> measures in-distribution performance (where more parameters/compute = better).
-But for a pretrained model that will be deployed on <em>unseen real data</em>, OOD generalization is what matters —
-and weight-sharing recurrence provides exactly that through implicit regularization.</p>
+<p>On the synthetic held-out eval the three are essentially tied (0.622/0.624/0.627). On real
+data c2 leads (0.839), c1 next (0.820), c3 last (0.811) — again all close. The synthetic eval is a
+weak discriminator here (near-tie); the real benchmark gives a clearer, though still modest, ordering.
+We make <strong>no</strong> claim that "depth overfits and collapses" — the corrected c3 (0.811) is
+perfectly healthy. We also do not have clean evidence for an OOD-regularization mechanism; that earlier
+claim depended on the buggy c3=0.495 number and is retracted.</p>
+
+<h2>Judge Process — how the verdict was reached (and what is / isn't proven)</h2>
+
+<ul>
+<li><strong>Primary metric:</strong> mean accuracy + per-dataset win/tie/loss across 25 real datasets × 3 seeds. Verdict = c2 is top, mildly.</li>
+<li><strong>Not used:</strong> a formal train-loss-vs-eval-loss overfitting test. Final train CE was nearly identical across configs (c1≈c2≈c3 ≈0.78), so there is no train/eval-gap signal distinguishing them — the differentiation comes entirely from real-data transfer.</li>
+<li><strong>Proven:</strong> c2 ≥ c1 at matched params (win+tie 64%), and c2 ≥ c3 at matched compute / half params (win+tie 72%). All effects are small (~2–3 acc points).</li>
+<li><strong>Not proven:</strong> any "iterative reasoning" or "OOD regularization" mechanism; whether the edge survives at larger scale or with more seeds. The synthetic eval cannot tell the configs apart.</li>
+</ul>
 
 <h2>Implications</h2>
 
 <ol>
-<li><strong>Looped/recurrent predictor is the first positive result</strong> in this research program (after 4/4 FlashMemory NO-GOs + frozen-model failures).</li>
-<li><strong>The mechanism is regularization through weight-sharing</strong>, not "iterative reasoning" — tabular ICL remains single-pass, but sharing weights across depth prevents overfitting to the synthetic prior.</li>
-<li><strong>Next steps:</strong> scale up (TACO-level batch=1024, 82M datasets), try loop_k=3/4, implement Ouro-style adaptive halting, test on full TabArena benchmark.</li>
+<li><strong>First mild-positive result</strong> in this research program (after 4/4 FlashMemory NO-GOs + frozen-model failures): looping helps a little, at matched params.</li>
+<li><strong>Likely mechanism is parameter-efficient compute</strong> via weight sharing, not iterative reasoning — tabular ICL remains single-pass. The stronger OOD-regularization story is retracted (it was a bug artifact).</li>
+<li><strong>Effect is small and needs scale-up to confirm:</strong> TACO-level batch=1024 / 82M datasets, loop_k=3/4, Ouro-style adaptive halting, more seeds, full TabArena.</li>
 </ol>
 
+<h2>⚠ Post-mortem: the c3 "collapse" bug</h2>
+
+<div class="insight" style="background:#f8d7da;border-left-color:#dc3545;">
+<strong>What happened:</strong> The eval harness loads all three configs sequentially in one process.
+<code>build_model()</code> only set the global <code>LOOP_K</code> when <code>loop_k&gt;1</code> and
+never reset it. So after loading c2 (<code>LOOP_K=2</code>), loading c3 (which should be
+<code>loop_k=1</code>) left <code>LOOP_K</code> stale at 2 — c3 silently ran <strong>24 layers × 2
+loop iterations</strong>, producing garbage (mean acc 0.495, near-zero on some multiclass sets).<br><br>
+<strong>How it was caught:</strong> c3's multiclass accuracies were below random (mfeat 0.018 on a
+10-class task), which is implausible for a trained model → smelled like a bug, not a result. Loading
+c3 alone in a fresh process gave 0.52 on mfeat, confirming contamination.<br><br>
+<strong>Fix:</strong> <code>build_model()</code> now sets <code>LOOP_K</code> explicitly every call
+(<code>LOOP_K=1</code> is byte-identical to the original forward), and
+<code>install_looped_forward()</code> was made idempotent (captures the true original once, never
+re-patches a patched function). Corrected numbers: <strong>c3 = 0.811</strong>.<br><br>
+<strong>Scope:</strong> training was unaffected (each config = its own process); only the sequential
+3-config eval was corrupted. Checkpoints are valid; only re-evaluation was needed.
+</div>
+
 <p class="meta">
-Scripts: <code>reproduce/run_benchmark_eval.py</code>, <code>reproduce/looped_train.py</code>, <code>reproduce/run_extended.sh</code><br>
+Scripts: <code>reproduce/run_benchmark_eval.py</code> (fixed), <code>reproduce/looped_train.py</code>, <code>reproduce/run_extended.sh</code><br>
 Checkpoints: <code>reproduce/ckpt_c{1,2,3}_*/step-80000.ckpt</code><br>
-Full log: <code>reproduce/benchmark_eval_expanded.out</code>
+Logs: <code>reproduce/benchmark_eval_fixed.out</code> (corrected), <code>benchmark_eval_expanded.out</code> (buggy, kept for audit)
 </p>
 
 </body>

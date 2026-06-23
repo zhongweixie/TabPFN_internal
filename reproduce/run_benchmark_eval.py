@@ -80,18 +80,22 @@ def load_dataset(name, openml_name):
 
 
 def build_model(ckpt_path, nlayers, loop_k):
-    """Load a TACO predictor-only model from checkpoint."""
+    """Load a TACO predictor-only model from checkpoint.
+
+    IMPORTANT: always install the loop patch and set L.LOOP_K explicitly, even for
+    loop_k=1. A prior bug left L.LOOP_K stale at 2 (set by a c2 load) so a subsequent
+    c3 (loop_k=1) silently ran with 2 iterations — corrupting the c3 benchmark. Setting
+    it every call (and LOOP_K=1 == byte-identical baseline, verified by forward-selftest)
+    makes config loading order-independent."""
     from taco.model.taco_model import TACO
     from taco.model.tabpfn_arch.model.loading import ModelConfig
 
-    # Install loop patch if needed
-    if loop_k > 1:
-        os.environ["LOOP_K"] = str(loop_k)
-        os.environ["REINJECT_ALPHA"] = "0.1"
-        import looped_step2 as L
-        L.LOOP_K = loop_k
-        L.REINJECT_ALPHA = 0.1
-        L.install_looped_forward()
+    os.environ["LOOP_K"] = str(loop_k)
+    os.environ["REINJECT_ALPHA"] = "0.1"
+    import looped_step2 as L
+    L.LOOP_K = loop_k
+    L.REINJECT_ALPHA = 0.1
+    L.install_looped_forward()   # idempotent; LOOP_K=1 is the exact original forward
 
     cfg = ModelConfig(
         emsize=192, nhead=6, nlayers=nlayers, nhid_factor=4,

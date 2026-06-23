@@ -79,12 +79,23 @@ LOOP_K = int(_os.environ.get("LOOP_K", "1"))
 REINJECT_ALPHA = float(_os.environ.get("REINJECT_ALPHA", "0.1"))
 
 
+_ORIG_LAYERSTACK_FWD = None  # captured once, the TRUE original forward
+
+
 def install_looped_forward():
     """Monkeypatch LayerStack.forward: run the stack LOOP_K times with input
     re-injection. LOOP_K=1 reduces to the exact original (the re-inject term only
-    fires between iterations, of which there are none). Returns (orig, patched)."""
+    fires between iterations, of which there are none).
+
+    IDEMPOTENT: captures the true original exactly once (guards against re-patching
+    a patched function, which would nest the loop). Reads LOOP_K/REINJECT_ALPHA from
+    module globals at call-time, so changing them between model loads takes effect
+    without re-patching."""
+    global _ORIG_LAYERSTACK_FWD
     from taco.model.tabpfn_arch.model.transformer import LayerStack
-    orig = LayerStack.forward
+    if _ORIG_LAYERSTACK_FWD is None:
+        _ORIG_LAYERSTACK_FWD = LayerStack.forward
+    orig = _ORIG_LAYERSTACK_FWD
 
     def looped(self, x, *, half_layers=False, **kwargs):
         h0 = x

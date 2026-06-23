@@ -1,0 +1,151 @@
+
+============================================================
+c1 base (k1@12L)
+============================================================
+  breast_cancer        acc=0.984±0.006 auc=0.999 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  iris                 acc=0.948±0.010 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  wine                 acc=0.963±0.015 auc=nan (3 seeds)
+  phoneme              acc=0.842±0.023 auc=0.911 (3 seeds)
+  electricity          acc=0.776±0.016 auc=0.857 (3 seeds)
+  qsar-biodeg          acc=0.880±0.012 auc=0.929 (3 seeds)
+  blood-transfusion    acc=0.760±0.038 auc=0.713 (3 seeds)
+  credit-g             acc=0.730±0.011 auc=0.772 (3 seeds)
+  diabetes             acc=0.763±0.011 auc=0.830 (3 seeds)
+  banknote             acc=1.000±0.000 auc=1.000 (3 seeds)
+  ilpd                 acc=0.710±0.010 auc=0.758 (3 seeds)
+  steel-plates         acc=1.000±0.000 auc=1.000 (3 seeds)
+  ozone-1h             acc=0.946±0.008 auc=0.925 (3 seeds)
+  kc1                  acc=0.864±0.014 auc=0.777 (3 seeds)
+  pc1                  acc=0.928±0.004 auc=0.806 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  vehicle              acc=0.752±0.020 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  segment              acc=0.932±0.017 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  satimage             acc=0.884±0.012 auc=nan (3 seeds)
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/datasets/_openml.py:1031: UserWarning: Version 1 of dataset vowel is inactive, meaning that issues have been found in the dataset. Try using a newer version from this URL: https://openml.org/data/v1/download/58/vowel.arff
+  warn(
+  vowel                acc=0.798±0.016 auc=0.941 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  JapaneseVowels       acc=0.904±0.017 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  har                  acc=0.476±0.027 auc=nan (3 seeds)
+  letter               acc=0.138±0.040 auc=0.640 (3 seeds)
+  pendigits            acc=0.953±0.008 auc=0.999 (3 seeds)
+  optdigits            acc=0.753±0.029 auc=0.968 (3 seeds)
+  mfeat-factors        acc=0.807±0.018 auc=0.944 (3 seeds)
+  MEAN                 acc=0.8197 auc=0.8760 (over 25 datasets)
+
+============================================================
+c2 loop (k2@12L)
+============================================================
+  breast_cancer        acc=0.982±0.008 auc=1.000 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  iris                 acc=0.970±0.010 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  wine                 acc=0.994±0.009 auc=nan (3 seeds)
+  phoneme              acc=0.839±0.023 auc=0.906 (3 seeds)
+  electricity          acc=0.764±0.006 auc=0.853 (3 seeds)
+  qsar-biodeg          acc=0.887±0.012 auc=0.932 (3 seeds)
+  blood-transfusion    acc=0.775±0.013 auc=0.763 (3 seeds)
+  credit-g             acc=0.762±0.006 auc=0.781 (3 seeds)
+  diabetes             acc=0.756±0.013 auc=0.831 (3 seeds)
+  banknote             acc=0.999±0.002 auc=1.000 (3 seeds)
+  ilpd                 acc=0.712±0.015 auc=0.742 (3 seeds)
+  steel-plates         acc=1.000±0.000 auc=1.000 (3 seeds)
+  ozone-1h             acc=0.948±0.006 auc=0.926 (3 seeds)
+  kc1                  acc=0.858±0.013 auc=0.775 (3 seeds)
+  pc1                  acc=0.928±0.004 auc=0.843 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  vehicle              acc=0.786±0.021 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  segment              acc=0.947±0.011 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  satimage             acc=0.891±0.010 auc=nan (3 seeds)
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/datasets/_openml.py:1031: UserWarning: Version 1 of dataset vowel is inactive, meaning that issues have been found in the dataset. Try using a newer version from this URL: https://openml.org/data/v1/download/58/vowel.arff
+  warn(
+  vowel                acc=0.699±0.012 auc=0.935 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  JapaneseVowels       acc=0.888±0.009 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  har                  acc=0.817±0.010 auc=nan (3 seeds)
+  letter               acc=0.166±0.015 auc=0.655 (3 seeds)
+  pendigits            acc=0.913±0.007 auc=0.997 (3 seeds)
+  optdigits            acc=0.883±0.007 auc=0.991 (3 seeds)
+  mfeat-factors        acc=0.813±0.038 auc=0.991 (3 seeds)
+  MEAN                 acc=0.8391 auc=0.8844 (over 25 datasets)
+
+============================================================
+c3 deep (k1@24L)
+============================================================
+  breast_cancer        acc=0.984±0.010 auc=0.999 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  iris                 acc=0.963±0.021 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  wine                 acc=0.981±0.000 auc=nan (3 seeds)
+  phoneme              acc=0.836±0.022 auc=0.899 (3 seeds)
+  electricity          acc=0.768±0.011 auc=0.849 (3 seeds)
+  qsar-biodeg          acc=0.886±0.013 auc=0.929 (3 seeds)
+  blood-transfusion    acc=0.781±0.008 auc=0.763 (3 seeds)
+  credit-g             acc=0.771±0.009 auc=0.780 (3 seeds)
+  diabetes             acc=0.753±0.007 auc=0.840 (3 seeds)
+  banknote             acc=0.997±0.005 auc=1.000 (3 seeds)
+  ilpd                 acc=0.709±0.019 auc=0.761 (3 seeds)
+  steel-plates         acc=1.000±0.000 auc=1.000 (3 seeds)
+  ozone-1h             acc=0.938±0.009 auc=0.933 (3 seeds)
+  kc1                  acc=0.867±0.022 auc=0.778 (3 seeds)
+  pc1                  acc=0.927±0.003 auc=0.869 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  vehicle              acc=0.786±0.025 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  segment              acc=0.942±0.008 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  satimage             acc=0.884±0.013 auc=nan (3 seeds)
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/datasets/_openml.py:1031: UserWarning: Version 1 of dataset vowel is inactive, meaning that issues have been found in the dataset. Try using a newer version from this URL: https://openml.org/data/v1/download/58/vowel.arff
+  warn(
+  vowel                acc=0.779±0.026 auc=0.942 (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  JapaneseVowels       acc=0.878±0.010 auc=nan (3 seeds)
+/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_benchmark_eval.py:188: RuntimeWarning: Mean of empty slice
+  mean_auc = np.nanmean(seed_aucs)
+  har                  acc=0.379±0.026 auc=nan (3 seeds)
+  letter               acc=0.188±0.022 auc=0.648 (3 seeds)
+  pendigits            acc=0.882±0.006 auc=0.993 (3 seeds)
+  optdigits            acc=0.872±0.011 auc=0.992 (3 seeds)
+  mfeat-factors        acc=0.520±0.010 auc=0.802 (3 seeds)
+  MEAN                 acc=0.8108 auc=0.8765 (over 25 datasets)
+
+============================================================
+SUMMARY (mean across datasets, 3 seeds each)
+============================================================
+                   config     acc     auc
+         c1 base (k1@12L)  0.8197  0.8760
+         c2 loop (k2@12L)  0.8391  0.8844
+         c3 deep (k1@24L)  0.8108  0.8765
+
+WIN / TIE / LOSS (accuracy, exact ties counted):
+  c2 vs c1: W=14 T=2 L=9 | win=56% | win+tie=64% (16/25)
+  c2 vs c3: W=16 T=2 L=7 | win=64% | win+tie=72% (18/25)
+  c1 vs c3: W=12 T=3 L=10 | win=48% | win+tie=60% (15/25)
