@@ -92,7 +92,7 @@ jobs:
       # We use a persistent HuggingFace cache to avoid hitting rate limits.
       - &restore-hf-cache
         name: Restore HuggingFace cache
-        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache/restore@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
         with:
           path: ${{ github.workspace }}/hf_cache
           key: hf-cache-${{ hashFiles('hf_cache/**') }}
@@ -106,7 +106,7 @@ jobs:
       - &restore-model-cache
         name: Restore model cache
         id: restore-model-cache
-        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache/restore@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
         with:
           path: ${{ github.workspace }}/model_cache
           key: model-cache-${{ hashFiles('model_cache/**') }}
@@ -120,7 +120,7 @@ jobs:
 
       - &save-model-cache
         name: Save model cache
-        uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache/save@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
         with:
           path: ${{ github.workspace }}/model_cache
           key: model-cache-${{ hashFiles('model_cache/**') }}
@@ -154,7 +154,7 @@ jobs:
       - &save-hf-cache
         name: Save HuggingFace cache
         if: always()
-        uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache/save@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
         with:
           path: ${{ github.workspace }}/hf_cache
           key: hf-cache-${{ hashFiles('hf_cache/**') }}
@@ -276,7 +276,7 @@ jobs:
 
       - name: Restore model cache
         id: restore-model-cache
-        uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache/restore@2c8a9bd7457de244a408f35966fab2fb45fda9c8 # v6.0.0
         with:
           path: ${{ github.workspace }}/model_cache
           key: model-cache-${{ hashFiles('model_cache/**') }}
