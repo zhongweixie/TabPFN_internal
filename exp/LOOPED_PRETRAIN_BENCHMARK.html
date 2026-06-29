@@ -37,21 +37,12 @@ model (c3). The advantage is real but <em>modest</em> — all three sit within ~
 <p class="meta">Date: 2026-06-23 (corrected) · 25 OpenML/sklearn datasets × 3 seeds × 3 configs · 80K pretraining steps each</p>
 
 <div class="insight" style="background:#cfe2ff;border-left-color:#0d6efd;">
-<strong>🆕 UPDATE 2026-06-26 — intermediate-checkpoint trend + cross-k probe.</strong> New
-training runs are in progress (fixed <code>loop_k=4</code>, <code>loop_k=6</code>, and a
-<strong>variable-k curriculum k=1→6</strong>). At the half-way point (step 40k of 80k) we
-evaluated their intermediate checkpoints on the canonical <strong>TabArena 38-clf ROC-AUC</strong>
-suite. Two findings, jump to <a href="#trend2026">the full section</a>:
-<ul style="margin:8px 0 0 0;">
-<li><strong>Trend:</strong> all runs improve monotonically — training is healthy. Fixed
-<code>loop_k=4</code> at <em>half</em> training (0.809) already ≈ tuned CatBoost (0.814).</li>
-<li><strong>Cross-k (the adaptive-depth prerequisite):</strong> the curriculum model holds
-<em>flat</em> across <code>loop_k=1..4</code> (~0.79) where a fixed-k model <em>degenerates</em>
-off its trained depth. Prerequisite for a per-row depth selector is now <strong>met</strong> — but
-with a generalist tax (~2 AUC below the specialist peak), so adaptive-k is not yet shown to win.</li>
-</ul>
-This is a <em>mid-training, directional</em> read (step 40k, single fold); the verdict block below
-is the completed 80K accuracy study and is unchanged.
+<strong>🆕 UPDATE 2026-06-29 — loopk4 80K final result.</strong>
+Fixed <code>loop_k=4</code> training <strong>completed</strong> at 80K steps.
+<strong>loopk4 AUC = 0.8174</strong> — surpasses tuned CatBoost (0.8142), c2/loop_k=2 (0.8138),
+c3/24-layer (0.8102), and the c1 baseline (0.8073). Deeper loops continue to help monotonically at
+matched parameters. Cross-k degeneration confirmed at 80K (loopk4 at k1=0.735/k2=0.770/k3=0.808/k4=0.817).
+Full numbers: <a href="#trend2026">the trend section below</a>. Curriculum &amp; loopk6 still training.
 </div>
 
 <div class="insight" style="background:#f8d7da;border-left-color:#dc3545;">
@@ -116,7 +107,8 @@ maxConf NO-GO). Below: their step-40k checkpoints on the canonical TabArena 38-c
 <tr><td>10k</td><td>0.736</td><td>0.684 (k1)</td><td>0.629</td></tr>
 <tr><td>20k</td><td>0.776</td><td>0.752 (k2)</td><td>0.799</td></tr>
 <tr><td>30k</td><td>0.803</td><td>0.789 (k3)</td><td>—</td></tr>
-<tr><td>40k</td><td><strong>0.809</strong></td><td>0.786 (k4)</td><td>—</td></tr>
+<tr><td>40k</td><td>0.809</td><td>0.786 (k4)</td><td>—</td></tr>
+<tr class="winner"><td><strong>80k ✅</strong></td><td><strong>0.8174</strong></td><td>pending</td><td>pending</td></tr>
 </table>
 <p>All monotone-improving, no divergence/collapse — training is working. Fixed
 <code>loop_k=4</code> at <em>half</em> training (0.809) already essentially ties tuned CatBoost
@@ -126,9 +118,10 @@ so the native-k mapping is <em>verified</em>, not assumed.</p>
 
 <h3>(B) Cross-k @ step-40000 — does the model hold across loop_k?</h3>
 <table class="summary-table">
-<tr><th>model</th><th>k1</th><th>k2</th><th>k3</th><th>k4</th><th>range</th></tr>
-<tr class="winner"><td><strong>curriculum</strong></td><td>0.779</td><td>0.788</td><td><strong>0.792</strong></td><td>0.786</td><td>0.012 (flat)</td></tr>
-<tr><td>fixed-loopk4</td><td class="loser">0.728</td><td>0.759</td><td>0.798</td><td><strong>0.809</strong></td><td>0.081 (degrades off-k)</td></tr>
+<tr><th>model / step</th><th>k1</th><th>k2</th><th>k3</th><th>k4</th><th>range</th></tr>
+<tr class="winner"><td><strong>curriculum @ 40k</strong></td><td>0.779</td><td>0.788</td><td><strong>0.792</strong></td><td>0.786</td><td>0.012 (flat)</td></tr>
+<tr><td>fixed-loopk4 @ 40k</td><td class="loser">0.728</td><td>0.759</td><td>0.798</td><td>0.809</td><td>0.081</td></tr>
+<tr><td>fixed-loopk4 @ 80k ✅</td><td class="loser">0.735</td><td>0.770</td><td>0.808</td><td><strong>0.817</strong></td><td>0.082 (unchanged)</td></tr>
 </table>
 
 <div class="insight">
