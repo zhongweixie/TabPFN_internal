@@ -29,6 +29,20 @@
    "final"
   ],
   [
+   "loopk6_80k_k6",
+   "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/loopk6_12L_80000/step-80000.ckpt",
+   12,
+   6,
+   "final"
+  ],
+  [
+   "curric_80k_k6",
+   "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/curric_k1to6_12L_80000/step-80000.ckpt",
+   12,
+   6,
+   "final"
+  ],
+  [
    "loopk4_80k_k1",
    "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/loopk4_12L_80000/step-80000.ckpt",
    12,
@@ -48,6 +62,41 @@
    12,
    3,
    "crossk_loopk4"
+  ],
+  [
+   "curric_80k_k1",
+   "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/curric_k1to6_12L_80000/step-80000.ckpt",
+   12,
+   1,
+   "crossk_curric"
+  ],
+  [
+   "curric_80k_k2",
+   "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/curric_k1to6_12L_80000/step-80000.ckpt",
+   12,
+   2,
+   "crossk_curric"
+  ],
+  [
+   "curric_80k_k3",
+   "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/curric_k1to6_12L_80000/step-80000.ckpt",
+   12,
+   3,
+   "crossk_curric"
+  ],
+  [
+   "curric_80k_k4",
+   "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/curric_k1to6_12L_80000/step-80000.ckpt",
+   12,
+   4,
+   "crossk_curric"
+  ],
+  [
+   "curric_80k_k5",
+   "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/curric_k1to6_12L_80000/step-80000.ckpt",
+   12,
+   5,
+   "crossk_curric"
   ]
  ],
  "results": {
@@ -667,6 +716,314 @@
     0.8050094088637986
    ]
   },
+  "loopk6_80k_k6": {
+   "blood-transfusion-service-center": [
+    0.776,
+    0.7057017543859648
+   ],
+   "diabetes": [
+    0.78125,
+    0.8451807228915662
+   ],
+   "anneal": [
+    0.98,
+    0.9904816106570493
+   ],
+   "credit-g": [
+    0.7215568862275449,
+    0.7555982905982905
+   ],
+   "maternal_health_risk": [
+    0.7603550295857988,
+    0.8790123934972863
+   ],
+   "qsar-biodeg": [
+    0.8806818181818182,
+    0.9354780538824972
+   ],
+   "website_phishing": [
+    0.9090909090909091,
+    0.9709573892266482
+   ],
+   "Fitness_Club": [
+    0.78,
+    0.8086622807017544
+   ],
+   "MIC": [
+    0.876,
+    0.826635350397041
+   ],
+   "Is-this-a-good-customer": [
+    0.884,
+    0.7219925105320643
+   ],
+   "Marketing_Campaign": [
+    0.906,
+    0.9219483568075117
+   ],
+   "hazelnut-spread-contaminant-detection": [
+    0.9,
+    0.9573589435774309
+   ],
+   "seismic-bumps": [
+    0.922,
+    0.7967072695923021
+   ],
+   "splice": [
+    0.864,
+    0.9639843740659395
+   ],
+   "Bioresponse": [
+    0.768,
+    0.7985148752783607
+   ],
+   "hiva_agnostic": [
+    0.96,
+    0.5394398319017701
+   ],
+   "students_dropout_and_academic_success": [
+    0.746,
+    0.8460047715951221
+   ],
+   "churn": [
+    0.926,
+    0.9424800551561116
+   ],
+   "polish_companies_bankruptcy": [
+    0.95,
+    0.8708010335917313
+   ],
+   "taiwanese_bankruptcy_prediction": [
+    0.972,
+    0.9327731092436975
+   ],
+   "NATICUSdroid": [
+    0.946,
+    0.9850459395631863
+   ],
+   "coil2000_insurance_policies": [
+    0.932,
+    0.7324539257763191
+   ],
+   "Bank_Customer_Churn": [
+    0.83,
+    0.8365410481524052
+   ],
+   "heloc": [
+    0.706,
+    0.7785388127853882
+   ],
+   "jm1": [
+    0.814,
+    0.7052948436988336
+   ],
+   "E-CommereShippingData": [
+    0.668,
+    0.7303093534711182
+   ],
+   "online_shoppers_intention": [
+    0.882,
+    0.9000112346927311
+   ],
+   "in_vehicle_coupon_recommendation": [
+    0.644,
+    0.6926927418167541
+   ],
+   "HR_Analytics_Job_Change_of_Data_Scientists": [
+    0.786,
+    0.7873596673596673
+   ],
+   "credit_card_clients_default": [
+    0.778,
+    0.7263807120829829
+   ],
+   "Amazon_employee_access": [
+    0.956,
+    0.6136363636363636
+   ],
+   "bank-marketing": [
+    0.906,
+    0.7585047381981747
+   ],
+   "kddcup09_appetency": [
+    0.988,
+    0.39608636977058026
+   ],
+   "Diabetes130US": [
+    0.902,
+    0.4998416217928413
+   ],
+   "APSFailure": [
+    0.98,
+    0.9654083083241195
+   ],
+   "SDSS17": [
+    0.946,
+    0.9908325221555216
+   ],
+   "customer_satisfaction_in_airline": [
+    0.894,
+    0.9699536880153621
+   ],
+   "GiveMeSomeCredit": [
+    0.938,
+    0.7898903380702096
+   ]
+  },
+  "curric_80k_k6": {
+   "blood-transfusion-service-center": [
+    0.784,
+    0.7248245614035088
+   ],
+   "diabetes": [
+    0.765625,
+    0.8291164658634539
+   ],
+   "anneal": [
+    0.9433333333333334,
+    0.9874793177597236
+   ],
+   "credit-g": [
+    0.7335329341317365,
+    0.7618376068376068
+   ],
+   "maternal_health_risk": [
+    0.7011834319526628,
+    0.8537375057711701
+   ],
+   "qsar-biodeg": [
+    0.8892045454545454,
+    0.9377141414505716
+   ],
+   "website_phishing": [
+    0.8691796008869179,
+    0.9703168495225231
+   ],
+   "Fitness_Club": [
+    0.782,
+    0.8119895644283122
+   ],
+   "MIC": [
+    0.874,
+    0.8122979656522575
+   ],
+   "Is-this-a-good-customer": [
+    0.884,
+    0.6999531908254017
+   ],
+   "Marketing_Campaign": [
+    0.908,
+    0.9259770333713996
+   ],
+   "hazelnut-spread-contaminant-detection": [
+    0.894,
+    0.9600960384153662
+   ],
+   "seismic-bumps": [
+    0.922,
+    0.7873630346515379
+   ],
+   "splice": [
+    0.826,
+    0.9479511895773971
+   ],
+   "Bioresponse": [
+    0.762,
+    0.7987872282478092
+   ],
+   "hiva_agnostic": [
+    0.96,
+    0.5303095685614873
+   ],
+   "students_dropout_and_academic_success": [
+    0.734,
+    0.83093183561281
+   ],
+   "churn": [
+    0.924,
+    0.9346991037131881
+   ],
+   "polish_companies_bankruptcy": [
+    0.944,
+    0.9195051288074545
+   ],
+   "taiwanese_bankruptcy_prediction": [
+    0.976,
+    0.9454390451832908
+   ],
+   "NATICUSdroid": [
+    0.936,
+    0.9860629880539897
+   ],
+   "coil2000_insurance_policies": [
+    0.932,
+    0.7181898510477152
+   ],
+   "Bank_Customer_Churn": [
+    0.838,
+    0.831796727886332
+   ],
+   "heloc": [
+    0.704,
+    0.7722988673849104
+   ],
+   "jm1": [
+    0.824,
+    0.705672686969445
+   ],
+   "E-CommereShippingData": [
+    0.658,
+    0.7253245892951775
+   ],
+   "online_shoppers_intention": [
+    0.874,
+    0.888664195034266
+   ],
+   "in_vehicle_coupon_recommendation": [
+    0.656,
+    0.6993015000572541
+   ],
+   "HR_Analytics_Job_Change_of_Data_Scientists": [
+    0.776,
+    0.7725571725571726
+   ],
+   "credit_card_clients_default": [
+    0.766,
+    0.7272433201785599
+   ],
+   "Amazon_employee_access": [
+    0.956,
+    0.5543933054393305
+   ],
+   "bank-marketing": [
+    0.904,
+    0.7645748722651644
+   ],
+   "kddcup09_appetency": [
+    0.988,
+    0.4224021592442645
+   ],
+   "Diabetes130US": [
+    0.902,
+    0.5149101769310829
+   ],
+   "APSFailure": [
+    0.976,
+    0.9641446848839045
+   ],
+   "SDSS17": [
+    0.912,
+    0.9816999497493538
+   ],
+   "customer_satisfaction_in_airline": [
+    0.88,
+    0.9604976521276081
+   ],
+   "GiveMeSomeCredit": [
+    0.94,
+    0.8010511971968075
+   ]
+  },
   "loopk4_80k_k1": {
    "blood-transfusion-service-center": [
     0.76,
@@ -1127,6 +1484,776 @@
    "GiveMeSomeCredit": [
     0.946,
     0.8192849263513076
+   ]
+  },
+  "curric_80k_k1": {
+   "blood-transfusion-service-center": [
+    0.76,
+    0.7368421052631579
+   ],
+   "diabetes": [
+    0.76171875,
+    0.8331325301204819
+   ],
+   "anneal": [
+    0.11,
+    0.753292822628463
+   ],
+   "credit-g": [
+    0.7095808383233533,
+    0.7278205128205127
+   ],
+   "maternal_health_risk": [
+    0.5976331360946746,
+    0.8127505481568628
+   ],
+   "qsar-biodeg": [
+    0.8068181818181818,
+    0.8906120388069391
+   ],
+   "website_phishing": [
+    0.8381374722838137,
+    0.8370097790585836
+   ],
+   "Fitness_Club": [
+    0.748,
+    0.7935760738052026
+   ],
+   "MIC": [
+    0.868,
+    0.8019428955672432
+   ],
+   "Is-this-a-good-customer": [
+    0.884,
+    0.6328210329224528
+   ],
+   "Marketing_Campaign": [
+    0.852,
+    0.8305576703464027
+   ],
+   "hazelnut-spread-contaminant-detection": [
+    0.776,
+    0.874653861544618
+   ],
+   "seismic-bumps": [
+    0.922,
+    0.7737360253629234
+   ],
+   "splice": [
+    0.416,
+    0.7840992099129566
+   ],
+   "Bioresponse": [
+    0.762,
+    0.7918983001970554
+   ],
+   "hiva_agnostic": [
+    0.96,
+    0.4868994759856304
+   ],
+   "students_dropout_and_academic_success": [
+    0.362,
+    0.7212070192269509
+   ],
+   "churn": [
+    0.858,
+    0.8783939065629206
+   ],
+   "polish_companies_bankruptcy": [
+    0.946,
+    0.8284394330905959
+   ],
+   "taiwanese_bankruptcy_prediction": [
+    0.966,
+    0.9327731092436974
+   ],
+   "NATICUSdroid": [
+    0.9,
+    0.978702315078175
+   ],
+   "coil2000_insurance_policies": [
+    0.932,
+    0.6339308255491038
+   ],
+   "Bank_Customer_Churn": [
+    0.794,
+    0.7910053557017437
+   ],
+   "heloc": [
+    0.714,
+    0.7758250865304928
+   ],
+   "jm1": [
+    0.802,
+    0.6876873472883448
+   ],
+   "E-CommereShippingData": [
+    0.644,
+    0.7009969528351881
+   ],
+   "online_shoppers_intention": [
+    0.868,
+    0.8608302437928322
+   ],
+   "in_vehicle_coupon_recommendation": [
+    0.592,
+    0.5843679965974711
+   ],
+   "HR_Analytics_Job_Change_of_Data_Scientists": [
+    0.738,
+    0.7593970893970893
+   ],
+   "credit_card_clients_default": [
+    0.754,
+    0.7136356774708331
+   ],
+   "Amazon_employee_access": [
+    0.956,
+    0.5245340433624953
+   ],
+   "bank-marketing": [
+    0.898,
+    0.6918642735490633
+   ],
+   "kddcup09_appetency": [
+    0.988,
+    0.4183535762483131
+   ],
+   "Diabetes130US": [
+    0.902,
+    0.5318792705552287
+   ],
+   "APSFailure": [
+    0.974,
+    0.9625651555836361
+   ],
+   "SDSS17": [
+    0.712,
+    0.8647982123029093
+   ],
+   "customer_satisfaction_in_airline": [
+    0.886,
+    0.9289183650417131
+   ],
+   "GiveMeSomeCredit": [
+    0.934,
+    0.7327233794043216
+   ]
+  },
+  "curric_80k_k2": {
+   "blood-transfusion-service-center": [
+    0.76,
+    0.7334210526315789
+   ],
+   "diabetes": [
+    0.72265625,
+    0.8473895582329317
+   ],
+   "anneal": [
+    0.11,
+    0.5389949657226817
+   ],
+   "credit-g": [
+    0.4041916167664671,
+    0.742991452991453
+   ],
+   "maternal_health_risk": [
+    0.606508875739645,
+    0.7547240001515383
+   ],
+   "qsar-biodeg": [
+    0.8011363636363636,
+    0.9156778591264833
+   ],
+   "website_phishing": [
+    0.7649667405764967,
+    0.7876615490083546
+   ],
+   "Fitness_Club": [
+    0.744,
+    0.8100801572897762
+   ],
+   "MIC": [
+    0.832,
+    0.8211548545473528
+   ],
+   "Is-this-a-good-customer": [
+    0.884,
+    0.6697222655640506
+   ],
+   "Marketing_Campaign": [
+    0.852,
+    0.8966660322294125
+   ],
+   "hazelnut-spread-contaminant-detection": [
+    0.742,
+    0.9039135654261703
+   ],
+   "seismic-bumps": [
+    0.922,
+    0.7866955892986262
+   ],
+   "splice": [
+    0.408,
+    0.788849987150228
+   ],
+   "Bioresponse": [
+    0.482,
+    0.7986109998558131
+   ],
+   "hiva_agnostic": [
+    0.96,
+    0.593165290028519
+   ],
+   "students_dropout_and_academic_success": [
+    0.352,
+    0.6583139896974556
+   ],
+   "churn": [
+    0.858,
+    0.8972717423421649
+   ],
+   "polish_companies_bankruptcy": [
+    0.946,
+    0.8538877143528306
+   ],
+   "taiwanese_bankruptcy_prediction": [
+    0.966,
+    0.9366703203020339
+   ],
+   "NATICUSdroid": [
+    0.914,
+    0.9792539345986107
+   ],
+   "coil2000_insurance_policies": [
+    0.932,
+    0.6584195910123707
+   ],
+   "Bank_Customer_Churn": [
+    0.794,
+    0.8161698173192146
+   ],
+   "heloc": [
+    0.638,
+    0.7764913307008562
+   ],
+   "jm1": [
+    0.802,
+    0.6985440439305776
+   ],
+   "E-CommereShippingData": [
+    0.606,
+    0.6862248277689453
+   ],
+   "online_shoppers_intention": [
+    0.882,
+    0.880603302999663
+   ],
+   "in_vehicle_coupon_recommendation": [
+    0.426,
+    0.5761561237342756
+   ],
+   "HR_Analytics_Job_Change_of_Data_Scientists": [
+    0.74,
+    0.7795218295218296
+   ],
+   "credit_card_clients_default": [
+    0.754,
+    0.720946281080848
+   ],
+   "Amazon_employee_access": [
+    0.326,
+    0.5387029288702929
+   ],
+   "bank-marketing": [
+    0.898,
+    0.7145290187344425
+   ],
+   "kddcup09_appetency": [
+    0.988,
+    0.5107962213225371
+   ],
+   "Diabetes130US": [
+    0.902,
+    0.5240961129462872
+   ],
+   "APSFailure": [
+    0.97,
+    0.9644605907439583
+   ],
+   "SDSS17": [
+    0.666,
+    0.8186051000880855
+   ],
+   "customer_satisfaction_in_airline": [
+    0.804,
+    0.9386971325297317
+   ],
+   "GiveMeSomeCredit": [
+    0.934,
+    0.7758094867302577
+   ]
+  },
+  "curric_80k_k3": {
+   "blood-transfusion-service-center": [
+    0.76,
+    0.7503508771929824
+   ],
+   "diabetes": [
+    0.6484375,
+    0.8404283801874163
+   ],
+   "anneal": [
+    0.20333333333333334,
+    0.3530391682606841
+   ],
+   "credit-g": [
+    0.2994011976047904,
+    0.7227350427350427
+   ],
+   "maternal_health_risk": [
+    0.26627218934911245,
+    0.7755465508966065
+   ],
+   "qsar-biodeg": [
+    0.6619318181818182,
+    0.9122155299888195
+   ],
+   "website_phishing": [
+    0.4057649667405765,
+    0.8018705167365524
+   ],
+   "Fitness_Club": [
+    0.696,
+    0.7935760738052028
+   ],
+   "MIC": [
+    0.826,
+    0.7840333125742385
+   ],
+   "Is-this-a-good-customer": [
+    0.884,
+    0.6952332657200812
+   ],
+   "Marketing_Campaign": [
+    0.852,
+    0.8950482172313159
+   ],
+   "hazelnut-spread-contaminant-detection": [
+    0.51,
+    0.9255862344937974
+   ],
+   "seismic-bumps": [
+    0.922,
+    0.7581066800155737
+   ],
+   "splice": [
+    0.23,
+    0.7795039356567605
+   ],
+   "Bioresponse": [
+    0.482,
+    0.7924430061359522
+   ],
+   "hiva_agnostic": [
+    0.014,
+    0.602926163491071
+   ],
+   "students_dropout_and_academic_success": [
+    0.308,
+    0.7445240440885502
+   ],
+   "churn": [
+    0.858,
+    0.9175284809087626
+   ],
+   "polish_companies_bankruptcy": [
+    0.946,
+    0.8604651162790696
+   ],
+   "taiwanese_bankruptcy_prediction": [
+    0.966,
+    0.9438558031908415
+   ],
+   "NATICUSdroid": [
+    0.634,
+    0.9825981279412526
+   ],
+   "coil2000_insurance_policies": [
+    0.932,
+    0.5812926028780611
+   ],
+   "Bank_Customer_Churn": [
+    0.794,
+    0.808393044924311
+   ],
+   "heloc": [
+    0.562,
+    0.7655064268187654
+   ],
+   "jm1": [
+    0.802,
+    0.6361243356255826
+   ],
+   "E-CommereShippingData": [
+    0.414,
+    0.7115295442501325
+   ],
+   "online_shoppers_intention": [
+    0.828,
+    0.8858555218514774
+   ],
+   "in_vehicle_coupon_recommendation": [
+    0.426,
+    0.5843025633475651
+   ],
+   "HR_Analytics_Job_Change_of_Data_Scientists": [
+    0.74,
+    0.7635343035343035
+   ],
+   "credit_card_clients_default": [
+    0.754,
+    0.6995320351081495
+   ],
+   "Amazon_employee_access": [
+    0.044,
+    0.6206732597945986
+   ],
+   "bank-marketing": [
+    0.898,
+    0.7060133630289532
+   ],
+   "kddcup09_appetency": [
+    0.988,
+    0.3356950067476383
+   ],
+   "Diabetes130US": [
+    0.902,
+    0.48723924159464227
+   ],
+   "APSFailure": [
+    0.974,
+    0.9352392986889907
+   ],
+   "SDSS17": [
+    0.6,
+    0.9034174564791413
+   ],
+   "customer_satisfaction_in_airline": [
+    0.454,
+    0.9479595294573269
+   ],
+   "GiveMeSomeCredit": [
+    0.934,
+    0.7793134773862824
+   ]
+  },
+  "curric_80k_k4": {
+   "blood-transfusion-service-center": [
+    0.76,
+    0.7192105263157894
+   ],
+   "diabetes": [
+    0.6484375,
+    0.8257697456492638
+   ],
+   "anneal": [
+    0.0033333333333333335,
+    0.24904023301459405
+   ],
+   "credit-g": [
+    0.2994011976047904,
+    0.6317521367521368
+   ],
+   "maternal_health_risk": [
+    0.4319526627218935,
+    0.6914714497801343
+   ],
+   "qsar-biodeg": [
+    0.6619318181818182,
+    0.9140548923432035
+   ],
+   "website_phishing": [
+    0.4124168514412417,
+    0.7714814544122475
+   ],
+   "Fitness_Club": [
+    0.696,
+    0.7809286146400484
+   ],
+   "MIC": [
+    0.826,
+    0.7911699689575813
+   ],
+   "Is-this-a-good-customer": [
+    0.884,
+    0.6279060695896396
+   ],
+   "Marketing_Campaign": [
+    0.852,
+    0.8884500697880978
+   ],
+   "hazelnut-spread-contaminant-detection": [
+    0.51,
+    0.914749899959984
+   ],
+   "seismic-bumps": [
+    0.922,
+    0.7730129595639357
+   ],
+   "splice": [
+    0.286,
+    0.7022886465273125
+   ],
+   "Bioresponse": [
+    0.482,
+    0.7741633156570916
+   ],
+   "hiva_agnostic": [
+    0.026,
+    0.4138499855080449
+   ],
+   "students_dropout_and_academic_success": [
+    0.308,
+    0.7224336830975884
+   ],
+   "churn": [
+    0.858,
+    0.9176598049837487
+   ],
+   "polish_companies_bankruptcy": [
+    0.946,
+    0.864693446088795
+   ],
+   "taiwanese_bankruptcy_prediction": [
+    0.966,
+    0.939106077213494
+   ],
+   "NATICUSdroid": [
+    0.634,
+    0.982891175811484
+   ],
+   "coil2000_insurance_policies": [
+    0.932,
+    0.6663090128755365
+   ],
+   "Bank_Customer_Churn": [
+    0.794,
+    0.8337531486146096
+   ],
+   "heloc": [
+    0.562,
+    0.7127918880709794
+   ],
+   "jm1": [
+    0.802,
+    0.6574095065366886
+   ],
+   "E-CommereShippingData": [
+    0.408,
+    0.724181902490726
+   ],
+   "online_shoppers_intention": [
+    0.828,
+    0.8758004718570948
+   ],
+   "in_vehicle_coupon_recommendation": [
+    0.426,
+    0.6465950172580196
+   ],
+   "HR_Analytics_Job_Change_of_Data_Scientists": [
+    0.74,
+    0.7025155925155926
+   ],
+   "credit_card_clients_default": [
+    0.754,
+    0.7201268033900499
+   ],
+   "Amazon_employee_access": [
+    0.044,
+    0.5963294028147584
+   ],
+   "bank-marketing": [
+    0.898,
+    0.7183283112799685
+   ],
+   "kddcup09_appetency": [
+    0.988,
+    0.6109986504723347
+   ],
+   "Diabetes130US": [
+    0.902,
+    0.4775781709579619
+   ],
+   "APSFailure": [
+    0.974,
+    0.9628810614436898
+   ],
+   "SDSS17": [
+    0.6,
+    0.7030216017657834
+   ],
+   "customer_satisfaction_in_airline": [
+    0.454,
+    0.9272562973003502
+   ],
+   "GiveMeSomeCredit": [
+    0.934,
+    0.7797676983972487
+   ]
+  },
+  "curric_80k_k5": {
+   "blood-transfusion-service-center": [
+    0.76,
+    0.7089473684210525
+   ],
+   "diabetes": [
+    0.6484375,
+    0.8312583668005354
+   ],
+   "anneal": [
+    0.006666666666666667,
+    0.6294324627775845
+   ],
+   "credit-g": [
+    0.3143712574850299,
+    0.7535470085470086
+   ],
+   "maternal_health_risk": [
+    0.5236686390532544,
+    0.7171026676994147
+   ],
+   "qsar-biodeg": [
+    0.7670454545454546,
+    0.9350813286688067
+   ],
+   "website_phishing": [
+    0.401330376940133,
+    0.6607590034416795
+   ],
+   "Fitness_Club": [
+    0.718,
+    0.8104582577132486
+   ],
+   "MIC": [
+    0.836,
+    0.797167716650508
+   ],
+   "Is-this-a-good-customer": [
+    0.884,
+    0.6744421906693713
+   ],
+   "Marketing_Campaign": [
+    0.852,
+    0.9272141860170029
+   ],
+   "hazelnut-spread-contaminant-detection": [
+    0.682,
+    0.9556302521008404
+   ],
+   "seismic-bumps": [
+    0.922,
+    0.7810779242449525
+   ],
+   "splice": [
+    0.658,
+    0.603070145534044
+   ],
+   "Bioresponse": [
+    0.482,
+    0.7873964658197024
+   ],
+   "hiva_agnostic": [
+    0.026,
+    0.48014044824831476
+   ],
+   "students_dropout_and_academic_success": [
+    0.528,
+    0.6837305481805623
+   ],
+   "churn": [
+    0.858,
+    0.9244558258642764
+   ],
+   "polish_companies_bankruptcy": [
+    0.946,
+    0.8978153629316421
+   ],
+   "taiwanese_bankruptcy_prediction": [
+    0.966,
+    0.9438558031908415
+   ],
+   "NATICUSdroid": [
+    0.78,
+    0.9874765130751065
+   ],
+   "coil2000_insurance_policies": [
+    0.932,
+    0.6596818985104771
+   ],
+   "Bank_Customer_Churn": [
+    0.794,
+    0.817025751387836
+   ],
+   "heloc": [
+    0.566,
+    0.7713563756317131
+   ],
+   "jm1": [
+    0.802,
+    0.7088213808912065
+   ],
+   "E-CommereShippingData": [
+    0.614,
+    0.7207207207207207
+   ],
+   "online_shoppers_intention": [
+    0.828,
+    0.8953488372093024
+   ],
+   "in_vehicle_coupon_recommendation": [
+    0.426,
+    0.6163321391765225
+   ],
+   "HR_Analytics_Job_Change_of_Data_Scientists": [
+    0.74,
+    0.7696049896049897
+   ],
+   "credit_card_clients_default": [
+    0.754,
+    0.7198248905565978
+   ],
+   "Amazon_employee_access": [
+    0.956,
+    0.5562000760745531
+   ],
+   "bank-marketing": [
+    0.898,
+    0.7449233590986506
+   ],
+   "kddcup09_appetency": [
+    0.988,
+    0.42037786774628877
+   ],
+   "Diabetes130US": [
+    0.902,
+    0.4673514638671433
+   ],
+   "APSFailure": [
+    0.974,
+    0.9635128731637972
+   ],
+   "SDSS17": [
+    0.596,
+    0.7966193440312769
+   ],
+   "customer_satisfaction_in_airline": [
+    0.714,
+    0.9618692614287327
+   ],
+   "GiveMeSomeCredit": [
+    0.934,
+    0.8045551878528324
    ]
   },
   "catboost": {

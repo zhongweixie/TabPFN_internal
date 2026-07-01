@@ -37,12 +37,18 @@ model (c3). The advantage is real but <em>modest</em> — all three sit within ~
 <p class="meta">Date: 2026-06-23 (corrected) · 25 OpenML/sklearn datasets × 3 seeds × 3 configs · 80K pretraining steps each</p>
 
 <div class="insight" style="background:#cfe2ff;border-left-color:#0d6efd;">
-<strong>🆕 UPDATE 2026-06-29 — loopk4 80K final result.</strong>
-Fixed <code>loop_k=4</code> training <strong>completed</strong> at 80K steps.
-<strong>loopk4 AUC = 0.8174</strong> — surpasses tuned CatBoost (0.8142), c2/loop_k=2 (0.8138),
-c3/24-layer (0.8102), and the c1 baseline (0.8073). Deeper loops continue to help monotonically at
-matched parameters. Cross-k degeneration confirmed at 80K (loopk4 at k1=0.735/k2=0.770/k3=0.808/k4=0.817).
-Full numbers: <a href="#trend2026">the trend section below</a>. Curriculum &amp; loopk6 still training.
+<strong>🆕 UPDATE 2026-07-01 — all three new trainings complete. Key findings:</strong>
+<ul style="margin:8px 0 0 0;">
+<li><strong>Best model: loopk4 (0.8174)</strong> — beats tuned CatBoost (0.8142). Loop depth has a
+<em>sweet spot at k=4</em>: loopk6 (0.8123) is actually <em>worse</em> than loopk4.</li>
+<li><strong>Curriculum: catastrophic forgetting.</strong> At step-40K it was flat across k=1..4 (~0.79).
+At 80K it specialized on k=6 (0.810) but k=1..5 degraded to 0.74–0.77 — the optimizer-reset curriculum
+erased earlier k-knowledge in the final stages. Not usable as a flat multi-k base model.</li>
+<li><strong>Binary k-selector plan: needs rethink.</strong> The 80K curriculum is not the right base.
+The <em>step-40K</em> curriculum checkpoint (before k=5,6 stages) was flat and could be the right base —
+or a different curriculum design is needed.</li>
+</ul>
+Full numbers: <a href="#trend2026">the trend &amp; cross-k section below</a>.
 </div>
 
 <div class="insight" style="background:#f8d7da;border-left-color:#dc3545;">
@@ -91,65 +97,61 @@ weight sharing. We do <strong>not</strong> have clean evidence for the earlier "
 synthetic-overfitting" claim — that narrative was an artifact of the eval bug and has been retracted.
 </div>
 
-<h2 id="trend2026">🆕 Mid-Training Trend &amp; Cross-k Probe (2026-06-26, step 40k of 80k)</h2>
+<h2 id="trend2026">🆕 All-Run Final Eval (2026-07-01, all 80K complete)</h2>
 
-<p>Three <em>new</em> runs are training in parallel: fixed <code>loop_k=4</code>, fixed
-<code>loop_k=6</code>, and a <strong>variable-k curriculum</strong> that ramps the loop depth
-<code>1→2→3→4→5→6</code> in equal stages (COCONUT/iCoT-style, rebuilding the optimizer at each
-stage). Goal: get a <em>single</em> model that works at every <code>loop_k</code> — the
-prerequisite for any per-row adaptive-depth selector (a fixed-k model can't do this; see the
-maxConf NO-GO). Below: their step-40k checkpoints on the canonical TabArena 38-clf ROC-AUC suite
-(identical harness/splits to the report above; baselines CatBoost 0.814, XGBoost 0.803).</p>
+<p>All three new runs finished. Evaluated on the canonical TabArena 38-clf ROC-AUC suite
+(same harness/splits/GBDT-reuse as above; baselines CatBoost 0.8142, XGBoost 0.8029).</p>
 
-<h3>(A) Trend — does ROC-AUC rise with steps? (each run at its native k)</h3>
-<table class="detail-table">
-<tr><th>step</th><th>loopk4 @k4</th><th>curric @native-k</th><th>loopk6 @k6</th></tr>
-<tr><td>10k</td><td>0.736</td><td>0.684 (k1)</td><td>0.629</td></tr>
-<tr><td>20k</td><td>0.776</td><td>0.752 (k2)</td><td>0.799</td></tr>
-<tr><td>30k</td><td>0.803</td><td>0.789 (k3)</td><td>—</td></tr>
-<tr><td>40k</td><td>0.809</td><td>0.786 (k4)</td><td>—</td></tr>
-<tr class="winner"><td><strong>80k ✅</strong></td><td><strong>0.8174</strong></td><td>pending</td><td>pending</td></tr>
-</table>
-<p>All monotone-improving, no divergence/collapse — training is working. Fixed
-<code>loop_k=4</code> at <em>half</em> training (0.809) already essentially ties tuned CatBoost
-(0.814), reproducing the mild-GO for the looped model even at 40k. The curriculum checkpoint's
-saved metadata confirms step-40k = stage 3 / <code>loop_k=4</code> / <code>curr_step=40000</code>,
-so the native-k mapping is <em>verified</em>, not assumed.</p>
-
-<h3>(B) Cross-k @ step-40000 — does the model hold across loop_k?</h3>
+<h3>(A) Final AUC @ 80K — full comparison</h3>
 <table class="summary-table">
-<tr><th>model / step</th><th>k1</th><th>k2</th><th>k3</th><th>k4</th><th>range</th></tr>
-<tr class="winner"><td><strong>curriculum @ 40k</strong></td><td>0.779</td><td>0.788</td><td><strong>0.792</strong></td><td>0.786</td><td>0.012 (flat)</td></tr>
-<tr><td>fixed-loopk4 @ 40k</td><td class="loser">0.728</td><td>0.759</td><td>0.798</td><td>0.809</td><td>0.081</td></tr>
-<tr><td>fixed-loopk4 @ 80k ✅</td><td class="loser">0.735</td><td>0.770</td><td>0.808</td><td><strong>0.817</strong></td><td>0.082 (unchanged)</td></tr>
+<tr><th>Model</th><th>Architecture</th><th>Mean ROC-AUC</th><th>vs CatBoost</th></tr>
+<tr class="winner"><td><strong>loopk4</strong></td><td>loop_k=4, 12L</td><td><strong>0.8174</strong></td><td>+0.0032 ✅</td></tr>
+<tr><td>CatBoost (default)</td><td>—</td><td>0.8142</td><td>—</td></tr>
+<tr><td>c2_loop (prior)</td><td>loop_k=2, 12L</td><td>0.8138</td><td>−0.0004</td></tr>
+<tr><td>loopk6</td><td>loop_k=6, 12L</td><td>0.8123</td><td>−0.0019</td></tr>
+<tr><td>c3_deep (prior)</td><td>loop_k=1, 24L</td><td>0.8102</td><td>−0.0040</td></tr>
+<tr><td>curric @k6</td><td>curriculum k1→6, 12L</td><td>0.8095</td><td>−0.0047</td></tr>
+<tr><td>c1_base (prior)</td><td>loop_k=1, 12L</td><td>0.8073</td><td>−0.0069</td></tr>
+<tr><td>XGBoost (default)</td><td>—</td><td>0.8029</td><td>−0.0113</td></tr>
 </table>
 
 <div class="insight">
-<strong>The adaptive-depth prerequisite is now met — with caveats.</strong><br><br>
-The maxConf NO-GO concluded adaptive depth was dead <em>on fixed-k models</em> because they
-degenerate away from their trained depth. This probe shows exactly that (fixed-loopk4 falls
-0.809→0.728 as k moves away from 4). The <strong>curriculum model, having seen k=1..4, stays flat
-(~0.79) at every depth</strong> — so "a single model that works at all k" now empirically exists.
-<br><br>
-But two honest caveats keep this a <em>qualified</em> GO:
-<ol style="margin:6px 0 0 0;">
-<li><strong>Generalist tax:</strong> curriculum's flat 0.79 sits ~2 AUC points <em>below</em> the
-fixed specialist's peak (0.809). Robustness across k costs accuracy at any single k.</li>
-<li><strong>Flatness cuts both ways:</strong> if every depth gives ~0.79 <em>in aggregate</em>, a
-per-row adaptive-k selector has little aggregate headroom — unless different rows genuinely prefer
-different k. The only hint is the label-oracle 0.954 from the maxConf probe, which maxConf already
-failed to convert into real AUC on fixed-k models.</li>
-</ol>
-<strong>Bar for declaring adaptive-k a win (LESSON 3 — never conclude from a proxy):</strong> a
-trained k-selector must beat <em>both</em> the curriculum's best single k (k3 = 0.792) <em>and</em>
-the fixed specialist (0.809) on full-suite ROC-AUC. Not there yet.
+<strong>Sweet spot at k=4, not monotone beyond.</strong> loop_k=4 (0.8174) beats CatBoost and all
+other configs. But loop_k=6 (0.8123) is <em>worse</em> than loop_k=4 — more depth does not
+always help. The optimal fixed-k is around 4 for this architecture/budget.
+Trend across steps: 10k→0.736, 20k→0.776, 30k→0.803, 40k→0.809, <strong>80k→0.817</strong>.
 </div>
 
-<p class="meta">Mid-training, single-fold, step 40k of 80k — directional only. Script
-<code>reproduce/exp/looped_pretrain/run_trend_eval.py</code>, results
-<code>reproduce/trend_results.json</code>, log <code>reproduce/trend_eval.out</code>. Next: re-run
-this exact trend at the full 80K; if the curriculum stays flat+robust, train and honestly benchmark
-a per-row k-selector against the two baselines above.</p>
+<h3>(B) Cross-k @ 80K — catastrophic forgetting in curriculum</h3>
+<table class="summary-table">
+<tr><th>model / step</th><th>k1</th><th>k2</th><th>k3</th><th>k4</th><th>k5</th><th>k6</th></tr>
+<tr><td>curriculum @ <strong>40k</strong> (reference)</td><td>0.779</td><td>0.788</td><td><strong>0.792</strong></td><td>0.786</td><td>—</td><td>—</td></tr>
+<tr class="loser"><td>curriculum @ <strong>80k</strong> ⚠</td><td>0.760</td><td>0.766</td><td>0.758</td><td>0.742</td><td>0.760</td><td><strong>0.810</strong></td></tr>
+<tr><td>fixed-loopk4 @ 80k</td><td class="loser">0.735</td><td>0.770</td><td>0.808</td><td><strong>0.817</strong></td><td>—</td><td>—</td></tr>
+</table>
+
+<div class="insight" style="background:#f8d7da;border-left-color:#dc3545;">
+<strong>⚠ Curriculum catastrophic forgetting.</strong> At step-40k (just finished stage k=4),
+the curriculum model was flat across k=1..4 (~0.78–0.79) — the multi-k robustness we needed.
+At 80k (finished all stages through k=6), it <em>specialized</em> on k=6 (0.810) while
+k=1..5 degraded to 0.742–0.766 — <em>worse than the fixed-k specialist at every off-k depth</em>.<br><br>
+<strong>Why:</strong> COCONUT-style optimizer reset at each stage switch clears Adam momentum,
+but it also means the final stage trains longest on k=6 and "overwrites" what was learned for
+k=1..5. The robustness observed at step-40k was real but <em>transient</em> — it only existed
+before the k=5/k=6 stages ran.<br><br>
+<strong>Implication for binary k-selector:</strong> The 80K curriculum is <em>not</em> a suitable
+base for adaptive per-row depth selection. Options going forward:
+<ol style="margin:6px 0 0 0;">
+<li>Use the <strong>step-40K curriculum checkpoint</strong> (still flat at k=1..4) and skip k=5/6.</li>
+<li>Redesign curriculum: no optimizer reset (preserve momentum across stages), or EWC/replay.</li>
+<li>Accept that loopk4 (0.817, fixed specialist) is the current best and move on.</li>
+</ol>
+</div>
+
+<p class="meta">Final eval 2026-07-01, all 3 runs at 80K. Script
+<code>reproduce/exp/looped_pretrain/run_final_eval.py</code> (reuses GBDT from
+<code>trend_results.json</code>), results <code>reproduce/final_eval_results.json</code>,
+log <code>reproduce/final_eval.out</code>.</p>
 
 <h2>Per-Dataset Results (corrected)</h2>
 
