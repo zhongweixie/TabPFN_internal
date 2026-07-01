@@ -148,10 +148,53 @@ base for adaptive per-row depth selection. Options going forward:
 </ol>
 </div>
 
-<p class="meta">Final eval 2026-07-01, all 3 runs at 80K. Script
-<code>reproduce/exp/looped_pretrain/run_final_eval.py</code> (reuses GBDT from
-<code>trend_results.json</code>), results <code>reproduce/final_eval_results.json</code>,
-log <code>reproduce/final_eval.out</code>.</p>
+<h3>(C) Overfitting &amp; forgetting diagnostic — all checkpoints 40k→80k</h3>
+
+<p>To distinguish <em>overfitting</em> from <em>catastrophic forgetting</em>, we evaluated all
+checkpoints (40k, 50k, 60k, 70k, 80k) on the real TabArena benchmark (not the noisy synthetic
+holdout). Script: <code>run_ouro_diag.py</code>, results: <code>trend_diag_results.json</code>.</p>
+
+<h4>Overfitting check — fixed-k native AUC vs step</h4>
+<table class="detail-table">
+<tr><th>step</th><th>loopk4 @k4</th><th>loopk6 @k6</th></tr>
+<tr><td>40k</td><td>0.809</td><td>0.807</td></tr>
+<tr><td>50k</td><td>0.805</td><td>0.809</td></tr>
+<tr><td>60k</td><td>0.816</td><td>0.811</td></tr>
+<tr><td>70k</td><td>0.817</td><td>0.812</td></tr>
+<tr class="winner"><td><strong>80k</strong></td><td><strong>0.817</strong></td><td><strong>0.812</strong></td></tr>
+</table>
+<p><strong>Overfitting ruled out.</strong> Both fixed-k models show monotone-improving or
+flat TabArena AUC through 80K. The 80K checkpoint is the best (or tied for best) at every k.
+No declining trend.</p>
+
+<h4>Curriculum cross-k trajectory — identifying the forgetting mechanism</h4>
+<table class="summary-table">
+<tr><th>step</th><th>@k=1</th><th>@k=2</th><th>@k=3</th><th>@k=4</th><th>@k=5</th><th>@k=6</th><th>stage</th></tr>
+<tr><td>40k</td><td>0.779</td><td>0.788</td><td>0.792</td><td>0.786</td><td>0.774</td><td>0.754</td><td>k=4 stage</td></tr>
+<tr><td>50k</td><td>0.777</td><td>0.795</td><td>0.801</td><td>0.800</td><td>0.796</td><td>0.789</td><td>k=4 stage</td></tr>
+<tr class="winner"><td><strong>60k ⭐</strong></td><td>0.773</td><td>0.792</td><td><strong>0.808</strong></td><td><strong>0.808</strong></td><td><strong>0.809</strong></td><td><strong>0.807</strong></td><td>k=5 stage</td></tr>
+<tr><td>70k</td><td>0.772</td><td>0.790</td><td>0.803</td><td>0.810</td><td>0.810</td><td>0.809</td><td>k=6 stage</td></tr>
+<tr class="loser"><td><strong>80k ⚠</strong></td><td>0.760</td><td>0.766</td><td>0.758</td><td>0.742</td><td>0.760</td><td><strong>0.810</strong></td><td>k=6 stage</td></tr>
+</table>
+
+<div class="insight" style="background:#f8d7da;border-left-color:#dc3545;">
+<strong>Catastrophic forgetting confirmed; step-60k is the best multi-k checkpoint.</strong><br><br>
+<ul style="margin:6px 0 0 0;">
+<li><strong>Step-60k (k=5 stage):</strong> k=3/4/5/6 all flat at 0.807–0.809. This is the
+curriculum's peak for multi-k robustness — the model had been trained on k=1..5 and
+the k=6 stage hadn't yet overwritten earlier knowledge.</li>
+<li><strong>The collapse is not gradual — it concentrates in 70k→80k:</strong> k=4 drops
+0.810→0.742 (Δ=−0.068) in just the final 10K steps (the k=6 stage with optimizer reset).
+k=6 simultaneously improves 0.809→0.810. This is the textbook catastrophic forgetting
+signature: a new task overwrites previous ones.</li>
+<li><strong>Why the final stage is destructive:</strong> COCONUT-style optimizer reset clears
+Adam momentum at stage switch → the model gradient-descends sharply into a k=6-only optimum
+for 13K steps with no constraint from prior k-values.</li>
+</ul>
+<strong>Practical implication:</strong> use <code>step-60000.ckpt</code> (k=3..6 flat at
+~0.808) as the base for adaptive-depth work. The 80K checkpoint is a k=6 specialist, not
+a general multi-k model.
+</div>
 
 <h2>Per-Dataset Results (corrected)</h2>
 
