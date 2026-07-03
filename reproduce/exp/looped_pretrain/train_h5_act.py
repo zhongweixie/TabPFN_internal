@@ -33,8 +33,6 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import numpy as np
 
 import looped_step2 as L
 
@@ -46,11 +44,14 @@ REINJECT_ALPHA = float(os.environ.get("REINJECT_ALPHA", "0.1"))
 # ─── ACT halting unit ─────────────────────────────────────────────────────────
 
 class ACTHaltingUnit(nn.Module):
-    """Single linear layer: (B, E) -> halt logit (B, 1). No bias — keeps it minimal."""
+    """Single linear layer: (B, E) -> halt logit (B, 1).
+    Bias initialized to -3 so p_halt ≈ 0.05 initially → model starts
+    near full-depth (k=k_max) and learns to halt early over training."""
     def __init__(self, emsize: int = 192):
         super().__init__()
-        self.proj = nn.Linear(emsize, 1, bias=False)
-        nn.init.zeros_(self.proj.weight)  # start neutral (p_halt ~ 0.5)
+        self.proj = nn.Linear(emsize, 1, bias=True)
+        nn.init.zeros_(self.proj.weight)
+        nn.init.constant_(self.proj.bias, -3.0)  # sigmoid(-3) ≈ 0.05
 
     def forward(self, h_mean: torch.Tensor) -> torch.Tensor:
         return self.proj(h_mean)
@@ -127,16 +128,16 @@ def install_act_forward():
                 p = torch.sigmoid(halt_unit(h_test_flat))  # (B, 1)
                 halt_probs.append(p)
 
-            # ACT soft weights: w_i = remaining * p_i;  remaining *= (1 - p_i)
+            # ACT soft weights: w_i = remaining * p_i for ALL steps (including last).
+            # Fix v2: using w = remaining (not remaining*p) at the last step causes
+            # p_{k_max-1} to receive zero gradient — dead weight. Now every halt
+            # probability gets a gradient signal.
             weights = []
             remaining = torch.ones(B, 1, device=x.device, dtype=x.dtype)
-            for i, p in enumerate(halt_probs):
-                if i == k_max - 1:
-                    w = remaining  # absorb all remaining at last step
-                else:
-                    w = remaining * p
-                    remaining = remaining * (1.0 - p)
-                weights.append(w)            # (B, 1)
+            for p in halt_probs:
+                w = remaining * p          # gradient flows through p at every step
+                remaining = remaining * (1.0 - p)
+                weights.append(w)         # (B, 1)
 
             # Weighted output — broadcast w over spatial dims
             weighted_out = torch.zeros_like(hiddens[0])
@@ -214,7 +215,7 @@ def make_act_trainer(act_lambda: float, k_max: int):
             self.configure_amp()
             print(f"[H5-ACT] Initialized: lambda={act_lambda} k_max={k_max}", flush=True)
 
-        def run_micro_batch(self, micro_batch, micro_batch_idx, num_micro_batches,
+        def run_micro_batch(self, micro_batch, _micro_batch_idx, num_micro_batches,
                             training_mode: bool = True):
             """Override run_micro_batch to inject ponder cost into the loss
             BEFORE backward — so the computation graph is not freed beforehand."""

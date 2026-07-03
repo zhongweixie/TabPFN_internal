@@ -108,21 +108,27 @@ def install_budget_forward():
         B = x.shape[0]
         device = x.device
 
+        # Fix v2: inject budget BEFORE step 0 so k=1 also gets a conditioning signal.
+        # budget_emb[k] means "k total steps will be used" — injected into h0 and h.
+        def broadcast_emb(vec, target):
+            """Broadcast (B, E) vec to match target's ndim."""
+            shape = [vec.shape[0]] + [1] * (target.ndim - 2) + [vec.shape[1]]
+            return vec.view(*shape).expand_as(target)
+
+        k_tensor = torch.full((B,), k, dtype=torch.long, device=device)
+        k_emb = broadcast_emb(budget_emb(k_tensor), h)
+        h = h + k_emb      # signal "you will run k steps total"
+        h0 = h.clone()     # re-injection anchor also gets the budget signal
+
         for step_i in range(k):
             h = orig(self, h, half_layers=half_layers, **kwargs)
 
             if step_i < k - 1:
-                # Re-injection WITH budget embedding
-                remaining = k - step_i - 1  # how many MORE steps after this one
-                remaining_tensor = torch.full((B,), remaining, dtype=torch.long, device=device)
-                budget_vec = budget_emb(remaining_tensor)  # (B, E)
-
-                # Broadcast budget_vec to match h's shape (h can be 3D or 4D)
-                # Insert singleton dims: (B, E) -> (B, 1, 1, ..., E) to match h.ndim
-                shape = [budget_vec.shape[0]] + [1] * (h.ndim - 2) + [budget_vec.shape[1]]
-                budget_vec_broadcast = budget_vec.view(*shape).expand_as(h)
-
-                h = h + alpha * h0 + budget_vec_broadcast
+                # Re-injection with remaining-steps signal
+                remaining = k - step_i - 1
+                rem_tensor = torch.full((B,), remaining, dtype=torch.long, device=device)
+                rem_emb = broadcast_emb(budget_emb(rem_tensor), h)
+                h = h + alpha * h0 + rem_emb
 
         return h
 
@@ -163,6 +169,19 @@ def make_budget_trainer(k_max: int, sample_mode: str):
             self.raw_model.budget_embedding = budget_emb
             _BUDGET_STATE["budget_emb"] = budget_emb
 
+            # Load base checkpoint (curric-60K) BEFORE setting the loop/budget,
+            # so the pre-trained weights anchor training and avoid divergence.
+            base_ckpt = os.environ.get("BUDGET_BASE_CKPT", "")
+            if base_ckpt and os.path.exists(base_ckpt):
+                ckpt = torch.load(base_ckpt, map_location="cpu", weights_only=False)
+                missing, unexpected = self.raw_model.load_state_dict(
+                    ckpt["state_dict"], strict=False)
+                print(f"[H6-Budget] Loaded base ckpt {base_ckpt}: "
+                      f"missing={len(missing)} unexpected={len(unexpected)}", flush=True)
+            else:
+                print("[H6-Budget] WARNING: no BUDGET_BASE_CKPT, training from scratch",
+                      flush=True)
+
             # Set initial k on LayerStacks (will be overridden per-batch)
             L.set_loop_on_model(self.raw_model, k_max, REINJECT_ALPHA)
 
@@ -182,13 +201,14 @@ def make_budget_trainer(k_max: int, sample_mode: str):
                     weights = np.array([1, 2, 3, 3, 2, 1][:self._k_max])
                     weights = weights / weights.sum()
                     k = int(self._rng.choice(range(1, self._k_max + 1), p=weights))
-
-                # Set k on model (LayerStack instance attribute)
-                L.set_loop_on_model(self.raw_model, k, REINJECT_ALPHA)
-                enable_budget(k=k)
             else:
-                disable_budget()
+                # Fix v2: val uses k=k_max WITH budget enabled (same distribution as training).
+                # Old code called disable_budget() → val measured model without conditioning
+                # signal → val loss was measuring the wrong distribution.
+                k = self._k_max
 
+            L.set_loop_on_model(self.raw_model, k, REINJECT_ALPHA)
+            enable_budget(k=k)
             results = super().run_batch(batch, train=train)
             disable_budget()
             return results

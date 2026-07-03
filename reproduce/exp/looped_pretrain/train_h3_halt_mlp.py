@@ -190,88 +190,82 @@ def make_halt_trainer(base_ckpt: str, halt_lambda: float, unfreeze_layers: int):
             self.configure_optimizer()
             self.configure_amp()
 
-        def run_batch(self, batch, train: bool = True):
-            # Sample k for this batch
-            if train:
-                self._step_k = int(self._rng.choice(self._k_sched))
-                L.set_loop_on_model(self.raw_model, self._step_k, L.REINJECT_ALPHA)
+        def run_micro_batch(self, micro_batch, micro_batch_idx, num_micro_batches,
+                            training_mode: bool = True):
+            """Override run_micro_batch to combine CE + accuracy-based halt BCE in one backward.
 
-            # Enable hidden state capture during forward
-            # We need to know n_train: it's batch-dependent. We'll extract it from the batch.
-            n_train = self._extract_n_train(batch)
-            if train:
-                clear_halt_state(n_train=n_train)
+            Oracle label fix (v2): use actual prediction accuracy at the final step as the
+            halt signal, NOT a positional ramp. The halt head learns to predict whether
+            the model's final answer will be correct, based on early-step hidden states.
+            This gives a meaningful gradient: halt_head(h_k1) ≈ P(correct_at_k_max).
+            """
+            import torch.nn.functional as F
+
+            micro_X, micro_y, micro_d, micro_seq_len, micro_train_size = micro_batch
+            seq_len, train_size = self.validate_micro_batch(micro_seq_len, micro_train_size)
+            micro_X, micro_y = self.align_micro_batch(micro_X, micro_y, micro_d, seq_len)
+            micro_X = micro_X.to(self.config.device)
+            micro_y = micro_y.to(self.config.device)
+
+            y_train = micro_y[:, :train_size]
+            y_test  = micro_y[:, train_size:]  # ground truth for ALL rows (synthetic data)
+            micro_y = micro_y.detach()
+
+            if training_mode:
+                k = int(self._rng.choice(self._k_sched))
+                self._step_k = k
+                L.set_loop_on_model(self.raw_model, k, L.REINJECT_ALPHA)
+                clear_halt_state(n_train=int(train_size))
             else:
                 disable_halt_capture()
 
-            # Run the normal batch (computes task CE loss, does backward inside TACO)
-            # We need to intercept the loss — override _compute_halt_loss in post-step hook.
-            # TACO's run_batch: calls run_micro_batch (2 micro-batches), then optimizer.step.
-            # We patch run_micro_batch to add halt loss contribution.
-            results = self._run_batch_with_halt(batch, train=train)
+            model = self.model if training_mode else self.raw_model
+            with self.amp_ctx:
+                pred = model(micro_X, y_train)   # (B, M, C); captures h_means in intermediates
+                micro_X = micro_X.detach()
+                y_train = y_train.detach()
+
+                pred_flat = pred.flatten(end_dim=-2)
+                true = y_test.long().flatten()
+                ce_loss = F.cross_entropy(pred_flat, true)
+
+                # ── Accuracy-based halt oracle ────────────────────────────────
+                # oracle_label[b] = fraction of test rows correctly predicted at final k
+                # → halt_head learns "is this a correctly-solvable example?" from early states
+                if training_mode and _HALT_STATE["intermediates"]:
+                    B = pred.shape[0]
+                    with torch.no_grad():
+                        pred_cls = pred.argmax(-1)          # (B, M)
+                        correct  = (pred_cls == y_test.long()).float()  # (B, M)
+                        oracle   = correct.mean(dim=1, keepdim=True)    # (B, 1) ∈ [0,1]
+
+                    halt_loss = torch.zeros(1, device=micro_X.device)
+                    for _step_i, h_mean in _HALT_STATE["intermediates"]:
+                        logit = self.halt_head(h_mean)       # (B, 1)
+                        halt_loss = halt_loss + F.binary_cross_entropy_with_logits(
+                            logit, oracle)
+                    halt_loss = halt_loss / len(_HALT_STATE["intermediates"])
+                    total_loss = ce_loss + self._halt_lambda * halt_loss
+                else:
+                    total_loss = ce_loss
+
+                y_test = y_test.detach()
+                true   = true.detach()
+
+            scaled = total_loss / num_micro_batches
+            if training_mode and self.model.training:
+                self.scaler.scale(scaled).backward()
+
+            disable_halt_capture()
+
+            with torch.no_grad():
+                results = {
+                    "ce": ce_loss.detach().float().item() / num_micro_batches,
+                    "accuracy": float(
+                        (pred_flat.detach().argmax(1) == true).sum()
+                    ) / (len(true) * num_micro_batches),
+                }
             return results
-
-        def _extract_n_train(self, batch) -> int:
-            """Try to extract n_train from batch metadata."""
-            try:
-                # TACO batch is (X, y, ...) where y is the train labels (shorter than X)
-                if isinstance(batch, (list, tuple)) and len(batch) >= 2:
-                    x_batch, y_batch = batch[0], batch[1]
-                    # x_batch: (B, S, F), y_batch: (B, N_train) or similar
-                    if hasattr(y_batch, "shape"):
-                        return int(y_batch.shape[1])
-            except Exception:
-                pass
-            return 0  # fallback: halt capture disabled
-
-        def _run_batch_with_halt(self, batch, train: bool):
-            """Run batch + add halt loss on top of TACO's CE loss."""
-            import torch.nn.functional as F
-
-            # We'll intercept by wrapping run_micro_batch temporarily
-            _halt_losses = []
-            _orig_rmb = type(self).run_micro_batch  # unbound
-
-            halt_head = self.halt_head
-            halt_lambda = self._halt_lambda
-
-            def run_micro_batch_with_halt(self_inner, batch_inner, micro_idx, n_micro,
-                                          training_mode=True):
-                results = _orig_rmb(self_inner, batch_inner, micro_idx, n_micro,
-                                    training_mode=training_mode)
-                if training_mode and _HALT_STATE["enabled"] and _HALT_STATE["intermediates"]:
-                    # Compute halt loss from captured intermediates
-                    k_max = self_inner._step_k if hasattr(self_inner, "_step_k") else L.LOOP_K
-                    halt_loss = torch.tensor(0.0, device=self_inner.device, requires_grad=True)
-                    for step_i, h_mean in _HALT_STATE["intermediates"]:
-                        # h_mean: (B, E)
-                        logit = halt_head(h_mean)        # (B, 1)
-                        # Oracle label: should stop here if this is the last step
-                        # or if we're already at max k. Soft label: step_i / (k_max - 1).
-                        # This creates a "stop getting more urgent" soft curriculum.
-                        frac = step_i / max(k_max - 1, 1)  # 0..1
-                        label = torch.full_like(logit, frac)
-                        step_halt_loss = F.binary_cross_entropy_with_logits(logit, label)
-                        halt_loss = halt_loss + step_halt_loss
-                    if len(_HALT_STATE["intermediates"]) > 0:
-                        halt_loss = halt_loss / len(_HALT_STATE["intermediates"])
-                        scaled = halt_lambda * halt_loss / n_micro
-                        scaled.backward()
-                        _halt_losses.append(float(halt_loss.detach()))
-                    clear_halt_state(n_train=_HALT_STATE["n_train"])  # reset for next micro
-                return results
-
-            # Temporarily patch
-            type(self).run_micro_batch = run_micro_batch_with_halt
-            try:
-                results = super().run_batch(batch, train=train)
-            finally:
-                type(self).run_micro_batch = _orig_rmb
-                disable_halt_capture()
-
-            if _halt_losses and train:
-                results = dict(results) if results else {}
-                results["halt_loss"] = np.mean(_halt_losses)
             return results
 
     return HaltMLPTrainer
