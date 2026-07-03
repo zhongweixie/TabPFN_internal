@@ -146,11 +146,18 @@ def install_act_forward():
                 w_broadcast = w.view(B, *([1] * (h_step.ndim - 1)))
                 weighted_out = weighted_out + w_broadcast * h_step
 
-            # Ponder cost: E[steps used] = Σ_i (i+1) * p_i * prod_{j<i}(1-p_j)
-            # ≈ Σ_i (i+1) * w_i  (weights already encode the stopping probabilities)
+            # Restore ACT sum-to-1: absorb leftover budget (remaining) into last step.
+            # Without this, Σ w_i = 1 - remaining_final < 1, which deflates the output.
+            # Fix v3: add remaining * h_last so output = (committed weights) + (leftover × last)
+            last_w = remaining.view(B, *([1] * (hiddens[-1].ndim - 1)))
+            weighted_out = weighted_out + last_w * hiddens[-1]
+
+            # Ponder cost: E[steps used] = Σ_i (i+1) * w_i + k_max * remaining
+            # (unused budget is charged at max depth — encourages early commitment)
             ponder = torch.zeros(B, device=x.device, dtype=x.dtype)
             for step_n, w in enumerate(weights, 1):
                 ponder = ponder + step_n * w.squeeze(-1)
+            ponder = ponder + k_max * remaining.squeeze(-1)  # charge unused budget
 
             _ACT_STATE["ponder_cost"] = ponder.mean()
             return weighted_out

@@ -118,7 +118,9 @@ def install_budget_forward():
         k_tensor = torch.full((B,), k, dtype=torch.long, device=device)
         k_emb = broadcast_emb(budget_emb(k_tensor), h)
         h = h + k_emb      # signal "you will run k steps total"
-        h0 = h.clone()     # re-injection anchor also gets the budget signal
+        h0 = x             # Fix v3: re-injection anchor stays as ORIGINAL tokens (x),
+                           # not the budget-conditioned h. Prevents k_emb from leaking
+                           # into every step via alpha*h0.
 
         for step_i in range(k):
             h = orig(self, h, half_layers=half_layers, **kwargs)
