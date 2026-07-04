@@ -283,6 +283,13 @@ def make_act_trainer(act_lambda: float, k_max: int):
         def run_batch(self, batch, train: bool = True):
             _ACT_STATE["last_ponder"] = 0.0
             results = super().run_batch(batch, train=train)
+            # Post-optimizer weight averaging for halt_unit (DDP does not auto-sync
+            # parameters added after DDP init). Average weights across ranks after
+            # optimizer.step() — mathematically equivalent to gradient all_reduce.
+            if train and self.ddp:
+                import torch.distributed as dist
+                for p in self.raw_model.act_halting_unit.parameters():
+                    dist.all_reduce(p.data, op=dist.ReduceOp.AVG)
             if train and hasattr(self, "wandb_run") and self.wandb_run is not None:
                 import wandb
                 wandb.log({"act_ponder": _ACT_STATE.get("last_ponder", 0.0)},

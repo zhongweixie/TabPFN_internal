@@ -212,6 +212,13 @@ def make_budget_trainer(k_max: int, sample_mode: str):
             L.set_loop_on_model(self.raw_model, k, REINJECT_ALPHA)
             enable_budget(k=k)
             results = super().run_batch(batch, train=train)
+            # Post-optimizer weight averaging for budget_embedding (DDP does not
+            # auto-sync parameters added after DDP init). Average weights across
+            # ranks after optimizer.step() — equiv to gradient all_reduce.
+            if train and self.ddp:
+                import torch.distributed as dist
+                for p in self.raw_model.budget_embedding.parameters():
+                    dist.all_reduce(p.data, op=dist.ReduceOp.AVG)
             disable_budget()
             return results
 
