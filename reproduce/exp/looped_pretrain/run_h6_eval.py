@@ -21,7 +21,8 @@ import torch
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPRO = os.path.abspath(os.path.join(HERE, "..", ".."))
-sys.path.insert(0, "/home/zxiebk/workspace/train/PFN/TACO/src")
+_taco_src = os.environ.get("TACO_SRC", "/home/zxiebk/workspace/train/PFN/TACO/src")
+sys.path.insert(0, _taco_src)
 sys.path.insert(0, HERE)
 
 from run_benchmark_eval import build_model, predict_proba
