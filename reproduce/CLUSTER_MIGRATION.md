@@ -93,6 +93,12 @@ python -c "import sys; sys.path.insert(0, '$TACO_SRC'); import taco; print('TACO
 ```bash
 cd reproduce/exp/looped_pretrain
 
+# ⚠️ 必须先确认集群的 partition 名（各集群不同）
+# 在登录节点运行：sinfo -s
+# 然后编辑三个 slurm 脚本，在 #SBATCH 行里加上：
+#   #SBATCH --partition=<your_partition>
+#   #SBATCH --account=<your_account>   # 如需要
+
 # dry-run 先验证路径无误
 bash submit_all.sh --dry-run
 
@@ -133,6 +139,10 @@ Checkpoint 保存：每 10K 一个永久 ckpt，每 5K 一个临时 ckpt。
 ## 6. 训练完成后跑 eval
 
 ```bash
+# 如果是新的 shell session，先重新 export（训练时设置的变量不会自动保留）
+export TACO_SRC="/path/to/TACO/src"
+export REPRO="/path/to/TabPFN_internal/reproduce"
+
 cd reproduce/exp/looped_pretrain
 
 CUDA_VISIBLE_DEVICES=0 python run_h5_eval.py \
