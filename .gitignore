@@ -171,5 +171,6 @@ CLAUDE.md
 uv.lock
 # large training artifacts — reproducible, not committed
 reproduce/ckpt_*/
-reproduce/eval_bank/
+reproduce/ckpt/
 reproduce/wandb/
+# eval_bank is committed (2.9MB) so cluster can git-clone without manual transfer
