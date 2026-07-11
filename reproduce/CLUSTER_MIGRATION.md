@@ -27,27 +27,39 @@ git clone https://github.com/zhongweixie/TabPFN_internal.git
 cd TabPFN_internal
 ```
 
-### 1-b. 下载 base checkpoint
+### 1-b. 下载 checkpoints（两个，都需要）
 
-需要 `gh` CLI（大部分集群已有），或用 `wget` + GitHub token：
+Release `v1.0-base-ckpt` 包含两个文件：
+- `step-60000.ckpt` — base checkpoint，H5/H6 训练起点
+- `step-80000.ckpt` — loopk4 reference，eval 时的外部基准（缺失则 ref 列全 NaN）
 
-**方式一：gh CLI（推荐）**
+**方式一：gh CLI（推荐，一次下载全部）**
 ```bash
 mkdir -p reproduce/ckpt/curric_k1to6_12L_80000
+mkdir -p reproduce/ckpt/loopk4_12L_80000
+# 下载 base checkpoint
 gh release download v1.0-base-ckpt \
   --repo zhongweixie/TabPFN_internal \
-  --dir reproduce/ckpt/curric_k1to6_12L_80000/
+  --dir reproduce/ckpt/curric_k1to6_12L_80000/ \
+  --pattern "step-60000.ckpt"
+# 下载 loopk4 reference checkpoint
+gh release download v1.0-base-ckpt \
+  --repo zhongweixie/TabPFN_internal \
+  --dir reproduce/ckpt/loopk4_12L_80000/ \
+  --pattern "step-80000.ckpt"
 # 如果未登录：gh auth login
 ```
 
 **方式二：wget + GitHub token（集群无 gh CLI 时）**
 ```bash
-# 先在 GitHub Settings → Developer settings → Personal access tokens 生成 token
-# 权限：repo (read)
-mkdir -p reproduce/ckpt/curric_k1to6_12L_80000
+# 先在 GitHub Settings → Developer settings → Personal access tokens 生成 token（权限：repo read）
+mkdir -p reproduce/ckpt/curric_k1to6_12L_80000 reproduce/ckpt/loopk4_12L_80000
 wget --header="Authorization: token <YOUR_TOKEN>" \
   -O reproduce/ckpt/curric_k1to6_12L_80000/step-60000.ckpt \
   "https://github.com/zhongweixie/TabPFN_internal/releases/download/v1.0-base-ckpt/step-60000.ckpt"
+wget --header="Authorization: token <YOUR_TOKEN>" \
+  -O reproduce/ckpt/loopk4_12L_80000/step-80000.ckpt \
+  "https://github.com/zhongweixie/TabPFN_internal/releases/download/v1.0-base-ckpt/step-80000.ckpt"
 ```
 
 ---
