@@ -1,0 +1,45 @@
+2026-06-19 16:02:52,468 INFO FULL-TRAIN global indexer | ctx=150 query<=240 test=60 | seeds=[0, 1] | keep=25%
+2026-06-19 16:11:04,330 INFO seed0 built 13 samples (query sizes: [240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240]) in 491s
+2026-06-19 16:11:32,550 INFO seed0 breast_cancer              full=0.995 indexer=0.874 knn=0.993 bf=False bk=False
+2026-06-19 16:11:47,131 INFO seed0 phoneme                    full=0.881 indexer=0.824 knn=0.854 bf=False bk=False
+2026-06-19 16:12:03,937 INFO seed0 electricity                full=0.851 indexer=0.801 knn=0.831 bf=False bk=False
+2026-06-19 16:12:20,814 INFO seed0 qsar-biodeg                full=0.864 indexer=0.473 knn=0.784 bf=False bk=False
+2026-06-19 16:12:35,622 INFO seed0 diabetes                   full=0.890 indexer=0.886 knn=0.855 bf=False bk=True
+2026-06-19 16:12:50,345 INFO seed0 blood-transfusion-service-center full=0.568 indexer=0.535 knn=0.453 bf=False bk=True
+2026-06-19 16:13:08,132 INFO seed0 banknote-authentication    full=1.000 indexer=0.999 knn=1.000 bf=False bk=False
+2026-06-19 16:13:23,570 INFO seed0 kc1                        full=0.817 indexer=0.414 knn=0.824 bf=False bk=False
+2026-06-19 16:13:41,972 INFO seed0 pc1                        full=0.665 indexer=0.844 knn=0.522 bf=True bk=True
+2026-06-19 16:13:56,671 INFO seed0 wdbc                       full=0.975 indexer=0.889 knn=0.963 bf=False bk=False
+2026-06-19 16:14:12,595 INFO seed0 ilpd                       full=0.860 indexer=0.646 knn=0.819 bf=False bk=False
+2026-06-19 16:14:26,774 INFO seed0 steel-plates-fault         full=1.000 indexer=1.000 knn=1.000 bf=False bk=False
+2026-06-19 16:14:42,492 INFO seed0 ozone-level-8hr            full=0.924 indexer=0.638 knn=0.911 bf=False bk=False
+2026-06-19 16:23:31,987 INFO seed1 built 13 samples (query sizes: [240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240]) in 529s
+2026-06-19 16:24:03,194 INFO seed1 breast_cancer              full=0.996 indexer=0.993 knn=0.983 bf=False bk=True
+2026-06-19 16:24:19,171 INFO seed1 phoneme                    full=0.911 indexer=0.606 knn=0.899 bf=False bk=False
+2026-06-19 16:24:34,110 INFO seed1 electricity                full=0.806 indexer=0.729 knn=0.753 bf=False bk=False
+2026-06-19 16:24:49,008 INFO seed1 qsar-biodeg                full=0.935 indexer=0.692 knn=0.917 bf=False bk=False
+2026-06-19 16:25:07,157 INFO seed1 diabetes                   full=0.728 indexer=0.728 knn=0.714 bf=False bk=True
+2026-06-19 16:25:21,732 INFO seed1 blood-transfusion-service-center full=0.618 indexer=0.583 knn=0.474 bf=False bk=True
+2026-06-19 16:25:35,410 INFO seed1 banknote-authentication    full=1.000 indexer=0.864 knn=1.000 bf=False bk=False
+2026-06-19 16:25:49,614 INFO seed1 kc1                        full=0.825 indexer=0.675 knn=0.828 bf=False bk=False
+2026-06-19 16:26:06,545 INFO seed1 pc1                        full=0.808 indexer=0.656 knn=0.694 bf=False bk=False
+2026-06-19 16:26:21,367 INFO seed1 wdbc                       full=0.992 indexer=0.943 knn=0.945 bf=False bk=False
+2026-06-19 16:26:35,030 INFO seed1 ilpd                       full=0.736 indexer=0.774 knn=0.662 bf=True bk=True
+2026-06-19 16:26:50,929 INFO seed1 steel-plates-fault         full=1.000 indexer=1.000 knn=0.976 bf=False bk=True
+2026-06-19 16:27:10,408 INFO seed1 ozone-level-8hr            full=0.888 indexer=0.719 knn=0.933 bf=False bk=False
+2026-06-19 16:27:10,408 INFO ==================================================================
+2026-06-19 16:27:10,408 INFO breast_cancer              indexer-full=-0.062 indexer-knn=-0.054
+2026-06-19 16:27:10,408 INFO phoneme                    indexer-full=-0.181 indexer-knn=-0.161
+2026-06-19 16:27:10,408 INFO electricity                indexer-full=-0.064 indexer-knn=-0.027
+2026-06-19 16:27:10,408 INFO qsar-biodeg                indexer-full=-0.317 indexer-knn=-0.268
+2026-06-19 16:27:10,409 INFO diabetes                   indexer-full=-0.002 indexer-knn=+0.022
+2026-06-19 16:27:10,409 INFO blood-transfusion-service-center indexer-full=-0.034 indexer-knn=+0.096
+2026-06-19 16:27:10,409 INFO banknote-authentication    indexer-full=-0.068 indexer-knn=-0.068
+2026-06-19 16:27:10,409 INFO kc1                        indexer-full=-0.276 indexer-knn=-0.281
+2026-06-19 16:27:10,409 INFO pc1                        indexer-full=+0.013 indexer-knn=+0.142
+2026-06-19 16:27:10,409 INFO wdbc                       indexer-full=-0.068 indexer-knn=-0.038
+2026-06-19 16:27:10,409 INFO ilpd                       indexer-full=-0.088 indexer-knn=-0.031
+2026-06-19 16:27:10,409 INFO steel-plates-fault         indexer-full=+0.000 indexer-knn=+0.012
+2026-06-19 16:27:10,409 INFO ozone-level-8hr            indexer-full=-0.228 indexer-knn=-0.243
+2026-06-19 16:27:10,409 INFO WIN-RATE: indexer>full 2/26 (8%)  indexer>knn 8/26 (31%)
+2026-06-19 16:27:10,409 INFO ALL DONE

@@ -1,0 +1,59 @@
+datasets: 38
+building 14 models...
+loaded GBDT cache for 38 datasets
+  blood-transfusion-service-center     n=498 f=4 c=2
+  diabetes                             n=512 f=8 c=2
+  anneal                               n=598 f=38 c=5
+  credit-g                             n=666 f=20 c=2
+  maternal_health_risk                 n=676 f=6 c=3
+  qsar-biodeg                          n=702 f=40 c=2
+  website_phishing                     n=902 f=9 c=3
+  Fitness_Club                         n=1000 f=6 c=2
+  MIC                                  n=1000 f=40 c=8
+  Is-this-a-good-customer              n=1000 f=13 c=2
+  Marketing_Campaign                   n=1000 f=25 c=2
+  hazelnut-spread-contaminant-detectio n=1000 f=30 c=2
+  seismic-bumps                        n=1000 f=15 c=2
+  splice                               n=1000 f=40 c=3
+  Bioresponse                          n=1000 f=40 c=2
+  hiva_agnostic                        n=1000 f=40 c=3
+  students_dropout_and_academic_succes n=1000 f=36 c=3
+  churn                                n=1000 f=19 c=2
+  polish_companies_bankruptcy          n=1000 f=40 c=2
+  taiwanese_bankruptcy_prediction      n=1000 f=40 c=2
+  NATICUSdroid                         n=1000 f=40 c=2
+  coil2000_insurance_policies          n=1000 f=40 c=2
+  Bank_Customer_Churn                  n=1000 f=10 c=2
+  heloc                                n=1000 f=23 c=2
+  jm1                                  n=1000 f=21 c=2
+  E-CommereShippingData                n=1000 f=10 c=2
+  online_shoppers_intention            n=1000 f=17 c=2
+  in_vehicle_coupon_recommendation     n=1000 f=24 c=2
+  HR_Analytics_Job_Change_of_Data_Scie n=1000 f=12 c=2
+  credit_card_clients_default          n=1000 f=23 c=2
+  Amazon_employee_access               n=1000 f=9 c=2
+  bank-marketing                       n=1000 f=13 c=2
+  kddcup09_appetency                   n=1000 f=40 c=2
+  Diabetes130US                        n=1000 f=40 c=2
+  APSFailure                           n=1000 f=40 c=2
+  SDSS17                               n=1000 f=11 c=3
+  customer_satisfaction_in_airline     n=1000 f=21 c=2
+  GiveMeSomeCredit                     n=1000 f=10 c=2
+
+============================================================
+(A) FINAL AUC @ 80k (mean ROC-AUC, 38 datasets)
+============================================================
+  [baselines] catboost=0.8142  xgboost=0.8029
+  c1_base_80k           0.8073
+  c2_loop_80k           0.8138
+  c3_deep_80k           0.8102
+  loopk4_80k_k4         0.8174
+  loopk6_80k_k6         0.8123
+  curric_80k_k6         0.8095
+
+============================================================
+(B) CROSS-K @ 80k
+============================================================
+  loop_k:            k1      k2      k3      k4      k5      k6
+  curric_80k       0.7596  0.7656  0.7575  0.7424  0.7601  0.8095
+  loopk4_80k       0.7346  0.7702  0.8078  0.8174    -       -   

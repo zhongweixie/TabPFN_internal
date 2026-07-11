@@ -1,0 +1,49 @@
+2026-06-19 14:45:49,076 INFO SCALE-UP global indexer | 14 datasets | seeds=[0, 1] | ctx=120 query=80 test=60
+2026-06-19 14:45:49,558 INFO loaded 14 datasets
+2026-06-19 15:01:59,095 INFO seed0 breast_cancer              full=0.989 indexer=0.973 knn=0.967 beats_full=False beats_knn=True
+2026-06-19 15:02:14,981 INFO seed0 phoneme                    full=0.789 indexer=0.526 knn=0.755 beats_full=False beats_knn=False
+2026-06-19 15:03:29,503 INFO seed0 electricity                full=0.810 indexer=0.840 knn=0.702 beats_full=True beats_knn=True
+2026-06-19 15:04:22,552 INFO seed0 qsar-biodeg                full=0.860 indexer=0.590 knn=0.806 beats_full=False beats_knn=False
+2026-06-19 15:04:38,004 INFO seed0 diabetes                   full=0.828 indexer=0.795 knn=0.786 beats_full=False beats_knn=True
+2026-06-19 15:04:53,826 INFO seed0 blood-transfusion-service-center full=0.636 indexer=0.564 knn=0.649 beats_full=False beats_knn=False
+2026-06-19 15:05:11,109 INFO seed0 banknote-authentication    full=1.000 indexer=0.956 knn=1.000 beats_full=False beats_knn=False
+2026-06-19 15:05:26,832 INFO seed0 kc1                        full=0.800 indexer=0.794 knn=0.752 beats_full=False beats_knn=True
+2026-06-19 15:05:42,262 INFO seed0 pc1                        full=0.860 indexer=0.766 knn=0.877 beats_full=False beats_knn=False
+2026-06-19 15:05:59,933 INFO seed0 wdbc                       full=1.000 indexer=0.807 knn=0.997 beats_full=False beats_knn=False
+2026-06-19 15:06:16,888 INFO seed0 ilpd                       full=0.850 indexer=0.672 knn=0.684 beats_full=False beats_knn=False
+2026-06-19 15:06:32,843 INFO seed0 climate-model-simulation-crashes full=0.790 indexer=0.627 knn=0.920 beats_full=False beats_knn=False
+2026-06-19 15:06:49,519 INFO seed0 steel-plates-fault         full=1.000 indexer=0.908 knn=0.921 beats_full=False beats_knn=False
+2026-06-19 15:07:08,585 INFO seed0 ozone-level-8hr            full=0.759 indexer=0.612 knn=0.500 beats_full=False beats_knn=True
+2026-06-19 15:07:08,585 INFO seed 0 done in 1279.0s
+2026-06-19 15:23:27,801 INFO seed1 breast_cancer              full=0.982 indexer=0.921 knn=0.891 beats_full=False beats_knn=True
+2026-06-19 15:23:41,581 INFO seed1 phoneme                    full=0.891 indexer=0.886 knn=0.841 beats_full=False beats_knn=True
+2026-06-19 15:24:00,347 INFO seed1 electricity                full=0.816 indexer=0.707 knn=0.757 beats_full=False beats_knn=False
+2026-06-19 15:24:21,038 INFO seed1 qsar-biodeg                full=0.911 indexer=0.889 knn=0.873 beats_full=False beats_knn=True
+2026-06-19 15:24:37,469 INFO seed1 diabetes                   full=0.814 indexer=0.795 knn=0.736 beats_full=False beats_knn=True
+2026-06-19 15:24:52,154 INFO seed1 blood-transfusion-service-center full=0.729 indexer=0.757 knn=0.776 beats_full=True beats_knn=False
+2026-06-19 15:25:12,119 INFO seed1 banknote-authentication    full=1.000 indexer=0.906 knn=1.000 beats_full=False beats_knn=False
+2026-06-19 15:25:26,579 INFO seed1 kc1                        full=0.812 indexer=0.615 knn=0.737 beats_full=False beats_knn=False
+2026-06-19 15:25:40,677 INFO seed1 pc1                        full=0.942 indexer=0.246 knn=0.906 beats_full=False beats_knn=False
+2026-06-19 15:25:59,253 INFO seed1 wdbc                       full=0.994 indexer=0.945 knn=0.997 beats_full=False beats_knn=False
+2026-06-19 15:26:17,303 INFO seed1 ilpd                       full=0.745 indexer=0.686 knn=0.709 beats_full=False beats_knn=False
+2026-06-19 15:26:32,489 INFO seed1 climate-model-simulation-crashes full=0.836 indexer=0.767 knn=0.750 beats_full=False beats_knn=True
+2026-06-19 15:26:50,747 INFO seed1 steel-plates-fault         full=1.000 indexer=0.957 knn=0.985 beats_full=False beats_knn=False
+2026-06-19 15:27:09,532 INFO seed1 ozone-level-8hr            full=0.983 indexer=0.831 knn=1.000 beats_full=False beats_knn=False
+2026-06-19 15:27:09,532 INFO seed 1 done in 1200.9s
+2026-06-19 15:27:09,532 INFO ==================================================================
+2026-06-19 15:27:09,533 INFO breast_cancer              indexer-full=-0.039 indexer-knn=+0.018 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO phoneme                    indexer-full=-0.133 indexer-knn=-0.091 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO electricity                indexer-full=-0.039 indexer-knn=+0.044 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO qsar-biodeg                indexer-full=-0.146 indexer-knn=-0.100 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO diabetes                   indexer-full=-0.026 indexer-knn=+0.034 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO blood-transfusion-service-center indexer-full=-0.022 indexer-knn=-0.052 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO banknote-authentication    indexer-full=-0.069 indexer-knn=-0.069 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO kc1                        indexer-full=-0.102 indexer-knn=-0.040 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO pc1                        indexer-full=-0.395 indexer-knn=-0.386 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO wdbc                       indexer-full=-0.121 indexer-knn=-0.121 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO ilpd                       indexer-full=-0.118 indexer-knn=-0.017 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO climate-model-simulation-crashes indexer-full=-0.116 indexer-knn=-0.138 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO steel-plates-fault         indexer-full=-0.068 indexer-knn=-0.020 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO ozone-level-8hr            indexer-full=-0.150 indexer-knn=-0.029 (mean over 2 seeds)
+2026-06-19 15:27:09,533 INFO WIN-RATE: indexer>full 2/28 (7%)  indexer>knn 10/28 (36%)
+2026-06-19 15:27:09,533 INFO ALL DONE

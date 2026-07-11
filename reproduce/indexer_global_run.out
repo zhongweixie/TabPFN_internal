@@ -1,0 +1,8 @@
+2026-06-19 14:28:01,451 INFO GLOBAL cross-dataset indexer | ctx=120 query=80 test=60 keep=25% | training-set LOO labels, held-out test
+2026-06-19 14:30:11,812 INFO built 4 dataset samples in 129.9s
+2026-06-19 14:32:34,882 INFO ================================================================
+2026-06-19 14:33:46,672 INFO breast_cancer  full=0.989 ceil(oracle)=1.000 indexer(heldout)=0.913 knn=0.967 | beats_full=False beats_knn=False
+2026-06-19 14:34:44,398 INFO phoneme        full=0.789 ceil(oracle)=0.997 indexer(heldout)=0.620 knn=0.755 | beats_full=False beats_knn=False
+2026-06-19 14:35:41,865 INFO electricity    full=0.810 ceil(oracle)=1.000 indexer(heldout)=0.821 knn=0.702 | beats_full=True beats_knn=True
+2026-06-19 14:36:48,546 INFO qsar-biodeg    full=0.860 ceil(oracle)=1.000 indexer(heldout)=0.808 knn=0.806 | beats_full=False beats_knn=True
+2026-06-19 14:36:48,546 INFO ALL DONE

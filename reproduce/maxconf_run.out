@@ -1,0 +1,54 @@
+TabArena clf datasets: 38 | KMAX=4
+  blood-transfusion-service-cent k2=0.725 maxConf=0.704 oracle=0.862
+  diabetes                       k2=0.839 maxConf=0.806 oracle=0.918
+  anneal                         k2=0.985 maxConf=0.774 oracle=0.999
+  credit-g                       k2=0.766 maxConf=0.759 oracle=0.922
+  maternal_health_risk           k2=0.857 maxConf=0.782 oracle=0.987
+  qsar-biodeg                    k2=0.931 maxConf=0.920 oracle=0.971
+  website_phishing               k2=0.942 maxConf=0.890 oracle=0.990
+  Fitness_Club                   k2=0.805 maxConf=0.794 oracle=0.919
+  MIC                            k2=0.817 maxConf=0.694 oracle=0.941
+  Is-this-a-good-customer        k2=0.723 maxConf=0.713 oracle=0.904
+  Marketing_Campaign             k2=0.922 maxConf=0.898 oracle=0.977
+  hazelnut-spread-contaminant-de k2=0.954 maxConf=0.961 oracle=0.989
+  seismic-bumps                  k2=0.793 maxConf=0.792 oracle=0.918
+  splice                         k2=0.960 maxConf=0.938 oracle=0.997
+  Bioresponse                    k2=0.802 maxConf=0.656 oracle=0.962
+  hiva_agnostic                  k2=0.505 maxConf=0.571 oracle=1.000
+  students_dropout_and_academic_ k2=0.845 maxConf=0.749 oracle=0.970
+  churn                          k2=0.925 maxConf=0.925 oracle=0.989
+  polish_companies_bankruptcy    k2=0.882 maxConf=0.878 oracle=0.976
+  taiwanese_bankruptcy_predictio k2=0.939 maxConf=0.933 oracle=0.971
+  NATICUSdroid                   k2=0.979 maxConf=0.973 oracle=0.993
+  coil2000_insurance_policies    k2=0.721 maxConf=0.715 oracle=0.910
+  Bank_Customer_Churn            k2=0.822 maxConf=0.785 oracle=0.954
+  heloc                          k2=0.779 maxConf=0.738 oracle=0.893
+  jm1                            k2=0.705 maxConf=0.671 oracle=0.913
+  E-CommereShippingData          k2=0.725 maxConf=0.691 oracle=0.965
+  online_shoppers_intention      k2=0.891 maxConf=0.875 oracle=0.969
+  in_vehicle_coupon_recommendati k2=0.722 maxConf=0.688 oracle=0.942
+  HR_Analytics_Job_Change_of_Dat k2=0.785 maxConf=0.805 oracle=0.935
+  credit_card_clients_default    k2=0.730 maxConf=0.689 oracle=0.916
+  Amazon_employee_access         k2=0.603 maxConf=0.543 oracle=0.997
+  bank-marketing                 k2=0.735 maxConf=0.674 oracle=0.944
+  kddcup09_appetency             k2=0.523 maxConf=0.498 oracle=0.888
+  Diabetes130US                  k2=0.554 maxConf=0.559 oracle=0.953
+  APSFailure                     k2=0.964 maxConf=0.962 oracle=0.988
+  SDSS17                         k2=0.988 maxConf=0.958 oracle=0.999
+  customer_satisfaction_in_airli k2=0.965 maxConf=0.969 oracle=0.991
+  GiveMeSomeCredit               k2=0.815 maxConf=0.766 oracle=0.956
+
+================================================================
+SUMMARY mean ROC-AUC over 38 datasets
+================================================================
+  fix_k1         0.7828  (n=38)
+  fix_k2         0.8138  (n=38)
+  fix_k3         0.7794  (n=38)
+  fix_k4         0.7537  (n=38)
+  maxConf        0.7814  (n=38)
+  mean_ens       0.8007  (n=38)
+  label_oracle   0.9544  (n=38)
+
+maxConf vs fix_k2 (the key comparison):
+  W=5 T=0 L=33 | win+tie=13% | mean Δ=-0.0323 (median -0.0233)
+  maxConf captures -23% of the (cheating) oracle headroom [maxConf +-0.0323 / oracle +0.1406]

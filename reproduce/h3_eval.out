@@ -1,0 +1,53 @@
+[H3-eval] Loading model from /data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/h3_halt_mlp_10k/step-10000.ckpt
+[H3-eval] loaded /data/zxiebk/workspace/train/PFN/TabPFN/reproduce/ckpt/h3_halt_mlp_10k/step-10000.ckpt: missing=0 extra=4
+[H3-eval] halt_head loaded (4 tensors)
+[H3-eval] 38 TabArena clf datasets, threshold=0.5
+  blood-transfusion-service-center k4=0.737 k6=0.701 | H3(k=1) auc=0.725  (1.9s)
+  diabetes                         k4=0.844 k6=0.838 | H3(k=1) auc=0.840  (0.5s)
+  anneal                           k4=0.993 k6=0.998 | H3(k=1) auc=0.932  (0.8s)
+  credit-g                         k4=0.759 k6=0.764 | H3(k=1) auc=0.768  (0.5s)
+  maternal_health_risk             k4=0.885 k6=0.895 | H3(k=1) auc=0.827  (0.5s)
+  qsar-biodeg                      k4=0.934 k6=0.938 | H3(k=1) auc=0.915  (0.9s)
+  website_phishing                 k4=0.972 k6=0.972 | H3(k=1) auc=0.910  (0.6s)
+  Fitness_Club                     k4=0.805 k6=0.800 | H3(k=1) auc=0.800  (0.5s)
+  MIC                              k4=0.814 k6=0.813 | H3(k=1) auc=0.823  (1.6s)
+  Is-this-a-good-customer          k4=0.704 k6=0.701 | H3(k=1) auc=0.689  (0.7s)
+  Marketing_Campaign               k4=0.919 k6=0.923 | H3(k=1) auc=0.901  (1.1s)
+  hazelnut-spread-contaminant-dete k4=0.965 k6=0.971 | H3(k=1) auc=0.901  (1.2s)
+  seismic-bumps                    k4=0.772 k6=0.777 | H3(k=1) auc=0.779  (0.8s)
+  splice                           k4=0.929 k6=0.960 | H3(k=1) auc=0.806  (1.5s)
+  Bioresponse                      k4=0.799 k6=0.807 | H3(k=1) auc=0.793  (1.9s)
+  hiva_agnostic                    k4=0.488 k6=0.472 | H3(k=1) auc=0.494  (2.5s)
+  students_dropout_and_academic_su k4=0.842 k6=0.840 | H3(k=1) auc=0.826  (1.5s)
+  churn                            k4=0.930 k6=0.924 | H3(k=1) auc=0.870  (0.9s)
+  polish_companies_bankruptcy      k4=0.885 k6=0.871 | H3(k=1) auc=0.852  (1.5s)
+  taiwanese_bankruptcy_prediction  k4=0.944 k6=0.940 | H3(k=1) auc=0.953  (1.5s)
+  NATICUSdroid                     k4=0.985 k6=0.984 | H3(k=1) auc=0.978  (1.5s)
+  coil2000_insurance_policies      k4=0.758 k6=0.738 | H3(k=1) auc=0.713  (1.5s)
+  Bank_Customer_Churn              k4=0.837 k6=0.835 | H3(k=1) auc=0.802  (0.6s)
+  heloc                            k4=0.774 k6=0.762 | H3(k=1) auc=0.782  (1.0s)
+  jm1                              k4=0.697 k6=0.694 | H3(k=1) auc=0.685  (1.0s)
+  E-CommereShippingData            k4=0.722 k6=0.733 | H3(k=1) auc=0.706  (0.6s)
+  online_shoppers_intention        k4=0.900 k6=0.901 | H3(k=1) auc=0.874  (0.9s)
+  in_vehicle_coupon_recommendation k4=0.702 k6=0.687 | H3(k=1) auc=0.659  (1.0s)
+  HR_Analytics_Job_Change_of_Data_ k4=0.786 k6=0.787 | H3(k=1) auc=0.754  (0.7s)
+  credit_card_clients_default      k4=0.718 k6=0.714 | H3(k=1) auc=0.711  (1.0s)
+  Amazon_employee_access           k4=0.668 k6=0.635 | H3(k=1) auc=0.554  (0.6s)
+  bank-marketing                   k4=0.740 k6=0.722 | H3(k=1) auc=0.749  (0.8s)
+  kddcup09_appetency               k4=0.499 k6=0.380 | H3(k=1) auc=0.402  (2.2s)
+  Diabetes130US                    k4=0.551 k6=0.521 | H3(k=1) auc=0.556  (1.6s)
+  APSFailure                       k4=0.967 k6=0.968 | H3(k=1) auc=0.958  (2.2s)
+  SDSS17                           k4=0.981 k6=0.987 | H3(k=1) auc=0.946  (0.8s)
+  customer_satisfaction_in_airline k4=0.968 k6=0.970 | H3(k=1) auc=0.935  (1.2s)
+  GiveMeSomeCredit                 k4=0.798 k6=0.802 | H3(k=1) auc=0.727  (0.8s)
+
+=================================================================
+SUMMARY
+=================================================================
+  fixed k=1: AUC=0.7867  (n=38)
+  fixed k=3: AUC=0.8110  (n=38)
+  fixed k=4: AUC=0.8150  (n=38)
+  fixed k=6: AUC=0.8086  (n=38)
+  H3 halt: AUC=0.7867  mean_k=1.00
+
+[H3-eval] Saved to /data/zxiebk/workspace/train/PFN/TabPFN/reproduce/h3_eval_results.json

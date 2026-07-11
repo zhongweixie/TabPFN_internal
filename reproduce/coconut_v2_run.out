@@ -1,0 +1,442 @@
+2026-06-18 09:18:10,051 INFO COCONUT-inspired looped fine-tune | curriculum=[1, 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4] over 12 epochs | seeds=[0, 1, 2] | ~6 chunks/epoch
+2026-06-18 09:18:10,142 INFO ========================================================================
+2026-06-18 09:18:10,142 INFO DATASET wine  shape=(178, 13)  classes=3
+2026-06-18 09:18:11,003 INFO --- [wine seed=0] BEFORE fine-tune ---
+2026-06-18 09:18:11,666 INFO   [pre] steps=1  acc=1.0000  nll=0.0076
+2026-06-18 09:18:11,808 INFO   [pre] steps=2  acc=0.9815  nll=0.1008 drift=[413.1, 113.7]
+2026-06-18 09:18:12,097 INFO   [pre] steps=4  acc=0.9815  nll=0.0528 drift=[413.1, 113.7, 106.5, 127.3]
+2026-06-18 09:18:12,389 INFO   [pre] steps=8  acc=0.9074  nll=0.2251 drift=[413.1, 113.7, 106.5, 127.3, 146.2, 159.3, 108.6, 82.6]
+2026-06-18 09:18:13,536 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:18:14,186 INFO   epoch  0  steps=1  batches=3  skipped=0  loss=0.0980
+2026-06-18 09:18:14,732 INFO   epoch  1  steps=1  batches=3  skipped=0  loss=0.0501
+2026-06-18 09:18:15,275 INFO   epoch  2  steps=1  batches=3  skipped=0  loss=0.0222
+2026-06-18 09:18:15,804 INFO   epoch  3  steps=1  batches=3  skipped=0  loss=0.0776
+2026-06-18 09:18:16,728 INFO   epoch  4  steps=2  batches=3  skipped=0  loss=0.2766
+2026-06-18 09:18:17,629 INFO   epoch  5  steps=2  batches=3  skipped=0  loss=0.7804
+2026-06-18 09:18:18,512 INFO   epoch  6  steps=2  batches=3  skipped=0  loss=1.0898
+2026-06-18 09:18:19,429 INFO   epoch  7  steps=2  batches=3  skipped=0  loss=0.2680
+2026-06-18 09:18:21,235 INFO   epoch  8  steps=4  batches=3  skipped=0  loss=0.3015
+2026-06-18 09:18:23,031 INFO   epoch  9  steps=4  batches=3  skipped=0  loss=0.3281
+2026-06-18 09:18:24,700 INFO   epoch 10  steps=4  batches=3  skipped=0  loss=0.1797
+2026-06-18 09:18:26,458 INFO   epoch 11  steps=4  batches=3  skipped=0  loss=0.2583
+2026-06-18 09:18:26,465 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:18:26,690 INFO --- [wine seed=0] AFTER fine-tune ---
+2026-06-18 09:18:26,740 INFO   [post] steps=1  acc=1.0000  nll=0.0017
+2026-06-18 09:18:26,822 INFO   [post] steps=2  acc=1.0000  nll=0.0048 drift=[413.5, 119.7]
+2026-06-18 09:18:27,025 INFO   [post] steps=4  acc=1.0000  nll=0.0022 drift=[413.5, 119.7, 29.3, 12.0]
+2026-06-18 09:18:27,350 INFO   [post] steps=8  acc=1.0000  nll=0.0024 drift=[413.5, 119.7, 29.3, 12.0, 7.4, 1.1, 0.5, 0.3]
+2026-06-18 09:18:27,560 INFO --- [wine seed=1] BEFORE fine-tune ---
+2026-06-18 09:18:27,608 INFO   [pre] steps=1  acc=1.0000  nll=0.0163
+2026-06-18 09:18:27,698 INFO   [pre] steps=2  acc=0.9259  nll=0.2085 drift=[412.9, 124.6]
+2026-06-18 09:18:27,865 INFO   [pre] steps=4  acc=0.7593  nll=0.5383 drift=[412.9, 124.6, 98.0, 147.7]
+2026-06-18 09:18:28,187 INFO   [pre] steps=8  acc=0.8704  nll=0.2590 drift=[412.9, 124.6, 98.0, 147.7, 136.0, 117.6, 123.9, 94.4]
+2026-06-18 09:18:28,403 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:18:28,893 INFO   epoch  0  steps=1  batches=3  skipped=0  loss=0.0354
+2026-06-18 09:18:29,436 INFO   epoch  1  steps=1  batches=3  skipped=0  loss=0.1415
+2026-06-18 09:18:29,990 INFO   epoch  2  steps=1  batches=3  skipped=0  loss=0.2753
+2026-06-18 09:18:30,533 INFO   epoch  3  steps=1  batches=3  skipped=0  loss=0.3877
+2026-06-18 09:18:31,429 INFO   epoch  4  steps=2  batches=3  skipped=0  loss=0.5299
+2026-06-18 09:18:32,187 INFO   epoch  5  steps=2  batches=3  skipped=0  loss=0.5715
+2026-06-18 09:18:33,082 INFO   epoch  6  steps=2  batches=3  skipped=0  loss=0.4352
+2026-06-18 09:18:33,995 INFO   epoch  7  steps=2  batches=3  skipped=0  loss=0.3443
+2026-06-18 09:18:35,638 INFO   epoch  8  steps=4  batches=3  skipped=0  loss=0.2511
+2026-06-18 09:18:37,250 INFO   epoch  9  steps=4  batches=3  skipped=0  loss=0.1897
+2026-06-18 09:18:38,794 INFO   epoch 10  steps=4  batches=3  skipped=0  loss=0.1340
+2026-06-18 09:18:40,461 INFO   epoch 11  steps=4  batches=3  skipped=0  loss=0.1450
+2026-06-18 09:18:40,473 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:18:40,697 INFO --- [wine seed=1] AFTER fine-tune ---
+2026-06-18 09:18:40,753 INFO   [post] steps=1  acc=0.9815  nll=0.0204
+2026-06-18 09:18:40,841 INFO   [post] steps=2  acc=1.0000  nll=0.0094 drift=[413.2, 104.4]
+2026-06-18 09:18:40,988 INFO   [post] steps=4  acc=1.0000  nll=0.0055 drift=[413.2, 104.4, 7.1, 0.8]
+2026-06-18 09:18:41,271 INFO   [post] steps=8  acc=1.0000  nll=0.0055 drift=[413.2, 104.4, 7.1, 0.8, 0.4, 0.3, 0.3, 0.2]
+2026-06-18 09:18:41,484 INFO --- [wine seed=2] BEFORE fine-tune ---
+2026-06-18 09:18:41,532 INFO   [pre] steps=1  acc=1.0000  nll=0.0230
+2026-06-18 09:18:41,615 INFO   [pre] steps=2  acc=0.9444  nll=0.2568 drift=[413.0, 176.5]
+2026-06-18 09:18:41,774 INFO   [pre] steps=4  acc=1.0000  nll=0.2038 drift=[413.0, 176.5, 169.3, 181.9]
+2026-06-18 09:18:42,046 INFO   [pre] steps=8  acc=0.9444  nll=0.1826 drift=[413.0, 176.5, 169.3, 181.9, 115.1, 167.2, 133.2, 121.0]
+2026-06-18 09:18:42,270 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:18:42,701 INFO   epoch  0  steps=1  batches=3  skipped=0  loss=0.2064
+2026-06-18 09:18:43,218 INFO   epoch  1  steps=1  batches=3  skipped=0  loss=0.0913
+2026-06-18 09:18:43,740 INFO   epoch  2  steps=1  batches=3  skipped=0  loss=0.0395
+2026-06-18 09:18:44,281 INFO   epoch  3  steps=1  batches=3  skipped=0  loss=0.1533
+2026-06-18 09:18:45,154 INFO   epoch  4  steps=2  batches=3  skipped=0  loss=0.5006
+2026-06-18 09:18:46,108 INFO   epoch  5  steps=2  batches=3  skipped=0  loss=0.4543
+2026-06-18 09:18:46,997 INFO   epoch  6  steps=2  batches=3  skipped=0  loss=0.3879
+2026-06-18 09:18:47,911 INFO   epoch  7  steps=2  batches=3  skipped=0  loss=0.2380
+2026-06-18 09:18:49,490 INFO   epoch  8  steps=4  batches=3  skipped=0  loss=0.2297
+2026-06-18 09:18:51,079 INFO   epoch  9  steps=4  batches=3  skipped=0  loss=0.2582
+2026-06-18 09:18:52,677 INFO   epoch 10  steps=4  batches=3  skipped=0  loss=0.2439
+2026-06-18 09:18:54,359 INFO   epoch 11  steps=4  batches=3  skipped=0  loss=0.1599
+2026-06-18 09:18:54,366 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:18:54,568 INFO --- [wine seed=2] AFTER fine-tune ---
+2026-06-18 09:18:54,646 INFO   [post] steps=1  acc=1.0000  nll=0.0201
+2026-06-18 09:18:54,741 INFO   [post] steps=2  acc=1.0000  nll=0.0224 drift=[413.3, 94.8]
+2026-06-18 09:18:54,921 INFO   [post] steps=4  acc=1.0000  nll=0.0160 drift=[413.3, 94.8, 8.0, 1.2]
+2026-06-18 09:18:55,250 INFO   [post] steps=8  acc=1.0000  nll=0.0160 drift=[413.3, 94.8, 8.0, 1.2, 0.5, 0.4, 0.4, 0.3]
+2026-06-18 09:18:55,271 INFO ##### SUMMARY wine (n_seeds=3) #####
+2026-06-18 09:18:55,272 INFO   pre  steps=1  acc=1.0000±0.0000  nll=0.0156±0.0063
+2026-06-18 09:18:55,272 INFO   pre  steps=2  acc=0.9506±0.0231  nll=0.1887±0.0652
+2026-06-18 09:18:55,272 INFO   pre  steps=4  acc=0.9136±0.1094  nll=0.2649±0.2029
+2026-06-18 09:18:55,272 INFO   pre  steps=8  acc=0.9074±0.0302  nll=0.2222±0.0313
+2026-06-18 09:18:55,273 INFO   post steps=1  acc=0.9938±0.0087  nll=0.0141±0.0088
+2026-06-18 09:18:55,273 INFO   post steps=2  acc=1.0000±0.0000  nll=0.0122±0.0075
+2026-06-18 09:18:55,273 INFO   post steps=4  acc=1.0000±0.0000  nll=0.0079±0.0059
+2026-06-18 09:18:55,273 INFO   post steps=8  acc=1.0000±0.0000  nll=0.0080±0.0058
+2026-06-18 09:18:55,273 INFO   Δacc(post-pre) steps=1: -0.0062±0.0087  (base pre@1=1.0000)
+2026-06-18 09:18:55,273 INFO   Δacc(post-pre) steps=2: +0.0494±0.0231  (base pre@1=1.0000)
+2026-06-18 09:18:55,273 INFO   Δacc(post-pre) steps=4: +0.0864±0.1094  (base pre@1=1.0000)
+2026-06-18 09:18:55,273 INFO   Δacc(post-pre) steps=8: +0.0926±0.0302  (base pre@1=1.0000)
+2026-06-18 09:18:55,273 INFO wine done in 45.1s
+2026-06-18 09:18:55,273 INFO ========================================================================
+2026-06-18 09:18:55,274 INFO DATASET breast_cancer  shape=(569, 30)  classes=2
+2026-06-18 09:18:55,705 INFO --- [breast_cancer seed=0] BEFORE fine-tune ---
+2026-06-18 09:18:55,774 INFO   [pre] steps=1  acc=0.9708  nll=0.0868
+2026-06-18 09:18:55,874 INFO   [pre] steps=2  acc=0.9298  nll=0.1459 drift=[585.1, 251.4]
+2026-06-18 09:18:56,043 INFO   [pre] steps=4  acc=0.9240  nll=0.1905 drift=[585.1, 251.4, 295.6, 265.4]
+2026-06-18 09:18:56,367 INFO   [pre] steps=8  acc=0.9532  nll=0.1478 drift=[585.1, 251.4, 295.6, 265.4, 256.0, 267.2, 141.6, 150.6]
+2026-06-18 09:18:56,659 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:18:57,668 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.1315
+2026-06-18 09:18:58,742 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.1060
+2026-06-18 09:18:59,834 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.0939
+2026-06-18 09:19:00,943 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.1006
+2026-06-18 09:19:02,778 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.1426
+2026-06-18 09:19:04,614 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.1177
+2026-06-18 09:19:06,488 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.1615
+2026-06-18 09:19:08,365 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.1506
+2026-06-18 09:19:12,015 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.0984
+2026-06-18 09:19:15,436 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.1797
+2026-06-18 09:19:18,600 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.0762
+2026-06-18 09:19:21,831 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.1706
+2026-06-18 09:19:21,838 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:19:22,046 INFO --- [breast_cancer seed=0] AFTER fine-tune ---
+2026-06-18 09:19:22,114 INFO   [post] steps=1  acc=0.9532  nll=0.1043
+2026-06-18 09:19:22,196 INFO   [post] steps=2  acc=0.9415  nll=0.2726 drift=[584.9, 238.0]
+2026-06-18 09:19:22,340 INFO   [post] steps=4  acc=0.9415  nll=0.2578 drift=[584.9, 238.0, 16.2, 2.5]
+2026-06-18 09:19:22,614 INFO   [post] steps=8  acc=0.9415  nll=0.2576 drift=[584.9, 238.0, 16.2, 2.5, 1.0, 0.7, 0.6, 0.6]
+2026-06-18 09:19:22,868 INFO --- [breast_cancer seed=1] BEFORE fine-tune ---
+2026-06-18 09:19:22,937 INFO   [pre] steps=1  acc=0.9708  nll=0.0752
+2026-06-18 09:19:23,024 INFO   [pre] steps=2  acc=0.9708  nll=0.0688 drift=[585.3, 233.0]
+2026-06-18 09:19:23,171 INFO   [pre] steps=4  acc=0.9591  nll=0.0981 drift=[585.3, 233.0, 224.6, 337.2]
+2026-06-18 09:19:23,451 INFO   [pre] steps=8  acc=0.9708  nll=0.0904 drift=[585.3, 233.0, 224.6, 337.2, 210.2, 190.4, 266.1, 238.4]
+2026-06-18 09:19:23,702 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:19:24,614 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.1874
+2026-06-18 09:19:25,686 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.1240
+2026-06-18 09:19:26,742 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.1362
+2026-06-18 09:19:27,750 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.0982
+2026-06-18 09:19:29,568 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.1359
+2026-06-18 09:19:31,323 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.1128
+2026-06-18 09:19:33,227 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.1730
+2026-06-18 09:19:34,955 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.1040
+2026-06-18 09:19:38,469 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.2674
+2026-06-18 09:19:42,036 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.2285
+2026-06-18 09:19:45,624 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.1618
+2026-06-18 09:19:49,000 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.1884
+2026-06-18 09:19:49,008 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:19:49,200 INFO --- [breast_cancer seed=1] AFTER fine-tune ---
+2026-06-18 09:19:49,272 INFO   [post] steps=1  acc=0.9708  nll=0.0816
+2026-06-18 09:19:49,374 INFO   [post] steps=2  acc=0.9708  nll=0.0884 drift=[584.3, 185.5]
+2026-06-18 09:19:49,549 INFO   [post] steps=4  acc=0.9708  nll=0.1009 drift=[584.3, 185.5, 32.6, 7.2]
+2026-06-18 09:19:49,849 INFO   [post] steps=8  acc=0.9708  nll=0.1008 drift=[584.3, 185.5, 32.6, 7.2, 2.3, 1.1, 1.0, 0.8]
+2026-06-18 09:19:50,084 INFO --- [breast_cancer seed=2] BEFORE fine-tune ---
+2026-06-18 09:19:50,138 INFO   [pre] steps=1  acc=0.9708  nll=0.1368
+2026-06-18 09:19:50,225 INFO   [pre] steps=2  acc=0.9591  nll=0.1271 drift=[584.8, 209.7]
+2026-06-18 09:19:50,367 INFO   [pre] steps=4  acc=0.9591  nll=0.1453 drift=[584.8, 209.7, 130.1, 121.4]
+2026-06-18 09:19:50,639 INFO   [pre] steps=8  acc=0.9649  nll=0.1313 drift=[584.8, 209.7, 130.1, 121.4, 158.0, 205.5, 213.3, 155.6]
+2026-06-18 09:19:50,915 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:19:51,969 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.1573
+2026-06-18 09:19:52,981 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.1712
+2026-06-18 09:19:54,017 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.1463
+2026-06-18 09:19:55,088 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.0634
+2026-06-18 09:19:56,957 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.2062
+2026-06-18 09:19:58,803 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.2070
+2026-06-18 09:20:00,593 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.2848
+2026-06-18 09:20:02,381 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.1655
+2026-06-18 09:20:05,703 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.1805
+2026-06-18 09:20:08,976 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.1091
+2026-06-18 09:20:12,468 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.1332
+2026-06-18 09:20:15,797 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.1123
+2026-06-18 09:20:15,804 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:20:15,998 INFO --- [breast_cancer seed=2] AFTER fine-tune ---
+2026-06-18 09:20:16,063 INFO   [post] steps=1  acc=0.9708  nll=0.1753
+2026-06-18 09:20:16,160 INFO   [post] steps=2  acc=0.9591  nll=0.1505 drift=[584.1, 144.2]
+2026-06-18 09:20:16,328 INFO   [post] steps=4  acc=0.9591  nll=0.1673 drift=[584.1, 144.2, 29.0, 9.7]
+2026-06-18 09:20:16,677 INFO   [post] steps=8  acc=0.9591  nll=0.1683 drift=[584.1, 144.2, 29.0, 9.7, 2.9, 0.9, 0.5, 0.5]
+2026-06-18 09:20:16,695 INFO ##### SUMMARY breast_cancer (n_seeds=3) #####
+2026-06-18 09:20:16,696 INFO   pre  steps=1  acc=0.9708±0.0000  nll=0.0996±0.0267
+2026-06-18 09:20:16,696 INFO   pre  steps=2  acc=0.9532±0.0172  nll=0.1139±0.0328
+2026-06-18 09:20:16,696 INFO   pre  steps=4  acc=0.9474±0.0165  nll=0.1446±0.0377
+2026-06-18 09:20:16,696 INFO   pre  steps=8  acc=0.9630±0.0073  nll=0.1232±0.0241
+2026-06-18 09:20:16,697 INFO   post steps=1  acc=0.9649±0.0083  nll=0.1204±0.0399
+2026-06-18 09:20:16,697 INFO   post steps=2  acc=0.9571±0.0120  nll=0.1705±0.0765
+2026-06-18 09:20:16,697 INFO   post steps=4  acc=0.9571±0.0120  nll=0.1753±0.0643
+2026-06-18 09:20:16,697 INFO   post steps=8  acc=0.9571±0.0120  nll=0.1755±0.0642
+2026-06-18 09:20:16,697 INFO   Δacc(post-pre) steps=1: -0.0058±0.0083  (base pre@1=0.9708)
+2026-06-18 09:20:16,697 INFO   Δacc(post-pre) steps=2: +0.0039±0.0055  (base pre@1=0.9708)
+2026-06-18 09:20:16,698 INFO   Δacc(post-pre) steps=4: +0.0097±0.0073  (base pre@1=0.9708)
+2026-06-18 09:20:16,698 INFO   Δacc(post-pre) steps=8: -0.0058±0.0048  (base pre@1=0.9708)
+2026-06-18 09:20:16,698 INFO breast_cancer done in 81.4s
+2026-06-18 09:20:16,698 INFO ========================================================================
+2026-06-18 09:20:16,698 INFO DATASET digits  shape=(1797, 64)  classes=10
+2026-06-18 09:20:16,987 INFO --- [digits seed=0] BEFORE fine-tune ---
+2026-06-18 09:20:17,099 INFO   [pre] steps=1  acc=0.9833  nll=0.0447
+2026-06-18 09:20:17,258 INFO   [pre] steps=2  acc=0.9704  nll=0.0945 drift=[812.2, 361.3]
+2026-06-18 09:20:17,550 INFO   [pre] steps=4  acc=0.9833  nll=0.0625 drift=[812.2, 361.3, 189.1, 196.6]
+2026-06-18 09:20:18,110 INFO   [pre] steps=8  acc=0.9833  nll=0.0666 drift=[812.2, 361.3, 189.1, 196.6, 173.5, 168.3, 186.9, 210.6]
+2026-06-18 09:20:18,467 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:20:19,438 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.2455
+2026-06-18 09:20:20,544 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.3113
+2026-06-18 09:20:21,539 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.2438
+2026-06-18 09:20:22,586 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.2960
+2026-06-18 09:20:24,488 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.5358
+2026-06-18 09:20:26,225 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.4950
+2026-06-18 09:20:27,945 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.4057
+2026-06-18 09:20:29,824 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.5539
+2026-06-18 09:20:33,311 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.2633
+2026-06-18 09:20:36,727 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.2372
+2026-06-18 09:20:40,165 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.3147
+2026-06-18 09:20:43,446 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.1897
+2026-06-18 09:20:43,451 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:20:43,688 INFO --- [digits seed=0] AFTER fine-tune ---
+2026-06-18 09:20:43,798 INFO   [post] steps=1  acc=0.9852  nll=0.0405
+2026-06-18 09:20:43,974 INFO   [post] steps=2  acc=0.9852  nll=0.0408 drift=[813.0, 241.0]
+2026-06-18 09:20:44,281 INFO   [post] steps=4  acc=0.9815  nll=0.0510 drift=[813.0, 241.0, 135.3, 39.8]
+2026-06-18 09:20:44,841 INFO   [post] steps=8  acc=0.9833  nll=0.0524 drift=[813.0, 241.0, 135.3, 39.8, 14.8, 7.8, 3.8, 2.1]
+2026-06-18 09:20:45,127 INFO --- [digits seed=1] BEFORE fine-tune ---
+2026-06-18 09:20:45,237 INFO   [pre] steps=1  acc=0.9870  nll=0.0477
+2026-06-18 09:20:45,406 INFO   [pre] steps=2  acc=0.9778  nll=0.0824 drift=[812.5, 287.2]
+2026-06-18 09:20:45,701 INFO   [pre] steps=4  acc=0.9796  nll=0.0897 drift=[812.5, 287.2, 206.6, 185.2]
+2026-06-18 09:20:46,271 INFO   [pre] steps=8  acc=0.9815  nll=0.0802 drift=[812.5, 287.2, 206.6, 185.2, 189.2, 152.9, 159.5, 134.9]
+2026-06-18 09:20:46,824 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:20:47,871 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.2209
+2026-06-18 09:20:49,110 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.2557
+2026-06-18 09:20:50,355 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.2598
+2026-06-18 09:20:51,551 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.3739
+2026-06-18 09:20:53,512 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.6149
+2026-06-18 09:20:55,458 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.6263
+2026-06-18 09:20:57,420 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.3174
+2026-06-18 09:20:59,335 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.4080
+2026-06-18 09:21:02,743 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.3933
+2026-06-18 09:21:06,190 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.3161
+2026-06-18 09:21:09,649 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.2835
+2026-06-18 09:21:12,890 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.2433
+2026-06-18 09:21:12,896 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:21:13,130 INFO --- [digits seed=1] AFTER fine-tune ---
+2026-06-18 09:21:13,240 INFO   [post] steps=1  acc=0.9833  nll=0.0524
+2026-06-18 09:21:13,406 INFO   [post] steps=2  acc=0.9759  nll=0.0602 drift=[810.9, 193.0]
+2026-06-18 09:21:13,705 INFO   [post] steps=4  acc=0.9796  nll=0.0619 drift=[810.9, 193.0, 67.2, 16.4]
+2026-06-18 09:21:14,268 INFO   [post] steps=8  acc=0.9796  nll=0.0619 drift=[810.9, 193.0, 67.2, 16.4, 3.2, 1.9, 1.4, 1.4]
+2026-06-18 09:21:14,504 INFO --- [digits seed=2] BEFORE fine-tune ---
+2026-06-18 09:21:14,607 INFO   [pre] steps=1  acc=0.9852  nll=0.0435
+2026-06-18 09:21:14,765 INFO   [pre] steps=2  acc=0.9593  nll=0.1445 drift=[812.6, 271.6]
+2026-06-18 09:21:15,055 INFO   [pre] steps=4  acc=0.9611  nll=0.1200 drift=[812.6, 271.6, 178.1, 179.9]
+2026-06-18 09:21:15,612 INFO   [pre] steps=8  acc=0.9444  nll=0.1808 drift=[812.6, 271.6, 178.1, 179.9, 266.0, 285.1, 261.4, 256.1]
+2026-06-18 09:21:15,957 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:21:16,741 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.2065
+2026-06-18 09:21:17,674 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.2485
+2026-06-18 09:21:18,587 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.3285
+2026-06-18 09:21:19,530 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.3183
+2026-06-18 09:21:21,205 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.5772
+2026-06-18 09:21:23,137 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.5468
+2026-06-18 09:21:25,131 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.4320
+2026-06-18 09:21:27,379 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.3077
+2026-06-18 09:21:31,028 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.2915
+2026-06-18 09:21:34,196 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.3817
+2026-06-18 09:21:37,129 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.3457
+2026-06-18 09:21:40,076 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.2641
+2026-06-18 09:21:40,081 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:21:40,318 INFO --- [digits seed=2] AFTER fine-tune ---
+2026-06-18 09:21:40,427 INFO   [post] steps=1  acc=0.9889  nll=0.0530
+2026-06-18 09:21:40,585 INFO   [post] steps=2  acc=0.9852  nll=0.0603 drift=[811.4, 182.1]
+2026-06-18 09:21:40,884 INFO   [post] steps=4  acc=0.9852  nll=0.0607 drift=[811.4, 182.1, 35.6, 5.9]
+2026-06-18 09:21:41,445 INFO   [post] steps=8  acc=0.9852  nll=0.0605 drift=[811.4, 182.1, 35.6, 5.9, 1.9, 1.3, 1.1, 1.1]
+2026-06-18 09:21:41,461 INFO ##### SUMMARY digits (n_seeds=3) #####
+2026-06-18 09:21:41,461 INFO   pre  steps=1  acc=0.9852±0.0015  nll=0.0453±0.0018
+2026-06-18 09:21:41,461 INFO   pre  steps=2  acc=0.9691±0.0076  nll=0.1071±0.0269
+2026-06-18 09:21:41,462 INFO   pre  steps=4  acc=0.9747±0.0097  nll=0.0908±0.0235
+2026-06-18 09:21:41,462 INFO   pre  steps=8  acc=0.9698±0.0179  nll=0.1092±0.0509
+2026-06-18 09:21:41,462 INFO   post steps=1  acc=0.9858±0.0023  nll=0.0486±0.0058
+2026-06-18 09:21:41,462 INFO   post steps=2  acc=0.9821±0.0044  nll=0.0537±0.0092
+2026-06-18 09:21:41,462 INFO   post steps=4  acc=0.9821±0.0023  nll=0.0579±0.0049
+2026-06-18 09:21:41,462 INFO   post steps=8  acc=0.9827±0.0023  nll=0.0583±0.0042
+2026-06-18 09:21:41,462 INFO   Δacc(post-pre) steps=1: +0.0006±0.0031  (base pre@1=0.9852)
+2026-06-18 09:21:41,463 INFO   Δacc(post-pre) steps=2: +0.0130±0.0114  (base pre@1=0.9852)
+2026-06-18 09:21:41,463 INFO   Δacc(post-pre) steps=4: +0.0074±0.0118  (base pre@1=0.9852)
+2026-06-18 09:21:41,463 INFO   Δacc(post-pre) steps=8: +0.0130±0.0197  (base pre@1=0.9852)
+2026-06-18 09:21:41,463 INFO digits done in 84.8s
+2026-06-18 09:21:41,463 INFO ========================================================================
+2026-06-18 09:21:41,463 INFO DATASET phoneme  shape=(5404, 5)  classes=2
+2026-06-18 09:21:41,671 INFO --- [phoneme seed=0] BEFORE fine-tune ---
+2026-06-18 09:21:41,745 INFO   [pre] steps=1  acc=0.8995  nll=0.2427
+2026-06-18 09:21:41,864 INFO   [pre] steps=2  acc=0.8699  nll=0.4257 drift=[312.3, 153.4]
+2026-06-18 09:21:42,087 INFO   [pre] steps=4  acc=0.8866  nll=0.2941 drift=[312.3, 153.4, 143.3, 178.2]
+2026-06-18 09:21:42,528 INFO   [pre] steps=8  acc=0.8576  nll=0.4401 drift=[312.3, 153.4, 143.3, 178.2, 128.1, 161.9, 218.8, 160.8]
+2026-06-18 09:21:42,776 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:21:43,710 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.3469
+2026-06-18 09:21:44,739 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.3428
+2026-06-18 09:21:45,701 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.3414
+2026-06-18 09:21:46,637 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.3516
+2026-06-18 09:21:48,454 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.4211
+2026-06-18 09:21:50,341 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.3735
+2026-06-18 09:21:52,163 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.3840
+2026-06-18 09:21:53,962 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.3780
+2026-06-18 09:21:57,294 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.4031
+2026-06-18 09:22:00,761 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.3964
+2026-06-18 09:22:04,123 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.3783
+2026-06-18 09:22:07,489 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.3628
+2026-06-18 09:22:07,496 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:22:07,766 INFO --- [phoneme seed=0] AFTER fine-tune ---
+2026-06-18 09:22:07,838 INFO   [post] steps=1  acc=0.8878  nll=0.2578
+2026-06-18 09:22:07,969 INFO   [post] steps=2  acc=0.8970  nll=0.2437 drift=[313.1, 61.4]
+2026-06-18 09:22:08,202 INFO   [post] steps=4  acc=0.8909  nll=0.2463 drift=[313.1, 61.4, 10.5, 3.3]
+2026-06-18 09:22:08,630 INFO   [post] steps=8  acc=0.8903  nll=0.2466 drift=[313.1, 61.4, 10.5, 3.3, 1.7, 0.6, 0.4, 0.5]
+2026-06-18 09:22:08,860 INFO --- [phoneme seed=1] BEFORE fine-tune ---
+2026-06-18 09:22:08,933 INFO   [pre] steps=1  acc=0.9088  nll=0.2137
+2026-06-18 09:22:09,067 INFO   [pre] steps=2  acc=0.8711  nll=0.3560 drift=[312.3, 141.0]
+2026-06-18 09:22:09,292 INFO   [pre] steps=4  acc=0.8829  nll=0.3046 drift=[312.3, 141.0, 129.3, 123.7]
+2026-06-18 09:22:09,719 INFO   [pre] steps=8  acc=0.8940  nll=0.2664 drift=[312.3, 141.0, 129.3, 123.7, 108.2, 116.5, 74.6, 68.3]
+2026-06-18 09:22:10,010 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:22:10,982 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.3459
+2026-06-18 09:22:12,019 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.3518
+2026-06-18 09:22:13,053 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.3520
+2026-06-18 09:22:14,194 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.3369
+2026-06-18 09:22:16,247 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.4217
+2026-06-18 09:22:18,145 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.4233
+2026-06-18 09:22:19,970 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.4521
+2026-06-18 09:22:21,879 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.4539
+2026-06-18 09:22:25,151 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.4013
+2026-06-18 09:22:28,632 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.3986
+2026-06-18 09:22:32,104 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.3913
+2026-06-18 09:22:35,483 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.3942
+2026-06-18 09:22:35,489 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:22:35,725 INFO --- [phoneme seed=1] AFTER fine-tune ---
+2026-06-18 09:22:35,798 INFO   [post] steps=1  acc=0.9088  nll=0.2277
+2026-06-18 09:22:35,920 INFO   [post] steps=2  acc=0.9026  nll=0.2412 drift=[312.6, 66.1]
+2026-06-18 09:22:36,147 INFO   [post] steps=4  acc=0.9020  nll=0.2425 drift=[312.6, 66.1, 69.2, 77.2]
+2026-06-18 09:22:36,574 INFO   [post] steps=8  acc=0.8995  nll=0.2451 drift=[312.6, 66.1, 69.2, 77.2, 77.1, 77.2, 77.4, 77.6]
+2026-06-18 09:22:36,780 INFO --- [phoneme seed=2] BEFORE fine-tune ---
+2026-06-18 09:22:36,859 INFO   [pre] steps=1  acc=0.9100  nll=0.2038
+2026-06-18 09:22:36,983 INFO   [pre] steps=2  acc=0.9038  nll=0.3198 drift=[312.2, 177.2]
+2026-06-18 09:22:37,207 INFO   [pre] steps=4  acc=0.9063  nll=0.2386 drift=[312.2, 177.2, 169.6, 111.4]
+2026-06-18 09:22:37,633 INFO   [pre] steps=8  acc=0.8884  nll=0.2778 drift=[312.2, 177.2, 169.6, 111.4, 108.1, 106.4, 124.3, 154.2]
+2026-06-18 09:22:37,908 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:22:38,764 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.3680
+2026-06-18 09:22:39,650 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.3538
+2026-06-18 09:22:40,579 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.3837
+2026-06-18 09:22:41,675 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.3757
+2026-06-18 09:22:43,506 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.4019
+2026-06-18 09:22:45,383 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.3914
+2026-06-18 09:22:47,185 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.3906
+2026-06-18 09:22:48,864 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.3844
+2026-06-18 09:22:52,305 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.3707
+2026-06-18 09:22:55,752 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.3693
+2026-06-18 09:22:59,180 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.3903
+2026-06-18 09:23:02,561 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.3701
+2026-06-18 09:23:02,566 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:23:02,814 INFO --- [phoneme seed=2] AFTER fine-tune ---
+2026-06-18 09:23:02,888 INFO   [post] steps=1  acc=0.9044  nll=0.2214
+2026-06-18 09:23:03,009 INFO   [post] steps=2  acc=0.9032  nll=0.2288 drift=[313.0, 96.5]
+2026-06-18 09:23:03,236 INFO   [post] steps=4  acc=0.9014  nll=0.2315 drift=[313.0, 96.5, 11.9, 3.6]
+2026-06-18 09:23:03,672 INFO   [post] steps=8  acc=0.9001  nll=0.2314 drift=[313.0, 96.5, 11.9, 3.6, 1.3, 0.7, 1.0, 1.5]
+2026-06-18 09:23:03,699 INFO ##### SUMMARY phoneme (n_seeds=3) #####
+2026-06-18 09:23:03,700 INFO   pre  steps=1  acc=0.9061±0.0047  nll=0.2200±0.0165
+2026-06-18 09:23:03,700 INFO   pre  steps=2  acc=0.8816±0.0157  nll=0.3672±0.0440
+2026-06-18 09:23:03,700 INFO   pre  steps=4  acc=0.8919±0.0103  nll=0.2791±0.0290
+2026-06-18 09:23:03,701 INFO   pre  steps=8  acc=0.8800±0.0160  nll=0.3281±0.0793
+2026-06-18 09:23:03,701 INFO   post steps=1  acc=0.9003±0.0090  nll=0.2356±0.0159
+2026-06-18 09:23:03,701 INFO   post steps=2  acc=0.9009±0.0028  nll=0.2379±0.0065
+2026-06-18 09:23:03,701 INFO   post steps=4  acc=0.8981±0.0051  nll=0.2401±0.0062
+2026-06-18 09:23:03,701 INFO   post steps=8  acc=0.8966±0.0045  nll=0.2410±0.0068
+2026-06-18 09:23:03,701 INFO   Δacc(post-pre) steps=1: -0.0058±0.0048  (base pre@1=0.9061)
+2026-06-18 09:23:03,701 INFO   Δacc(post-pre) steps=2: +0.0193±0.0142  (base pre@1=0.9061)
+2026-06-18 09:23:03,701 INFO   Δacc(post-pre) steps=4: +0.0062±0.0099  (base pre@1=0.9061)
+2026-06-18 09:23:03,701 INFO   Δacc(post-pre) steps=8: +0.0166±0.0116  (base pre@1=0.9061)
+2026-06-18 09:23:03,701 INFO phoneme done in 82.2s
+2026-06-18 09:23:03,702 INFO ========================================================================
+2026-06-18 09:23:03,702 INFO DATASET qsar-biodeg  shape=(1055, 41)  classes=2
+2026-06-18 09:23:03,917 INFO --- [qsar-biodeg seed=0] BEFORE fine-tune ---
+2026-06-18 09:23:04,008 INFO   [pre] steps=1  acc=0.8612  nll=0.3064
+2026-06-18 09:23:04,106 INFO   [pre] steps=2  acc=0.8549  nll=0.5367 drift=[681.3, 274.5]
+2026-06-18 09:23:04,281 INFO   [pre] steps=4  acc=0.8612  nll=0.4894 drift=[681.3, 274.5, 186.9, 175.4]
+2026-06-18 09:23:04,618 INFO   [pre] steps=8  acc=0.8454  nll=0.4425 drift=[681.3, 274.5, 186.9, 175.4, 148.3, 152.3, 335.4, 274.4]
+2026-06-18 09:23:05,012 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:23:05,946 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.4274
+2026-06-18 09:23:07,115 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.4650
+2026-06-18 09:23:08,280 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.4544
+2026-06-18 09:23:09,342 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.3982
+2026-06-18 09:23:11,201 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.4099
+2026-06-18 09:23:13,073 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.3879
+2026-06-18 09:23:15,293 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.4132
+2026-06-18 09:23:17,238 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.4266
+2026-06-18 09:23:20,640 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.3731
+2026-06-18 09:23:23,909 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.4021
+2026-06-18 09:23:27,398 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.3571
+2026-06-18 09:23:30,862 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.4156
+2026-06-18 09:23:30,869 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:23:31,095 INFO --- [qsar-biodeg seed=0] AFTER fine-tune ---
+2026-06-18 09:23:31,169 INFO   [post] steps=1  acc=0.8580  nll=0.3085
+2026-06-18 09:23:31,273 INFO   [post] steps=2  acc=0.8612  nll=0.3966 drift=[681.9, 261.0]
+2026-06-18 09:23:31,428 INFO   [post] steps=4  acc=0.8612  nll=0.3990 drift=[681.9, 261.0, 34.0, 8.8]
+2026-06-18 09:23:31,792 INFO   [post] steps=8  acc=0.8644  nll=0.3986 drift=[681.9, 261.0, 34.0, 8.8, 3.3, 1.7, 1.4, 1.2]
+2026-06-18 09:23:32,031 INFO --- [qsar-biodeg seed=1] BEFORE fine-tune ---
+2026-06-18 09:23:32,111 INFO   [pre] steps=1  acc=0.8644  nll=0.2970
+2026-06-18 09:23:32,231 INFO   [pre] steps=2  acc=0.8644  nll=0.3537 drift=[681.3, 248.1]
+2026-06-18 09:23:32,413 INFO   [pre] steps=4  acc=0.8801  nll=0.3608 drift=[681.3, 248.1, 101.4, 69.3]
+2026-06-18 09:23:32,714 INFO   [pre] steps=8  acc=0.8833  nll=0.3770 drift=[681.3, 248.1, 101.4, 69.3, 67.2, 48.2, 41.8, 40.0]
+2026-06-18 09:23:33,044 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:23:33,927 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.4087
+2026-06-18 09:23:34,921 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.4153
+2026-06-18 09:23:35,880 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.4294
+2026-06-18 09:23:36,858 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.4386
+2026-06-18 09:23:38,508 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.4142
+2026-06-18 09:23:40,150 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.3837
+2026-06-18 09:23:41,793 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.4497
+2026-06-18 09:23:43,548 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.4837
+2026-06-18 09:23:47,077 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.4274
+2026-06-18 09:23:50,519 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.3909
+2026-06-18 09:23:54,083 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.4144
+2026-06-18 09:23:57,438 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.3453
+2026-06-18 09:23:57,445 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:23:57,724 INFO --- [qsar-biodeg seed=1] AFTER fine-tune ---
+2026-06-18 09:23:57,805 INFO   [post] steps=1  acc=0.8644  nll=0.2971
+2026-06-18 09:23:57,927 INFO   [post] steps=2  acc=0.8833  nll=0.3191 drift=[681.6, 210.4]
+2026-06-18 09:23:58,114 INFO   [post] steps=4  acc=0.8833  nll=0.3238 drift=[681.6, 210.4, 49.8, 13.3]
+2026-06-18 09:23:58,452 INFO   [post] steps=8  acc=0.8770  nll=0.3247 drift=[681.6, 210.4, 49.8, 13.3, 4.6, 2.9, 3.3, 3.4]
+2026-06-18 09:23:58,703 INFO --- [qsar-biodeg seed=2] BEFORE fine-tune ---
+2026-06-18 09:23:58,786 INFO   [pre] steps=1  acc=0.8801  nll=0.2716
+2026-06-18 09:23:58,888 INFO   [pre] steps=2  acc=0.8801  nll=0.4171 drift=[681.5, 294.4]
+2026-06-18 09:23:59,064 INFO   [pre] steps=4  acc=0.8864  nll=0.3087 drift=[681.5, 294.4, 221.3, 238.9]
+2026-06-18 09:23:59,410 INFO   [pre] steps=8  acc=0.8707  nll=0.4466 drift=[681.5, 294.4, 221.3, 238.9, 195.7, 190.6, 247.3, 239.1]
+2026-06-18 09:23:59,769 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 09:24:00,779 INFO   epoch  0  steps=1  batches=6  skipped=0  loss=0.3491
+2026-06-18 09:24:01,912 INFO   epoch  1  steps=1  batches=6  skipped=0  loss=0.4169
+2026-06-18 09:24:03,106 INFO   epoch  2  steps=1  batches=6  skipped=0  loss=0.3978
+2026-06-18 09:24:04,248 INFO   epoch  3  steps=1  batches=6  skipped=0  loss=0.4226
+2026-06-18 09:24:06,154 INFO   epoch  4  steps=2  batches=6  skipped=0  loss=0.4585
+2026-06-18 09:24:08,104 INFO   epoch  5  steps=2  batches=6  skipped=0  loss=0.4206
+2026-06-18 09:24:10,184 INFO   epoch  6  steps=2  batches=6  skipped=0  loss=0.4527
+2026-06-18 09:24:12,110 INFO   epoch  7  steps=2  batches=6  skipped=0  loss=0.4680
+2026-06-18 09:24:15,685 INFO   epoch  8  steps=4  batches=6  skipped=0  loss=0.4308
+2026-06-18 09:24:19,316 INFO   epoch  9  steps=4  batches=6  skipped=0  loss=0.5074
+2026-06-18 09:24:22,781 INFO   epoch 10  steps=4  batches=6  skipped=0  loss=0.4840
+2026-06-18 09:24:26,151 INFO   epoch 11  steps=4  batches=6  skipped=0  loss=0.4331
+2026-06-18 09:24:26,177 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 09:24:26,389 INFO --- [qsar-biodeg seed=2] AFTER fine-tune ---
+2026-06-18 09:24:26,465 INFO   [post] steps=1  acc=0.8896  nll=0.2637
+2026-06-18 09:24:26,562 INFO   [post] steps=2  acc=0.8360  nll=0.4750 drift=[682.2, 385.0]
+2026-06-18 09:24:26,716 INFO   [post] steps=4  acc=0.7981  nll=0.5522 drift=[682.2, 385.0, 413.2, 372.7]
+2026-06-18 09:24:27,008 INFO   [post] steps=8  acc=0.7981  nll=0.5357 drift=[682.2, 385.0, 413.2, 372.7, 364.7, 349.4, 355.0, 335.9]
+2026-06-18 09:24:27,024 INFO ##### SUMMARY qsar-biodeg (n_seeds=3) #####
+2026-06-18 09:24:27,024 INFO   pre  steps=1  acc=0.8686±0.0083  nll=0.2917±0.0147
+2026-06-18 09:24:27,025 INFO   pre  steps=2  acc=0.8665±0.0104  nll=0.4358±0.0759
+2026-06-18 09:24:27,025 INFO   pre  steps=4  acc=0.8759±0.0107  nll=0.3863±0.0760
+2026-06-18 09:24:27,025 INFO   pre  steps=8  acc=0.8665±0.0157  nll=0.4220±0.0319
+2026-06-18 09:24:27,025 INFO   post steps=1  acc=0.8707±0.0136  nll=0.2898±0.0190
+2026-06-18 09:24:27,025 INFO   post steps=2  acc=0.8601±0.0193  nll=0.3969±0.0637
+2026-06-18 09:24:27,026 INFO   post steps=4  acc=0.8475±0.0361  nll=0.4250±0.0950
+2026-06-18 09:24:27,026 INFO   post steps=8  acc=0.8465±0.0346  nll=0.4197±0.0874
+2026-06-18 09:24:27,026 INFO   Δacc(post-pre) steps=1: +0.0021±0.0054  (base pre@1=0.8686)
+2026-06-18 09:24:27,026 INFO   Δacc(post-pre) steps=2: -0.0063±0.0273  (base pre@1=0.8686)
+2026-06-18 09:24:27,026 INFO   Δacc(post-pre) steps=4: -0.0284±0.0424  (base pre@1=0.8686)
+2026-06-18 09:24:27,026 INFO   Δacc(post-pre) steps=8: -0.0200±0.0386  (base pre@1=0.8686)
+2026-06-18 09:24:27,026 INFO qsar-biodeg done in 83.3s
+2026-06-18 09:24:27,026 INFO ALL DONE

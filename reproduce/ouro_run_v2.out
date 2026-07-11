@@ -1,0 +1,442 @@
+2026-06-18 16:37:30,717 INFO Ouro looped fine-tune | T_max=4 | gated residual (rand init) | uniform per-step CE | seeds=[0, 1, 2]
+2026-06-18 16:37:30,775 INFO ========================================================================
+2026-06-18 16:37:30,776 INFO DATASET wine  shape=(178, 13)  classes=3
+2026-06-18 16:37:31,523 INFO --- [wine seed=0] BEFORE fine-tune ---
+2026-06-18 16:37:32,054 INFO   [pre] steps=1  acc=1.0000  nll=0.0076
+2026-06-18 16:37:32,160 INFO   [pre] steps=2  acc=0.4444  nll=2.0141 drift=[413.1, 97.2]
+2026-06-18 16:37:32,425 INFO   [pre] steps=4  acc=0.2778  nll=1.6877 drift=[413.1, 97.2, 40.0, 0.2]
+2026-06-18 16:37:32,686 INFO   [pre] steps=8  acc=0.2778  nll=1.6896 drift=[413.1, 97.2, 40.0, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:37:33,753 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:37:35,347 INFO   epoch  0  batches=3  loss=5.1341  gate(tanh)=[+0.08, -0.01, -0.11] per_step_ce=[4.965, 4.777, 4.805, 5.004]
+2026-06-18 16:37:36,896 INFO   epoch  1  batches=3  loss=4.0365  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[3.777, 3.629, 3.645, 3.814]
+2026-06-18 16:37:38,379 INFO   epoch  2  batches=3  loss=0.1123  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[0.095, 0.105, 0.104, 0.094]
+2026-06-18 16:37:39,930 INFO   epoch  3  batches=3  loss=0.1549  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[0.041, 0.047, 0.046, 0.040]
+2026-06-18 16:37:41,597 INFO   epoch  4  batches=3  loss=3.4414  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[3.189, 3.070, 3.082, 3.209]
+2026-06-18 16:37:43,243 INFO   epoch  5  batches=3  loss=2.1842  gate(tanh)=[+0.09, -0.01, -0.10] per_step_ce=[1.725, 1.676, 1.681, 1.732]
+2026-06-18 16:37:44,710 INFO   epoch  6  batches=3  loss=2.7975  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[2.658, 2.576, 2.582, 2.666]
+2026-06-18 16:37:46,111 INFO   epoch  7  batches=3  loss=2.2301  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[1.933, 1.876, 1.877, 1.933]
+2026-06-18 16:37:47,521 INFO   epoch  8  batches=3  loss=1.4899  gate(tanh)=[+0.09, -0.00, -0.09] per_step_ce=[1.361, 1.338, 1.338, 1.360]
+2026-06-18 16:37:49,102 INFO   epoch  9  batches=3  loss=2.1465  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[1.834, 1.785, 1.783, 1.833]
+2026-06-18 16:37:50,635 INFO   epoch 10  batches=3  loss=1.9108  gate(tanh)=[+0.10, +0.00, -0.09] per_step_ce=[1.730, 1.693, 1.692, 1.724]
+2026-06-18 16:37:52,535 INFO   epoch 11  batches=3  loss=1.3281  gate(tanh)=[+0.10, +0.01, -0.09] per_step_ce=[1.453, 1.421, 1.420, 1.442]
+2026-06-18 16:37:52,541 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:37:52,791 INFO --- [wine seed=0] AFTER fine-tune ---
+2026-06-18 16:37:52,922 INFO   [post] steps=1  acc=1.0000  nll=0.2145
+2026-06-18 16:37:53,028 INFO   [post] steps=2  acc=1.0000  nll=0.2346 drift=[412.9, 11.3]
+2026-06-18 16:37:53,209 INFO   [post] steps=4  acc=1.0000  nll=0.2203 drift=[412.9, 11.3, 0.8, 9.0]
+2026-06-18 16:37:53,546 INFO   [post] steps=8  acc=0.9815  nll=0.1624 drift=[412.9, 11.3, 0.8, 9.0, 9.4, 9.6, 10.2, 11.0]
+2026-06-18 16:37:53,791 INFO --- [wine seed=1] BEFORE fine-tune ---
+2026-06-18 16:37:53,842 INFO   [pre] steps=1  acc=1.0000  nll=0.0163
+2026-06-18 16:37:53,919 INFO   [pre] steps=2  acc=0.5000  nll=2.0972 drift=[412.9, 90.3]
+2026-06-18 16:37:54,081 INFO   [pre] steps=4  acc=0.3333  nll=1.8452 drift=[412.9, 90.3, 51.6, 0.2]
+2026-06-18 16:37:54,396 INFO   [pre] steps=8  acc=0.3333  nll=1.8465 drift=[412.9, 90.3, 51.6, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:37:54,674 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:37:56,343 INFO   epoch  0  batches=3  loss=4.5000  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[3.906, 3.855, 3.834, 3.826]
+2026-06-18 16:37:58,283 INFO   epoch  1  batches=3  loss=4.8633  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[5.523, 5.383, 5.320, 5.293]
+2026-06-18 16:38:00,114 INFO   epoch  2  batches=3  loss=2.4583  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[2.389, 2.342, 2.318, 2.309]
+2026-06-18 16:38:01,973 INFO   epoch  3  batches=3  loss=1.7090  gate(tanh)=[+0.04, +0.03, +0.01] per_step_ce=[1.517, 1.496, 1.486, 1.480]
+2026-06-18 16:38:04,126 INFO   epoch  4  batches=3  loss=1.8750  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[1.830, 1.809, 1.796, 1.787]
+2026-06-18 16:38:06,309 INFO   epoch  5  batches=3  loss=2.2454  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[2.041, 2.016, 2.000, 1.991]
+2026-06-18 16:38:08,430 INFO   epoch  6  batches=3  loss=1.9222  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[1.920, 1.897, 1.885, 1.876]
+2026-06-18 16:38:10,573 INFO   epoch  7  batches=3  loss=1.6458  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[1.561, 1.541, 1.529, 1.521]
+2026-06-18 16:38:12,497 INFO   epoch  8  batches=3  loss=1.4665  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[1.395, 1.380, 1.371, 1.365]
+2026-06-18 16:38:13,910 INFO   epoch  9  batches=3  loss=1.1214  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[1.083, 1.077, 1.074, 1.072]
+2026-06-18 16:38:15,310 INFO   epoch 10  batches=3  loss=1.2819  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[1.292, 1.283, 1.277, 1.274]
+2026-06-18 16:38:16,744 INFO   epoch 11  batches=3  loss=0.8605  gate(tanh)=[+0.07, +0.05, +0.04] per_step_ce=[0.878, 0.887, 0.893, 0.897]
+2026-06-18 16:38:16,749 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:38:16,934 INFO --- [wine seed=1] AFTER fine-tune ---
+2026-06-18 16:38:16,981 INFO   [post] steps=1  acc=0.8519  nll=0.6183
+2026-06-18 16:38:17,057 INFO   [post] steps=2  acc=0.8704  nll=0.6357 drift=[413.3, 8.4]
+2026-06-18 16:38:17,214 INFO   [post] steps=4  acc=0.8704  nll=0.6567 drift=[413.3, 8.4, 5.5, 4.1]
+2026-06-18 16:38:17,516 INFO   [post] steps=8  acc=0.8704  nll=0.6916 drift=[413.3, 8.4, 5.5, 4.1, 3.9, 3.8, 3.6, 3.5]
+2026-06-18 16:38:17,678 INFO --- [wine seed=2] BEFORE fine-tune ---
+2026-06-18 16:38:17,724 INFO   [pre] steps=1  acc=1.0000  nll=0.0230
+2026-06-18 16:38:17,820 INFO   [pre] steps=2  acc=0.3889  nll=1.7991 drift=[413.0, 100.4]
+2026-06-18 16:38:17,961 INFO   [pre] steps=4  acc=0.3889  nll=1.5241 drift=[413.0, 100.4, 46.0, 0.2]
+2026-06-18 16:38:18,239 INFO   [pre] steps=8  acc=0.3889  nll=1.5239 drift=[413.0, 100.4, 46.0, 0.2, 0.1, 0.2, 0.2, 0.2]
+2026-06-18 16:38:18,443 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:38:19,770 INFO   epoch  0  batches=3  loss=4.3607  gate(tanh)=[+0.02, -0.01, -0.01] per_step_ce=[4.070, 4.035, 4.051, 4.074]
+2026-06-18 16:38:21,213 INFO   epoch  1  batches=3  loss=2.6602  gate(tanh)=[+0.03, -0.01, -0.01] per_step_ce=[2.791, 2.764, 2.771, 2.783]
+2026-06-18 16:38:22,863 INFO   epoch  2  batches=3  loss=2.4417  gate(tanh)=[+0.03, -0.00, -0.01] per_step_ce=[3.076, 3.031, 3.039, 3.051]
+2026-06-18 16:38:24,342 INFO   epoch  3  batches=3  loss=2.8008  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[2.299, 2.279, 2.279, 2.283]
+2026-06-18 16:38:25,818 INFO   epoch  4  batches=3  loss=1.6016  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[1.351, 1.345, 1.345, 1.345]
+2026-06-18 16:38:27,237 INFO   epoch  5  batches=3  loss=2.1842  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[2.273, 2.254, 2.250, 2.250]
+2026-06-18 16:38:28,736 INFO   epoch  6  batches=3  loss=1.8584  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[1.777, 1.770, 1.768, 1.767]
+2026-06-18 16:38:30,217 INFO   epoch  7  batches=3  loss=0.5666  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.632, 0.637, 0.638, 0.639]
+2026-06-18 16:38:31,678 INFO   epoch  8  batches=3  loss=1.1029  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[1.190, 1.186, 1.185, 1.184]
+2026-06-18 16:38:33,112 INFO   epoch  9  batches=3  loss=0.6169  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.597, 0.602, 0.604, 0.604]
+2026-06-18 16:38:34,670 INFO   epoch 10  batches=3  loss=1.4993  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[1.529, 1.517, 1.514, 1.511]
+2026-06-18 16:38:36,262 INFO   epoch 11  batches=3  loss=1.2155  gate(tanh)=[+0.05, +0.01, +0.01] per_step_ce=[1.124, 1.123, 1.123, 1.123]
+2026-06-18 16:38:36,268 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:38:36,438 INFO --- [wine seed=2] AFTER fine-tune ---
+2026-06-18 16:38:36,508 INFO   [post] steps=1  acc=1.0000  nll=0.2362
+2026-06-18 16:38:36,604 INFO   [post] steps=2  acc=1.0000  nll=0.2437 drift=[413.1, 5.9]
+2026-06-18 16:38:36,750 INFO   [post] steps=4  acc=1.0000  nll=0.2477 drift=[413.1, 5.9, 1.8, 1.2]
+2026-06-18 16:38:37,091 INFO   [post] steps=8  acc=1.0000  nll=0.2542 drift=[413.1, 5.9, 1.8, 1.2, 1.2, 1.2, 1.2, 1.1]
+2026-06-18 16:38:37,112 INFO ##### SUMMARY wine (n_seeds=3) #####
+2026-06-18 16:38:37,113 INFO   pre  steps=1  acc=1.0000±0.0000  nll=0.0156±0.0063
+2026-06-18 16:38:37,113 INFO   pre  steps=2  acc=0.4444±0.0454  nll=1.9701±0.1256
+2026-06-18 16:38:37,113 INFO   pre  steps=4  acc=0.3333±0.0454  nll=1.6857±0.1311
+2026-06-18 16:38:37,114 INFO   pre  steps=8  acc=0.3333±0.0454  nll=1.6867±0.1317
+2026-06-18 16:38:37,114 INFO   post steps=1  acc=0.9506±0.0698  nll=0.3563±0.1855
+2026-06-18 16:38:37,114 INFO   post steps=2  acc=0.9568±0.0611  nll=0.3713±0.1870
+2026-06-18 16:38:37,114 INFO   post steps=4  acc=0.9568±0.0611  nll=0.3749±0.1996
+2026-06-18 16:38:37,114 INFO   post steps=8  acc=0.9506±0.0572  nll=0.3694±0.2309
+2026-06-18 16:38:37,114 INFO   Δacc(post-pre) steps=1: -0.0494±0.0698  (base pre@1=1.0000)
+2026-06-18 16:38:37,114 INFO   Δacc(post-pre) steps=2: +0.5123±0.1029  (base pre@1=1.0000)
+2026-06-18 16:38:37,115 INFO   Δacc(post-pre) steps=4: +0.6235±0.0761  (base pre@1=1.0000)
+2026-06-18 16:38:37,115 INFO   Δacc(post-pre) steps=8: +0.6173±0.0682  (base pre@1=1.0000)
+2026-06-18 16:38:37,115 INFO wine done in 66.3s
+2026-06-18 16:38:37,115 INFO ========================================================================
+2026-06-18 16:38:37,115 INFO DATASET breast_cancer  shape=(569, 30)  classes=2
+2026-06-18 16:38:37,346 INFO --- [breast_cancer seed=0] BEFORE fine-tune ---
+2026-06-18 16:38:37,411 INFO   [pre] steps=1  acc=0.9708  nll=0.0868
+2026-06-18 16:38:37,516 INFO   [pre] steps=2  acc=0.4269  nll=0.9058 drift=[585.1, 215.1]
+2026-06-18 16:38:37,679 INFO   [pre] steps=4  acc=0.3743  nll=0.6999 drift=[585.1, 215.1, 169.2, 0.2]
+2026-06-18 16:38:37,988 INFO   [pre] steps=8  acc=0.3743  nll=0.6999 drift=[585.1, 215.1, 169.2, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:38:38,251 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:38:41,542 INFO   epoch  0  batches=6  loss=3.7926  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[3.008, 2.873, 2.887, 3.035]
+2026-06-18 16:38:44,661 INFO   epoch  1  batches=6  loss=2.6468  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[2.469, 2.363, 2.369, 2.477]
+2026-06-18 16:38:47,920 INFO   epoch  2  batches=6  loss=0.1916  gate(tanh)=[+0.09, -0.00, -0.09] per_step_ce=[0.216, 0.225, 0.225, 0.217]
+2026-06-18 16:38:50,968 INFO   epoch  3  batches=6  loss=0.1925  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[0.158, 0.165, 0.164, 0.159]
+2026-06-18 16:38:55,119 INFO   epoch  4  batches=6  loss=0.1441  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[0.065, 0.069, 0.069, 0.065]
+2026-06-18 16:38:59,323 INFO   epoch  5  batches=6  loss=2.5251  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[2.348, 2.289, 2.293, 2.352]
+2026-06-18 16:39:03,424 INFO   epoch  6  batches=6  loss=0.1424  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[0.077, 0.081, 0.080, 0.077]
+2026-06-18 16:39:07,829 INFO   epoch  7  batches=6  loss=2.2178  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[2.145, 2.084, 2.088, 2.148]
+2026-06-18 16:39:10,633 INFO   epoch  8  batches=6  loss=0.1243  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[0.105, 0.108, 0.108, 0.105]
+2026-06-18 16:39:13,514 INFO   epoch  9  batches=6  loss=1.5898  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[1.430, 1.406, 1.407, 1.430]
+2026-06-18 16:39:16,432 INFO   epoch 10  batches=6  loss=0.1065  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[0.085, 0.090, 0.090, 0.085]
+2026-06-18 16:39:19,340 INFO   epoch 11  batches=6  loss=0.1291  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[0.052, 0.055, 0.055, 0.052]
+2026-06-18 16:39:19,345 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:39:19,558 INFO --- [breast_cancer seed=0] AFTER fine-tune ---
+2026-06-18 16:39:19,626 INFO   [post] steps=1  acc=0.9532  nll=0.2089
+2026-06-18 16:39:19,715 INFO   [post] steps=2  acc=0.9532  nll=0.2115 drift=[584.3, 19.8]
+2026-06-18 16:39:19,880 INFO   [post] steps=4  acc=0.9532  nll=0.2083 drift=[584.3, 19.8, 0.7, 20.3]
+2026-06-18 16:39:20,186 INFO   [post] steps=8  acc=0.9474  nll=0.1933 drift=[584.3, 19.8, 0.7, 20.3, 22.1, 24.3, 27.0, 29.8]
+2026-06-18 16:39:20,362 INFO --- [breast_cancer seed=1] BEFORE fine-tune ---
+2026-06-18 16:39:20,448 INFO   [pre] steps=1  acc=0.9708  nll=0.0752
+2026-06-18 16:39:20,529 INFO   [pre] steps=2  acc=0.5848  nll=0.6847 drift=[585.3, 255.1]
+2026-06-18 16:39:20,681 INFO   [pre] steps=4  acc=0.3743  nll=0.7003 drift=[585.3, 255.1, 196.0, 0.2]
+2026-06-18 16:39:20,960 INFO   [pre] steps=8  acc=0.3743  nll=0.6999 drift=[585.3, 255.1, 196.0, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:39:21,249 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:39:24,292 INFO   epoch  0  batches=6  loss=3.7207  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[2.775, 2.730, 2.709, 2.699]
+2026-06-18 16:39:27,328 INFO   epoch  1  batches=6  loss=2.0065  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[1.453, 1.439, 1.433, 1.429]
+2026-06-18 16:39:30,610 INFO   epoch  2  batches=6  loss=0.2508  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.325, 0.328, 0.330, 0.331]
+2026-06-18 16:39:33,898 INFO   epoch  3  batches=6  loss=0.2129  gate(tanh)=[+0.04, +0.03, +0.01] per_step_ce=[0.145, 0.149, 0.151, 0.152]
+2026-06-18 16:39:36,978 INFO   epoch  4  batches=6  loss=1.5845  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[1.380, 1.367, 1.360, 1.356]
+2026-06-18 16:39:39,968 INFO   epoch  5  batches=6  loss=1.3509  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[1.186, 1.174, 1.169, 1.165]
+2026-06-18 16:39:42,880 INFO   epoch  6  batches=6  loss=0.2094  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.207, 0.210, 0.212, 0.213]
+2026-06-18 16:39:46,080 INFO   epoch  7  batches=6  loss=0.8532  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.780, 0.777, 0.774, 0.773]
+2026-06-18 16:39:49,327 INFO   epoch  8  batches=6  loss=0.7017  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.629, 0.631, 0.633, 0.634]
+2026-06-18 16:39:52,622 INFO   epoch  9  batches=6  loss=0.4855  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.330, 0.335, 0.338, 0.339]
+2026-06-18 16:39:56,917 INFO   epoch 10  batches=6  loss=0.3391  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.317, 0.320, 0.320, 0.320]
+2026-06-18 16:40:01,186 INFO   epoch 11  batches=6  loss=0.2585  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.222, 0.226, 0.227, 0.229]
+2026-06-18 16:40:01,197 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:40:01,743 INFO --- [breast_cancer seed=1] AFTER fine-tune ---
+2026-06-18 16:40:01,835 INFO   [post] steps=1  acc=0.3743  nll=3.3042
+2026-06-18 16:40:01,978 INFO   [post] steps=2  acc=0.3743  nll=3.1607 drift=[587.3, 15.2]
+2026-06-18 16:40:02,156 INFO   [post] steps=4  acc=0.3743  nll=3.0439 drift=[587.3, 15.2, 9.4, 5.8]
+2026-06-18 16:40:02,615 INFO   [post] steps=8  acc=0.3743  nll=2.8930 drift=[587.3, 15.2, 9.4, 5.8, 5.9, 6.1, 6.3, 6.4]
+2026-06-18 16:40:02,842 INFO --- [breast_cancer seed=2] BEFORE fine-tune ---
+2026-06-18 16:40:02,947 INFO   [pre] steps=1  acc=0.9708  nll=0.1368
+2026-06-18 16:40:03,040 INFO   [pre] steps=2  acc=0.7544  nll=0.5475 drift=[584.8, 180.4]
+2026-06-18 16:40:03,223 INFO   [pre] steps=4  acc=0.6257  nll=0.6869 drift=[584.8, 180.4, 189.2, 0.2]
+2026-06-18 16:40:03,656 INFO   [pre] steps=8  acc=0.6257  nll=0.6871 drift=[584.8, 180.4, 189.2, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:40:03,959 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:40:07,929 INFO   epoch  0  batches=6  loss=3.4287  gate(tanh)=[+0.03, -0.01, -0.01] per_step_ce=[2.602, 2.576, 2.582, 2.594]
+2026-06-18 16:40:11,714 INFO   epoch  1  batches=6  loss=2.2367  gate(tanh)=[+0.03, -0.00, -0.01] per_step_ce=[1.597, 1.584, 1.584, 1.586]
+2026-06-18 16:40:14,722 INFO   epoch  2  batches=6  loss=0.2538  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[0.270, 0.272, 0.272, 0.272]
+2026-06-18 16:40:17,879 INFO   epoch  3  batches=6  loss=1.5238  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[1.776, 1.758, 1.756, 1.758]
+2026-06-18 16:40:21,008 INFO   epoch  4  batches=6  loss=1.0737  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.909, 0.905, 0.904, 0.904]
+2026-06-18 16:40:24,254 INFO   epoch  5  batches=6  loss=0.3339  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.278, 0.280, 0.281, 0.281]
+2026-06-18 16:40:27,433 INFO   epoch  6  batches=6  loss=0.2814  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.250, 0.252, 0.252, 0.252]
+2026-06-18 16:40:30,604 INFO   epoch  7  batches=6  loss=0.2523  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.289, 0.291, 0.291, 0.291]
+2026-06-18 16:40:33,817 INFO   epoch  8  batches=6  loss=0.9997  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[1.019, 1.013, 1.012, 1.012]
+2026-06-18 16:40:37,180 INFO   epoch  9  batches=6  loss=0.1321  gate(tanh)=[+0.04, +0.00, -0.00] per_step_ce=[0.106, 0.106, 0.106, 0.106]
+2026-06-18 16:40:40,416 INFO   epoch 10  batches=6  loss=0.8535  gate(tanh)=[+0.04, +0.00, +0.00] per_step_ce=[0.667, 0.665, 0.665, 0.665]
+2026-06-18 16:40:43,546 INFO   epoch 11  batches=6  loss=0.6113  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.534, 0.537, 0.538, 0.538]
+2026-06-18 16:40:43,551 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:40:43,785 INFO --- [breast_cancer seed=2] AFTER fine-tune ---
+2026-06-18 16:40:43,852 INFO   [post] steps=1  acc=0.9532  nll=0.1235
+2026-06-18 16:40:43,940 INFO   [post] steps=2  acc=0.9591  nll=0.1225 drift=[583.5, 9.5]
+2026-06-18 16:40:44,101 INFO   [post] steps=4  acc=0.9591  nll=0.1222 drift=[583.5, 9.5, 1.4, 0.1]
+2026-06-18 16:40:44,403 INFO   [post] steps=8  acc=0.9591  nll=0.1222 drift=[583.5, 9.5, 1.4, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:40:44,415 INFO ##### SUMMARY breast_cancer (n_seeds=3) #####
+2026-06-18 16:40:44,415 INFO   pre  steps=1  acc=0.9708±0.0000  nll=0.0996±0.0267
+2026-06-18 16:40:44,416 INFO   pre  steps=2  acc=0.5887±0.1337  nll=0.7127±0.1476
+2026-06-18 16:40:44,416 INFO   pre  steps=4  acc=0.4581±0.1185  nll=0.6957±0.0063
+2026-06-18 16:40:44,416 INFO   pre  steps=8  acc=0.4581±0.1185  nll=0.6956±0.0060
+2026-06-18 16:40:44,416 INFO   post steps=1  acc=0.7602±0.2729  nll=1.2122±1.4797
+2026-06-18 16:40:44,416 INFO   post steps=2  acc=0.7622±0.2743  nll=1.1649±1.4117
+2026-06-18 16:40:44,416 INFO   post steps=4  acc=0.7622±0.2743  nll=1.1248±1.3575
+2026-06-18 16:40:44,417 INFO   post steps=8  acc=0.7602±0.2730  nll=1.0695±1.2897
+2026-06-18 16:40:44,417 INFO   Δacc(post-pre) steps=1: -0.2105±0.2729  (base pre@1=0.9708)
+2026-06-18 16:40:44,417 INFO   Δacc(post-pre) steps=2: +0.1735±0.3016  (base pre@1=0.9708)
+2026-06-18 16:40:44,417 INFO   Δacc(post-pre) steps=4: +0.3041±0.2373  (base pre@1=0.9708)
+2026-06-18 16:40:44,417 INFO   Δacc(post-pre) steps=8: +0.3021±0.2350  (base pre@1=0.9708)
+2026-06-18 16:40:44,417 INFO breast_cancer done in 127.3s
+2026-06-18 16:40:44,417 INFO ========================================================================
+2026-06-18 16:40:44,417 INFO DATASET digits  shape=(1797, 64)  classes=10
+2026-06-18 16:40:44,636 INFO --- [digits seed=0] BEFORE fine-tune ---
+2026-06-18 16:40:44,752 INFO   [pre] steps=1  acc=0.9833  nll=0.0447
+2026-06-18 16:40:44,941 INFO   [pre] steps=2  acc=0.1852  nll=8.6464 drift=[812.2, 359.3]
+2026-06-18 16:40:45,244 INFO   [pre] steps=4  acc=0.0963  nll=4.5374 drift=[812.2, 359.3, 314.5, 0.3]
+2026-06-18 16:40:45,818 INFO   [pre] steps=8  acc=0.0963  nll=4.5455 drift=[812.2, 359.3, 314.5, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 16:40:46,172 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:40:49,551 INFO   epoch  0  batches=6  loss=4.2663  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[3.773, 3.602, 3.619, 3.811]
+2026-06-18 16:40:53,396 INFO   epoch  1  batches=6  loss=4.7324  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[4.691, 4.176, 4.203, 4.719]
+2026-06-18 16:40:57,651 INFO   epoch  2  batches=6  loss=3.9167  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[3.455, 3.178, 3.178, 3.410]
+2026-06-18 16:41:02,038 INFO   epoch  3  batches=6  loss=3.7891  gate(tanh)=[+0.10, +0.01, -0.09] per_step_ce=[3.752, 3.375, 3.361, 3.637]
+2026-06-18 16:41:06,442 INFO   epoch  4  batches=6  loss=3.2057  gate(tanh)=[+0.10, +0.01, -0.08] per_step_ce=[3.203, 3.002, 2.984, 3.139]
+2026-06-18 16:41:10,270 INFO   epoch  5  batches=6  loss=2.7448  gate(tanh)=[+0.11, +0.02, -0.08] per_step_ce=[2.596, 2.477, 2.467, 2.527]
+2026-06-18 16:41:13,468 INFO   epoch  6  batches=6  loss=2.8161  gate(tanh)=[+0.11, +0.02, -0.08] per_step_ce=[2.803, 2.680, 2.666, 2.738]
+2026-06-18 16:41:16,790 INFO   epoch  7  batches=6  loss=2.4723  gate(tanh)=[+0.11, +0.02, -0.07] per_step_ce=[2.484, 2.441, 2.434, 2.459]
+2026-06-18 16:41:19,764 INFO   epoch  8  batches=6  loss=2.2588  gate(tanh)=[+0.11, +0.02, -0.07] per_step_ce=[2.311, 2.293, 2.291, 2.301]
+2026-06-18 16:41:22,888 INFO   epoch  9  batches=6  loss=2.3288  gate(tanh)=[+0.12, +0.03, -0.07] per_step_ce=[2.338, 2.297, 2.293, 2.305]
+2026-06-18 16:41:26,156 INFO   epoch 10  batches=6  loss=2.2796  gate(tanh)=[+0.12, +0.03, -0.06] per_step_ce=[2.320, 2.299, 2.299, 2.301]
+2026-06-18 16:41:29,463 INFO   epoch 11  batches=6  loss=2.3613  gate(tanh)=[+0.12, +0.03, -0.06] per_step_ce=[2.383, 2.344, 2.340, 2.350]
+2026-06-18 16:41:29,470 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:41:29,746 INFO --- [digits seed=0] AFTER fine-tune ---
+2026-06-18 16:41:29,855 INFO   [post] steps=1  acc=0.9241  nll=1.0230
+2026-06-18 16:41:30,020 INFO   [post] steps=2  acc=0.8796  nll=1.2157 drift=[811.1, 77.2]
+2026-06-18 16:41:30,342 INFO   [post] steps=4  acc=0.8926  nll=1.1797 drift=[811.1, 77.2, 17.0, 29.5]
+2026-06-18 16:41:30,909 INFO   [post] steps=8  acc=0.9352  nll=0.8194 drift=[811.1, 77.2, 17.0, 29.5, 31.4, 33.7, 36.2, 38.8]
+2026-06-18 16:41:31,148 INFO --- [digits seed=1] BEFORE fine-tune ---
+2026-06-18 16:41:31,258 INFO   [pre] steps=1  acc=0.9870  nll=0.0477
+2026-06-18 16:41:31,417 INFO   [pre] steps=2  acc=0.1463  nll=9.5077 drift=[812.5, 435.2]
+2026-06-18 16:41:31,717 INFO   [pre] steps=4  acc=0.1481  nll=4.8210 drift=[812.5, 435.2, 376.0, 0.3]
+2026-06-18 16:41:32,277 INFO   [pre] steps=8  acc=0.1444  nll=4.7678 drift=[812.5, 435.2, 376.0, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 16:41:32,636 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:41:35,705 INFO   epoch  0  batches=6  loss=5.6165  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[4.805, 4.656, 4.586, 4.559]
+2026-06-18 16:41:38,853 INFO   epoch  1  batches=6  loss=4.6810  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[3.951, 3.867, 3.828, 3.805]
+2026-06-18 16:41:42,077 INFO   epoch  2  batches=6  loss=3.3265  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[3.045, 3.010, 2.992, 2.980]
+2026-06-18 16:41:45,286 INFO   epoch  3  batches=6  loss=2.2799  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[2.168, 2.170, 2.172, 2.174]
+2026-06-18 16:41:48,692 INFO   epoch  4  batches=6  loss=2.3340  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.316, 2.309, 2.305, 2.303]
+2026-06-18 16:41:52,220 INFO   epoch  5  batches=6  loss=2.3405  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.412, 2.396, 2.391, 2.389]
+2026-06-18 16:41:56,849 INFO   epoch  6  batches=6  loss=2.3617  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.299, 2.297, 2.295, 2.297]
+2026-06-18 16:42:01,329 INFO   epoch  7  batches=6  loss=2.4570  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.500, 2.480, 2.477, 2.471]
+2026-06-18 16:42:05,549 INFO   epoch  8  batches=6  loss=2.2663  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.242, 2.252, 2.256, 2.260]
+2026-06-18 16:42:09,902 INFO   epoch  9  batches=6  loss=2.3353  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.340, 2.340, 2.338, 2.336]
+2026-06-18 16:42:13,316 INFO   epoch 10  batches=6  loss=2.2005  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.189, 2.189, 2.191, 2.191]
+2026-06-18 16:42:16,557 INFO   epoch 11  batches=6  loss=2.4463  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[2.471, 2.441, 2.424, 2.412]
+2026-06-18 16:42:16,562 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:42:16,774 INFO --- [digits seed=1] AFTER fine-tune ---
+2026-06-18 16:42:16,884 INFO   [post] steps=1  acc=0.8741  nll=0.9848
+2026-06-18 16:42:17,067 INFO   [post] steps=2  acc=0.8815  nll=1.0680 drift=[812.2, 25.6]
+2026-06-18 16:42:17,385 INFO   [post] steps=4  acc=0.8944  nll=1.1444 drift=[812.2, 25.6, 17.6, 12.2]
+2026-06-18 16:42:17,954 INFO   [post] steps=8  acc=0.9148  nll=1.2266 drift=[812.2, 25.6, 17.6, 12.2, 11.8, 11.7, 11.4, 11.0]
+2026-06-18 16:42:18,177 INFO --- [digits seed=2] BEFORE fine-tune ---
+2026-06-18 16:42:18,301 INFO   [pre] steps=1  acc=0.9852  nll=0.0435
+2026-06-18 16:42:18,468 INFO   [pre] steps=2  acc=0.0981  nll=9.0737 drift=[812.6, 410.3]
+2026-06-18 16:42:18,761 INFO   [pre] steps=4  acc=0.1333  nll=5.0211 drift=[812.6, 410.3, 378.7, 0.3]
+2026-06-18 16:42:19,323 INFO   [pre] steps=8  acc=0.1333  nll=5.0343 drift=[812.6, 410.3, 378.7, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 16:42:19,681 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:42:22,885 INFO   epoch  0  batches=6  loss=6.2604  gate(tanh)=[+0.03, -0.01, -0.01] per_step_ce=[5.383, 5.316, 5.328, 5.359]
+2026-06-18 16:42:26,112 INFO   epoch  1  batches=6  loss=3.8643  gate(tanh)=[+0.03, -0.00, -0.00] per_step_ce=[3.602, 3.559, 3.559, 3.568]
+2026-06-18 16:42:29,220 INFO   epoch  2  batches=6  loss=2.9333  gate(tanh)=[+0.04, +0.00, +0.00] per_step_ce=[2.777, 2.766, 2.764, 2.764]
+2026-06-18 16:42:32,413 INFO   epoch  3  batches=6  loss=2.4834  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[2.494, 2.480, 2.479, 2.477]
+2026-06-18 16:42:35,533 INFO   epoch  4  batches=6  loss=2.4867  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[2.471, 2.463, 2.459, 2.457]
+2026-06-18 16:42:38,538 INFO   epoch  5  batches=6  loss=2.3887  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[2.359, 2.361, 2.363, 2.365]
+2026-06-18 16:42:41,650 INFO   epoch  6  batches=6  loss=2.2653  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[2.199, 2.203, 2.203, 2.203]
+2026-06-18 16:42:44,995 INFO   epoch  7  batches=6  loss=2.3190  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[2.271, 2.270, 2.270, 2.270]
+2026-06-18 16:42:48,338 INFO   epoch  8  batches=6  loss=2.3353  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[2.289, 2.287, 2.289, 2.289]
+2026-06-18 16:42:51,801 INFO   epoch  9  batches=6  loss=2.2702  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[2.256, 2.256, 2.256, 2.256]
+2026-06-18 16:42:56,035 INFO   epoch 10  batches=6  loss=2.3245  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[2.291, 2.291, 2.291, 2.291]
+2026-06-18 16:43:00,211 INFO   epoch 11  batches=6  loss=2.2620  gate(tanh)=[+0.04, +0.01, -0.00] per_step_ce=[2.232, 2.232, 2.232, 2.232]
+2026-06-18 16:43:00,222 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:43:00,503 INFO --- [digits seed=2] AFTER fine-tune ---
+2026-06-18 16:43:00,665 INFO   [post] steps=1  acc=0.8889  nll=1.2936
+2026-06-18 16:43:00,868 INFO   [post] steps=2  acc=0.8889  nll=1.3212 drift=[815.0, 15.6]
+2026-06-18 16:43:01,234 INFO   [post] steps=4  acc=0.8889  nll=1.3248 drift=[815.0, 15.6, 2.2, 0.2]
+2026-06-18 16:43:01,857 INFO   [post] steps=8  acc=0.8889  nll=1.3237 drift=[815.0, 15.6, 2.2, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:43:01,926 INFO ##### SUMMARY digits (n_seeds=3) #####
+2026-06-18 16:43:01,927 INFO   pre  steps=1  acc=0.9852±0.0015  nll=0.0453±0.0018
+2026-06-18 16:43:01,927 INFO   pre  steps=2  acc=0.1432±0.0356  nll=9.0759±0.3516
+2026-06-18 16:43:01,928 INFO   pre  steps=4  acc=0.1259±0.0218  nll=4.7932±0.1985
+2026-06-18 16:43:01,928 INFO   pre  steps=8  acc=0.1247±0.0206  nll=4.7825±0.1998
+2026-06-18 16:43:01,928 INFO   post steps=1  acc=0.8957±0.0210  nll=1.1004±0.1374
+2026-06-18 16:43:01,928 INFO   post steps=2  acc=0.8833±0.0040  nll=1.2017±0.1038
+2026-06-18 16:43:01,928 INFO   post steps=4  acc=0.8920±0.0023  nll=1.2163±0.0781
+2026-06-18 16:43:01,928 INFO   post steps=8  acc=0.9130±0.0189  nll=1.1232±0.2185
+2026-06-18 16:43:01,928 INFO   Δacc(post-pre) steps=1: -0.0895±0.0224  (base pre@1=0.9852)
+2026-06-18 16:43:01,928 INFO   Δacc(post-pre) steps=2: +0.7401±0.0395  (base pre@1=0.9852)
+2026-06-18 16:43:01,928 INFO   Δacc(post-pre) steps=4: +0.7660±0.0217  (base pre@1=0.9852)
+2026-06-18 16:43:01,928 INFO   Δacc(post-pre) steps=8: +0.7883±0.0363  (base pre@1=0.9852)
+2026-06-18 16:43:01,929 INFO digits done in 137.5s
+2026-06-18 16:43:01,929 INFO ========================================================================
+2026-06-18 16:43:01,929 INFO DATASET phoneme  shape=(5404, 5)  classes=2
+2026-06-18 16:43:02,442 INFO --- [phoneme seed=0] BEFORE fine-tune ---
+2026-06-18 16:43:02,524 INFO   [pre] steps=1  acc=0.8995  nll=0.2427
+2026-06-18 16:43:02,710 INFO   [pre] steps=2  acc=0.5573  nll=0.6957 drift=[312.3, 130.4]
+2026-06-18 16:43:02,990 INFO   [pre] steps=4  acc=0.7065  nll=0.6828 drift=[312.3, 130.4, 102.0, 0.1]
+2026-06-18 16:43:03,484 INFO   [pre] steps=8  acc=0.7065  nll=0.6827 drift=[312.3, 130.4, 102.0, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:43:03,823 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:43:07,995 INFO   epoch  0  batches=6  loss=2.4089  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[2.701, 2.576, 2.590, 2.740]
+2026-06-18 16:43:11,293 INFO   epoch  1  batches=6  loss=1.9460  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[1.784, 1.715, 1.717, 1.789]
+2026-06-18 16:43:14,068 INFO   epoch  2  batches=6  loss=0.3585  gate(tanh)=[+0.09, -0.00, -0.09] per_step_ce=[0.390, 0.392, 0.392, 0.390]
+2026-06-18 16:43:17,165 INFO   epoch  3  batches=6  loss=0.3668  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[0.374, 0.375, 0.375, 0.374]
+2026-06-18 16:43:20,042 INFO   epoch  4  batches=6  loss=0.3666  gate(tanh)=[+0.09, -0.00, -0.09] per_step_ce=[0.311, 0.315, 0.315, 0.311]
+2026-06-18 16:43:23,098 INFO   epoch  5  batches=6  loss=1.4982  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[1.585, 1.516, 1.516, 1.581]
+2026-06-18 16:43:26,150 INFO   epoch  6  batches=6  loss=0.3341  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[0.340, 0.344, 0.344, 0.340]
+2026-06-18 16:43:29,475 INFO   epoch  7  batches=6  loss=1.2254  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[1.170, 1.119, 1.118, 1.162]
+2026-06-18 16:43:32,655 INFO   epoch  8  batches=6  loss=0.3728  gate(tanh)=[+0.10, +0.00, -0.09] per_step_ce=[0.371, 0.374, 0.374, 0.372]
+2026-06-18 16:43:35,801 INFO   epoch  9  batches=6  loss=0.9412  gate(tanh)=[+0.10, +0.01, -0.09] per_step_ce=[0.791, 0.769, 0.767, 0.785]
+2026-06-18 16:43:38,971 INFO   epoch 10  batches=6  loss=0.3588  gate(tanh)=[+0.10, +0.01, -0.08] per_step_ce=[0.343, 0.347, 0.347, 0.344]
+2026-06-18 16:43:41,960 INFO   epoch 11  batches=6  loss=0.3632  gate(tanh)=[+0.10, +0.01, -0.08] per_step_ce=[0.361, 0.361, 0.361, 0.361]
+2026-06-18 16:43:41,965 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:43:42,184 INFO --- [phoneme seed=0] AFTER fine-tune ---
+2026-06-18 16:43:42,255 INFO   [post] steps=1  acc=0.6911  nll=0.5581
+2026-06-18 16:43:42,377 INFO   [post] steps=2  acc=0.6393  nll=0.5886 drift=[313.9, 12.2]
+2026-06-18 16:43:42,597 INFO   [post] steps=4  acc=0.6806  nll=0.5665 drift=[313.9, 12.2, 0.8, 9.5]
+2026-06-18 16:43:43,021 INFO   [post] steps=8  acc=0.7799  nll=0.4674 drift=[313.9, 12.2, 0.8, 9.5, 10.3, 11.2, 12.1, 13.2]
+2026-06-18 16:43:43,213 INFO --- [phoneme seed=1] BEFORE fine-tune ---
+2026-06-18 16:43:43,284 INFO   [pre] steps=1  acc=0.9088  nll=0.2137
+2026-06-18 16:43:43,405 INFO   [pre] steps=2  acc=0.6400  nll=0.6800 drift=[312.3, 129.4]
+2026-06-18 16:43:43,624 INFO   [pre] steps=4  acc=0.7065  nll=0.6827 drift=[312.3, 129.4, 103.0, 0.1]
+2026-06-18 16:43:44,047 INFO   [pre] steps=8  acc=0.7065  nll=0.6827 drift=[312.3, 129.4, 103.0, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:43:44,310 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:43:47,238 INFO   epoch  0  batches=6  loss=2.3044  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[2.227, 2.184, 2.164, 2.156]
+2026-06-18 16:43:50,429 INFO   epoch  1  batches=6  loss=1.7412  gate(tanh)=[+0.04, +0.03, +0.01] per_step_ce=[1.571, 1.540, 1.522, 1.514]
+2026-06-18 16:43:54,410 INFO   epoch  2  batches=6  loss=0.3746  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.358, 0.359, 0.360, 0.361]
+2026-06-18 16:43:58,651 INFO   epoch  3  batches=6  loss=0.3613  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.391, 0.393, 0.394, 0.395]
+2026-06-18 16:44:02,809 INFO   epoch  4  batches=6  loss=1.3431  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[1.278, 1.253, 1.238, 1.229]
+2026-06-18 16:44:07,277 INFO   epoch  5  batches=6  loss=1.2482  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[1.160, 1.136, 1.121, 1.111]
+2026-06-18 16:44:11,080 INFO   epoch  6  batches=6  loss=0.3537  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.356, 0.359, 0.360, 0.362]
+2026-06-18 16:44:13,836 INFO   epoch  7  batches=6  loss=0.9451  gate(tanh)=[+0.06, +0.04, +0.02] per_step_ce=[0.875, 0.860, 0.851, 0.845]
+2026-06-18 16:44:16,968 INFO   epoch  8  batches=6  loss=0.8062  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[0.710, 0.703, 0.698, 0.695]
+2026-06-18 16:44:19,992 INFO   epoch  9  batches=6  loss=0.6244  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[0.550, 0.552, 0.554, 0.555]
+2026-06-18 16:44:23,115 INFO   epoch 10  batches=6  loss=0.5388  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[0.533, 0.531, 0.531, 0.531]
+2026-06-18 16:44:26,154 INFO   epoch 11  batches=6  loss=0.4250  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[0.432, 0.434, 0.436, 0.437]
+2026-06-18 16:44:26,159 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:44:26,361 INFO --- [phoneme seed=1] AFTER fine-tune ---
+2026-06-18 16:44:26,432 INFO   [post] steps=1  acc=0.3816  nll=0.9189
+2026-06-18 16:44:26,550 INFO   [post] steps=2  acc=0.3588  nll=0.9357 drift=[314.0, 9.4]
+2026-06-18 16:44:26,767 INFO   [post] steps=4  acc=0.3465  nll=0.9542 drift=[314.0, 9.4, 6.0, 4.3]
+2026-06-18 16:44:27,189 INFO   [post] steps=8  acc=0.3132  nll=0.9821 drift=[314.0, 9.4, 6.0, 4.3, 4.2, 4.0, 3.9, 3.8]
+2026-06-18 16:44:27,381 INFO --- [phoneme seed=2] BEFORE fine-tune ---
+2026-06-18 16:44:27,454 INFO   [pre] steps=1  acc=0.9100  nll=0.2038
+2026-06-18 16:44:27,575 INFO   [pre] steps=2  acc=0.4470  nll=0.7691 drift=[312.2, 172.7]
+2026-06-18 16:44:27,792 INFO   [pre] steps=4  acc=0.2935  nll=0.7041 drift=[312.2, 172.7, 103.5, 0.1]
+2026-06-18 16:44:28,214 INFO   [pre] steps=8  acc=0.2935  nll=0.7043 drift=[312.2, 172.7, 103.5, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:44:28,467 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:44:31,173 INFO   epoch  0  batches=6  loss=2.2897  gate(tanh)=[+0.02, -0.01, -0.01] per_step_ce=[2.162, 2.139, 2.145, 2.156]
+2026-06-18 16:44:34,023 INFO   epoch  1  batches=6  loss=1.8931  gate(tanh)=[+0.03, -0.00, -0.01] per_step_ce=[1.731, 1.712, 1.713, 1.717]
+2026-06-18 16:44:37,183 INFO   epoch  2  batches=6  loss=0.3959  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[0.354, 0.355, 0.355, 0.355]
+2026-06-18 16:44:40,461 INFO   epoch  3  batches=6  loss=1.5594  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[1.487, 1.458, 1.455, 1.457]
+2026-06-18 16:44:43,726 INFO   epoch  4  batches=6  loss=1.4084  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[1.410, 1.374, 1.368, 1.365]
+2026-06-18 16:44:46,940 INFO   epoch  5  batches=6  loss=0.3804  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.376, 0.379, 0.379, 0.380]
+2026-06-18 16:44:50,051 INFO   epoch  6  batches=6  loss=0.3851  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.361, 0.364, 0.365, 0.365]
+2026-06-18 16:44:53,815 INFO   epoch  7  batches=6  loss=0.3629  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.381, 0.381, 0.381, 0.381]
+2026-06-18 16:44:58,111 INFO   epoch  8  batches=6  loss=1.3796  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[1.382, 1.359, 1.355, 1.354]
+2026-06-18 16:45:02,480 INFO   epoch  9  batches=6  loss=0.3590  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.372, 0.373, 0.373, 0.373]
+2026-06-18 16:45:06,893 INFO   epoch 10  batches=6  loss=1.1989  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[1.170, 1.148, 1.143, 1.141]
+2026-06-18 16:45:11,059 INFO   epoch 11  batches=6  loss=1.0391  gate(tanh)=[+0.05, +0.02, +0.01] per_step_ce=[1.021, 1.002, 0.996, 0.992]
+2026-06-18 16:45:11,064 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:45:11,265 INFO --- [phoneme seed=2] AFTER fine-tune ---
+2026-06-18 16:45:11,337 INFO   [post] steps=1  acc=0.8909  nll=0.2657
+2026-06-18 16:45:11,458 INFO   [post] steps=2  acc=0.8890  nll=0.2683 drift=[313.0, 7.0]
+2026-06-18 16:45:11,677 INFO   [post] steps=4  acc=0.8884  nll=0.2699 drift=[313.0, 7.0, 2.3, 1.5]
+2026-06-18 16:45:12,104 INFO   [post] steps=8  acc=0.8866  nll=0.2729 drift=[313.0, 7.0, 2.3, 1.5, 1.5, 1.5, 1.5, 1.5]
+2026-06-18 16:45:12,116 INFO ##### SUMMARY phoneme (n_seeds=3) #####
+2026-06-18 16:45:12,117 INFO   pre  steps=1  acc=0.9061±0.0047  nll=0.2200±0.0165
+2026-06-18 16:45:12,117 INFO   pre  steps=2  acc=0.5481±0.0791  nll=0.7150±0.0388
+2026-06-18 16:45:12,117 INFO   pre  steps=4  acc=0.5688±0.1947  nll=0.6899±0.0100
+2026-06-18 16:45:12,117 INFO   pre  steps=8  acc=0.5688±0.1947  nll=0.6899±0.0101
+2026-06-18 16:45:12,118 INFO   post steps=1  acc=0.6545±0.2095  nll=0.5809±0.2672
+2026-06-18 16:45:12,118 INFO   post steps=2  acc=0.6291±0.2166  nll=0.5975±0.2725
+2026-06-18 16:45:12,118 INFO   post steps=4  acc=0.6385±0.2232  nll=0.5969±0.2802
+2026-06-18 16:45:12,118 INFO   post steps=8  acc=0.6599±0.2490  nll=0.5741±0.2992
+2026-06-18 16:45:12,118 INFO   Δacc(post-pre) steps=1: -0.2515±0.2096  (base pre@1=0.9061)
+2026-06-18 16:45:12,118 INFO   Δacc(post-pre) steps=2: +0.0810±0.2952  (base pre@1=0.9061)
+2026-06-18 16:45:12,118 INFO   Δacc(post-pre) steps=4: +0.0697±0.3957  (base pre@1=0.9061)
+2026-06-18 16:45:12,118 INFO   Δacc(post-pre) steps=8: +0.0910±0.4029  (base pre@1=0.9061)
+2026-06-18 16:45:12,118 INFO phoneme done in 130.2s
+2026-06-18 16:45:12,118 INFO ========================================================================
+2026-06-18 16:45:12,118 INFO DATASET qsar-biodeg  shape=(1055, 41)  classes=2
+2026-06-18 16:45:12,331 INFO --- [qsar-biodeg seed=0] BEFORE fine-tune ---
+2026-06-18 16:45:12,409 INFO   [pre] steps=1  acc=0.8612  nll=0.3064
+2026-06-18 16:45:12,500 INFO   [pre] steps=2  acc=0.1672  nll=0.8711 drift=[681.3, 223.5]
+2026-06-18 16:45:12,653 INFO   [pre] steps=4  acc=0.6625  nll=0.6851 drift=[681.3, 223.5, 202.3, 0.3]
+2026-06-18 16:45:12,949 INFO   [pre] steps=8  acc=0.6625  nll=0.6851 drift=[681.3, 223.5, 202.3, 0.3, 0.3, 0.3, 0.3, 0.2]
+2026-06-18 16:45:13,266 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:45:16,068 INFO   epoch  0  batches=6  loss=1.7773  gate(tanh)=[+0.08, -0.01, -0.10] per_step_ce=[1.829, 1.750, 1.759, 1.845]
+2026-06-18 16:45:19,442 INFO   epoch  1  batches=6  loss=1.4463  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[1.582, 1.506, 1.510, 1.583]
+2026-06-18 16:45:22,804 INFO   epoch  2  batches=6  loss=0.4410  gate(tanh)=[+0.09, -0.00, -0.10] per_step_ce=[0.387, 0.390, 0.390, 0.387]
+2026-06-18 16:45:26,099 INFO   epoch  3  batches=6  loss=0.4185  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[0.293, 0.300, 0.300, 0.294]
+2026-06-18 16:45:29,281 INFO   epoch  4  batches=6  loss=0.4037  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[0.392, 0.400, 0.400, 0.393]
+2026-06-18 16:45:32,430 INFO   epoch  5  batches=6  loss=1.3426  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[1.537, 1.468, 1.466, 1.528]
+2026-06-18 16:45:35,764 INFO   epoch  6  batches=6  loss=0.3932  gate(tanh)=[+0.09, +0.00, -0.09] per_step_ce=[0.321, 0.331, 0.331, 0.322]
+2026-06-18 16:45:39,041 INFO   epoch  7  batches=6  loss=1.1383  gate(tanh)=[+0.10, +0.01, -0.09] per_step_ce=[1.154, 1.104, 1.100, 1.147]
+2026-06-18 16:45:42,180 INFO   epoch  8  batches=6  loss=0.3972  gate(tanh)=[+0.10, +0.00, -0.09] per_step_ce=[0.431, 0.436, 0.436, 0.430]
+2026-06-18 16:45:45,610 INFO   epoch  9  batches=6  loss=1.3286  gate(tanh)=[+0.10, +0.00, -0.09] per_step_ce=[1.228, 1.188, 1.187, 1.240]
+2026-06-18 16:45:49,079 INFO   epoch 10  batches=6  loss=0.3844  gate(tanh)=[+0.09, +0.01, -0.09] per_step_ce=[0.468, 0.469, 0.469, 0.468]
+2026-06-18 16:45:52,712 INFO   epoch 11  batches=6  loss=0.4184  gate(tanh)=[+0.09, +0.01, -0.09] per_step_ce=[0.536, 0.518, 0.517, 0.529]
+2026-06-18 16:45:52,718 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:45:53,146 INFO --- [qsar-biodeg seed=0] AFTER fine-tune ---
+2026-06-18 16:45:53,229 INFO   [post] steps=1  acc=0.8549  nll=0.3231
+2026-06-18 16:45:53,336 INFO   [post] steps=2  acc=0.8549  nll=0.3303 drift=[681.0, 52.6]
+2026-06-18 16:45:53,527 INFO   [post] steps=4  acc=0.8580  nll=0.3259 drift=[681.0, 52.6, 3.7, 48.3]
+2026-06-18 16:45:53,935 INFO   [post] steps=8  acc=0.8612  nll=0.3201 drift=[681.0, 52.6, 3.7, 48.3, 51.7, 55.4, 55.5, 64.5]
+2026-06-18 16:45:54,268 INFO --- [qsar-biodeg seed=1] BEFORE fine-tune ---
+2026-06-18 16:45:54,355 INFO   [pre] steps=1  acc=0.8644  nll=0.2970
+2026-06-18 16:45:54,502 INFO   [pre] steps=2  acc=0.3375  nll=0.8390 drift=[681.3, 255.6]
+2026-06-18 16:45:54,722 INFO   [pre] steps=4  acc=0.6625  nll=0.6852 drift=[681.3, 255.6, 224.7, 0.3]
+2026-06-18 16:45:55,120 INFO   [pre] steps=8  acc=0.6625  nll=0.6850 drift=[681.3, 255.6, 224.7, 0.3, 0.2, 0.3, 0.3, 0.3]
+2026-06-18 16:45:55,615 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:45:59,553 INFO   epoch  0  batches=6  loss=1.8807  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[1.909, 1.873, 1.858, 1.854]
+2026-06-18 16:46:04,045 INFO   epoch  1  batches=6  loss=1.5711  gate(tanh)=[+0.04, +0.02, +0.01] per_step_ce=[1.300, 1.279, 1.270, 1.264]
+2026-06-18 16:46:07,584 INFO   epoch  2  batches=6  loss=0.4263  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.531, 0.531, 0.531, 0.531]
+2026-06-18 16:46:12,070 INFO   epoch  3  batches=6  loss=0.4447  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.493, 0.494, 0.494, 0.495]
+2026-06-18 16:46:15,476 INFO   epoch  4  batches=6  loss=1.1465  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[1.106, 1.091, 1.082, 1.076]
+2026-06-18 16:46:18,501 INFO   epoch  5  batches=6  loss=1.0090  gate(tanh)=[+0.05, +0.03, +0.02] per_step_ce=[0.967, 0.953, 0.944, 0.939]
+2026-06-18 16:46:21,521 INFO   epoch  6  batches=6  loss=0.4581  gate(tanh)=[+0.05, +0.04, +0.02] per_step_ce=[0.513, 0.516, 0.518, 0.520]
+2026-06-18 16:46:24,718 INFO   epoch  7  batches=6  loss=0.8551  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[0.969, 0.955, 0.946, 0.940]
+2026-06-18 16:46:27,994 INFO   epoch  8  batches=6  loss=0.7777  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[0.718, 0.711, 0.708, 0.705]
+2026-06-18 16:46:31,111 INFO   epoch  9  batches=6  loss=0.6974  gate(tanh)=[+0.06, +0.04, +0.03] per_step_ce=[0.693, 0.688, 0.686, 0.683]
+2026-06-18 16:46:34,181 INFO   epoch 10  batches=6  loss=0.6340  gate(tanh)=[+0.07, +0.05, +0.04] per_step_ce=[0.572, 0.574, 0.575, 0.577]
+2026-06-18 16:46:37,462 INFO   epoch 11  batches=6  loss=0.5850  gate(tanh)=[+0.07, +0.05, +0.04] per_step_ce=[0.573, 0.580, 0.581, 0.583]
+2026-06-18 16:46:37,468 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:46:37,725 INFO --- [qsar-biodeg seed=1] AFTER fine-tune ---
+2026-06-18 16:46:37,808 INFO   [post] steps=1  acc=0.4574  nll=0.7459
+2026-06-18 16:46:37,900 INFO   [post] steps=2  acc=0.4574  nll=0.7595 drift=[679.4, 31.4]
+2026-06-18 16:46:38,068 INFO   [post] steps=4  acc=0.4606  nll=0.7783 drift=[679.4, 31.4, 19.7, 14.2]
+2026-06-18 16:46:38,389 INFO   [post] steps=8  acc=0.4574  nll=0.8052 drift=[679.4, 31.4, 19.7, 14.2, 13.8, 13.2, 12.8, 12.4]
+2026-06-18 16:46:38,619 INFO --- [qsar-biodeg seed=2] BEFORE fine-tune ---
+2026-06-18 16:46:38,706 INFO   [pre] steps=1  acc=0.8801  nll=0.2716
+2026-06-18 16:46:38,807 INFO   [pre] steps=2  acc=0.3628  nll=0.8242 drift=[681.5, 271.7]
+2026-06-18 16:46:38,957 INFO   [pre] steps=4  acc=0.3375  nll=0.7020 drift=[681.5, 271.7, 190.9, 0.3]
+2026-06-18 16:46:39,234 INFO   [pre] steps=8  acc=0.3375  nll=0.7018 drift=[681.5, 271.7, 190.9, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 16:46:39,706 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:46:42,465 INFO   epoch  0  batches=6  loss=1.8426  gate(tanh)=[+0.02, -0.01, -0.01] per_step_ce=[1.625, 1.606, 1.611, 1.620]
+2026-06-18 16:46:45,524 INFO   epoch  1  batches=6  loss=1.4915  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[1.304, 1.287, 1.288, 1.291]
+2026-06-18 16:46:48,736 INFO   epoch  2  batches=6  loss=0.4196  gate(tanh)=[+0.03, +0.00, -0.00] per_step_ce=[0.510, 0.511, 0.511, 0.511]
+2026-06-18 16:46:52,130 INFO   epoch  3  batches=6  loss=1.2295  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[1.135, 1.119, 1.116, 1.115]
+2026-06-18 16:46:56,444 INFO   epoch  4  batches=6  loss=0.9935  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[1.247, 1.228, 1.223, 1.222]
+2026-06-18 16:47:01,028 INFO   epoch  5  batches=6  loss=0.4575  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.475, 0.478, 0.479, 0.480]
+2026-06-18 16:47:05,476 INFO   epoch  6  batches=6  loss=0.4566  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.484, 0.486, 0.487, 0.487]
+2026-06-18 16:47:09,625 INFO   epoch  7  batches=6  loss=0.4454  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.339, 0.341, 0.342, 0.342]
+2026-06-18 16:47:12,629 INFO   epoch  8  batches=6  loss=0.9471  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.918, 0.908, 0.905, 0.905]
+2026-06-18 16:47:15,711 INFO   epoch  9  batches=6  loss=0.4395  gate(tanh)=[+0.04, +0.01, +0.00] per_step_ce=[0.409, 0.410, 0.411, 0.411]
+2026-06-18 16:47:18,847 INFO   epoch 10  batches=6  loss=0.8827  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.806, 0.799, 0.798, 0.797]
+2026-06-18 16:47:22,002 INFO   epoch 11  batches=6  loss=0.8003  gate(tanh)=[+0.04, +0.01, +0.01] per_step_ce=[0.745, 0.740, 0.739, 0.738]
+2026-06-18 16:47:22,007 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:47:22,247 INFO --- [qsar-biodeg seed=2] AFTER fine-tune ---
+2026-06-18 16:47:22,322 INFO   [post] steps=1  acc=0.8644  nll=0.3428
+2026-06-18 16:47:22,412 INFO   [post] steps=2  acc=0.8612  nll=0.3458 drift=[680.5, 9.5]
+2026-06-18 16:47:22,562 INFO   [post] steps=4  acc=0.8612  nll=0.3474 drift=[680.5, 9.5, 2.9, 1.8]
+2026-06-18 16:47:22,842 INFO   [post] steps=8  acc=0.8644  nll=0.3500 drift=[680.5, 9.5, 2.9, 1.8, 1.8, 1.8, 1.8, 1.8]
+2026-06-18 16:47:22,856 INFO ##### SUMMARY qsar-biodeg (n_seeds=3) #####
+2026-06-18 16:47:22,856 INFO   pre  steps=1  acc=0.8686±0.0083  nll=0.2917±0.0147
+2026-06-18 16:47:22,857 INFO   pre  steps=2  acc=0.2892±0.0869  nll=0.8448±0.0196
+2026-06-18 16:47:22,857 INFO   pre  steps=4  acc=0.5542±0.1532  nll=0.6908±0.0079
+2026-06-18 16:47:22,857 INFO   pre  steps=8  acc=0.5542±0.1532  nll=0.6906±0.0079
+2026-06-18 16:47:22,857 INFO   post steps=1  acc=0.7256±0.1896  nll=0.4706±0.1949
+2026-06-18 16:47:22,857 INFO   post steps=2  acc=0.7245±0.1889  nll=0.4785±0.1988
+2026-06-18 16:47:22,857 INFO   post steps=4  acc=0.7266±0.1881  nll=0.4839±0.2084
+2026-06-18 16:47:22,857 INFO   post steps=8  acc=0.7277±0.1911  nll=0.4918±0.2220
+2026-06-18 16:47:22,858 INFO   Δacc(post-pre) steps=1: -0.1430±0.1867  (base pre@1=0.8686)
+2026-06-18 16:47:22,858 INFO   Δacc(post-pre) steps=2: +0.4353±0.2361  (base pre@1=0.8686)
+2026-06-18 16:47:22,858 INFO   Δacc(post-pre) steps=4: +0.1725±0.2967  (base pre@1=0.8686)
+2026-06-18 16:47:22,858 INFO   Δacc(post-pre) steps=8: +0.1735±0.2993  (base pre@1=0.8686)
+2026-06-18 16:47:22,858 INFO qsar-biodeg done in 130.7s
+2026-06-18 16:47:22,858 INFO ALL DONE

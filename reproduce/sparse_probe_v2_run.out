@@ -1,0 +1,72 @@
+2026-06-18 21:46:44,123 INFO Sparse-row probe v2 | modes=full/attn/knn/oracle | keep=[0.1, 0.25, 0.5] | seeds=[0, 1, 2] | cap=8000 | metrics=acc/bacc/auc
+2026-06-18 21:46:44,677 INFO ========================================================================
+2026-06-18 21:46:44,677 INFO DATASET phoneme  shape=(5404, 5)  classes=2
+2026-06-18 21:46:55,420 INFO ##### phoneme  noise=0%  (n_seeds=3) #####
+2026-06-18 21:46:55,421 INFO   full   k=100%  acc=0.914±0.002  bacc=0.890±0.004  auc=0.968±0.002
+2026-06-18 21:46:55,421 INFO   attn   k= 10%  acc=0.682±0.057  bacc=0.720±0.027  auc=0.814±0.019
+2026-06-18 21:46:55,421 INFO   attn   k= 25%  acc=0.868±0.014  bacc=0.856±0.011  auc=0.936±0.004
+2026-06-18 21:46:55,422 INFO   attn   k= 50%  acc=0.902±0.006  bacc=0.886±0.010  auc=0.959±0.003
+2026-06-18 21:46:55,422 INFO   knn    k= 10%  acc=0.735±0.028  bacc=0.583±0.052  auc=0.750±0.086
+2026-06-18 21:46:55,422 INFO   knn    k= 25%  acc=0.772±0.018  bacc=0.640±0.029  auc=0.846±0.021
+2026-06-18 21:46:55,422 INFO   knn    k= 50%  acc=0.854±0.012  bacc=0.798±0.042  auc=0.926±0.001
+2026-06-18 21:46:55,423 INFO   oracle k= 10%  acc=0.697±0.078  bacc=0.740±0.047  auc=0.825±0.048
+2026-06-18 21:46:55,423 INFO   oracle k= 25%  acc=0.864±0.027  bacc=0.859±0.010  auc=0.944±0.003
+2026-06-18 21:46:55,424 INFO   oracle k= 50%  acc=0.884±0.003  bacc=0.875±0.007  auc=0.950±0.001
+2026-06-18 21:46:55,424 INFO   (10.7s)
+2026-06-18 21:47:09,052 INFO ##### phoneme  noise=50%  (n_seeds=3) #####
+2026-06-18 21:47:09,052 INFO   full   k=100%  acc=0.904±0.003  bacc=0.882±0.005  auc=0.960±0.001
+2026-06-18 21:47:09,052 INFO   attn   k= 10%  acc=0.460±0.232  bacc=0.561±0.085  auc=0.741±0.044
+2026-06-18 21:47:09,053 INFO   attn   k= 25%  acc=0.750±0.085  bacc=0.791±0.039  auc=0.913±0.012
+2026-06-18 21:47:09,053 INFO   attn   k= 50%  acc=0.890±0.010  bacc=0.882±0.003  auc=0.948±0.005
+2026-06-18 21:47:09,053 INFO   knn    k= 10%  acc=0.705±0.027  bacc=0.582±0.085  auc=0.671±0.109
+2026-06-18 21:47:09,053 INFO   knn    k= 25%  acc=0.751±0.025  bacc=0.639±0.086  auc=0.797±0.036
+2026-06-18 21:47:09,053 INFO   knn    k= 50%  acc=0.841±0.006  bacc=0.793±0.007  auc=0.898±0.010
+2026-06-18 21:47:09,054 INFO   oracle k= 10%  acc=0.495±0.105  bacc=0.598±0.047  auc=0.608±0.056
+2026-06-18 21:47:09,054 INFO   oracle k= 25%  acc=0.713±0.137  bacc=0.742±0.064  auc=0.875±0.020
+2026-06-18 21:47:09,054 INFO   oracle k= 50%  acc=0.860±0.016  bacc=0.860±0.006  auc=0.938±0.003
+2026-06-18 21:47:09,054 INFO   (13.6s)
+2026-06-18 21:47:09,054 INFO ========================================================================
+2026-06-18 21:47:09,055 INFO DATASET electricity  shape=(45312, 8)  classes=2
+Traceback (most recent call last):
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_sparse_rows_probe_v2.py", line 281, in <module>
+    main()
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_sparse_rows_probe_v2.py", line 272, in main
+    runs = [run_one(name, X, y, s, noise_frac) for s in SEEDS]
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_sparse_rows_probe_v2.py", line 272, in <listcomp>
+    runs = [run_one(name, X, y, s, noise_frac) for s in SEEDS]
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_sparse_rows_probe_v2.py", line 230, in run_one
+    res[(mode, kf)] = metrics(y_te, predict_mode(clf, X_te, mode, kf), labels)
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/reproduce/run_sparse_rows_probe_v2.py", line 188, in predict_mode
+    return clf.predict_proba(X_te)
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/src/tabpfn/classifier.py", line 1243, in predict_proba
+    return self._predict_proba(X)
+  File "/home/zxiebk/miniconda3/lib/python3.10/contextlib.py", line 79, in inner
+    return func(*args, **kwds)
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/src/tabpfn/classifier.py", line 1257, in _predict_proba
+    self._raw_predict(X, return_logits=False).float().detach().cpu().numpy()
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/src/tabpfn/classifier.py", line 1162, in _raw_predict
+    with handle_oom_errors(
+  File "/home/zxiebk/miniconda3/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/data/zxiebk/workspace/train/PFN/TabPFN/src/tabpfn/errors.py", line 176, in handle_oom_errors
+    raise TabPFNCUDAOutOfMemoryError(
+tabpfn.errors.TabPFNCUDAOutOfMemoryError: CUDA out of memory with 11,328 test samples.
+
+This is issue is usually caused by one of the following two reasons:
+
+1) Large test set — split into batches:
+
+    predictions = []
+    for i in range(0, len(X_test), 100):
+        pred = model.predict_proba(X_test[i:i + 100])
+        predictions.append(pred)
+    predictions = np.vstack(predictions)
+
+2) Large training set — batching won't help.
+   Subsample your training data; see https://docs.priorlabs.ai
+   for further guidance.
+
+Your sizes: 8,000 train / 11,328 test samples, 8 features.
+Not sure which? If model.predict_proba(X_test[:1]) also fails, it's (2).
+
+Original error: CUDA out of memory. Tried to allocate 27.22 GiB. GPU 0 has a total capacity of 44.39 GiB of which 23.64 GiB is free. Process 982102 has 552.00 MiB memory in use. Process 2246468 has 3.64 GiB memory in use. Including non-PyTorch memory, this process has 16.54 GiB memory in use. Of the allocated memory 3.70 GiB is allocated by PyTorch, and 12.49 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

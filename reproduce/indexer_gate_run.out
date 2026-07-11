@@ -1,0 +1,831 @@
+datasets: 38
+building models...
+  built c60k_k3
+  built c60k_k4
+  built c60k_k5
+  built c60k_k6
+  built c80k_k1
+  built c80k_k2
+  built c80k_k3
+  built c80k_k4
+  built c80k_k5
+  built c80k_k6
+  built loopk4_k4 (reference)
+built 11 models in 2s
+
+============================================================
+BASE: curric-60K  |  k-range: [3, 4, 5, 6]
+============================================================
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  blood-transfusion-service-center oracle=0.8114 adap=0.7211 best_fixed=0.7401 lk4=0.7261 k_dist={3: 178, 4: 1, 5: 1, 6: 70}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  diabetes                         oracle=0.8797 adap=0.8406 best_fixed=0.8468 lk4=0.8475 k_dist={3: 163, 4: 23, 5: 47, 6: 23}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  anneal                           oracle=0.9927 adap=0.9803 best_fixed=0.9875 lk4=0.9948 k_dist={3: 0, 4: 25, 5: 40, 6: 235}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  credit-g                         oracle=0.8138 adap=0.7643 best_fixed=0.7615 lk4=0.7519 k_dist={3: 68, 4: 15, 5: 11, 6: 240}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  maternal_health_risk             oracle=0.9257 adap=0.8637 best_fixed=0.8730 lk4=0.8867 k_dist={3: 60, 4: 81, 5: 14, 6: 183}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  qsar-biodeg                      oracle=0.9581 adap=0.9361 best_fixed=0.9401 lk4=0.9390 k_dist={3: 10, 4: 93, 5: 68, 6: 181}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  website_phishing                 oracle=0.9815 adap=0.9604 best_fixed=0.9592 lk4=0.9781 k_dist={3: 8, 4: 0, 5: 66, 6: 377}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Fitness_Club                     oracle=0.8367 adap=0.8036 best_fixed=0.8041 lk4=0.8042 k_dist={3: 5, 4: 132, 5: 22, 6: 341}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  MIC                              oracle=0.8751 adap=0.8228 best_fixed=0.8242 lk4=0.8133 k_dist={3: 135, 4: 41, 5: 74, 6: 250}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Is-this-a-good-customer          oracle=0.7943 adap=0.7106 best_fixed=0.7213 lk4=0.7066 k_dist={3: 185, 4: 86, 5: 101, 6: 128}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Marketing_Campaign               oracle=0.9548 adap=0.9081 best_fixed=0.9247 lk4=0.9174 k_dist={3: 59, 4: 13, 5: 29, 6: 399}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  hazelnut-spread-contaminant-dete oracle=0.9774 adap=0.9605 best_fixed=0.9605 lk4=0.9608 k_dist={3: 0, 4: 0, 5: 0, 6: 500}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  seismic-bumps                    oracle=0.8388 adap=0.7774 best_fixed=0.7707 lk4=0.7840 k_dist={3: 87, 4: 31, 5: 27, 6: 355}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  splice                           oracle=0.9763 adap=0.9266 best_fixed=0.9368 lk4=0.9666 k_dist={3: 65, 4: 196, 5: 126, 6: 113}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  Bioresponse                      oracle=0.8928 adap=0.7984 best_fixed=0.7953 lk4=0.7974 k_dist={3: 24, 4: 217, 5: 61, 6: 198}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1254: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, binary problems will be fit as proper binary  logistic regression models (as if multi_class='ovr' were set). Leave it to its default value to avoid this warning.
+  warnings.warn(
+  hiva_agnostic                    oracle=0.9926 adap=0.4633 best_fixed=0.5135 lk4=0.5204 k_dist={3: 499, 4: 0, 5: 1, 6: 0}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  students_dropout_and_academic_su oracle=0.8815 adap=0.8389 best_fixed=0.8414 lk4=0.8413 k_dist={3: 166, 4: 109, 5: 33, 6: 192}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  churn                            oracle=0.9544 adap=0.9258 best_fixed=0.9284 lk4=0.9412 k_dist={3: 90, 4: 25, 5: 105, 6: 280}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  polish_companies_bankruptcy      oracle=0.9184 adap=0.8558 best_fixed=0.8611 lk4=0.9049 k_dist={3: 1, 4: 9, 5: 95, 6: 395}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  taiwanese_bankruptcy_prediction  oracle=0.9546 adap=0.9280 best_fixed=0.9348 lk4=0.9331 k_dist={3: 70, 4: 28, 5: 364, 6: 38}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  NATICUSdroid                     oracle=0.9891 adap=0.9819 best_fixed=0.9832 lk4=0.9819 k_dist={3: 59, 4: 6, 5: 6, 6: 429}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  coil2000_insurance_policies      oracle=0.8303 adap=0.7159 best_fixed=0.7441 lk4=0.7506 k_dist={3: 149, 4: 89, 5: 65, 6: 197}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Bank_Customer_Churn              oracle=0.8633 adap=0.8154 best_fixed=0.8225 lk4=0.8353 k_dist={3: 52, 4: 109, 5: 0, 6: 339}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  heloc                            oracle=0.8278 adap=0.7721 best_fixed=0.7802 lk4=0.7775 k_dist={3: 157, 4: 58, 5: 59, 6: 226}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  jm1                              oracle=0.7660 adap=0.6895 best_fixed=0.6939 lk4=0.7080 k_dist={3: 406, 4: 11, 5: 64, 6: 19}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  E-CommereShippingData            oracle=0.8709 adap=0.7322 best_fixed=0.7285 lk4=0.7183 k_dist={3: 164, 4: 198, 5: 84, 6: 54}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  online_shoppers_intention        oracle=0.9328 adap=0.8935 best_fixed=0.8986 lk4=0.8934 k_dist={3: 28, 4: 3, 5: 80, 6: 389}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  in_vehicle_coupon_recommendation oracle=0.8136 adap=0.6834 best_fixed=0.6795 lk4=0.7053 k_dist={3: 112, 4: 26, 5: 20, 6: 342}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  HR_Analytics_Job_Change_of_Data_ oracle=0.8483 adap=0.7659 best_fixed=0.7794 lk4=0.7914 k_dist={3: 112, 4: 47, 5: 54, 6: 287}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  credit_card_clients_default      oracle=0.7781 adap=0.7147 best_fixed=0.7166 lk4=0.7186 k_dist={3: 285, 4: 31, 5: 38, 6: 146}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Amazon_employee_access           oracle=0.7885 adap=0.5710 best_fixed=0.6100 lk4=0.6430 k_dist={3: 317, 4: 59, 5: 5, 6: 119}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  bank-marketing                   oracle=0.9024 adap=0.6700 best_fixed=0.7100 lk4=0.7310 k_dist={3: 69, 4: 0, 5: 15, 6: 416}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  kddcup09_appetency               oracle=0.7166 adap=0.4433 best_fixed=0.4710 lk4=0.4545 k_dist={3: 326, 4: 100, 5: 29, 6: 45}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Diabetes130US                    oracle=0.7714 adap=0.6085 best_fixed=0.6060 lk4=0.5933 k_dist={3: 238, 4: 110, 5: 86, 6: 66}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  APSFailure                       oracle=0.9799 adap=0.9632 best_fixed=0.9637 lk4=0.9779 k_dist={3: 145, 4: 258, 5: 95, 6: 2}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  SDSS17                           oracle=0.9940 adap=0.9815 best_fixed=0.9842 lk4=0.9903 k_dist={3: 7, 4: 258, 5: 220, 6: 15}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  customer_satisfaction_in_airline oracle=0.9789 adap=0.9680 best_fixed=0.9678 lk4=0.9691 k_dist={3: 7, 4: 2, 5: 23, 6: 468}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  GiveMeSomeCredit                 oracle=0.8839 adap=0.8018 best_fixed=0.7999 lk4=0.8050 k_dist={3: 10, 4: 34, 5: 3, 6: 453}
+
+--- SUMMARY: curric-60K (k=3..6) ---
+  oracle (upper bound):      0.8881
+  adaptive (selector):       0.8042
+  fixed k=3:               0.8028
+  fixed k=4:               0.8026
+  fixed k=5:               0.8028
+  fixed k=6:               0.8013
+  loopk4 ref (same ctx):     0.8174
+  loopk4 global 80K:         0.8174  (full-train ctx)
+
+  adaptive vs best_fixed_k:  +0.0013
+  oracle  vs best_fixed_k:   +0.0852
+  adaptive vs loopk4-80K:    -0.0132
+
+============================================================
+BASE: curric-80K  |  k-range: [1, 2, 3, 4, 5, 6]
+============================================================
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  blood-transfusion-service-center oracle=0.9790 adap=0.7241 best_fixed=0.7375 lk4=0.7261 k_dist={1: 3, 2: 143, 3: 86, 4: 0, 5: 0, 6: 18}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  diabetes                         oracle=0.9657 adap=0.8344 best_fixed=0.8489 lk4=0.8475 k_dist={1: 7, 2: 167, 3: 2, 4: 5, 5: 22, 6: 53}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  anneal                           oracle=0.9950 adap=0.9809 best_fixed=0.9864 lk4=0.9948 k_dist={1: 3, 2: 0, 3: 1, 4: 0, 5: 7, 6: 289}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  credit-g                         oracle=0.9983 adap=0.7197 best_fixed=0.7566 lk4=0.7519 k_dist={1: 39, 2: 82, 3: 0, 4: 0, 5: 0, 6: 213}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  maternal_health_risk             oracle=0.9907 adap=0.7854 best_fixed=0.8599 lk4=0.8867 k_dist={1: 156, 2: 4, 3: 0, 4: 6, 5: 25, 6: 147}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  qsar-biodeg                      oracle=0.9864 adap=0.9233 best_fixed=0.9345 lk4=0.9390 k_dist={1: 2, 2: 86, 3: 63, 4: 2, 5: 64, 6: 135}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  website_phishing                 oracle=0.9907 adap=0.8860 best_fixed=0.9721 lk4=0.9781 k_dist={1: 49, 2: 2, 3: 0, 4: 80, 5: 3, 6: 317}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Fitness_Club                     oracle=0.9619 adap=0.8107 best_fixed=0.8109 lk4=0.8042 k_dist={1: 0, 2: 351, 3: 70, 4: 0, 5: 0, 6: 79}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  MIC                              oracle=0.9315 adap=0.8029 best_fixed=0.8264 lk4=0.8133 k_dist={1: 87, 2: 13, 3: 44, 4: 212, 5: 86, 6: 58}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Is-this-a-good-customer          oracle=1.0000 adap=0.6849 best_fixed=0.7026 lk4=0.7066 k_dist={1: 0, 2: 374, 3: 126, 4: 0, 5: 0, 6: 0}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Marketing_Campaign               oracle=0.9880 adap=0.8583 best_fixed=0.9295 lk4=0.9174 k_dist={1: 4, 2: 234, 3: 10, 4: 7, 5: 203, 6: 42}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  hazelnut-spread-contaminant-dete oracle=0.9920 adap=0.9579 best_fixed=0.9579 lk4=0.9608 k_dist={1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 500}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  seismic-bumps                    oracle=0.9988 adap=0.7273 best_fixed=0.7872 lk4=0.7840 k_dist={1: 8, 2: 0, 3: 476, 4: 0, 5: 0, 6: 16}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  splice                           oracle=0.9907 adap=0.8851 best_fixed=0.9484 lk4=0.9666 k_dist={1: 48, 2: 17, 3: 0, 4: 9, 5: 38, 6: 388}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  Bioresponse                      oracle=0.9948 adap=0.7903 best_fixed=0.7977 lk4=0.7974 k_dist={1: 24, 2: 228, 3: 0, 4: 0, 5: 0, 6: 248}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  hiva_agnostic                    oracle=0.9980 adap=0.5473 best_fixed=0.6025 lk4=0.5204 k_dist={1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 500}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  students_dropout_and_academic_su oracle=0.9732 adap=0.7907 best_fixed=0.8264 lk4=0.8413 k_dist={1: 67, 2: 44, 3: 0, 4: 96, 5: 23, 6: 270}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  churn                            oracle=0.9940 adap=0.7559 best_fixed=0.9276 lk4=0.9412 k_dist={1: 9, 2: 212, 3: 219, 4: 0, 5: 11, 6: 49}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  polish_companies_bankruptcy      oracle=0.9775 adap=0.8160 best_fixed=0.8498 lk4=0.9049 k_dist={1: 5, 2: 24, 3: 455, 4: 0, 5: 0, 6: 16}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  taiwanese_bankruptcy_prediction  oracle=0.9945 adap=0.9193 best_fixed=0.9469 lk4=0.9331 k_dist={1: 11, 2: 1, 3: 465, 4: 0, 5: 6, 6: 17}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  NATICUSdroid                     oracle=0.9962 adap=0.9809 best_fixed=0.9869 lk4=0.9819 k_dist={1: 16, 2: 14, 3: 172, 4: 0, 5: 20, 6: 278}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  coil2000_insurance_policies      oracle=1.0000 adap=0.5512 best_fixed=0.6917 lk4=0.7506 k_dist={1: 17, 2: 0, 3: 480, 4: 0, 5: 0, 6: 3}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Bank_Customer_Churn              oracle=0.9868 adap=0.8061 best_fixed=0.8210 lk4=0.8353 k_dist={1: 0, 2: 496, 3: 0, 4: 0, 5: 4, 6: 0}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  heloc                            oracle=0.9732 adap=0.7616 best_fixed=0.7760 lk4=0.7775 k_dist={1: 39, 2: 307, 3: 0, 4: 0, 5: 0, 6: 154}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  jm1                              oracle=0.9632 adap=0.6245 best_fixed=0.7058 lk4=0.7080 k_dist={1: 2, 2: 424, 3: 10, 4: 0, 5: 0, 6: 64}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  E-CommereShippingData            oracle=0.9973 adap=0.6861 best_fixed=0.7237 lk4=0.7183 k_dist={1: 38, 2: 284, 3: 0, 4: 0, 5: 0, 6: 178}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  online_shoppers_intention        oracle=0.9700 adap=0.8799 best_fixed=0.8937 lk4=0.8934 k_dist={1: 20, 2: 269, 3: 89, 4: 0, 5: 118, 6: 4}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  in_vehicle_coupon_recommendation oracle=1.0000 adap=0.6069 best_fixed=0.6822 lk4=0.7053 k_dist={1: 45, 2: 253, 3: 0, 4: 0, 5: 0, 6: 202}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  HR_Analytics_Job_Change_of_Data_ oracle=0.9754 adap=0.7767 best_fixed=0.7769 lk4=0.7914 k_dist={1: 5, 2: 466, 3: 0, 4: 0, 5: 0, 6: 29}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  credit_card_clients_default      oracle=0.9506 adap=0.6983 best_fixed=0.7194 lk4=0.7186 k_dist={1: 20, 2: 406, 3: 4, 4: 11, 5: 0, 6: 59}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Amazon_employee_access           oracle=1.0000 adap=0.5387 best_fixed=0.6096 lk4=0.6430 k_dist={1: 16, 2: 0, 3: 0, 4: 0, 5: 0, 6: 484}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  bank-marketing                   oracle=0.9924 adap=0.6821 best_fixed=0.7470 lk4=0.7310 k_dist={1: 0, 2: 348, 3: 142, 4: 0, 5: 0, 6: 10}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1254: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, binary problems will be fit as proper binary  logistic regression models (as if multi_class='ovr' were set). Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  kddcup09_appetency               oracle=0.9966 adap=0.3512 best_fixed=0.5955 lk4=0.4545 k_dist={1: 22, 2: 0, 3: 478, 4: 0, 5: 0, 6: 0}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  Diabetes130US                    oracle=1.0000 adap=0.5736 best_fixed=0.5266 lk4=0.5933 k_dist={1: 18, 2: 353, 3: 129, 4: 0, 5: 0, 6: 0}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+  APSFailure                       oracle=0.9986 adap=0.9316 best_fixed=0.9660 lk4=0.9779 k_dist={1: 0, 2: 2, 3: 491, 4: 0, 5: 0, 6: 7}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  SDSS17                           oracle=0.9969 adap=0.9390 best_fixed=0.9776 lk4=0.9903 k_dist={1: 0, 2: 6, 3: 5, 4: 85, 5: 2, 6: 402}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  customer_satisfaction_in_airline oracle=0.9960 adap=0.9471 best_fixed=0.9602 lk4=0.9691 k_dist={1: 2, 2: 114, 3: 0, 4: 0, 5: 9, 6: 375}
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:1264: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/zxiebk/miniconda3/envs/wcb_rl_training/lib/python3.10/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 500 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=500).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+  GiveMeSomeCredit                 oracle=0.9999 adap=0.7610 best_fixed=0.7950 lk4=0.8050 k_dist={1: 2, 2: 8, 3: 478, 4: 0, 5: 0, 6: 12}
+
+--- SUMMARY: curric-80K (k=1..6) ---
+  oracle (upper bound):      0.9867
+  adaptive (selector):       0.7710
+  fixed k=1:               0.7582
+  fixed k=2:               0.7598
+  fixed k=3:               0.7539
+  fixed k=4:               0.7416
+  fixed k=5:               0.7556
+  fixed k=6:               0.8024
+  loopk4 ref (same ctx):     0.8174
+  loopk4 global 80K:         0.8174  (full-train ctx)
+
+  adaptive vs best_fixed_k:  -0.0315
+  oracle  vs best_fixed_k:   +0.1842
+  adaptive vs loopk4-80K:    -0.0464
+
+results saved → /data/zxiebk/workspace/train/PFN/TabPFN/reproduce/adaptive_k_results.json

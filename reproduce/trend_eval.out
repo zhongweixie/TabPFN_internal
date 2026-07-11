@@ -1,0 +1,79 @@
+datasets: 38
+building 60 model instances...
+built 60 models in 10s
+loaded GBDT baselines (38 datasets)
+  blood-transfusion-service-center     n=498 c=2
+  diabetes                             n=512 c=2
+  anneal                               n=598 c=5
+  credit-g                             n=666 c=2
+  maternal_health_risk                 n=676 c=3
+  qsar-biodeg                          n=702 c=2
+  website_phishing                     n=902 c=3
+  Fitness_Club                         n=1000 c=2
+  MIC                                  n=1000 c=8
+  Is-this-a-good-customer              n=1000 c=2
+  Marketing_Campaign                   n=1000 c=2
+  hazelnut-spread-contaminant-detectio n=1000 c=2
+  seismic-bumps                        n=1000 c=2
+  splice                               n=1000 c=3
+  Bioresponse                          n=1000 c=2
+  hiva_agnostic                        n=1000 c=3
+  students_dropout_and_academic_succes n=1000 c=3
+  churn                                n=1000 c=2
+  polish_companies_bankruptcy          n=1000 c=2
+  taiwanese_bankruptcy_prediction      n=1000 c=2
+  NATICUSdroid                         n=1000 c=2
+  coil2000_insurance_policies          n=1000 c=2
+  Bank_Customer_Churn                  n=1000 c=2
+  heloc                                n=1000 c=2
+  jm1                                  n=1000 c=2
+  E-CommereShippingData                n=1000 c=2
+  online_shoppers_intention            n=1000 c=2
+  in_vehicle_coupon_recommendation     n=1000 c=2
+  HR_Analytics_Job_Change_of_Data_Scie n=1000 c=2
+  credit_card_clients_default          n=1000 c=2
+  Amazon_employee_access               n=1000 c=2
+  bank-marketing                       n=1000 c=2
+  kddcup09_appetency                   n=1000 c=2
+  Diabetes130US                        n=1000 c=2
+  APSFailure                           n=1000 c=2
+  SDSS17                               n=1000 c=3
+  customer_satisfaction_in_airline     n=1000 c=2
+  GiveMeSomeCredit                     n=1000 c=2
+
+====================================================================
+TabArena ROC-AUC trajectory (baselines: catboost=0.8142)
+====================================================================
+
+--- (1) OVERFITTING CHECK: native-k AUC vs training step ---
+  step   loopk4@k4   loopk6@k6
+   40k      0.8094      0.8074
+   50k      0.8054      0.8090
+   60k      0.8159      0.8105
+   70k      0.8173      0.8124
+   80k      0.8174      0.8123
+
+--- (2) CURRICULUM CROSS-K TRAJECTORY (forgetting check) ---
+Stage boundaries: 40k/50k in k=4 stage | 60k in k=5 stage | 70k/80k in k=6 stage
+  step      @k=1      @k=2      @k=3      @k=4      @k=5      @k=6
+   40k    0.7793    0.7882    0.7916    0.7862    0.7738    0.7537  (k4-stage)
+   50k    0.7769    0.7946    0.8014    0.7997    0.7955    0.7894  (k4-stage)
+   60k    0.7726    0.7920    0.8075    0.8083    0.8090    0.8072  (k5-stage)
+   70k    0.7720    0.7902    0.8030    0.8104    0.8098    0.8086  (k6-stage)
+   80k    0.7596    0.7656    0.7575    0.7424    0.7601    0.8095  (k6-stage)
+
+--- (3) LOOPK4 CROSS-K TRAJECTORY ---
+  step      @k=1      @k=2      @k=3      @k=4
+   40k    0.7282    0.7585    0.7977    0.8094
+   50k    0.7393    0.7683    0.8038    0.8054
+   60k    0.7457    0.7778    0.8088    0.8159
+   70k    0.7323    0.7708    0.8079    0.8173
+   80k    0.7346    0.7702    0.8078    0.8174
+
+--- (4) LOOPK6: k=4 vs k=6 AUC over steps ---
+  step      @k=4      @k=6
+   40k    0.7970    0.8074
+   50k    0.7955    0.8090
+   60k    0.7952    0.8105
+   70k    0.8004    0.8124
+   80k    0.7984    0.8123

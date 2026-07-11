@@ -1,0 +1,411 @@
+2026-06-18 16:53:15,400 INFO Ouro RESCUE: freeze encoder + early-stop | T_max=4 | patience=3 | seeds=[0, 1, 2]
+2026-06-18 16:53:15,474 INFO ========================================================================
+2026-06-18 16:53:15,474 INFO DATASET wine  shape=(178, 13)  classes=3
+2026-06-18 16:53:16,262 INFO --- [wine seed=0] BEFORE fine-tune ---
+2026-06-18 16:53:16,890 INFO   [pre] steps=1  acc=1.0000  nll=0.0076
+2026-06-18 16:53:17,030 INFO   [pre] steps=2  acc=0.4444  nll=2.0141 drift=[413.1, 97.2]
+2026-06-18 16:53:17,388 INFO   [pre] steps=4  acc=0.2778  nll=1.6877 drift=[413.1, 97.2, 40.0, 0.2]
+2026-06-18 16:53:17,704 INFO   [pre] steps=8  acc=0.2778  nll=1.6896 drift=[413.1, 97.2, 40.0, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:53:18,804 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:53:18,830 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:53:20,347 INFO   epoch  0  tr=5.9668  val=2.6055  gate=[+0.08, -0.01, -0.11]
+2026-06-18 16:53:21,924 INFO   epoch  1  tr=5.3281  val=2.6992  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:53:23,371 INFO   epoch  2  tr=0.0524  val=0.4219  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:53:24,784 INFO   epoch  3  tr=0.1256  val=0.2705  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:53:26,172 INFO   epoch  4  tr=3.4043  val=2.3496  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:53:27,552 INFO   epoch  5  tr=2.9492  val=1.7627  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:53:29,058 INFO   epoch  6  tr=3.4590  val=2.4062  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:53:29,058 INFO   early stop @ epoch 6 (best val=0.2705)
+2026-06-18 16:53:29,083 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:53:29,309 INFO --- [wine seed=0] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:53:29,363 INFO   [post] steps=1  acc=1.0000  nll=0.0214
+2026-06-18 16:53:29,446 INFO   [post] steps=2  acc=1.0000  nll=0.0243 drift=[412.9, 7.8]
+2026-06-18 16:53:29,588 INFO   [post] steps=4  acc=1.0000  nll=0.0208 drift=[412.9, 7.8, 0.9, 9.3]
+2026-06-18 16:53:29,859 INFO   [post] steps=8  acc=1.0000  nll=0.0107 drift=[412.9, 7.8, 0.9, 9.3, 10.1, 11.2, 12.6, 13.3]
+2026-06-18 16:53:30,105 INFO --- [wine seed=1] BEFORE fine-tune ---
+2026-06-18 16:53:30,155 INFO   [pre] steps=1  acc=1.0000  nll=0.0163
+2026-06-18 16:53:30,237 INFO   [pre] steps=2  acc=0.5000  nll=2.0972 drift=[412.9, 90.3]
+2026-06-18 16:53:30,382 INFO   [pre] steps=4  acc=0.3333  nll=1.8452 drift=[412.9, 90.3, 51.6, 0.2]
+2026-06-18 16:53:30,657 INFO   [pre] steps=8  acc=0.3333  nll=1.8465 drift=[412.9, 90.3, 51.6, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:53:30,830 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:53:30,854 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:53:32,192 INFO   epoch  0  tr=3.9170  val=2.5176  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:53:33,629 INFO   epoch  1  tr=5.4766  val=3.4531  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:53:35,011 INFO   epoch  2  tr=2.9824  val=1.4170  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:53:36,489 INFO   epoch  3  tr=2.4092  val=1.3457  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:53:37,809 INFO   epoch  4  tr=2.2715  val=1.5635  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:53:39,219 INFO   epoch  5  tr=3.1846  val=1.9746  gate=[+0.04, +0.03, +0.02]
+2026-06-18 16:53:40,577 INFO   epoch  6  tr=2.3037  val=2.2988  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:53:40,577 INFO   early stop @ epoch 6 (best val=1.3457)
+2026-06-18 16:53:40,591 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:53:40,738 INFO --- [wine seed=1] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:53:40,788 INFO   [post] steps=1  acc=1.0000  nll=0.0283
+2026-06-18 16:53:40,877 INFO   [post] steps=2  acc=1.0000  nll=0.0296 drift=[412.8, 4.4]
+2026-06-18 16:53:41,049 INFO   [post] steps=4  acc=1.0000  nll=0.0307 drift=[412.8, 4.4, 2.2, 1.1]
+2026-06-18 16:53:41,370 INFO   [post] steps=8  acc=1.0000  nll=0.0323 drift=[412.8, 4.4, 2.2, 1.1, 1.1, 1.1, 1.1, 1.1]
+2026-06-18 16:53:41,571 INFO --- [wine seed=2] BEFORE fine-tune ---
+2026-06-18 16:53:41,619 INFO   [pre] steps=1  acc=1.0000  nll=0.0230
+2026-06-18 16:53:41,698 INFO   [pre] steps=2  acc=0.3889  nll=1.7991 drift=[413.0, 100.4]
+2026-06-18 16:53:41,845 INFO   [pre] steps=4  acc=0.3889  nll=1.5241 drift=[413.0, 100.4, 46.0, 0.2]
+2026-06-18 16:53:42,121 INFO   [pre] steps=8  acc=0.3889  nll=1.5239 drift=[413.0, 100.4, 46.0, 0.2, 0.1, 0.2, 0.2, 0.2]
+2026-06-18 16:53:42,532 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:53:42,555 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:53:43,871 INFO   epoch  0  tr=4.5312  val=2.4688  gate=[+0.02, -0.01, -0.01]
+2026-06-18 16:53:45,409 INFO   epoch  1  tr=3.5869  val=2.0742  gate=[+0.02, -0.01, -0.01]
+2026-06-18 16:53:46,814 INFO   epoch  2  tr=3.0430  val=1.3486  gate=[+0.03, -0.01, -0.01]
+2026-06-18 16:53:48,200 INFO   epoch  3  tr=4.0410  val=2.0742  gate=[+0.03, -0.00, -0.01]
+2026-06-18 16:53:49,648 INFO   epoch  4  tr=2.3857  val=1.8799  gate=[+0.03, -0.00, -0.01]
+2026-06-18 16:53:51,097 INFO   epoch  5  tr=3.0918  val=2.0762  gate=[+0.03, +0.00, -0.00]
+2026-06-18 16:53:51,098 INFO   early stop @ epoch 5 (best val=1.3486)
+2026-06-18 16:53:51,114 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:53:51,318 INFO --- [wine seed=2] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:53:51,371 INFO   [post] steps=1  acc=1.0000  nll=0.0342
+2026-06-18 16:53:51,455 INFO   [post] steps=2  acc=1.0000  nll=0.0347 drift=[413.0, 2.7]
+2026-06-18 16:53:51,631 INFO   [post] steps=4  acc=1.0000  nll=0.0344 drift=[413.0, 2.7, 0.5, 1.0]
+2026-06-18 16:53:51,962 INFO   [post] steps=8  acc=1.0000  nll=0.0336 drift=[413.0, 2.7, 0.5, 1.0, 1.0, 1.1, 1.1, 1.1]
+2026-06-18 16:53:51,995 INFO ##### SUMMARY wine (n_seeds=3) #####
+2026-06-18 16:53:51,996 INFO   pre  steps=1  acc=1.0000±0.0000  nll=0.0156±0.0063
+2026-06-18 16:53:51,996 INFO   pre  steps=2  acc=0.4444±0.0454  nll=1.9701±0.1256
+2026-06-18 16:53:51,996 INFO   pre  steps=4  acc=0.3333±0.0454  nll=1.6857±0.1311
+2026-06-18 16:53:51,996 INFO   pre  steps=8  acc=0.3333±0.0454  nll=1.6867±0.1317
+2026-06-18 16:53:51,996 INFO   post steps=1  acc=1.0000±0.0000  nll=0.0279±0.0052
+2026-06-18 16:53:51,997 INFO   post steps=2  acc=1.0000±0.0000  nll=0.0295±0.0043
+2026-06-18 16:53:51,997 INFO   post steps=4  acc=1.0000±0.0000  nll=0.0286±0.0057
+2026-06-18 16:53:51,997 INFO   post steps=8  acc=1.0000±0.0000  nll=0.0255±0.0105
+2026-06-18 16:53:51,997 INFO   Δacc(post-pre) steps=1: +0.0000±0.0000  (base pre@1=1.0000)
+2026-06-18 16:53:51,997 INFO   Δacc(post-pre) steps=2: +0.5556±0.0454  (base pre@1=1.0000)
+2026-06-18 16:53:51,998 INFO   Δacc(post-pre) steps=4: +0.6667±0.0454  (base pre@1=1.0000)
+2026-06-18 16:53:51,998 INFO   Δacc(post-pre) steps=8: +0.6667±0.0454  (base pre@1=1.0000)
+2026-06-18 16:53:51,998 INFO wine done in 36.5s
+2026-06-18 16:53:51,998 INFO ========================================================================
+2026-06-18 16:53:51,998 INFO DATASET breast_cancer  shape=(569, 30)  classes=2
+2026-06-18 16:53:52,227 INFO --- [breast_cancer seed=0] BEFORE fine-tune ---
+2026-06-18 16:53:52,296 INFO   [pre] steps=1  acc=0.9708  nll=0.0868
+2026-06-18 16:53:52,401 INFO   [pre] steps=2  acc=0.4269  nll=0.9058 drift=[585.1, 215.1]
+2026-06-18 16:53:52,575 INFO   [pre] steps=4  acc=0.3743  nll=0.6999 drift=[585.1, 215.1, 169.2, 0.2]
+2026-06-18 16:53:52,906 INFO   [pre] steps=8  acc=0.3743  nll=0.6999 drift=[585.1, 215.1, 169.2, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:53:53,135 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:53:53,196 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:53:57,494 INFO   epoch  0  tr=3.0475  val=3.1562  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:54:02,116 INFO   epoch  1  tr=1.9785  val=1.5645  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:54:06,589 INFO   epoch  2  tr=0.2648  val=0.2134  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:54:10,909 INFO   epoch  3  tr=0.2296  val=0.1815  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:54:14,972 INFO   epoch  4  tr=0.2450  val=0.1359  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:54:18,639 INFO   epoch  5  tr=1.7931  val=2.1094  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:54:22,375 INFO   epoch  6  tr=0.1371  val=0.1794  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:54:26,149 INFO   epoch  7  tr=1.4211  val=1.3311  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:54:26,150 INFO   early stop @ epoch 7 (best val=0.1359)
+2026-06-18 16:54:26,171 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:54:26,394 INFO --- [breast_cancer seed=0] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:54:26,466 INFO   [post] steps=1  acc=0.9474  nll=0.1201
+2026-06-18 16:54:26,557 INFO   [post] steps=2  acc=0.9415  nll=0.1217 drift=[584.4, 16.2]
+2026-06-18 16:54:26,709 INFO   [post] steps=4  acc=0.9474  nll=0.1199 drift=[584.4, 16.2, 0.8, 16.8]
+2026-06-18 16:54:27,009 INFO   [post] steps=8  acc=0.9474  nll=0.1148 drift=[584.4, 16.2, 0.8, 16.8, 18.5, 20.2, 21.9, 24.0]
+2026-06-18 16:54:27,247 INFO --- [breast_cancer seed=1] BEFORE fine-tune ---
+2026-06-18 16:54:27,316 INFO   [pre] steps=1  acc=0.9708  nll=0.0752
+2026-06-18 16:54:27,414 INFO   [pre] steps=2  acc=0.5848  nll=0.6847 drift=[585.3, 255.1]
+2026-06-18 16:54:27,557 INFO   [pre] steps=4  acc=0.3743  nll=0.7003 drift=[585.3, 255.1, 196.0, 0.2]
+2026-06-18 16:54:27,838 INFO   [pre] steps=8  acc=0.3743  nll=0.6999 drift=[585.3, 255.1, 196.0, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:54:28,018 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:54:28,080 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:54:31,629 INFO   epoch  0  tr=3.2210  val=2.6875  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:54:35,492 INFO   epoch  1  tr=1.8384  val=1.8848  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:54:39,374 INFO   epoch  2  tr=0.2874  val=0.2710  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:54:43,106 INFO   epoch  3  tr=0.2873  val=0.1907  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:54:46,896 INFO   epoch  4  tr=1.2503  val=1.2227  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:54:50,606 INFO   epoch  5  tr=1.0533  val=1.0293  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:54:54,913 INFO   epoch  6  tr=0.3086  val=0.2507  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:54:54,913 INFO   early stop @ epoch 6 (best val=0.1907)
+2026-06-18 16:54:54,932 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:54:55,244 INFO --- [breast_cancer seed=1] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:54:55,321 INFO   [post] steps=1  acc=0.9708  nll=0.0981
+2026-06-18 16:54:55,419 INFO   [post] steps=2  acc=0.9708  nll=0.1025 drift=[585.1, 14.1]
+2026-06-18 16:54:55,604 INFO   [post] steps=4  acc=0.9708  nll=0.1068 drift=[585.1, 14.1, 7.6, 4.7]
+2026-06-18 16:54:55,939 INFO   [post] steps=8  acc=0.9708  nll=0.1139 drift=[585.1, 14.1, 7.6, 4.7, 4.6, 4.5, 4.4, 4.3]
+2026-06-18 16:54:56,273 INFO --- [breast_cancer seed=2] BEFORE fine-tune ---
+2026-06-18 16:54:56,342 INFO   [pre] steps=1  acc=0.9708  nll=0.1368
+2026-06-18 16:54:56,448 INFO   [pre] steps=2  acc=0.7544  nll=0.5475 drift=[584.8, 180.4]
+2026-06-18 16:54:56,641 INFO   [pre] steps=4  acc=0.6257  nll=0.6869 drift=[584.8, 180.4, 189.2, 0.2]
+2026-06-18 16:54:56,982 INFO   [pre] steps=8  acc=0.6257  nll=0.6871 drift=[584.8, 180.4, 189.2, 0.2, 0.2, 0.2, 0.2, 0.2]
+2026-06-18 16:54:57,183 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:54:57,257 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:55:01,576 INFO   epoch  0  tr=3.3483  val=3.3555  gate=[+0.03, -0.01, -0.01]
+2026-06-18 16:55:05,895 INFO   epoch  1  tr=2.2350  val=2.2324  gate=[+0.03, +0.00, -0.00]
+2026-06-18 16:55:10,118 INFO   epoch  2  tr=0.2245  val=0.1613  gate=[+0.03, +0.00, -0.00]
+2026-06-18 16:55:13,952 INFO   epoch  3  tr=1.4186  val=1.6045  gate=[+0.04, +0.00, -0.00]
+2026-06-18 16:55:17,594 INFO   epoch  4  tr=1.1971  val=1.0977  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:55:21,403 INFO   epoch  5  tr=0.3397  val=0.2920  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:55:21,404 INFO   early stop @ epoch 5 (best val=0.1613)
+2026-06-18 16:55:21,421 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:55:21,654 INFO --- [breast_cancer seed=2] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:55:21,715 INFO   [post] steps=1  acc=0.9649  nll=0.1053
+2026-06-18 16:55:21,800 INFO   [post] steps=2  acc=0.9649  nll=0.1046 drift=[584.6, 8.6]
+2026-06-18 16:55:21,948 INFO   [post] steps=4  acc=0.9649  nll=0.1046 drift=[584.6, 8.6, 0.6, 0.5]
+2026-06-18 16:55:22,226 INFO   [post] steps=8  acc=0.9649  nll=0.1047 drift=[584.6, 8.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.5]
+2026-06-18 16:55:22,266 INFO ##### SUMMARY breast_cancer (n_seeds=3) #####
+2026-06-18 16:55:22,266 INFO   pre  steps=1  acc=0.9708±0.0000  nll=0.0996±0.0267
+2026-06-18 16:55:22,266 INFO   pre  steps=2  acc=0.5887±0.1337  nll=0.7127±0.1476
+2026-06-18 16:55:22,267 INFO   pre  steps=4  acc=0.4581±0.1185  nll=0.6957±0.0063
+2026-06-18 16:55:22,267 INFO   pre  steps=8  acc=0.4581±0.1185  nll=0.6956±0.0060
+2026-06-18 16:55:22,267 INFO   post steps=1  acc=0.9610±0.0099  nll=0.1078±0.0091
+2026-06-18 16:55:22,267 INFO   post steps=2  acc=0.9591±0.0126  nll=0.1096±0.0086
+2026-06-18 16:55:22,268 INFO   post steps=4  acc=0.9610±0.0099  nll=0.1104±0.0068
+2026-06-18 16:55:22,268 INFO   post steps=8  acc=0.9610±0.0099  nll=0.1111±0.0045
+2026-06-18 16:55:22,268 INFO   Δacc(post-pre) steps=1: -0.0097±0.0099  (base pre@1=0.9708)
+2026-06-18 16:55:22,268 INFO   Δacc(post-pre) steps=2: +0.3704±0.1246  (base pre@1=0.9708)
+2026-06-18 16:55:22,268 INFO   Δacc(post-pre) steps=4: +0.5029±0.1162  (base pre@1=0.9708)
+2026-06-18 16:55:22,268 INFO   Δacc(post-pre) steps=8: +0.5029±0.1162  (base pre@1=0.9708)
+2026-06-18 16:55:22,268 INFO breast_cancer done in 90.3s
+2026-06-18 16:55:22,268 INFO ========================================================================
+2026-06-18 16:55:22,268 INFO DATASET digits  shape=(1797, 64)  classes=10
+2026-06-18 16:55:22,466 INFO --- [digits seed=0] BEFORE fine-tune ---
+2026-06-18 16:55:22,585 INFO   [pre] steps=1  acc=0.9833  nll=0.0447
+2026-06-18 16:55:22,763 INFO   [pre] steps=2  acc=0.1852  nll=8.6464 drift=[812.2, 359.3]
+2026-06-18 16:55:23,079 INFO   [pre] steps=4  acc=0.0963  nll=4.5374 drift=[812.2, 359.3, 314.5, 0.3]
+2026-06-18 16:55:23,658 INFO   [pre] steps=8  acc=0.0963  nll=4.5455 drift=[812.2, 359.3, 314.5, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 16:55:23,878 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:55:24,018 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:55:27,866 INFO   epoch  0  tr=3.8812  val=3.5723  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:55:31,922 INFO   epoch  1  tr=3.8770  val=3.6406  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:55:36,078 INFO   epoch  2  tr=3.0254  val=3.1992  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:55:40,019 INFO   epoch  3  tr=3.2367  val=3.1621  gate=[+0.10, +0.00, -0.09]
+2026-06-18 16:55:44,034 INFO   epoch  4  tr=2.8851  val=2.7383  gate=[+0.10, +0.01, -0.08]
+2026-06-18 16:55:48,127 INFO   epoch  5  tr=2.4583  val=2.3652  gate=[+0.11, +0.02, -0.08]
+2026-06-18 16:55:52,118 INFO   epoch  6  tr=2.4404  val=2.3809  gate=[+0.12, +0.02, -0.07]
+2026-06-18 16:55:56,604 INFO   epoch  7  tr=2.2871  val=2.2617  gate=[+0.12, +0.03, -0.06]
+2026-06-18 16:56:01,037 INFO   epoch  8  tr=2.2539  val=2.1875  gate=[+0.12, +0.03, -0.06]
+2026-06-18 16:56:05,294 INFO   epoch  9  tr=2.2731  val=2.2500  gate=[+0.12, +0.03, -0.06]
+2026-06-18 16:56:09,916 INFO   epoch 10  tr=2.2406  val=2.2148  gate=[+0.12, +0.03, -0.06]
+2026-06-18 16:56:13,955 INFO   epoch 11  tr=2.3372  val=2.3652  gate=[+0.12, +0.03, -0.06]
+2026-06-18 16:56:13,955 INFO   early stop @ epoch 11 (best val=2.1875)
+2026-06-18 16:56:13,973 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:56:14,205 INFO --- [digits seed=0] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:56:14,319 INFO   [post] steps=1  acc=0.8463  nll=1.2605
+2026-06-18 16:56:14,478 INFO   [post] steps=2  acc=0.8222  nll=1.4264 drift=[812.5, 73.5]
+2026-06-18 16:56:14,782 INFO   [post] steps=4  acc=0.8296  nll=1.3831 drift=[812.5, 73.5, 15.2, 33.3]
+2026-06-18 16:56:15,346 INFO   [post] steps=8  acc=0.8741  nll=1.0111 drift=[812.5, 73.5, 15.2, 33.3, 35.5, 37.4, 39.3, 41.3]
+2026-06-18 16:56:15,676 INFO --- [digits seed=1] BEFORE fine-tune ---
+2026-06-18 16:56:15,796 INFO   [pre] steps=1  acc=0.9870  nll=0.0477
+2026-06-18 16:56:15,957 INFO   [pre] steps=2  acc=0.1463  nll=9.5077 drift=[812.5, 435.2]
+2026-06-18 16:56:16,260 INFO   [pre] steps=4  acc=0.1481  nll=4.8210 drift=[812.5, 435.2, 376.0, 0.3]
+2026-06-18 16:56:16,830 INFO   [pre] steps=8  acc=0.1444  nll=4.7678 drift=[812.5, 435.2, 376.0, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 16:56:17,072 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:56:17,366 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:56:20,856 INFO   epoch  0  tr=5.1738  val=4.3281  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:56:24,724 INFO   epoch  1  tr=4.4919  val=3.7949  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:56:28,730 INFO   epoch  2  tr=3.2354  val=3.0000  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:56:32,450 INFO   epoch  3  tr=2.2227  val=2.2676  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:56:36,206 INFO   epoch  4  tr=2.3522  val=2.3438  gate=[+0.06, +0.04, +0.03]
+2026-06-18 16:56:39,902 INFO   epoch  5  tr=2.3398  val=2.3125  gate=[+0.06, +0.04, +0.03]
+2026-06-18 16:56:43,813 INFO   epoch  6  tr=2.3431  val=2.3184  gate=[+0.06, +0.04, +0.03]
+2026-06-18 16:56:43,813 INFO   early stop @ epoch 6 (best val=2.2676)
+2026-06-18 16:56:43,826 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:56:44,052 INFO --- [digits seed=1] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:56:44,170 INFO   [post] steps=1  acc=0.9815  nll=0.3128
+2026-06-18 16:56:44,327 INFO   [post] steps=2  acc=0.9815  nll=0.3373 drift=[814.0, 22.3]
+2026-06-18 16:56:44,622 INFO   [post] steps=4  acc=0.9796  nll=0.3648 drift=[814.0, 22.3, 13.4, 8.8]
+2026-06-18 16:56:45,184 INFO   [post] steps=8  acc=0.9796  nll=0.4062 drift=[814.0, 22.3, 13.4, 8.8, 8.3, 7.9, 7.5, 7.2]
+2026-06-18 16:56:45,518 INFO --- [digits seed=2] BEFORE fine-tune ---
+2026-06-18 16:56:45,632 INFO   [pre] steps=1  acc=0.9852  nll=0.0435
+2026-06-18 16:56:45,797 INFO   [pre] steps=2  acc=0.0981  nll=9.0737 drift=[812.6, 410.3]
+2026-06-18 16:56:46,096 INFO   [pre] steps=4  acc=0.1333  nll=5.0211 drift=[812.6, 410.3, 378.7, 0.3]
+2026-06-18 16:56:46,656 INFO   [pre] steps=8  acc=0.1333  nll=5.0343 drift=[812.6, 410.3, 378.7, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 16:56:46,898 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:56:47,042 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:56:50,738 INFO   epoch  0  tr=5.6569  val=4.8594  gate=[+0.03, -0.01, -0.01]
+2026-06-18 16:56:55,178 INFO   epoch  1  tr=3.4704  val=3.2324  gate=[+0.03, +0.00, -0.00]
+2026-06-18 16:56:59,847 INFO   epoch  2  tr=2.8343  val=2.7148  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:57:04,055 INFO   epoch  3  tr=2.4271  val=2.3633  gate=[+0.04, +0.01, +0.01]
+2026-06-18 16:57:08,382 INFO   epoch  4  tr=2.4792  val=2.4492  gate=[+0.04, +0.01, +0.01]
+2026-06-18 16:57:12,462 INFO   epoch  5  tr=2.3418  val=2.3398  gate=[+0.05, +0.02, +0.01]
+2026-06-18 16:57:16,277 INFO   epoch  6  tr=2.2839  val=2.2793  gate=[+0.05, +0.02, +0.01]
+2026-06-18 16:57:20,244 INFO   epoch  7  tr=2.2764  val=2.2969  gate=[+0.05, +0.02, +0.01]
+2026-06-18 16:57:24,123 INFO   epoch  8  tr=2.3398  val=2.3223  gate=[+0.05, +0.02, +0.01]
+2026-06-18 16:57:28,017 INFO   epoch  9  tr=2.2738  val=2.2422  gate=[+0.05, +0.02, +0.01]
+2026-06-18 16:57:31,790 INFO   epoch 10  tr=2.3317  val=2.3379  gate=[+0.05, +0.02, +0.01]
+2026-06-18 16:57:35,428 INFO   epoch 11  tr=2.2747  val=2.2617  gate=[+0.05, +0.02, +0.01]
+2026-06-18 16:57:35,452 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:57:35,698 INFO --- [digits seed=2] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:57:35,827 INFO   [post] steps=1  acc=0.9537  nll=1.0998
+2026-06-18 16:57:35,994 INFO   [post] steps=2  acc=0.9537  nll=1.1480 drift=[813.7, 18.9]
+2026-06-18 16:57:36,292 INFO   [post] steps=4  acc=0.9574  nll=1.1736 drift=[813.7, 18.9, 6.5, 4.6]
+2026-06-18 16:57:36,858 INFO   [post] steps=8  acc=0.9519  nll=1.2088 drift=[813.7, 18.9, 6.5, 4.6, 4.5, 4.5, 4.4, 4.4]
+2026-06-18 16:57:36,895 INFO ##### SUMMARY digits (n_seeds=3) #####
+2026-06-18 16:57:36,896 INFO   pre  steps=1  acc=0.9852±0.0015  nll=0.0453±0.0018
+2026-06-18 16:57:36,896 INFO   pre  steps=2  acc=0.1432±0.0356  nll=9.0759±0.3516
+2026-06-18 16:57:36,897 INFO   pre  steps=4  acc=0.1259±0.0218  nll=4.7932±0.1985
+2026-06-18 16:57:36,897 INFO   pre  steps=8  acc=0.1247±0.0206  nll=4.7825±0.1998
+2026-06-18 16:57:36,897 INFO   post steps=1  acc=0.9272±0.0583  nll=0.8910±0.4141
+2026-06-18 16:57:36,897 INFO   post steps=2  acc=0.9191±0.0695  nll=0.9705±0.4620
+2026-06-18 16:57:36,897 INFO   post steps=4  acc=0.9222±0.0661  nll=0.9738±0.4391
+2026-06-18 16:57:36,897 INFO   post steps=8  acc=0.9352±0.0447  nll=0.8753±0.3414
+2026-06-18 16:57:36,897 INFO   Δacc(post-pre) steps=1: -0.0580±0.0569  (base pre@1=0.9852)
+2026-06-18 16:57:36,897 INFO   Δacc(post-pre) steps=2: +0.7759±0.0986  (base pre@1=0.9852)
+2026-06-18 16:57:36,897 INFO   Δacc(post-pre) steps=4: +0.7963±0.0446  (base pre@1=0.9852)
+2026-06-18 16:57:36,897 INFO   Δacc(post-pre) steps=8: +0.8105±0.0241  (base pre@1=0.9852)
+2026-06-18 16:57:36,898 INFO digits done in 134.6s
+2026-06-18 16:57:36,898 INFO ========================================================================
+2026-06-18 16:57:36,898 INFO DATASET phoneme  shape=(5404, 5)  classes=2
+2026-06-18 16:57:37,093 INFO --- [phoneme seed=0] BEFORE fine-tune ---
+2026-06-18 16:57:37,165 INFO   [pre] steps=1  acc=0.8995  nll=0.2427
+2026-06-18 16:57:37,289 INFO   [pre] steps=2  acc=0.5573  nll=0.6957 drift=[312.3, 130.4]
+2026-06-18 16:57:37,513 INFO   [pre] steps=4  acc=0.7065  nll=0.6828 drift=[312.3, 130.4, 102.0, 0.1]
+2026-06-18 16:57:37,944 INFO   [pre] steps=8  acc=0.7065  nll=0.6827 drift=[312.3, 130.4, 102.0, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:57:38,123 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:57:38,171 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:57:41,982 INFO   epoch  0  tr=2.3587  val=2.0234  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:57:45,789 INFO   epoch  1  tr=1.8472  val=1.6631  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:57:49,741 INFO   epoch  2  tr=0.3788  val=0.3738  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:57:53,598 INFO   epoch  3  tr=0.3614  val=0.3672  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:57:57,804 INFO   epoch  4  tr=0.3743  val=0.3447  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:58:02,015 INFO   epoch  5  tr=1.4744  val=1.5703  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:58:06,448 INFO   epoch  6  tr=0.3317  val=0.3320  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:58:10,811 INFO   epoch  7  tr=1.2821  val=1.1504  gate=[+0.09, +0.00, -0.09]
+2026-06-18 16:58:14,629 INFO   epoch  8  tr=0.3420  val=0.3330  gate=[+0.09, +0.00, -0.09]
+2026-06-18 16:58:18,392 INFO   epoch  9  tr=1.0029  val=0.9404  gate=[+0.10, +0.00, -0.09]
+2026-06-18 16:58:18,392 INFO   early stop @ epoch 9 (best val=0.3320)
+2026-06-18 16:58:18,410 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:58:18,695 INFO --- [phoneme seed=0] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:58:18,771 INFO   [post] steps=1  acc=0.8903  nll=0.2818
+2026-06-18 16:58:18,889 INFO   [post] steps=2  acc=0.8940  nll=0.2929 drift=[312.8, 9.3]
+2026-06-18 16:58:19,111 INFO   [post] steps=4  acc=0.8903  nll=0.2825 drift=[312.8, 9.3, 0.0, 8.6]
+2026-06-18 16:58:19,545 INFO   [post] steps=8  acc=0.8946  nll=0.2569 drift=[312.8, 9.3, 0.0, 8.6, 9.4, 10.3, 11.2, 12.2]
+2026-06-18 16:58:19,823 INFO --- [phoneme seed=1] BEFORE fine-tune ---
+2026-06-18 16:58:19,897 INFO   [pre] steps=1  acc=0.9088  nll=0.2137
+2026-06-18 16:58:20,021 INFO   [pre] steps=2  acc=0.6400  nll=0.6800 drift=[312.3, 129.4]
+2026-06-18 16:58:20,245 INFO   [pre] steps=4  acc=0.7065  nll=0.6827 drift=[312.3, 129.4, 103.0, 0.1]
+2026-06-18 16:58:20,669 INFO   [pre] steps=8  acc=0.7065  nll=0.6827 drift=[312.3, 129.4, 103.0, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:58:20,856 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:58:20,894 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:58:24,699 INFO   epoch  0  tr=2.2202  val=2.1445  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:58:28,507 INFO   epoch  1  tr=1.8848  val=1.6768  gate=[+0.04, +0.02, +0.01]
+2026-06-18 16:58:32,434 INFO   epoch  2  tr=0.3623  val=0.3831  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:58:36,247 INFO   epoch  3  tr=0.3777  val=0.3765  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:58:40,035 INFO   epoch  4  tr=1.4611  val=1.3906  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:58:43,888 INFO   epoch  5  tr=1.3112  val=1.2656  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:58:47,672 INFO   epoch  6  tr=0.4031  val=0.3955  gate=[+0.05, +0.03, +0.02]
+2026-06-18 16:58:47,672 INFO   early stop @ epoch 6 (best val=0.3765)
+2026-06-18 16:58:47,690 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:58:47,925 INFO --- [phoneme seed=1] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:58:47,999 INFO   [post] steps=1  acc=0.9063  nll=0.2393
+2026-06-18 16:58:48,121 INFO   [post] steps=2  acc=0.9063  nll=0.2431 drift=[312.4, 6.1]
+2026-06-18 16:58:48,358 INFO   [post] steps=4  acc=0.9057  nll=0.2470 drift=[312.4, 6.1, 3.2, 1.9]
+2026-06-18 16:58:48,791 INFO   [post] steps=8  acc=0.9069  nll=0.2536 drift=[312.4, 6.1, 3.2, 1.9, 1.8, 1.8, 1.7, 1.7]
+2026-06-18 16:58:49,017 INFO --- [phoneme seed=2] BEFORE fine-tune ---
+2026-06-18 16:58:49,095 INFO   [pre] steps=1  acc=0.9100  nll=0.2038
+2026-06-18 16:58:49,212 INFO   [pre] steps=2  acc=0.4470  nll=0.7691 drift=[312.2, 172.7]
+2026-06-18 16:58:49,432 INFO   [pre] steps=4  acc=0.2935  nll=0.7041 drift=[312.2, 172.7, 103.5, 0.1]
+2026-06-18 16:58:49,858 INFO   [pre] steps=8  acc=0.2935  nll=0.7043 drift=[312.2, 172.7, 103.5, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:58:50,055 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:58:50,102 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:58:54,392 INFO   epoch  0  tr=2.1032  val=2.1406  gate=[+0.02, -0.01, -0.01]
+2026-06-18 16:58:58,840 INFO   epoch  1  tr=1.8363  val=1.6924  gate=[+0.03, -0.00, -0.01]
+2026-06-18 16:59:03,250 INFO   epoch  2  tr=0.3986  val=0.3955  gate=[+0.03, +0.00, -0.00]
+2026-06-18 16:59:07,623 INFO   epoch  3  tr=1.4622  val=1.5693  gate=[+0.03, +0.00, -0.00]
+2026-06-18 16:59:11,842 INFO   epoch  4  tr=1.3040  val=1.1973  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:59:15,546 INFO   epoch  5  tr=0.3995  val=0.3848  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:59:19,375 INFO   epoch  6  tr=0.3998  val=0.3704  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:59:23,086 INFO   epoch  7  tr=0.4020  val=0.3362  gate=[+0.04, +0.00, +0.00]
+2026-06-18 16:59:26,899 INFO   epoch  8  tr=1.1948  val=1.2539  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:59:30,772 INFO   epoch  9  tr=0.3524  val=0.3462  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:59:34,494 INFO   epoch 10  tr=1.0598  val=1.0283  gate=[+0.04, +0.01, +0.00]
+2026-06-18 16:59:34,494 INFO   early stop @ epoch 10 (best val=0.3362)
+2026-06-18 16:59:34,507 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 16:59:34,728 INFO --- [phoneme seed=2] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 16:59:34,797 INFO   [post] steps=1  acc=0.9094  nll=0.2228
+2026-06-18 16:59:34,918 INFO   [post] steps=2  acc=0.9094  nll=0.2239 drift=[312.7, 4.9]
+2026-06-18 16:59:35,142 INFO   [post] steps=4  acc=0.9094  nll=0.2241 drift=[312.7, 4.9, 0.7, 0.1]
+2026-06-18 16:59:35,575 INFO   [post] steps=8  acc=0.9094  nll=0.2243 drift=[312.7, 4.9, 0.7, 0.1, 0.1, 0.1, 0.1, 0.1]
+2026-06-18 16:59:35,611 INFO ##### SUMMARY phoneme (n_seeds=3) #####
+2026-06-18 16:59:35,611 INFO   pre  steps=1  acc=0.9061±0.0047  nll=0.2200±0.0165
+2026-06-18 16:59:35,612 INFO   pre  steps=2  acc=0.5481±0.0791  nll=0.7150±0.0388
+2026-06-18 16:59:35,612 INFO   pre  steps=4  acc=0.5688±0.1947  nll=0.6899±0.0100
+2026-06-18 16:59:35,612 INFO   pre  steps=8  acc=0.5688±0.1947  nll=0.6899±0.0101
+2026-06-18 16:59:35,612 INFO   post steps=1  acc=0.9020±0.0084  nll=0.2480±0.0249
+2026-06-18 16:59:35,612 INFO   post steps=2  acc=0.9032±0.0067  nll=0.2533±0.0291
+2026-06-18 16:59:35,613 INFO   post steps=4  acc=0.9018±0.0083  nll=0.2512±0.0240
+2026-06-18 16:59:35,613 INFO   post steps=8  acc=0.9036±0.0065  nll=0.2449±0.0147
+2026-06-18 16:59:35,613 INFO   Δacc(post-pre) steps=1: -0.0041±0.0037  (base pre@1=0.9061)
+2026-06-18 16:59:35,613 INFO   Δacc(post-pre) steps=2: +0.3551±0.0811  (base pre@1=0.9061)
+2026-06-18 16:59:35,613 INFO   Δacc(post-pre) steps=4: +0.3329±0.2002  (base pre@1=0.9061)
+2026-06-18 16:59:35,613 INFO   Δacc(post-pre) steps=8: +0.3348±0.1989  (base pre@1=0.9061)
+2026-06-18 16:59:35,613 INFO phoneme done in 118.7s
+2026-06-18 16:59:35,613 INFO ========================================================================
+2026-06-18 16:59:35,613 INFO DATASET qsar-biodeg  shape=(1055, 41)  classes=2
+2026-06-18 16:59:35,828 INFO --- [qsar-biodeg seed=0] BEFORE fine-tune ---
+2026-06-18 16:59:35,911 INFO   [pre] steps=1  acc=0.8612  nll=0.3064
+2026-06-18 16:59:36,010 INFO   [pre] steps=2  acc=0.1672  nll=0.8711 drift=[681.3, 223.5]
+2026-06-18 16:59:36,179 INFO   [pre] steps=4  acc=0.6625  nll=0.6851 drift=[681.3, 223.5, 202.3, 0.3]
+2026-06-18 16:59:36,468 INFO   [pre] steps=8  acc=0.6625  nll=0.6851 drift=[681.3, 223.5, 202.3, 0.3, 0.3, 0.3, 0.3, 0.2]
+2026-06-18 16:59:36,677 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 16:59:36,777 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 16:59:40,425 INFO   epoch  0  tr=1.7601  val=1.4336  gate=[+0.08, -0.01, -0.10]
+2026-06-18 16:59:44,149 INFO   epoch  1  tr=1.2835  val=1.2598  gate=[+0.09, -0.00, -0.10]
+2026-06-18 16:59:47,723 INFO   epoch  2  tr=0.4479  val=0.3936  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:59:51,426 INFO   epoch  3  tr=0.3995  val=0.3633  gate=[+0.09, -0.00, -0.09]
+2026-06-18 16:59:55,991 INFO   epoch  4  tr=0.4331  val=0.3452  gate=[+0.09, -0.00, -0.10]
+2026-06-18 17:00:00,570 INFO   epoch  5  tr=1.0702  val=1.2051  gate=[+0.09, -0.00, -0.10]
+2026-06-18 17:00:04,972 INFO   epoch  6  tr=0.4862  val=0.4014  gate=[+0.09, -0.00, -0.09]
+2026-06-18 17:00:09,486 INFO   epoch  7  tr=0.9625  val=1.1484  gate=[+0.09, +0.00, -0.09]
+2026-06-18 17:00:09,486 INFO   early stop @ epoch 7 (best val=0.3452)
+2026-06-18 17:00:09,503 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 17:00:09,724 INFO --- [qsar-biodeg seed=0] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 17:00:09,800 INFO   [post] steps=1  acc=0.8517  nll=0.3264
+2026-06-18 17:00:09,899 INFO   [post] steps=2  acc=0.8612  nll=0.3342 drift=[680.0, 16.2]
+2026-06-18 17:00:10,065 INFO   [post] steps=4  acc=0.8517  nll=0.3267 drift=[680.0, 16.2, 0.4, 16.8]
+2026-06-18 17:00:10,370 INFO   [post] steps=8  acc=0.8454  nll=0.3123 drift=[680.0, 16.2, 0.4, 16.8, 17.5, 19.4, 21.7, 23.7]
+2026-06-18 17:00:10,637 INFO --- [qsar-biodeg seed=1] BEFORE fine-tune ---
+2026-06-18 17:00:10,710 INFO   [pre] steps=1  acc=0.8644  nll=0.2970
+2026-06-18 17:00:10,818 INFO   [pre] steps=2  acc=0.3375  nll=0.8390 drift=[681.3, 255.6]
+2026-06-18 17:00:10,982 INFO   [pre] steps=4  acc=0.6625  nll=0.6852 drift=[681.3, 255.6, 224.7, 0.3]
+2026-06-18 17:00:11,305 INFO   [pre] steps=8  acc=0.6625  nll=0.6850 drift=[681.3, 255.6, 224.7, 0.3, 0.2, 0.3, 0.3, 0.3]
+2026-06-18 17:00:11,510 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 17:00:11,604 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 17:00:15,174 INFO   epoch  0  tr=1.7874  val=1.3770  gate=[+0.04, +0.02, +0.01]
+2026-06-18 17:00:19,169 INFO   epoch  1  tr=1.3263  val=1.0312  gate=[+0.05, +0.03, +0.02]
+2026-06-18 17:00:22,971 INFO   epoch  2  tr=0.4323  val=0.4915  gate=[+0.05, +0.03, +0.02]
+2026-06-18 17:00:26,840 INFO   epoch  3  tr=0.4036  val=0.4968  gate=[+0.05, +0.03, +0.02]
+2026-06-18 17:00:30,622 INFO   epoch  4  tr=1.2476  val=0.8848  gate=[+0.05, +0.03, +0.02]
+2026-06-18 17:00:34,541 INFO   epoch  5  tr=0.9826  val=0.8018  gate=[+0.05, +0.04, +0.02]
+2026-06-18 17:00:34,541 INFO   early stop @ epoch 5 (best val=0.4915)
+2026-06-18 17:00:34,555 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 17:00:34,779 INFO --- [qsar-biodeg seed=1] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 17:00:34,859 INFO   [post] steps=1  acc=0.8644  nll=0.3303
+2026-06-18 17:00:34,956 INFO   [post] steps=2  acc=0.8675  nll=0.3347 drift=[680.8, 11.7]
+2026-06-18 17:00:35,108 INFO   [post] steps=4  acc=0.8675  nll=0.3394 drift=[680.8, 11.7, 6.4, 3.8]
+2026-06-18 17:00:35,387 INFO   [post] steps=8  acc=0.8644  nll=0.3475 drift=[680.8, 11.7, 6.4, 3.8, 3.7, 3.5, 3.4, 3.4]
+2026-06-18 17:00:35,639 INFO --- [qsar-biodeg seed=2] BEFORE fine-tune ---
+2026-06-18 17:00:35,718 INFO   [pre] steps=1  acc=0.8801  nll=0.2716
+2026-06-18 17:00:35,821 INFO   [pre] steps=2  acc=0.3628  nll=0.8242 drift=[681.5, 271.7]
+2026-06-18 17:00:35,981 INFO   [pre] steps=4  acc=0.3375  nll=0.7020 drift=[681.5, 271.7, 190.9, 0.3]
+2026-06-18 17:00:36,338 INFO   [pre] steps=8  acc=0.3375  nll=0.7018 drift=[681.5, 271.7, 190.9, 0.3, 0.3, 0.3, 0.3, 0.3]
+2026-06-18 17:00:36,580 INFO   froze 5 encoder params; 245 trainable tensors
+2026-06-18 17:00:36,677 WARNING The model was not in 'batched' mode. Automatically switching to 'batched' mode for finetuning.
+2026-06-18 17:00:40,438 INFO   epoch  0  tr=1.8521  val=1.6504  gate=[+0.03, -0.01, -0.01]
+2026-06-18 17:00:44,400 INFO   epoch  1  tr=1.2943  val=1.2451  gate=[+0.03, +0.00, -0.00]
+2026-06-18 17:00:48,387 INFO   epoch  2  tr=0.4280  val=0.4158  gate=[+0.03, +0.00, -0.00]
+2026-06-18 17:00:52,367 INFO   epoch  3  tr=1.0232  val=0.9800  gate=[+0.04, +0.01, +0.00]
+2026-06-18 17:00:56,952 INFO   epoch  4  tr=0.9050  val=0.9160  gate=[+0.04, +0.01, +0.00]
+2026-06-18 17:01:01,459 INFO   epoch  5  tr=0.4847  val=0.4656  gate=[+0.04, +0.01, +0.01]
+2026-06-18 17:01:01,459 INFO   early stop @ epoch 5 (best val=0.4158)
+2026-06-18 17:01:01,476 WARNING The model was in 'batched' mode, likely after finetuning. Automatically switching to 'fit_preprocessors' mode for standard prediction. The model will be re-initialized.
+2026-06-18 17:01:01,737 INFO --- [qsar-biodeg seed=2] AFTER fine-tune (frozen-enc + early-stop) ---
+2026-06-18 17:01:01,843 INFO   [post] steps=1  acc=0.8675  nll=0.3079
+2026-06-18 17:01:01,958 INFO   [post] steps=2  acc=0.8675  nll=0.3095 drift=[681.5, 7.7]
+2026-06-18 17:01:02,130 INFO   [post] steps=4  acc=0.8675  nll=0.3096 drift=[681.5, 7.7, 0.7, 0.4]
+2026-06-18 17:01:02,491 INFO   [post] steps=8  acc=0.8675  nll=0.3092 drift=[681.5, 7.7, 0.7, 0.4, 0.4, 0.4, 0.4, 0.4]
+2026-06-18 17:01:02,540 INFO ##### SUMMARY qsar-biodeg (n_seeds=3) #####
+2026-06-18 17:01:02,541 INFO   pre  steps=1  acc=0.8686±0.0083  nll=0.2917±0.0147
+2026-06-18 17:01:02,542 INFO   pre  steps=2  acc=0.2892±0.0869  nll=0.8448±0.0196
+2026-06-18 17:01:02,542 INFO   pre  steps=4  acc=0.5542±0.1532  nll=0.6908±0.0079
+2026-06-18 17:01:02,542 INFO   pre  steps=8  acc=0.5542±0.1532  nll=0.6906±0.0079
+2026-06-18 17:01:02,542 INFO   post steps=1  acc=0.8612±0.0068  nll=0.3215±0.0097
+2026-06-18 17:01:02,542 INFO   post steps=2  acc=0.8654±0.0030  nll=0.3261±0.0118
+2026-06-18 17:01:02,542 INFO   post steps=4  acc=0.8623±0.0074  nll=0.3252±0.0122
+2026-06-18 17:01:02,543 INFO   post steps=8  acc=0.8591±0.0098  nll=0.3230±0.0174
+2026-06-18 17:01:02,543 INFO   Δacc(post-pre) steps=1: -0.0074±0.0054  (base pre@1=0.8686)
+2026-06-18 17:01:02,543 INFO   Δacc(post-pre) steps=2: +0.5762±0.0839  (base pre@1=0.8686)
+2026-06-18 17:01:02,543 INFO   Δacc(post-pre) steps=4: +0.3081±0.1570  (base pre@1=0.8686)
+2026-06-18 17:01:02,543 INFO   Δacc(post-pre) steps=8: +0.3049±0.1593  (base pre@1=0.8686)
+2026-06-18 17:01:02,543 INFO qsar-biodeg done in 86.9s
+2026-06-18 17:01:02,543 INFO ALL DONE
