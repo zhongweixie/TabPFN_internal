@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>H5 ACT final evaluation</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5d6677;
+      --line: #d9dee7;
+      --surface: #f6f8fb;
+      --blue: #2463a9;
+      --teal: #13756b;
+      --orange: #b65b16;
+      --red: #b73535;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--surface);
+      font: 15px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main { max-width: 1180px; margin: 0 auto; padding: 38px 24px 64px; }
+    header { border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+    h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: -0.03em; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    h3 { margin: 0 0 4px; font-size: 16px; }
+    p { margin: 0; }
+    .subtitle, .caption, .muted { color: var(--muted); }
+    .caption { font-size: 13px; }
+    .grid { display: grid; gap: 16px; margin-top: 24px; }
+    .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .split { grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .metric-label { color: var(--muted); font-size: 13px; }
+    .metric-value { margin-top: 2px; font-size: 30px; font-weight: 700; letter-spacing: -0.04em; }
+    .metric-note { color: var(--muted); font-size: 13px; }
+    .accent { color: var(--blue); }
+    .good { color: var(--teal); }
+    .warn { color: var(--orange); }
+    .callout {
+      margin-top: 24px;
+      padding: 15px 18px;
+      border-left: 4px solid var(--blue);
+      background: #edf4fc;
+    }
+    .callout strong { display: block; margin-bottom: 3px; }
+    .chart-wrap { overflow-x: auto; }
+    svg { display: block; width: 100%; min-width: 640px; height: auto; }
+    .legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    th { color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
+    th:first-child, td:first-child { text-align: left; }
+    .positive { color: var(--teal); font-weight: 650; }
+    .negative { color: var(--red); font-weight: 650; }
+    ul { margin: 8px 0 0; padding-left: 20px; }
+    li { margin: 6px 0; }
+    footer { margin-top: 24px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 760px) {
+      main { padding: 26px 14px 42px; }
+      .metrics, .split { grid-template-columns: 1fr; }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>H5 Adaptive Computation Time — final evaluation</h1>
+      <p class="subtitle">38 TabArena/OpenML classification datasets · official fold 0 · fixed context/test/feature caps · completed Jul 11, 2026</p>
+    </header>
+
+    <section class="grid metrics" aria-label="Primary results">
+      <div class="card">
+        <div class="metric-label">Best H5 quality checkpoint</div>
+        <div class="metric-value accent">0.8157</div>
+        <div class="metric-note">λ=0.01 ACT mean ROC-AUC · 0.0016 below loop-k=4 reference</div>
+      </div>
+      <div class="card">
+        <div class="metric-label">Lowest compute checkpoint</div>
+        <div class="metric-value good">1.04 k</div>
+        <div class="metric-note">λ=0.05 mean ACT iterations · 74% below fixed k=4</div>
+      </div>
+      <div class="card">
+        <div class="metric-label">External loop-k=4 reference</div>
+        <div class="metric-value warn">0.8173</div>
+        <div class="metric-note">Mean ROC-AUC · fixed four loop iterations</div>
+      </div>
+    </section>
+
+    <section class="callout">
+      <strong>Recommendation: use λ=0.01 as the primary quality checkpoint.</strong>
+      Its ACT AUC of 0.8157 is only 0.0016 below the loop-k=4 reference (0.8173), while using 1.24 expected iterations rather than four. Keep λ=0.05 as the low-compute alternative: it reaches 0.8087 with about one iteration, but its fixed-k=4 fallback is much weaker.
+    </section>
+
+    <section class="grid split">
+      <div class="card">
+        <h2>Aggregate ROC-AUC by inference mode</h2>
+        <div class="chart-wrap"><svg id="aggregate-chart" viewBox="0 0 760 300" role="img" aria-label="Mean ROC-AUC comparison"></svg></div>
+        <div class="legend">
+          <span><i class="dot" style="background:#2463a9"></i>ACT adaptive inference</span>
+          <span><i class="dot" style="background:#b65b16"></i>Same checkpoint, fixed k=4</span>
+          <span><i class="dot" style="background:#13756b"></i>External loop-k=4 reference</span>
+        </div>
+        <p class="caption">Mean macro ROC-AUC across 38 datasets. Higher is better.</p>
+      </div>
+      <div class="card">
+        <h2>Computation used at inference</h2>
+        <div class="chart-wrap"><svg id="compute-chart" viewBox="0 0 420 300" role="img" aria-label="Mean ACT loop iterations"></svg></div>
+        <p class="caption">Mean expected loop iterations. Fixed baseline is k=4; lower is cheaper.</p>
+      </div>
+    </section>
+
+    <section class="grid split">
+      <div class="card">
+        <h2>What the final evaluation changes</h2>
+        <ul>
+          <li>The inline <code>eval_bank</code> metric disabled ACT, so it measured a different inference path and did not predict final ACT AUC reliably.</li>
+          <li>λ=0.01 improves from fixed-k=4 AUC 0.7991 to ACT AUC 0.8157, winning on 31 of 38 datasets and trailing the external loop-k=4 reference by only 0.0016.</li>
+          <li>λ=0.05 improves from fixed-k=4 AUC 0.6661 to ACT AUC 0.8087, winning on 35 of 38 datasets; the model relies strongly on its ACT path.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Evaluation limitations</h2>
+        <ul>
+          <li>One official OpenML fold per dataset, not repeated folds.</li>
+          <li>Context capped at 1,000 rows, test set at 500 rows, features at 40.</li>
+          <li>The external loop-k=4 reference was evaluated under the same 38-task protocol and scored 0.8173 mean AUC.</li>
+          <li>Use these scores for internal checkpoint comparison, not a public TabArena leaderboard claim.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Largest ACT changes versus each checkpoint’s fixed-k=4 backbone</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Checkpoint</th><th>Dataset</th><th>ACT AUC</th><th>k=4 AUC</th><th>Δ AUC</th><th>Mean k</th></tr>
+          </thead>
+          <tbody id="delta-table"></tbody>
+        </table>
+      </div>
+      <p class="caption">Top three gains and bottom two changes per checkpoint. Δ = ACT AUC − fixed-k=4 AUC.</p>
+    </section>
+
+    <footer>
+      Source: corrected <code>h5_l001_eval_with_ref_fixed.json</code> and <code>h5_l005_eval_with_ref_fixed.json</code>, generated by <code>run_h5_eval.py</code>. Values use the evaluator’s fixed seed and data caps.
+    </footer>
+  </main>
+
+  <script>
+    const models = [
+      { label: "λ=0.01", act: 0.8157, base: 0.7991, k: 1.24 },
+      { label: "λ=0.05", act: 0.8087, base: 0.6661, k: 1.04 }
+    ];
+    const referenceAuc = 0.8173;
+    const deltas = [
+      ["λ=0.01", "Diabetes130US", 0.5819, 0.4842, 0.0977, 1.07],
+      ["λ=0.01", "polish_companies_bankruptcy", 0.8634, 0.7880, 0.0753, 1.22],
+      ["λ=0.01", "MIC", 0.8333, 0.7745, 0.0588, 1.38],
+      ["λ=0.01", "hiva_agnostic", 0.5549, 0.5759, -0.0210, 1.11],
+      ["λ=0.01", "kddcup09_appetency", 0.4558, 0.6140, -0.1582, 1.14],
+      ["λ=0.05", "Fitness_Club", 0.8104, 0.3620, 0.4484, 1.04],
+      ["λ=0.05", "Bioresponse", 0.7876, 0.3744, 0.4132, 1.03],
+      ["λ=0.05", "blood-transfusion-service-center", 0.7418, 0.3363, 0.4055, 1.05],
+      ["λ=0.05", "Diabetes130US", 0.4918, 0.4980, -0.0062, 1.01],
+      ["λ=0.05", "kddcup09_appetency", 0.4133, 0.4555, -0.0422, 1.01]
+    ];
+
+    const text = (x, y, value, opts = {}) =>
+      `<text x="${x}" y="${y}" fill="${opts.fill || '#172033'}" font-size="${opts.size || 13}" text-anchor="${opts.anchor || 'start'}" font-weight="${opts.weight || 400}">${value}</text>`;
+
+    function aggregateChart() {
+      const svg = document.querySelector("#aggregate-chart");
+      const left = 80, bottom = 244, chartW = 620, chartH = 178, min = 0.60, max = 0.85;
+      const y = v => bottom - (v - min) / (max - min) * chartH;
+      let out = `<rect x="${left}" y="40" width="${chartW}" height="${chartH}" fill="#f6f8fb"/>`;
+      [0.60, 0.65, 0.70, 0.75, 0.80, 0.85].forEach(v => {
+        const yy = y(v);
+        out += `<line x1="${left}" y1="${yy}" x2="${left + chartW}" y2="${yy}" stroke="#d9dee7"/>`;
+        out += text(left - 12, yy + 4, v.toFixed(2), { anchor: "end", size: 12, fill: "#5d6677" });
+      });
+      out += `<line x1="${left}" y1="${y(.810)}" x2="${left + chartW}" y2="${y(.810)}" stroke="#13756b" stroke-width="1.5" stroke-dasharray="5 4"/>`;
+      out += text(left + chartW + 8, y(.810) + 4, "0.810 target", { size: 12, fill: "#13756b" });
+      models.forEach((m, i) => {
+        const x = left + 150 + i * 235;
+        const vals = [{ v: m.act, c: "#2463a9", x: x - 42 }, { v: m.base, c: "#b65b16", x: x + 18 }];
+        vals.forEach(({v, c, x: bx}) => {
+          const yy = y(v), h = bottom - yy;
+          out += `<rect x="${bx}" y="${yy}" width="48" height="${h}" rx="3" fill="${c}"/>`;
+          out += text(bx + 24, yy - 8, v.toFixed(4), { anchor: "middle", weight: 700, size: 12, fill: c });
+        });
+        out += text(x, 276, m.label, { anchor: "middle", weight: 700, size: 14 });
+      });
+      const refX = left + 620;
+      const refY = y(referenceAuc);
+      out += `<rect x="${refX - 24}" y="${refY}" width="48" height="${bottom - refY}" rx="3" fill="#13756b"/>`;
+      out += text(refX, refY - 8, referenceAuc.toFixed(4), { anchor: "middle", weight: 700, size: 12, fill: "#13756b" });
+      out += text(refX, 270, "loop-k=4 ref", { anchor: "middle", size: 12, weight: 650 });
+      out += text(18, 28, "Mean macro ROC-AUC", { size: 13, weight: 600, fill: "#5d6677" });
+      svg.innerHTML = out;
+    }
+
+    function computeChart() {
+      const svg = document.querySelector("#compute-chart");
+      const left = 65, bottom = 244, chartW = 290, chartH = 178, max = 4;
+      const y = v => bottom - v / max * chartH;
+      let out = `<rect x="${left}" y="40" width="${chartW}" height="${chartH}" fill="#f6f8fb"/>`;
+      [0, 1, 2, 3, 4].forEach(v => {
+        const yy = y(v);
+        out += `<line x1="${left}" y1="${yy}" x2="${left + chartW}" y2="${yy}" stroke="#d9dee7"/>`;
+        out += text(left - 12, yy + 4, v, { anchor: "end", size: 12, fill: "#5d6677" });
+      });
+      const bars = [
+        { label: "λ=0.01", value: 1.24, color: "#2463a9", x: 110 },
+        { label: "λ=0.05", value: 1.04, color: "#13756b", x: 205 },
+        { label: "fixed k=4", value: 4, color: "#b65b16", x: 300 }
+      ];
+      bars.forEach(b => {
+        const yy = y(b.value);
+        out += `<rect x="${b.x}" y="${yy}" width="52" height="${bottom - yy}" rx="3" fill="${b.color}"/>`;
+        out += text(b.x + 26, yy - 8, b.value.toFixed(2), { anchor: "middle", weight: 700, size: 12, fill: b.color });
+        out += text(b.x + 26, 270, b.label, { anchor: "middle", size: 12, weight: 650 });
+      });
+      out += text(12, 28, "Mean loop iterations (k)", { size: 13, weight: 600, fill: "#5d6677" });
+      svg.innerHTML = out;
+    }
+
+    function deltaTable() {
+      document.querySelector("#delta-table").innerHTML = deltas.map(([model, dataset, act, base, delta, k]) => `
+        <tr>
+          <td>${model}</td><td>${dataset}</td><td>${act.toFixed(4)}</td><td>${base.toFixed(4)}</td>
+          <td class="${delta >= 0 ? "positive" : "negative"}">${delta >= 0 ? "+" : ""}${delta.toFixed(4)}</td><td>${k.toFixed(2)}</td>
+        </tr>`).join("");
+    }
+    aggregateChart();
+    computeChart();
+    deltaTable();
+  </script>
+</body>
+</html>

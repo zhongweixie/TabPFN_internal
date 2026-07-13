@@ -118,6 +118,11 @@ def main():
     ref_model = None
     if os.path.exists(args.ref_ckpt):
         ref_model = build_model(args.ref_ckpt, nlayers=12, loop_k=4)
+        # build_model() reinstalls the global fixed-loop LayerStack.forward.
+        # Restore the ACT wrapper after constructing the reference, so
+        # predict_act() below truly evaluates the H5 adaptive path.
+        from train_h5_act import install_act_forward
+        install_act_forward()
         print(f"[H5-eval] ref loopk4 loaded", flush=True)
 
     tasks = json.load(open(TASKS_JSON))
